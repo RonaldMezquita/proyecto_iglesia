@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author remsf
+ * @author alexi
  */
 @Entity
 @Table(name = "movimiento")
@@ -35,7 +35,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Movimiento.findById", query = "SELECT m FROM Movimiento m WHERE m.id = :id"),
     @NamedQuery(name = "Movimiento.findByMonto", query = "SELECT m FROM Movimiento m WHERE m.monto = :monto"),
     @NamedQuery(name = "Movimiento.findByTipo", query = "SELECT m FROM Movimiento m WHERE m.tipo = :tipo"),
-    @NamedQuery(name = "Movimiento.findByFechaCreacion", query = "SELECT m FROM Movimiento m WHERE m.fechaCreacion = :fechaCreacion")})
+    @NamedQuery(name = "Movimiento.findByEstado", query = "SELECT m FROM Movimiento m WHERE m.estado = :estado"),
+    @NamedQuery(name = "Movimiento.findByFechaCreacion", query = "SELECT m FROM Movimiento m WHERE m.fechaCreacion = :fechaCreacion"),
+    @NamedQuery(name = "Movimiento.findByFechaActualizacion", query = "SELECT m FROM Movimiento m WHERE m.fechaActualizacion = :fechaActualizacion")})
 public class Movimiento implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,9 +53,16 @@ public class Movimiento implements Serializable {
     @Column(name = "tipo")
     private String tipo;
     @Basic(optional = false)
+    @Column(name = "estado")
+    private boolean estado;
+    @Basic(optional = false)
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
+    @Basic(optional = false)
+    @Column(name = "fecha_actualizacion")
+    @Temporal(TemporalType.DATE)
+    private Date fechaActualizacion;
     @JoinColumn(name = "id_bautizo", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Bautizo idBautizo;
@@ -71,11 +80,13 @@ public class Movimiento implements Serializable {
         this.id = id;
     }
 
-    public Movimiento(Integer id, double monto, String tipo, Date fechaCreacion) {
+    public Movimiento(Integer id, double monto, String tipo, boolean estado, Date fechaCreacion, Date fechaActualizacion) {
         this.id = id;
         this.monto = monto;
         this.tipo = tipo;
+        this.estado = estado;
         this.fechaCreacion = fechaCreacion;
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Integer getId() {
@@ -102,12 +113,28 @@ public class Movimiento implements Serializable {
         this.tipo = tipo;
     }
 
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     public Date getFechaCreacion() {
         return fechaCreacion;
     }
 
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(Date fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Bautizo getIdBautizo() {
@@ -160,3 +187,4 @@ public class Movimiento implements Serializable {
     }
     
 }
+

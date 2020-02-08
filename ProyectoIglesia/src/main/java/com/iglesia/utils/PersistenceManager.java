@@ -32,4 +32,14 @@ public class PersistenceManager {
         }
         return entityManagerFactory;
     }
+    
+    public static void close(){
+        if (entityManagerFactory != null) {
+            if (getEntityManager().isOpen()) {
+                getEntityManager().close();
+            }
+            entityManagerFactory.close();
+        }
+    }
 }
+

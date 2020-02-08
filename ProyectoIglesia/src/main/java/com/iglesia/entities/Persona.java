@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author remsf
+ * @author alexi
  */
 @Entity
 @Table(name = "persona")
@@ -43,7 +43,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Persona.findByDui", query = "SELECT p FROM Persona p WHERE p.dui = :dui"),
     @NamedQuery(name = "Persona.findByNit", query = "SELECT p FROM Persona p WHERE p.nit = :nit"),
     @NamedQuery(name = "Persona.findByFechaNacimiento", query = "SELECT p FROM Persona p WHERE p.fechaNacimiento = :fechaNacimiento"),
-    @NamedQuery(name = "Persona.findByFechaCreacion", query = "SELECT p FROM Persona p WHERE p.fechaCreacion = :fechaCreacion")})
+    @NamedQuery(name = "Persona.findByEstado", query = "SELECT p FROM Persona p WHERE p.estado = :estado"),
+    @NamedQuery(name = "Persona.findByFechaCreacion", query = "SELECT p FROM Persona p WHERE p.fechaCreacion = :fechaCreacion"),
+    @NamedQuery(name = "Persona.findByFechaActualizacion", query = "SELECT p FROM Persona p WHERE p.fechaActualizacion = :fechaActualizacion")})
 public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -72,9 +74,16 @@ public class Persona implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
     @Basic(optional = false)
+    @Column(name = "estado")
+    private boolean estado;
+    @Basic(optional = false)
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
+    @Basic(optional = false)
+    @Column(name = "fecha_actualizacion")
+    @Temporal(TemporalType.DATE)
+    private Date fechaActualizacion;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario idUsuario;
@@ -90,7 +99,7 @@ public class Persona implements Serializable {
         this.id = id;
     }
 
-    public Persona(Integer id, String nombres, String apellidos, String direccion, String dui, String nit, Date fechaNacimiento, Date fechaCreacion) {
+    public Persona(Integer id, String nombres, String apellidos, String direccion, String dui, String nit, Date fechaNacimiento, boolean estado, Date fechaCreacion, Date fechaActualizacion) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -98,7 +107,9 @@ public class Persona implements Serializable {
         this.dui = dui;
         this.nit = nit;
         this.fechaNacimiento = fechaNacimiento;
+        this.estado = estado;
         this.fechaCreacion = fechaCreacion;
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Integer getId() {
@@ -157,12 +168,28 @@ public class Persona implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     public Date getFechaCreacion() {
         return fechaCreacion;
     }
 
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(Date fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Usuario getIdUsuario() {
@@ -217,3 +244,4 @@ public class Persona implements Serializable {
     }
     
 }
+

@@ -9,13 +9,15 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-02-05T20:51:08")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-02-08T17:37:51")
 @StaticMetamodel(Lugar.class)
 public class Lugar_ { 
 
+    public static volatile SingularAttribute<Lugar, Boolean> estado;
     public static volatile ListAttribute<Lugar, Bautizo> bautizoList;
     public static volatile SingularAttribute<Lugar, Usuario> idUsuario;
     public static volatile SingularAttribute<Lugar, Date> fechaCreacion;
+    public static volatile SingularAttribute<Lugar, Date> fechaActualizacion;
     public static volatile SingularAttribute<Lugar, Integer> id;
     public static volatile SingularAttribute<Lugar, String> nombre;
     public static volatile ListAttribute<Lugar, Boda> bodaList;

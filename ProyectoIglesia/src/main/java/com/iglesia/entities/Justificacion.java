@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author remsf
+ * @author alexi
  */
 @Entity
 @Table(name = "justificacion")
@@ -38,7 +38,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Justificacion.findAll", query = "SELECT j FROM Justificacion j"),
     @NamedQuery(name = "Justificacion.findById", query = "SELECT j FROM Justificacion j WHERE j.id = :id"),
     @NamedQuery(name = "Justificacion.findByNombre", query = "SELECT j FROM Justificacion j WHERE j.nombre = :nombre"),
-    @NamedQuery(name = "Justificacion.findByFechaCreacion", query = "SELECT j FROM Justificacion j WHERE j.fechaCreacion = :fechaCreacion")})
+    @NamedQuery(name = "Justificacion.findByEstado", query = "SELECT j FROM Justificacion j WHERE j.estado = :estado"),
+    @NamedQuery(name = "Justificacion.findByFechaCreacion", query = "SELECT j FROM Justificacion j WHERE j.fechaCreacion = :fechaCreacion"),
+    @NamedQuery(name = "Justificacion.findByFechaActualizacion", query = "SELECT j FROM Justificacion j WHERE j.fechaActualizacion = :fechaActualizacion")})
 public class Justificacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,9 +53,16 @@ public class Justificacion implements Serializable {
     @Column(name = "nombre")
     private String nombre;
     @Basic(optional = false)
+    @Column(name = "estado")
+    private short estado;
+    @Basic(optional = false)
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
+    @Basic(optional = false)
+    @Column(name = "fecha_actualizacion")
+    @Temporal(TemporalType.DATE)
+    private Date fechaActualizacion;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario idUsuario;
@@ -67,10 +76,12 @@ public class Justificacion implements Serializable {
         this.id = id;
     }
 
-    public Justificacion(Integer id, String nombre, Date fechaCreacion) {
+    public Justificacion(Integer id, String nombre, short estado, Date fechaCreacion, Date fechaActualizacion) {
         this.id = id;
         this.nombre = nombre;
+        this.estado = estado;
         this.fechaCreacion = fechaCreacion;
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Integer getId() {
@@ -89,12 +100,28 @@ public class Justificacion implements Serializable {
         this.nombre = nombre;
     }
 
+    public short getEstado() {
+        return estado;
+    }
+
+    public void setEstado(short estado) {
+        this.estado = estado;
+    }
+
     public Date getFechaCreacion() {
         return fechaCreacion;
     }
 
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(Date fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Usuario getIdUsuario() {
@@ -140,3 +167,4 @@ public class Justificacion implements Serializable {
     }
     
 }
+

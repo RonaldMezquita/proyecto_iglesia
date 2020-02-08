@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author remsf
+ * @author alexi
  */
 @Entity
 @Table(name = "usuario")
@@ -39,7 +39,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findByApellido", query = "SELECT u FROM Usuario u WHERE u.apellido = :apellido"),
     @NamedQuery(name = "Usuario.findByUsuario", query = "SELECT u FROM Usuario u WHERE u.usuario = :usuario"),
     @NamedQuery(name = "Usuario.findByClave", query = "SELECT u FROM Usuario u WHERE u.clave = :clave"),
-    @NamedQuery(name = "Usuario.findByFechaCreacion", query = "SELECT u FROM Usuario u WHERE u.fechaCreacion = :fechaCreacion")})
+    @NamedQuery(name = "Usuario.findByEstado", query = "SELECT u FROM Usuario u WHERE u.estado = :estado"),
+    @NamedQuery(name = "Usuario.findByFechaCreacion", query = "SELECT u FROM Usuario u WHERE u.fechaCreacion = :fechaCreacion"),
+    @NamedQuery(name = "Usuario.findByFechaActualizacion", query = "SELECT u FROM Usuario u WHERE u.fechaActualizacion = :fechaActualizacion")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,9 +63,15 @@ public class Usuario implements Serializable {
     @Column(name = "clave")
     private String clave;
     @Basic(optional = false)
+    @Column(name = "estado")
+    private boolean estado;
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
+    @Basic(optional = false)
+    @Column(name = "fecha_actualizacion")
+    @Temporal(TemporalType.DATE)
+    private Date fechaActualizacion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Relacion> relacionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
@@ -92,13 +100,14 @@ public class Usuario implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public Usuario(Integer idUsuario, String nombre, String apellido, String usuario, String clave, Date fechaCreacion) {
+    public Usuario(Integer idUsuario, String nombre, String apellido, String usuario, String clave, boolean estado, Date fechaActualizacion) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.usuario = usuario;
         this.clave = clave;
-        this.fechaCreacion = fechaCreacion;
+        this.estado = estado;
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Integer getIdUsuario() {
@@ -141,12 +150,28 @@ public class Usuario implements Serializable {
         this.clave = clave;
     }
 
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     public Date getFechaCreacion() {
         return fechaCreacion;
     }
 
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(Date fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     @XmlTransient
@@ -265,3 +290,4 @@ public class Usuario implements Serializable {
     }
     
 }
+

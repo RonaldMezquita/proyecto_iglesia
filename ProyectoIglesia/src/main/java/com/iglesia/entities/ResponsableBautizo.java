@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author remsf
+ * @author alexi
  */
 @Entity
 @Table(name = "responsable_bautizo")
@@ -33,7 +33,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "ResponsableBautizo.findAll", query = "SELECT r FROM ResponsableBautizo r"),
     @NamedQuery(name = "ResponsableBautizo.findById", query = "SELECT r FROM ResponsableBautizo r WHERE r.id = :id"),
-    @NamedQuery(name = "ResponsableBautizo.findByFechaCreacion", query = "SELECT r FROM ResponsableBautizo r WHERE r.fechaCreacion = :fechaCreacion")})
+    @NamedQuery(name = "ResponsableBautizo.findByEstado", query = "SELECT r FROM ResponsableBautizo r WHERE r.estado = :estado"),
+    @NamedQuery(name = "ResponsableBautizo.findByFechaCreacion", query = "SELECT r FROM ResponsableBautizo r WHERE r.fechaCreacion = :fechaCreacion"),
+    @NamedQuery(name = "ResponsableBautizo.findByFechaActualizacion", query = "SELECT r FROM ResponsableBautizo r WHERE r.fechaActualizacion = :fechaActualizacion")})
 public class ResponsableBautizo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,9 +45,16 @@ public class ResponsableBautizo implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
+    @Column(name = "estado")
+    private boolean estado;
+    @Basic(optional = false)
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
+    @Basic(optional = false)
+    @Column(name = "fecha_actualizacion")
+    @Temporal(TemporalType.DATE)
+    private Date fechaActualizacion;
     @JoinColumn(name = "id_bautizo", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Bautizo idBautizo;
@@ -66,9 +75,11 @@ public class ResponsableBautizo implements Serializable {
         this.id = id;
     }
 
-    public ResponsableBautizo(Integer id, Date fechaCreacion) {
+    public ResponsableBautizo(Integer id, boolean estado, Date fechaCreacion, Date fechaActualizacion) {
         this.id = id;
+        this.estado = estado;
         this.fechaCreacion = fechaCreacion;
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Integer getId() {
@@ -79,12 +90,28 @@ public class ResponsableBautizo implements Serializable {
         this.id = id;
     }
 
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     public Date getFechaCreacion() {
         return fechaCreacion;
     }
 
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(Date fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Bautizo getIdBautizo() {
@@ -145,3 +172,4 @@ public class ResponsableBautizo implements Serializable {
     }
     
 }
+

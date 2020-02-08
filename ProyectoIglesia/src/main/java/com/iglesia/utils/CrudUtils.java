@@ -5,7 +5,8 @@
  */
 package com.iglesia.utils;
 
-import com.iglesia.utils.PersistenceManager;
+import java.util.List;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 
 /**
@@ -36,13 +37,82 @@ public abstract class CrudUtils<T> {
             em.getTransaction().commit();
             return entity;
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             em.getTransaction().rollback();
             return null;
         }finally{
-            em.close();
+            PersistenceManager.close();
         }
     }
+    public <T> T actualizar(T entity) throws Exception{
+        EntityManager em = PersistenceManager.getEntityManager();
+        em.getTransaction().begin();
+        try{
+            em.persist(entity);
+            em.getTransaction().commit();
+            return entity;
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+            em.getTransaction().rollback();
+            return null;
+        }finally{
+            PersistenceManager.close();
+        }
+    }
+    
+    public List<T> consultarTodos(String jpql) throws Exception{
+        EntityManager em = PersistenceManager.getEntityManager();
+        em.getTransaction().begin();
+        List<T> lista = null;
+        try{
+           lista = em.createQuery(jpql).getResultList();
+           em.getTransaction().commit();
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+            em.getTransaction().rollback();
+        }finally{
+            PersistenceManager.close();
+        }
+        return lista;
+    }
+    public List<T> consultarPor(String jpql, String parameterName, Integer parameterValue) throws Exception{
+        EntityManager em = PersistenceManager.getEntityManager();
+        em.getTransaction().begin();
+        List<T> lista = null;
+        try{
+           lista= em.createQuery(jpql)
+                   .setParameter(parameterName, parameterValue)
+                   .getResultList();
+           em.getTransaction().commit();
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+            em.getTransaction().rollback();
+        }finally{
+            PersistenceManager.close();
+        }
+        return lista;
+    }
+    public List<T> consultarPor(String jpql, String parameterName, String parameterValue) throws Exception{
+        EntityManager em = PersistenceManager.getEntityManager();
+        em.getTransaction().begin();
+        List<T> lista = null;
+        try{
+           lista= em.createQuery(jpql)
+                   .setParameter(parameterName, parameterValue)
+                   .getResultList();
+           em.getTransaction().commit();
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+            em.getTransaction().rollback();
+        }finally{
+            PersistenceManager.close();
+        }
+        return lista;
+    }   
 }
+
+
+
 
 
 
