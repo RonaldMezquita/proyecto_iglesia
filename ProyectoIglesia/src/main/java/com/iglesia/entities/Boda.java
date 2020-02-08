@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author remsf
+ * @author alexi
  */
 @Entity
 @Table(name = "boda")
@@ -41,7 +41,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Boda.findByTomo", query = "SELECT b FROM Boda b WHERE b.tomo = :tomo"),
     @NamedQuery(name = "Boda.findByFolio", query = "SELECT b FROM Boda b WHERE b.folio = :folio"),
     @NamedQuery(name = "Boda.findByNumero", query = "SELECT b FROM Boda b WHERE b.numero = :numero"),
-    @NamedQuery(name = "Boda.findByFechaCreacion", query = "SELECT b FROM Boda b WHERE b.fechaCreacion = :fechaCreacion")})
+    @NamedQuery(name = "Boda.findByEstado", query = "SELECT b FROM Boda b WHERE b.estado = :estado"),
+    @NamedQuery(name = "Boda.findByFechaCreacion", query = "SELECT b FROM Boda b WHERE b.fechaCreacion = :fechaCreacion"),
+    @NamedQuery(name = "Boda.findByFechaActualizacion", query = "SELECT b FROM Boda b WHERE b.fechaActualizacion = :fechaActualizacion")})
 public class Boda implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -64,9 +66,16 @@ public class Boda implements Serializable {
     @Column(name = "numero")
     private String numero;
     @Basic(optional = false)
+    @Column(name = "estado")
+    private boolean estado;
+    @Basic(optional = false)
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
+    @Basic(optional = false)
+    @Column(name = "fecha_actualizacion")
+    @Temporal(TemporalType.DATE)
+    private Date fechaActualizacion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idBoda", fetch = FetchType.LAZY)
     private List<ResponsableBoda> responsableBodaList;
     @JoinColumn(name = "id_lugar", referencedColumnName = "id")
@@ -86,13 +95,15 @@ public class Boda implements Serializable {
         this.id = id;
     }
 
-    public Boda(Integer id, Date fecha, String tomo, String folio, String numero, Date fechaCreacion) {
+    public Boda(Integer id, Date fecha, String tomo, String folio, String numero, boolean estado, Date fechaCreacion, Date fechaActualizacion) {
         this.id = id;
         this.fecha = fecha;
         this.tomo = tomo;
         this.folio = folio;
         this.numero = numero;
+        this.estado = estado;
         this.fechaCreacion = fechaCreacion;
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Integer getId() {
@@ -135,12 +146,28 @@ public class Boda implements Serializable {
         this.numero = numero;
     }
 
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     public Date getFechaCreacion() {
         return fechaCreacion;
     }
 
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(Date fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     @XmlTransient
@@ -202,3 +229,4 @@ public class Boda implements Serializable {
     }
     
 }
+

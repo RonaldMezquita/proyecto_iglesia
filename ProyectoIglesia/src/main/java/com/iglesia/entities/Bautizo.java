@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author remsf
+ * @author alexi
  */
 @Entity
 @Table(name = "bautizo")
@@ -41,7 +41,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Bautizo.findByTomo", query = "SELECT b FROM Bautizo b WHERE b.tomo = :tomo"),
     @NamedQuery(name = "Bautizo.findByFolio", query = "SELECT b FROM Bautizo b WHERE b.folio = :folio"),
     @NamedQuery(name = "Bautizo.findByNumero", query = "SELECT b FROM Bautizo b WHERE b.numero = :numero"),
-    @NamedQuery(name = "Bautizo.findByFechaCreacion", query = "SELECT b FROM Bautizo b WHERE b.fechaCreacion = :fechaCreacion")})
+    @NamedQuery(name = "Bautizo.findByEstado", query = "SELECT b FROM Bautizo b WHERE b.estado = :estado"),
+    @NamedQuery(name = "Bautizo.findByFechaCreacion", query = "SELECT b FROM Bautizo b WHERE b.fechaCreacion = :fechaCreacion"),
+    @NamedQuery(name = "Bautizo.findByFechaActualizacion", query = "SELECT b FROM Bautizo b WHERE b.fechaActualizacion = :fechaActualizacion")})
 public class Bautizo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -64,9 +66,16 @@ public class Bautizo implements Serializable {
     @Column(name = "numero")
     private String numero;
     @Basic(optional = false)
+    @Column(name = "estado")
+    private boolean estado;
+    @Basic(optional = false)
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
+    @Basic(optional = false)
+    @Column(name = "fecha_actualizacion")
+    @Temporal(TemporalType.DATE)
+    private Date fechaActualizacion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idBautizo", fetch = FetchType.LAZY)
     private List<Movimiento> movimientoList;
     @JoinColumn(name = "id_lugar", referencedColumnName = "id")
@@ -88,13 +97,15 @@ public class Bautizo implements Serializable {
         this.id = id;
     }
 
-    public Bautizo(Integer id, Date fecha, String tomo, String folio, String numero, Date fechaCreacion) {
+    public Bautizo(Integer id, Date fecha, String tomo, String folio, String numero, boolean estado, Date fechaCreacion, Date fechaActualizacion) {
         this.id = id;
         this.fecha = fecha;
         this.tomo = tomo;
         this.folio = folio;
         this.numero = numero;
+        this.estado = estado;
         this.fechaCreacion = fechaCreacion;
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Integer getId() {
@@ -137,12 +148,28 @@ public class Bautizo implements Serializable {
         this.numero = numero;
     }
 
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     public Date getFechaCreacion() {
         return fechaCreacion;
     }
 
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(Date fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     @XmlTransient
@@ -213,3 +240,4 @@ public class Bautizo implements Serializable {
     }
     
 }
+

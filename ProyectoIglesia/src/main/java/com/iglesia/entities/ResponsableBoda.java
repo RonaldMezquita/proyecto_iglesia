@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author remsf
+ * @author alexi
  */
 @Entity
 @Table(name = "responsable_boda")
@@ -33,7 +33,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "ResponsableBoda.findAll", query = "SELECT r FROM ResponsableBoda r"),
     @NamedQuery(name = "ResponsableBoda.findById", query = "SELECT r FROM ResponsableBoda r WHERE r.id = :id"),
-    @NamedQuery(name = "ResponsableBoda.findByFechaCreacion", query = "SELECT r FROM ResponsableBoda r WHERE r.fechaCreacion = :fechaCreacion")})
+    @NamedQuery(name = "ResponsableBoda.findByEstado", query = "SELECT r FROM ResponsableBoda r WHERE r.estado = :estado"),
+    @NamedQuery(name = "ResponsableBoda.findByFechaCreacion", query = "SELECT r FROM ResponsableBoda r WHERE r.fechaCreacion = :fechaCreacion"),
+    @NamedQuery(name = "ResponsableBoda.findByFechaActualizacion", query = "SELECT r FROM ResponsableBoda r WHERE r.fechaActualizacion = :fechaActualizacion")})
 public class ResponsableBoda implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,9 +45,16 @@ public class ResponsableBoda implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
+    @Column(name = "estado")
+    private boolean estado;
+    @Basic(optional = false)
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
+    @Basic(optional = false)
+    @Column(name = "fecha_actualizacion")
+    @Temporal(TemporalType.DATE)
+    private Date fechaActualizacion;
     @JoinColumn(name = "id_boda", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Boda idBoda;
@@ -66,9 +75,11 @@ public class ResponsableBoda implements Serializable {
         this.id = id;
     }
 
-    public ResponsableBoda(Integer id, Date fechaCreacion) {
+    public ResponsableBoda(Integer id, boolean estado, Date fechaCreacion, Date fechaActualizacion) {
         this.id = id;
+        this.estado = estado;
         this.fechaCreacion = fechaCreacion;
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Integer getId() {
@@ -79,12 +90,28 @@ public class ResponsableBoda implements Serializable {
         this.id = id;
     }
 
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     public Date getFechaCreacion() {
         return fechaCreacion;
     }
 
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(Date fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Boda getIdBoda() {
@@ -145,3 +172,4 @@ public class ResponsableBoda implements Serializable {
     }
     
 }
+

@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author remsf
+ * @author alexi
  */
 @Entity
 @Table(name = "sacerdote")
@@ -39,7 +39,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Sacerdote.findById", query = "SELECT s FROM Sacerdote s WHERE s.id = :id"),
     @NamedQuery(name = "Sacerdote.findByNombres", query = "SELECT s FROM Sacerdote s WHERE s.nombres = :nombres"),
     @NamedQuery(name = "Sacerdote.findByApellidos", query = "SELECT s FROM Sacerdote s WHERE s.apellidos = :apellidos"),
-    @NamedQuery(name = "Sacerdote.findByFechaCreacion", query = "SELECT s FROM Sacerdote s WHERE s.fechaCreacion = :fechaCreacion")})
+    @NamedQuery(name = "Sacerdote.findByEstado", query = "SELECT s FROM Sacerdote s WHERE s.estado = :estado"),
+    @NamedQuery(name = "Sacerdote.findByFechaCreacion", query = "SELECT s FROM Sacerdote s WHERE s.fechaCreacion = :fechaCreacion"),
+    @NamedQuery(name = "Sacerdote.findByFechaActualizacion", query = "SELECT s FROM Sacerdote s WHERE s.fechaActualizacion = :fechaActualizacion")})
 public class Sacerdote implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -55,9 +57,16 @@ public class Sacerdote implements Serializable {
     @Column(name = "apellidos")
     private String apellidos;
     @Basic(optional = false)
+    @Column(name = "estado")
+    private boolean estado;
+    @Basic(optional = false)
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
+    @Basic(optional = false)
+    @Column(name = "fecha_actualizacion")
+    @Temporal(TemporalType.DATE)
+    private Date fechaActualizacion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSacerdote", fetch = FetchType.LAZY)
     private List<Boda> bodaList;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
@@ -73,11 +82,13 @@ public class Sacerdote implements Serializable {
         this.id = id;
     }
 
-    public Sacerdote(Integer id, String nombres, String apellidos, Date fechaCreacion) {
+    public Sacerdote(Integer id, String nombres, String apellidos, boolean estado, Date fechaCreacion, Date fechaActualizacion) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
+        this.estado = estado;
         this.fechaCreacion = fechaCreacion;
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Integer getId() {
@@ -104,12 +115,28 @@ public class Sacerdote implements Serializable {
         this.apellidos = apellidos;
     }
 
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     public Date getFechaCreacion() {
         return fechaCreacion;
     }
 
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(Date fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     @XmlTransient
@@ -164,3 +191,4 @@ public class Sacerdote implements Serializable {
     }
     
 }
+
