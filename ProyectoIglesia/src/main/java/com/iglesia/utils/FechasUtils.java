@@ -17,7 +17,11 @@ import java.util.Date;
  * @author remsf
  */
 public class FechasUtils {
-
+    
+    /**
+     * Retorna la fecha actual en formato util.Date
+     * @return
+     */
     public static Date getCurrentDate() {
         Calendar time = Calendar.getInstance();
         time.add(Calendar.DAY_OF_MONTH, 0);
@@ -42,3 +46,4 @@ public class FechasUtils {
         return 0;
     }
 }
+

@@ -60,7 +60,7 @@ public abstract class CrudUtils<T> {
         }
     }
     
-    public List<T> consultarTodos(String jpql) throws Exception{
+    public List<T> consultarTodos(String jpql){
         EntityManager em = PersistenceManager.getEntityManager();
         em.getTransaction().begin();
         List<T> lista = null;
@@ -75,12 +75,47 @@ public abstract class CrudUtils<T> {
         }
         return lista;
     }
-    public List<T> consultarPor(String jpql, String parameterName, Integer parameterValue) throws Exception{
+    public <T> T consultarPor(String jpql, String parameterName, Integer parameterValue){
+        EntityManager em = PersistenceManager.getEntityManager();
+        em.getTransaction().begin();
+        T object = null;
+        try{
+           object= (T) em.createQuery(jpql)
+                   .setParameter(parameterName, parameterValue)
+                   .getSingleResult();
+           em.getTransaction().commit();
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+            em.getTransaction().rollback();
+        }finally{
+            PersistenceManager.close();
+        }
+        return object;
+    }
+    public <T> T consultarPor(String jpql, String parameterName, String parameterValue){
+        EntityManager em = PersistenceManager.getEntityManager();
+        em.getTransaction().begin();
+        T object = null;
+        try{
+           object= (T) em.createQuery(jpql)
+                   .setParameter(parameterName, parameterValue)
+                   .getSingleResult();
+           em.getTransaction().commit();
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+            em.getTransaction().rollback();
+        }finally{
+            PersistenceManager.close();
+        }
+        return object;
+    }
+    
+    public List<T> consultarTodosPor(String jpql, String parameterName, Integer parameterValue){
         EntityManager em = PersistenceManager.getEntityManager();
         em.getTransaction().begin();
         List<T> lista = null;
         try{
-           lista= em.createQuery(jpql)
+           lista=  em.createQuery(jpql)
                    .setParameter(parameterName, parameterValue)
                    .getResultList();
            em.getTransaction().commit();
@@ -92,12 +127,13 @@ public abstract class CrudUtils<T> {
         }
         return lista;
     }
-    public List<T> consultarPor(String jpql, String parameterName, String parameterValue) throws Exception{
+    
+    public List<T> consultarTodosPor(String jpql, String parameterName, String parameterValue){
         EntityManager em = PersistenceManager.getEntityManager();
         em.getTransaction().begin();
         List<T> lista = null;
         try{
-           lista= em.createQuery(jpql)
+           lista=  em.createQuery(jpql)
                    .setParameter(parameterName, parameterValue)
                    .getResultList();
            em.getTransaction().commit();
@@ -108,8 +144,13 @@ public abstract class CrudUtils<T> {
             PersistenceManager.close();
         }
         return lista;
-    }   
+    }
 }
+
+
+
+
+
 
 
 
