@@ -2,6 +2,7 @@ com\iglesia\entities\Usuario.class
 com\iglesia\entities\Persona.class
 com\iglesia\services\JustificacionService.class
 com\iglesia\services\ResponsableBodaService.class
+com\iglesia\utils\FechasUtils.class
 com\iglesia\services\BodaService.class
 com\iglesia\services\PersonaService.class
 com\iglesia\entities\Lugar_.class
@@ -9,6 +10,7 @@ com\iglesia\entities\Persona_.class
 com\iglesia\entities\ResponsableBoda_.class
 com\iglesia\services\LugarService.class
 com\iglesia\entities\Boda_.class
+com\iglesia\controllers\UsuarioController.class
 com\iglesia\entities\Movimiento.class
 com\iglesia\entities\Relacion.class
 com\iglesia\utils\CrudUtils.class
