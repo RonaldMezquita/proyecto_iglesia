@@ -26,6 +26,8 @@ public class UsuarioController implements Serializable{
     private UsuarioService usuarioService;
 
     public UsuarioController() {
+        this.selected = new Usuario();
+        this.selected.setEstado(true);
     }
     
     public void consultarTodos(){
