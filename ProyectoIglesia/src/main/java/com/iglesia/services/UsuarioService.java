@@ -7,12 +7,13 @@ package com.iglesia.services;
 
 import com.iglesia.entities.Usuario;
 import com.iglesia.utils.CrudUtils;
+import javax.inject.Named;
 
 /**
  *
  * @author alexi
  */
-
+@Named
 public class UsuarioService extends CrudUtils<Usuario>{
 
     public UsuarioService() {
@@ -20,6 +21,7 @@ public class UsuarioService extends CrudUtils<Usuario>{
     }
     
 }
+
 
 
 

@@ -7,6 +7,7 @@ package com.iglesia.controllers;
 
 import com.iglesia.entities.Usuario;
 import com.iglesia.services.UsuarioService;
+import com.iglesia.utils.FechasUtils;
 import java.io.Serializable;
 import java.util.List;
 import javax.inject.Inject;
@@ -31,13 +32,24 @@ public class UsuarioController implements Serializable{
         this.items = this.usuarioService.consultarTodos("select t from Usuario t");
     }
     
-    public Usuario consultarPor(Integer idUSuario){
+    public Usuario consultarPorId(Integer idUSuario){
         this.selected = this.usuarioService.consultarPor("select t from Usuario t where t.idUsuario=:idUsuario", 
                 "idUsuario", idUSuario);
         return this.selected;
     }
     
+    public void crear() throws Exception{
+        if(this.selected != null){
+            this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
+            if(this.usuarioService.crear(this.selected) != null){
+                
+            }                
+        }
+    }
+    
 }
+
+
 
 
 
