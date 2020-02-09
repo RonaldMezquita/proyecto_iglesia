@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 C:\Users\alexi\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Persona.java
 C:\Users\alexi\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\utils\Test.java
 C:\Users\alexi\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Movimiento.java
@@ -12,3 +13,18 @@ C:\Users\alexi\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\m
 C:\Users\alexi\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Justificacion.java
 C:\Users\alexi\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Usuario.java
 C:\Users\alexi\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\ResponsableBautizo.java
+=======
+C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Persona.java
+C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Sacerdote.java
+C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\utils\Test.java
+C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Justificacion.java
+C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Movimiento.java
+C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\utils\PersistenceManager.java
+C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Boda.java
+C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Relacion.java
+C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\ResponsableBautizo.java
+C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Lugar.java
+C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Usuario.java
+C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Bautizo.java
+C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\ResponsableBoda.java
+>>>>>>> Stashed changes

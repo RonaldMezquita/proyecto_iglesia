@@ -10,7 +10,11 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
+<<<<<<< Updated upstream
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-02-08T17:37:51")
+=======
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-02-08T15:38:36")
+>>>>>>> Stashed changes
 @StaticMetamodel(Boda.class)
 public class Boda_ { 
 
