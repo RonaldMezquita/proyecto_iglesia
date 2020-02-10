@@ -15,9 +15,13 @@ import javax.persistence.EntityManager;
 public class Test {
     public static void main(String[] args) {
         EntityManager em= PersistenceManager.getEntityManager();
+        em.getTransaction().begin();
         Usuario u = (Usuario) em.createQuery("select t from Usuario t where t.idUsuario=:usuario")
                 .setParameter("usuario", 1)
                 .getSingleResult();
-        System.out.println(u);
+        em.getTransaction().commit();
+        System.out.println(u.getNombre());
     }
 }
+
+

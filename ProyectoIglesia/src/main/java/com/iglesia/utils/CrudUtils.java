@@ -30,7 +30,7 @@ public abstract class CrudUtils<T> {
      * @throws Exception
      */
     public <T> T crear(T entity) throws Exception {
-        EntityManager em = PersistenceManager.getEntityManager();
+        EntityManager em = PersistenceManager.getEntityManager();        
         em.getTransaction().begin();
         try {
             em.persist(entity);            
@@ -48,7 +48,7 @@ public abstract class CrudUtils<T> {
         EntityManager em = PersistenceManager.getEntityManager();
         em.getTransaction().begin();
         try{
-            em.persist(entity);
+            em.merge(entity);
             em.getTransaction().commit();
             return entity;
         } catch(Exception e){
@@ -146,6 +146,8 @@ public abstract class CrudUtils<T> {
         return lista;
     }
 }
+
+
 
 
 
