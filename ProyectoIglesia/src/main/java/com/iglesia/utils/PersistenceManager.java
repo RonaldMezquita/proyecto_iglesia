@@ -38,8 +38,9 @@ public class PersistenceManager {
             if (getEntityManager().isOpen()) {
                 getEntityManager().close();
             }
-            entityManagerFactory.close();
+            //entityManagerFactory.close();
         }
     }
 }
+
 

@@ -13,7 +13,6 @@ import javax.inject.Named;
  *
  * @author alexi
  */
-@Named
 public class UsuarioService extends CrudUtils<Usuario>{
 
     public UsuarioService() {
@@ -21,6 +20,7 @@ public class UsuarioService extends CrudUtils<Usuario>{
     }
     
 }
+
 
 
 
