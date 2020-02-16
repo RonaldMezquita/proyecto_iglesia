@@ -63,12 +63,12 @@ public class Lugar implements Serializable {
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idLugar", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idLugar", fetch = FetchType.LAZY)
     private List<Boda> bodaList;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario idUsuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idLugar", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idLugar", fetch = FetchType.LAZY)
     private List<Bautizo> bautizoList;
 
     public Lugar() {
@@ -178,4 +178,5 @@ public class Lugar implements Serializable {
     }
     
 }
+
 
