@@ -7,7 +7,6 @@ package com.iglesia.views;
 
 import com.iglesia.controllers.UsuarioController;
 import com.iglesia.utils.ProjectUtils;
-import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;

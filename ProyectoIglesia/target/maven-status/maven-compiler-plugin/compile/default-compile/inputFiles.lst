@@ -7,6 +7,8 @@ C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\m
 C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\services\ResponsableBautizoService.java
 C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\utils\FechasUtils.java
 C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\services\ResponsableBodaService.java
+C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\views\FrmUsuario.java
+C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\views\FrmBautizo.java
 C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\services\JustificacionService.java
 C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\services\UsuarioService.java
 C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Boda.java
@@ -21,6 +23,7 @@ C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\m
 C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\utils\PersistenceManager.java
 C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\services\MovimientoService.java
 C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\services\RelacionService.java
+C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\utils\ValidacionesUtils.java
 C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\services\SacerdoteService.java
 C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\ResponsableBautizo.java
 C:\Users\remsf\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Usuario.java

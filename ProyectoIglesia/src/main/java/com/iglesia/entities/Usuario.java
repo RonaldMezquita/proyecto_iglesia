@@ -68,7 +68,6 @@ public class Usuario implements Serializable {
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
-    @Basic(optional = false)
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
