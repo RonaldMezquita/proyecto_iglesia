@@ -72,25 +72,25 @@ public class Usuario implements Serializable {
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Relacion> relacionList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Justificacion> justificacionList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Persona> personaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<ResponsableBoda> responsableBodaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Boda> bodaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Movimiento> movimientoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Lugar> lugarList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Sacerdote> sacerdoteList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Bautizo> bautizoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<ResponsableBautizo> responsableBautizoList;
 
     public Usuario() {
@@ -290,4 +290,5 @@ public class Usuario implements Serializable {
     }
     
 }
+
 

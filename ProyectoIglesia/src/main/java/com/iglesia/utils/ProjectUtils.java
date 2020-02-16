@@ -7,14 +7,16 @@ package com.iglesia.utils;
 
 import java.awt.Component;
 import java.util.List;
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author alexi
  */
-public class ValidacionesUtils {
+public class ProjectUtils {
 
     public static boolean validarVacios(JPanel panel, List<String> excepciones) {
         boolean vacio = false;
@@ -35,9 +37,37 @@ public class ValidacionesUtils {
                     vacio = true;
                     break;
                 }
-            }
+            }            
         }
         return vacio;
     }
+    
+    public static void limpiarComponentes(JPanel panel) {
+        Component[] components = panel.getComponents();
+        for (int i = 0; i < components.length; i++) {
+            if (components[i] instanceof JTextField) {
+                ((JTextField) components[i]).setText("");
+            }
+            if (components[i] instanceof JCheckBox) {
+                ((JCheckBox) components[i]).setSelected(false);
+            }
+        }
+    }
+    
+    public static DefaultTableModel construirModeloTabla(String[] titulo){
+        DefaultTableModel model;        
+        model = new DefaultTableModel(null, titulo){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }            
+        };        
+        return model;
+    }
 }
+
+
+
+
+
 
