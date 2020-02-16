@@ -1,0 +1,113 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.iglesia.controllers;
+
+import com.iglesia.entities.Lugar;
+import com.iglesia.services.LugarService;
+import com.iglesia.utils.FechasUtils;
+import com.iglesia.utils.ProjectUtils;
+import java.io.Serializable;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author alexi
+ */
+public class LugarController implements Serializable {
+    private Lugar selected;
+    private List<Lugar> items;
+    
+    private LugarService lugarService;
+
+    public LugarController() {
+        this.lugarService = new LugarService();
+        this.selected = new Lugar();
+        this.selected.setEstado(true);        
+    }
+    public void consultarTodos() {
+        this.items = this.lugarService.consultarTodos("select t from Lugar t");
+    }
+    public Lugar consultarPorId(Integer idLugar) {
+        this.selected = this.lugarService.consultarPor("select t from Lugar t where t.id=:id",
+                "id", idLugar);
+        return this.selected;
+    }
+    public Lugar crear(){
+        if (this.selected != null) {
+            this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
+            try {
+                if (this.lugarService.crear(this.selected) != null) {
+                    return this.selected;
+                }
+            } catch (Exception e) {
+                System.out.println("LugarController[crear()]-> "+e.getMessage());
+            }
+        }
+        return null;
+    }
+    public Lugar actualizar(){
+        if (this.selected != null) {
+            this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
+            try {
+                if (this.lugarService.actualizar(this.selected) != null) {
+                    return this.selected;
+                }
+            } catch (Exception e) {
+                System.out.println("LugarController[actualizar()]-> "+e.getMessage());
+            }
+        }
+        return null;
+    }
+    
+    public void llenarTabla(JTable tabla) {
+        String[] titulo = {"Id", "Nombre", "Estado"};
+        DefaultTableModel model = ProjectUtils.construirModeloTabla(titulo);
+        this.consultarTodos();
+        String[] datos = new String[3];
+        for (Lugar user : this.getItems()) {
+            datos[0] = user.getId().toString();
+            datos[1] = user.getNombre();
+            datos[2] = user.getEstado() ? "Activo" : "Inactivo";
+            model.addRow(datos);
+        }
+        tabla.setModel(model);
+    }
+
+    public Lugar getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Lugar selected) {
+        this.selected = selected;
+    }
+
+    public List<Lugar> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Lugar> items) {
+        this.items = items;
+    }
+
+    public LugarService getLugarService() {
+        return lugarService;
+    }
+
+    public void setLugarService(LugarService lugarService) {
+        this.lugarService = lugarService;
+    }
+    
+    
+}
+
+
+
+
+
+
+
