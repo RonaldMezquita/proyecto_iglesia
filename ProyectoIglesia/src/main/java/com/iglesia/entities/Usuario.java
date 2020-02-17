@@ -172,6 +172,12 @@ public class Usuario implements Serializable {
     public void setFechaActualizacion(Date fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
     }
+    
+    public String getNombreCompleto(){
+        StringBuilder sb = new StringBuilder(this.nombre);
+        sb.append(" ").append(this.apellido);
+        return sb.toString();
+    }
 
     @XmlTransient
     public List<Relacion> getRelacionList() {
