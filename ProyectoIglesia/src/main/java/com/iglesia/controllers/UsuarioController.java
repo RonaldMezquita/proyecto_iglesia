@@ -71,7 +71,7 @@ public class UsuarioController implements Serializable {
 
     public void llenarTabla(JTable tabla, String filtro) {        
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
-        model = this.removeRows(model);
+        model = ProjectUtils.removeRows(model);
         this.items = this.usuarioService.buscarUsuario(filtro);
         String[] datos = new String[5];
         for (Usuario user : this.getItems()) {
@@ -83,15 +83,7 @@ public class UsuarioController implements Serializable {
             model.addRow(datos);
         }
         tabla.setModel(model);
-    }
-    
-    private DefaultTableModel removeRows(DefaultTableModel model){
-        int numRows = model.getRowCount();
-        for (int i = 0; i < numRows; i++) {            
-            model.removeRow(0);
-        }
-        return model;
-    }
+    }   
 
     //<editor-fold defaultstate="collapsed" desc="getters & setters">
     public Usuario getSelected() {

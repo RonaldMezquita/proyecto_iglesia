@@ -64,6 +64,19 @@ public class ProjectUtils {
         };        
         return model;
     }
+    
+    /**
+     * Elimina las filas de un DefaultTableModel
+     * @param model
+     * @return 
+     */
+    public static DefaultTableModel removeRows(DefaultTableModel model){
+        int numRows = model.getRowCount();
+        for (int i = 0; i < numRows; i++) {            
+            model.removeRow(0);
+        }
+        return model;
+    }
 }
 
 
