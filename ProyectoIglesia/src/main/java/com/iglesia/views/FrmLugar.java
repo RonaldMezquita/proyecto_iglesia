@@ -7,6 +7,7 @@ package com.iglesia.views;
 
 import com.iglesia.controllers.LugarController;
 import com.iglesia.utils.ProjectUtils;
+import com.iglesia.utils.TextPrompt;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -32,7 +33,7 @@ public class FrmLugar extends javax.swing.JFrame {
         mostrarTabla("");
         this.excepciones.add("buscar");
         this.txtnombre.requestFocus();
-        
+        new TextPrompt("Digite nombre para buscar", this.txtbuscar);
         
     }
 
@@ -107,7 +108,7 @@ public class FrmLugar extends javax.swing.JFrame {
         jbingresar.setBackground(new java.awt.Color(13, 71, 161));
         jbingresar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbingresar.setForeground(new java.awt.Color(255, 255, 255));
-        jbingresar.setText("Ingresar");
+        jbingresar.setText("Registrar");
         jbingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbingresarActionPerformed(evt);
