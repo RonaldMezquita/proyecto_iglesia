@@ -78,12 +78,13 @@ public class Lugar implements Serializable {
         this.id = id;
     }
 
-    public Lugar(Integer id, String nombre, boolean estado, Date fechaCreacion, Date fechaActualizacion) {
+    public Lugar(Integer id, String nombre, boolean estado, Date fechaCreacion, Date fechaActualizacion, Usuario idUsuario) {
         this.id = id;
         this.nombre = nombre;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
         this.fechaActualizacion = fechaActualizacion;
+        this.idUsuario= idUsuario;
     }
 
     public Integer getId() {
