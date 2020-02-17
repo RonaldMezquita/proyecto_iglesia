@@ -7,6 +7,7 @@ package com.iglesia.views;
 
 import com.iglesia.controllers.UsuarioController;
 import com.iglesia.utils.ProjectUtils;
+import com.iglesia.utils.TextPrompt;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -29,9 +30,10 @@ public class FrmUsuario extends javax.swing.JFrame {
         this.setTitle("Usuario");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        this.mostrarTabla();
-        this.excepciones.add("idUsuario");
+        this.mostrarTabla("");        
+        this.excepciones.add("buscar");
         this.txtnombre.requestFocus();
+        new TextPrompt("Digite nombre para buscar", this.txtbuscar);
         
     }
 
@@ -51,6 +53,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jbsalir = new javax.swing.JButton();
         txtnombre = new javax.swing.JTextField();
         txtapellido = new javax.swing.JTextField();
         txtusuario = new javax.swing.JTextField();
@@ -61,8 +64,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbusuario = new javax.swing.JTable();
         btncancelar = new javax.swing.JButton();
-        jbsalir = new javax.swing.JButton();
-        lbfondo = new javax.swing.JLabel();
+        txtbuscar = new javax.swing.JTextField();
         txtid = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,38 +73,48 @@ public class FrmUsuario extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(189, 189, 189));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Ingreso de Usuarios");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Apellido:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Usuario:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Clave:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Estado:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, -1, -1));
+
+        jbsalir.setBackground(new java.awt.Color(204, 0, 0));
+        jbsalir.setForeground(new java.awt.Color(255, 255, 255));
+        jbsalir.setText("Salir");
+        jbsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbsalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 60, 30));
 
         txtnombre.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtnombre.setName("Nombre"); // NOI18N
@@ -111,14 +123,14 @@ public class FrmUsuario extends javax.swing.JFrame {
                 txtnombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, 240, -1));
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 240, -1));
 
         txtapellido.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtapellido.setName("Apellido"); // NOI18N
-        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 240, -1));
+        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, 240, -1));
 
         txtusuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, 240, -1));
+        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 160, 240, -1));
 
         txtclave.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtclave.addActionListener(new java.awt.event.ActionListener() {
@@ -126,16 +138,16 @@ public class FrmUsuario extends javax.swing.JFrame {
                 txtclaveActionPerformed(evt);
             }
         });
-        jPanel1.add(txtclave, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 160, 240, -1));
+        jPanel1.add(txtclave, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 240, -1));
 
-        cbestado.setForeground(new java.awt.Color(255, 255, 255));
+        cbestado.setForeground(new java.awt.Color(0, 0, 0));
         cbestado.setText("Activo");
-        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, -1, -1));
+        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, -1, -1));
 
-        btnguardar.setBackground(new java.awt.Color(0, 0, 51));
-        btnguardar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnguardar.setBackground(new java.awt.Color(13, 71, 161));
+        btnguardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnguardar.setForeground(new java.awt.Color(255, 255, 255));
-        btnguardar.setText("Ingresar");
+        btnguardar.setText(" Registrar");
         btnguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnguardarActionPerformed(evt);
@@ -143,8 +155,8 @@ public class FrmUsuario extends javax.swing.JFrame {
         });
         jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, -1, -1));
 
-        btnmodificar.setBackground(new java.awt.Color(0, 0, 51));
-        btnmodificar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnmodificar.setBackground(new java.awt.Color(0, 126, 51));
+        btnmodificar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnmodificar.setForeground(new java.awt.Color(255, 255, 255));
         btnmodificar.setText("Modificar");
         btnmodificar.addActionListener(new java.awt.event.ActionListener() {
@@ -156,30 +168,58 @@ public class FrmUsuario extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 51));
 
-        tbusuario.setBackground(new java.awt.Color(0, 0, 51));
-        tbusuario.setForeground(new java.awt.Color(255, 255, 255));
+        tbusuario.setBackground(new java.awt.Color(224, 224, 224));
+        tbusuario.setForeground(new java.awt.Color(0, 0, 0));
         tbusuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
-
+                "Id", "Nombre", "Apellido", "Usuario", "Estado"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbusuario.setSelectionBackground(new java.awt.Color(189, 189, 189));
+        tbusuario.setSelectionForeground(new java.awt.Color(51, 51, 51));
         tbusuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbusuarioMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tbusuario);
+        if (tbusuario.getColumnModel().getColumnCount() > 0) {
+            tbusuario.getColumnModel().getColumn(0).setMinWidth(50);
+            tbusuario.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tbusuario.getColumnModel().getColumn(0).setMaxWidth(50);
+            tbusuario.getColumnModel().getColumn(1).setMinWidth(125);
+            tbusuario.getColumnModel().getColumn(1).setPreferredWidth(125);
+            tbusuario.getColumnModel().getColumn(1).setMaxWidth(125);
+            tbusuario.getColumnModel().getColumn(2).setMinWidth(125);
+            tbusuario.getColumnModel().getColumn(2).setPreferredWidth(125);
+            tbusuario.getColumnModel().getColumn(2).setMaxWidth(125);
+            tbusuario.getColumnModel().getColumn(4).setMinWidth(75);
+            tbusuario.getColumnModel().getColumn(4).setPreferredWidth(75);
+            tbusuario.getColumnModel().getColumn(4).setMaxWidth(75);
+        }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 460, 280));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 460, 240));
 
-        btncancelar.setBackground(new java.awt.Color(0, 0, 51));
-        btncancelar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btncancelar.setBackground(new java.awt.Color(255, 136, 0));
+        btncancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btncancelar.setForeground(new java.awt.Color(255, 255, 255));
         btncancelar.setText("Cancelar");
         btncancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -189,20 +229,17 @@ public class FrmUsuario extends javax.swing.JFrame {
         });
         jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, -1, -1));
 
-        jbsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/boton-salir.png"))); // NOI18N
-        jbsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbsalirActionPerformed(evt);
+        txtbuscar.setName("buscar"); // NOI18N
+        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyReleased(evt);
             }
         });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 30, 30));
-
-        lbfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Fondo.jpg"))); // NOI18N
-        jPanel1.add(lbfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-8, -10, 880, 370));
+        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 290, -1));
 
         txtid.setEditable(false);
         txtid.setName("idUsuario"); // NOI18N
-        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 70, -1));
+        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 70, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 360));
 
@@ -218,7 +255,7 @@ public class FrmUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtclaveActionPerformed
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
-        
+        this.excepciones.add("idUsuario");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -231,7 +268,7 @@ public class FrmUsuario extends javax.swing.JFrame {
             if (this.usuarioController.crear() != null) {
                 JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 ProjectUtils.limpiarComponentes(this.jPanel1);
-                this.mostrarTabla();
+                this.mostrarTabla("");
             } else {
                 JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -240,7 +277,7 @@ public class FrmUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnguardarActionPerformed
 
     private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
-        if (ProjectUtils.validarVacios(this.jPanel1, null)) {
+        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             this.usuarioController.getSelected().setIdUsuario(Integer.parseInt(this.txtid.getText()));
@@ -252,7 +289,7 @@ public class FrmUsuario extends javax.swing.JFrame {
             
             if (this.usuarioController.actualizar() != null) {
                 JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                this.mostrarTabla();
+                this.mostrarTabla("");
                 ProjectUtils.limpiarComponentes(this.jPanel1);
             } else {
                 JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -272,11 +309,16 @@ public class FrmUsuario extends javax.swing.JFrame {
 
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
         ProjectUtils.limpiarComponentes(this.jPanel1);
+        this.mostrarTabla("");
     }//GEN-LAST:event_btncancelarActionPerformed
 
     private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jbsalirActionPerformed
+
+    private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
+        this.mostrarTabla(this.txtbuscar.getText());
+    }//GEN-LAST:event_txtbuscarKeyReleased
 
     /**
      * @param args the command line arguments
@@ -313,8 +355,8 @@ public class FrmUsuario extends javax.swing.JFrame {
         });
     }
     
-    private void mostrarTabla() {
-        this.usuarioController.llenarTabla(tbusuario);
+    private void mostrarTabla(String filtro) {
+        this.usuarioController.llenarTabla(tbusuario, filtro);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -331,9 +373,9 @@ public class FrmUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbsalir;
-    private javax.swing.JLabel lbfondo;
     private javax.swing.JTable tbusuario;
     private javax.swing.JTextField txtapellido;
+    private javax.swing.JTextField txtbuscar;
     private javax.swing.JTextField txtclave;
     private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtnombre;

@@ -69,10 +69,10 @@ public class UsuarioController implements Serializable {
         return null;
     }
 
-    public void llenarTabla(JTable tabla) {
-        String[] titulo = {"Id", "Nombre", "Apellido", "Usuario", "Estado"};
-        DefaultTableModel model = ProjectUtils.construirModeloTabla(titulo);
-        this.consultarTodos();
+    public void llenarTabla(JTable tabla, String filtro) {        
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        model = ProjectUtils.removeRows(model);
+        this.items = this.usuarioService.buscarUsuario(filtro);
         String[] datos = new String[5];
         for (Usuario user : this.getItems()) {
             datos[0] = user.getIdUsuario().toString();
@@ -83,7 +83,7 @@ public class UsuarioController implements Serializable {
             model.addRow(datos);
         }
         tabla.setModel(model);
-    }
+    }   
 
     //<editor-fold defaultstate="collapsed" desc="getters & setters">
     public Usuario getSelected() {

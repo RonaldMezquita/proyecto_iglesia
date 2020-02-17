@@ -94,7 +94,7 @@ public class Boda implements Serializable {
     public Boda(Integer id) {
         this.id = id;
     }
-
+    
     public Boda(Integer id, Date fecha, String tomo, String folio, String numero, boolean estado, Date fechaCreacion, Date fechaActualizacion) {
         this.id = id;
         this.fecha = fecha;
