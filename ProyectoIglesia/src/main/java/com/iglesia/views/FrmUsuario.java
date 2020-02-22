@@ -52,13 +52,11 @@ public class FrmUsuario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jbsalir = new javax.swing.JButton();
         txtnombre = new javax.swing.JTextField();
         txtapellido = new javax.swing.JTextField();
         txtusuario = new javax.swing.JTextField();
-        txtclave = new javax.swing.JTextField();
         cbestado = new javax.swing.JCheckBox();
         btnguardar = new javax.swing.JButton();
         txtid = new javax.swing.JTextField();
@@ -96,15 +94,10 @@ public class FrmUsuario extends javax.swing.JFrame {
         jLabel4.setText("Usuario");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Clave");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, -1, -1));
-
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Estado");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, -1, -1));
 
         jbsalir.setBackground(new java.awt.Color(204, 0, 0));
         jbsalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -132,17 +125,9 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtusuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 310, -1));
 
-        txtclave.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        txtclave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtclaveActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtclave, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 310, -1));
-
         cbestado.setForeground(new java.awt.Color(0, 0, 0));
         cbestado.setText("Activo");
-        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, -1, -1));
+        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, -1, -1));
 
         btnguardar.setBackground(new java.awt.Color(13, 71, 161));
         btnguardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -238,10 +223,6 @@ public class FrmUsuario extends javax.swing.JFrame {
     private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnombreActionPerformed
-
-    private void txtclaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtclaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtclaveActionPerformed
     private void crear() {
         this.excepciones.add("idUsuario");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
@@ -274,8 +255,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         this.usuarioController.getSelected().setIdUsuario((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.usuarioController.getSelected().setNombre(this.txtnombre.getText());
         this.usuarioController.getSelected().setApellido(this.txtapellido.getText());
-        this.usuarioController.getSelected().setUsuario(this.txtusuario.getText());
-        this.usuarioController.getSelected().setClave(this.txtclave.getText());
+        this.usuarioController.getSelected().setUsuario(this.txtusuario.getText());        
         this.usuarioController.getSelected().setEstado(this.cbestado.isSelected());
         if(this.usuarioController.getSelected().getIdUsuario()== null){
             this.crear();
@@ -354,7 +334,6 @@ public class FrmUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -362,7 +341,6 @@ public class FrmUsuario extends javax.swing.JFrame {
     private javax.swing.JTable tbusuario;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtbuscar;
-    private javax.swing.JTextField txtclave;
     private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtusuario;
