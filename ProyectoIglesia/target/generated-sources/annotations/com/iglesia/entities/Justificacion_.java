@@ -8,11 +8,11 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-02-16T20:20:58")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-02-18T22:22:56")
 @StaticMetamodel(Justificacion.class)
 public class Justificacion_ { 
 
-    public static volatile SingularAttribute<Justificacion, Short> estado;
+    public static volatile SingularAttribute<Justificacion, Boolean> estado;
     public static volatile SingularAttribute<Justificacion, Usuario> idUsuario;
     public static volatile ListAttribute<Justificacion, Movimiento> movimientoList;
     public static volatile SingularAttribute<Justificacion, Date> fechaCreacion;
