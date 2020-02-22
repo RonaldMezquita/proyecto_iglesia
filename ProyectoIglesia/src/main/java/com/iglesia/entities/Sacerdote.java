@@ -67,12 +67,12 @@ public class Sacerdote implements Serializable {
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSacerdote", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idSacerdote", fetch = FetchType.LAZY)
     private List<Boda> bodaList;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario idUsuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSacerdote", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idSacerdote", fetch = FetchType.LAZY)
     private List<Bautizo> bautizoList;
 
     public Sacerdote() {
@@ -82,14 +82,17 @@ public class Sacerdote implements Serializable {
         this.id = id;
     }
 
-    public Sacerdote(Integer id, String nombres, String apellidos, boolean estado, Date fechaCreacion, Date fechaActualizacion) {
+    public Sacerdote(Integer id, String nombres, String apellidos, boolean estado, Date fechaCreacion, Date fechaActualizacion, Usuario idUsuario) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
         this.fechaActualizacion = fechaActualizacion;
+        this.idUsuario = idUsuario;
     }
+
+    
 
     public Integer getId() {
         return id;

@@ -10,6 +10,7 @@ C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\
 C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\controllers\LugarController.java
 C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Relacion.java
 C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\services\UsuarioService.java
+C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\controllers\SacerdoteController.java
 C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\services\BautizoService.java
 C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Persona.java
 C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Sacerdote.java
@@ -23,6 +24,7 @@ C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\
 C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Boda.java
 C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Usuario.java
 C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Bautizo.java
+C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\views\FrmJustificacion.java
 C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\services\MovimientoService.java
 C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Movimiento.java
 C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\services\ResponsableBautizoService.java
@@ -34,4 +36,5 @@ C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\
 C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\entities\Lugar.java
 C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\views\prueba.java
 C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\services\LugarService.java
+C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\views\FrmSacerdote.java
 C:\Users\Alexis\Documents\RepositorioLocal\proyecto_iglesia\ProyectoIglesia\src\main\java\com\iglesia\views\FrmUsuario.java
