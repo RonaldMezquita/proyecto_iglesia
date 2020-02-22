@@ -66,9 +66,9 @@ public class Relacion implements Serializable {
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario idUsuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRelacion", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idRelacion", fetch = FetchType.LAZY)
     private List<ResponsableBoda> responsableBodaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRelacion", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idRelacion", fetch = FetchType.LAZY)
     private List<ResponsableBautizo> responsableBautizoList;
 
     public Relacion() {
@@ -78,12 +78,13 @@ public class Relacion implements Serializable {
         this.id = id;
     }
 
-    public Relacion(Integer id, String nombre, boolean estado, Date fechaCreacion, Date fechaActualizacion) {
+    public Relacion(Integer id, String nombre, boolean estado, Date fechaCreacion, Date fechaActualizacion, Usuario idUsuario) {
         this.id = id;
         this.nombre = nombre;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
         this.fechaActualizacion = fechaActualizacion;
+        this.idUsuario= idUsuario;
     }
 
     public Integer getId() {

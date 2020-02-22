@@ -5,9 +5,9 @@
  */
 package com.iglesia.controllers;
 
-import com.iglesia.entities.Relacion;
+import com.iglesia.entities.Justificacion;
 import com.iglesia.entities.Usuario;
-import com.iglesia.services.RelacionService;
+import com.iglesia.services.JustificacionService;
 import com.iglesia.utils.FechasUtils;
 import com.iglesia.utils.ProjectUtils;
 import java.io.Serializable;
@@ -17,36 +17,36 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author alexi
+ * @author Alexis
  */
-public class RelacionController implements Serializable{
-    private Relacion selected;
-    private List<Relacion> items;
+public class JustificacionController implements Serializable{
+    private Justificacion selected;
+    private List<Justificacion> items;
     
-    private RelacionService relacionService;
+    private JustificacionService justificacionService;
 
-    public RelacionController() {
-        this.relacionService = new RelacionService();
-        this.selected = new Relacion();
+    public JustificacionController() {
+        this.justificacionService = new JustificacionService();
+        this.selected = new Justificacion();
         this.selected.setEstado(true);
-        this.selected.setIdUsuario(new Usuario(1));
+        this.selected.setIdUsuario(new Usuario(1));                
     }
-
+    
     public void consultarTodos() {
-        this.items = this.relacionService.consultarTodos("select t from Relacion t");
+        this.items = this.justificacionService.consultarTodos("select t from Relacion t");
     }
 
-    public Relacion consultarPorId(Integer idRelacion) {
-        this.selected = this.relacionService.consultarPor("select t from Relacion t where t.idRelacion=:idRelacion",
+    public Justificacion consultarPorId(Integer idRelacion) {
+        this.selected = this.justificacionService.consultarPor("select t from Relacion t where t.idRelacion=:idRelacion",
                 "idRelacion", idRelacion);
         return this.selected;
     }
 
-    public Relacion crear(){
+    public Justificacion crear(){
         if (this.selected != null) {
             this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
             try {
-                if (this.relacionService.crear(this.selected) != null) {
+                if (this.justificacionService.crear(this.selected) != null) {
                     return this.selected;
                 }
             } catch (Exception e) {
@@ -55,11 +55,11 @@ public class RelacionController implements Serializable{
         }
         return null;
     }
-    public Relacion actualizar(){
+    public Justificacion actualizar(){
         if (this.selected != null) {
             this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
             try {
-                if (this.relacionService.actualizar(this.selected) != null) {
+                if (this.justificacionService.actualizar(this.selected) != null) {
                     return this.selected;
                 }
             } catch (Exception e) {
@@ -71,9 +71,9 @@ public class RelacionController implements Serializable{
     public void llenarTabla(JTable tabla, String filtro) {        
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         model = ProjectUtils.removeRows(model);
-        this.items = this.relacionService.buscarRelacion(filtro);
+        this.items = this.justificacionService.buscarJustificacion(filtro);
         String[] datos = new String[3];
-        for (Relacion user : this.getItems()) {
+        for (Justificacion user : this.getItems()) {
             datos[0] = user.getId().toString();
             datos[1] = user.getNombre();            
             datos[2] = user.getEstado() ? "Activo" : "Inactivo";
@@ -81,34 +81,34 @@ public class RelacionController implements Serializable{
         }
         tabla.setModel(model);
     }
-    //<editor-fold defaultstate="collapsed" desc="getters & setters">    
-    public Relacion getSelected() {
+    //<editor-fold defaultstate="collapsed" desc="getters & setters">   
+
+    public Justificacion getSelected() {
         return selected;
     }
 
-    public void setSelected(Relacion selected) {
+    public void setSelected(Justificacion selected) {
         this.selected = selected;
     }
 
-    public List<Relacion> getItems() {
+    public List<Justificacion> getItems() {
         return items;
     }
 
-    public void setItems(List<Relacion> items) {
+    public void setItems(List<Justificacion> items) {
         this.items = items;
     }
 
-    public RelacionService getRelacionService() {
-        return relacionService;
+    public JustificacionService getJustificacionService() {
+        return justificacionService;
     }
 
-    public void setRelacionService(RelacionService relacionService) {
-        this.relacionService = relacionService;
+    public void setJustificacionService(JustificacionService justificacionService) {
+        this.justificacionService = justificacionService;
     }
     //</editor-fold>
     
     
+    
+    
 }
-
-
-

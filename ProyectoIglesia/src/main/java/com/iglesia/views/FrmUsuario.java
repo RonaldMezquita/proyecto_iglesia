@@ -23,18 +23,19 @@ public class FrmUsuario extends javax.swing.JFrame {
      */
     private UsuarioController usuarioController;
     private List<String> excepciones = new ArrayList<>();
-    
+
     public FrmUsuario() {
         initComponents();
         this.usuarioController = new UsuarioController();
+        this.txtid.setVisible(false);
         this.setTitle("Usuario");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        this.mostrarTabla("");        
+        this.mostrarTabla("");
         this.excepciones.add("buscar");
         this.txtnombre.requestFocus();
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
-        
+
     }
 
     /**
@@ -60,12 +61,11 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtclave = new javax.swing.JTextField();
         cbestado = new javax.swing.JCheckBox();
         btnguardar = new javax.swing.JButton();
-        btnmodificar = new javax.swing.JButton();
+        txtid = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbusuario = new javax.swing.JTable();
         btncancelar = new javax.swing.JButton();
         txtbuscar = new javax.swing.JTextField();
-        txtid = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(null);
@@ -83,28 +83,28 @@ public class FrmUsuario extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Nombre:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
+        jLabel2.setText("Nombre");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Apellido:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, -1, -1));
+        jLabel3.setText("Apellido");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Usuario:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, -1, -1));
+        jLabel4.setText("Usuario");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Clave:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, -1, -1));
+        jLabel5.setText("Clave");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Estado:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, -1, -1));
+        jLabel6.setText("Estado");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, -1, -1));
 
         jbsalir.setBackground(new java.awt.Color(204, 0, 0));
         jbsalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,7 +114,7 @@ public class FrmUsuario extends javax.swing.JFrame {
                 jbsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 60, 30));
+        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 60, 30));
 
         txtnombre.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtnombre.setName("Nombre"); // NOI18N
@@ -123,14 +123,14 @@ public class FrmUsuario extends javax.swing.JFrame {
                 txtnombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 240, -1));
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 310, -1));
 
         txtapellido.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtapellido.setName("Apellido"); // NOI18N
-        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, 240, -1));
+        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 310, -1));
 
         txtusuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 160, 240, -1));
+        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 310, -1));
 
         txtclave.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtclave.addActionListener(new java.awt.event.ActionListener() {
@@ -138,33 +138,26 @@ public class FrmUsuario extends javax.swing.JFrame {
                 txtclaveActionPerformed(evt);
             }
         });
-        jPanel1.add(txtclave, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 240, -1));
+        jPanel1.add(txtclave, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 310, -1));
 
         cbestado.setForeground(new java.awt.Color(0, 0, 0));
         cbestado.setText("Activo");
-        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, -1, -1));
+        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, -1, -1));
 
         btnguardar.setBackground(new java.awt.Color(13, 71, 161));
         btnguardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnguardar.setForeground(new java.awt.Color(255, 255, 255));
-        btnguardar.setText(" Registrar");
+        btnguardar.setText("Guardar");
         btnguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnguardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, -1, -1));
+        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 130, -1));
 
-        btnmodificar.setBackground(new java.awt.Color(0, 126, 51));
-        btnmodificar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnmodificar.setForeground(new java.awt.Color(255, 255, 255));
-        btnmodificar.setText("Modificar");
-        btnmodificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnmodificarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnmodificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 260, -1, -1));
+        txtid.setEditable(false);
+        txtid.setName("idUsuario"); // NOI18N
+        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 51));
 
@@ -227,7 +220,7 @@ public class FrmUsuario extends javax.swing.JFrame {
                 btncancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, -1, -1));
+        jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 130, -1));
 
         txtbuscar.setName("buscar"); // NOI18N
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -237,11 +230,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         });
         jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 290, -1));
 
-        txtid.setEditable(false);
-        txtid.setName("idUsuario"); // NOI18N
-        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 70, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 360));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -253,18 +242,11 @@ public class FrmUsuario extends javax.swing.JFrame {
     private void txtclaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtclaveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtclaveActionPerformed
-
-    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+    private void crear() {
         this.excepciones.add("idUsuario");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            this.usuarioController.getSelected().setNombre(this.txtnombre.getText());
-            this.usuarioController.getSelected().setApellido(this.txtapellido.getText());
-            this.usuarioController.getSelected().setUsuario(this.txtusuario.getText());
-            this.usuarioController.getSelected().setClave(this.txtclave.getText());
-            this.usuarioController.getSelected().setEstado(this.cbestado.isSelected());
-            
             if (this.usuarioController.crear() != null) {
                 JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 ProjectUtils.limpiarComponentes(this.jPanel1);
@@ -273,20 +255,12 @@ public class FrmUsuario extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
+    }
 
-    }//GEN-LAST:event_btnguardarActionPerformed
-
-    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
+    private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            this.usuarioController.getSelected().setIdUsuario(Integer.parseInt(this.txtid.getText()));
-            this.usuarioController.getSelected().setNombre(this.txtnombre.getText());
-            this.usuarioController.getSelected().setApellido(this.txtapellido.getText());
-            this.usuarioController.getSelected().setUsuario(this.txtusuario.getText());
-            this.usuarioController.getSelected().setClave(this.txtclave.getText());
-            this.usuarioController.getSelected().setEstado(this.cbestado.isSelected());
-            
             if (this.usuarioController.actualizar() != null) {
                 JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 this.mostrarTabla("");
@@ -294,9 +268,22 @@ public class FrmUsuario extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            
         }
-    }//GEN-LAST:event_btnmodificarActionPerformed
+    }
+    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+        this.usuarioController.getSelected().setIdUsuario((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
+        this.usuarioController.getSelected().setNombre(this.txtnombre.getText());
+        this.usuarioController.getSelected().setApellido(this.txtapellido.getText());
+        this.usuarioController.getSelected().setUsuario(this.txtusuario.getText());
+        this.usuarioController.getSelected().setClave(this.txtclave.getText());
+        this.usuarioController.getSelected().setEstado(this.cbestado.isSelected());
+        if(this.usuarioController.getSelected().getIdUsuario()== null){
+            this.crear();
+        }else{
+            this.actualizar();
+        }
+
+    }//GEN-LAST:event_btnguardarActionPerformed
 
     private void tbusuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbusuarioMouseClicked
         int rowSelect = this.tbusuario.getSelectedRow();
@@ -354,7 +341,7 @@ public class FrmUsuario extends javax.swing.JFrame {
             }
         });
     }
-    
+
     private void mostrarTabla(String filtro) {
         this.usuarioController.llenarTabla(tbusuario, filtro);
     }
@@ -362,7 +349,6 @@ public class FrmUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btnguardar;
-    private javax.swing.JButton btnmodificar;
     private javax.swing.JCheckBox cbestado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
