@@ -166,8 +166,8 @@ public class FrmRelacion extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 350, 180));
 
         txtid.setEditable(false);
-        txtid.setText("jTextField1");
-        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        txtid.setName("id"); // NOI18N
+        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, -1));
 
         jbsalir.setBackground(new java.awt.Color(204, 0, 0));
         jbsalir.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
@@ -216,7 +216,7 @@ private void crear() {
         this.relacionController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.relacionController.getSelected().setNombre(this.txtnombre.getText());
         this.relacionController.getSelected().setEstado(this.cbestado.isSelected());
-        if (this.relacionController.getSelected().getIdUsuario() == null) {
+        if (this.relacionController.getSelected().getId()== null) {
             this.crear();
         } else {
             this.actualizar();

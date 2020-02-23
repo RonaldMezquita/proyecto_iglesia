@@ -170,8 +170,8 @@ public class FrmJustificacion extends javax.swing.JFrame {
         jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 70, 30));
 
         txtid.setEditable(false);
-        txtid.setText("jTextField1");
-        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+        txtid.setName("id"); // NOI18N
+        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 50, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 500));
 
@@ -220,7 +220,7 @@ public class FrmJustificacion extends javax.swing.JFrame {
         this.justificacionController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.justificacionController.getSelected().setNombre(this.txtnombre.getText());
         this.justificacionController.getSelected().setEstado(this.cbestado.isSelected());
-        if (this.justificacionController.getSelected().getIdUsuario() == null) {
+        if (this.justificacionController.getSelected().getId() == null) {
             this.crear();
         } else {
             this.actualizar();

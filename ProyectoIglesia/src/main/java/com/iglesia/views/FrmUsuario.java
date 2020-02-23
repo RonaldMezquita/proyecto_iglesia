@@ -82,22 +82,22 @@ public class FrmUsuario extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Apellido");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Usuario");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Estado");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, -1, -1));
 
         jbsalir.setBackground(new java.awt.Color(204, 0, 0));
         jbsalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -116,18 +116,18 @@ public class FrmUsuario extends javax.swing.JFrame {
                 txtnombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 310, -1));
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 310, -1));
 
         txtapellido.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtapellido.setName("Apellido"); // NOI18N
-        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 310, -1));
+        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 310, -1));
 
         txtusuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 310, -1));
+        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 310, -1));
 
         cbestado.setForeground(new java.awt.Color(0, 0, 0));
         cbestado.setText("Activo");
-        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, -1, -1));
+        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, -1, -1));
 
         btnguardar.setBackground(new java.awt.Color(13, 71, 161));
         btnguardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N

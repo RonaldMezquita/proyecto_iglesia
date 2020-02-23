@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author alexi
+ * @author remsf
  */
 @Entity
 @Table(name = "justificacion")
@@ -59,14 +59,13 @@ public class Justificacion implements Serializable {
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
-    @Basic(optional = false)
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario idUsuario;
-    @OneToMany(mappedBy = "idJustificacion", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idJustificacion", fetch = FetchType.LAZY)
     private List<Movimiento> movimientoList;
 
     public Justificacion() {
@@ -76,13 +75,11 @@ public class Justificacion implements Serializable {
         this.id = id;
     }
 
-    public Justificacion(Integer id, String nombre, boolean estado, Date fechaCreacion, Date fechaActualizacion,Usuario idUsuario) {
+    public Justificacion(Integer id, String nombre, boolean estado, Date fechaCreacion) {
         this.id = id;
         this.nombre = nombre;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
-        this.fechaActualizacion = fechaActualizacion;
-        this.idUsuario= idUsuario;
     }
 
     public Integer getId() {
@@ -168,4 +165,3 @@ public class Justificacion implements Serializable {
     }
     
 }
-
