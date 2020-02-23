@@ -131,7 +131,7 @@ public class ProjectUtils {
         return new javax.swing.JFormattedTextField(ProjectUtils.mascaraNit());
     }
     
-    public static String ftmLike(String param) {
+    public static String fmtLike(String param) {
         return new StringBuilder("%").append(param).append("%").toString();
     }
 }

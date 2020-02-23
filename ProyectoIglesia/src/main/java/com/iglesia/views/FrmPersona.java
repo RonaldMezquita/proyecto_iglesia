@@ -39,6 +39,7 @@ public class FrmPersona extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.txtnombres.requestFocus();
         this.excepciones.add("buscar");
+        this.txtid.setVisible(false);
     }
 
     private void crear() {

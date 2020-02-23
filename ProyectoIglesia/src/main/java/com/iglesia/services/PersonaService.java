@@ -28,7 +28,7 @@ public class PersonaService extends CrudUtils<Persona> {
         em.getTransaction().begin();
         try {
             personasLst = em.createQuery("select t from Persona t where t.nombres like :filtro or t.apellidos like :filtro")
-                    .setParameter("filtro", ProjectUtils.ftmLike(filtro))
+                    .setParameter("filtro", ProjectUtils.fmtLike(filtro))
                     .getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {
