@@ -6,6 +6,7 @@
 package com.iglesia.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -25,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author alexi
+ * @author remsf
  */
 @Entity
 @Table(name = "movimiento")
@@ -46,9 +47,10 @@ public class Movimiento implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @Column(name = "monto")
-    private double monto;
+    private BigDecimal monto;
     @Basic(optional = false)
     @Column(name = "tipo")
     private String tipo;
@@ -59,13 +61,12 @@ public class Movimiento implements Serializable {
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
-    @Basic(optional = false)
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @JoinColumn(name = "id_bautizo", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Bautizo idBautizo;
+    @JoinColumn(name = "id_evento", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Evento idEvento;
     @JoinColumn(name = "id_justificacion", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Justificacion idJustificacion;
@@ -80,13 +81,12 @@ public class Movimiento implements Serializable {
         this.id = id;
     }
 
-    public Movimiento(Integer id, double monto, String tipo, boolean estado, Date fechaCreacion, Date fechaActualizacion) {
+    public Movimiento(Integer id, BigDecimal monto, String tipo, boolean estado, Date fechaCreacion) {
         this.id = id;
         this.monto = monto;
         this.tipo = tipo;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
-        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Integer getId() {
@@ -97,11 +97,11 @@ public class Movimiento implements Serializable {
         this.id = id;
     }
 
-    public double getMonto() {
+    public BigDecimal getMonto() {
         return monto;
     }
 
-    public void setMonto(double monto) {
+    public void setMonto(BigDecimal monto) {
         this.monto = monto;
     }
 
@@ -137,12 +137,12 @@ public class Movimiento implements Serializable {
         this.fechaActualizacion = fechaActualizacion;
     }
 
-    public Bautizo getIdBautizo() {
-        return idBautizo;
+    public Evento getIdEvento() {
+        return idEvento;
     }
 
-    public void setIdBautizo(Bautizo idBautizo) {
-        this.idBautizo = idBautizo;
+    public void setIdEvento(Evento idEvento) {
+        this.idEvento = idEvento;
     }
 
     public Justificacion getIdJustificacion() {
@@ -187,4 +187,3 @@ public class Movimiento implements Serializable {
     }
     
 }
-

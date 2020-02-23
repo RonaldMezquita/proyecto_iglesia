@@ -5,17 +5,17 @@
  */
 package com.iglesia.services;
 
-import com.iglesia.entities.ResponsableBoda;
+import com.iglesia.entities.ResponsableEvento;
 import com.iglesia.utils.CrudUtils;
 
 /**
  *
  * @author alexi
  */
-public class ResponsableBodaService extends CrudUtils<ResponsableBoda>{
+public class ResponsableEventoService extends CrudUtils<ResponsableEvento>{
 
-    public ResponsableBodaService() {
-        super(ResponsableBoda.class);
+    public ResponsableEventoService() {
+        super(ResponsableEvento.class);
     }
     
 }

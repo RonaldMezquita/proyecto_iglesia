@@ -5,19 +5,19 @@
  */
 package com.iglesia.services;
 
-import com.iglesia.entities.ResponsableBautizo;
+import com.iglesia.entities.Evento;
 import com.iglesia.utils.CrudUtils;
 
 /**
  *
  * @author alexi
  */
-public class ResponsableBautizoService extends CrudUtils<ResponsableBautizo>{
+public class EventoService extends CrudUtils<Evento>{
 
-    public ResponsableBautizoService() {
-        super(ResponsableBautizo.class);
+    public EventoService() {
+        super(Evento.class);
     }
-    
 }
+
 
 

@@ -29,22 +29,22 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author alexi
+ * @author remsf
  */
 @Entity
-@Table(name = "boda")
+@Table(name = "evento")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Boda.findAll", query = "SELECT b FROM Boda b"),
-    @NamedQuery(name = "Boda.findById", query = "SELECT b FROM Boda b WHERE b.id = :id"),
-    @NamedQuery(name = "Boda.findByFecha", query = "SELECT b FROM Boda b WHERE b.fecha = :fecha"),
-    @NamedQuery(name = "Boda.findByTomo", query = "SELECT b FROM Boda b WHERE b.tomo = :tomo"),
-    @NamedQuery(name = "Boda.findByFolio", query = "SELECT b FROM Boda b WHERE b.folio = :folio"),
-    @NamedQuery(name = "Boda.findByNumero", query = "SELECT b FROM Boda b WHERE b.numero = :numero"),
-    @NamedQuery(name = "Boda.findByEstado", query = "SELECT b FROM Boda b WHERE b.estado = :estado"),
-    @NamedQuery(name = "Boda.findByFechaCreacion", query = "SELECT b FROM Boda b WHERE b.fechaCreacion = :fechaCreacion"),
-    @NamedQuery(name = "Boda.findByFechaActualizacion", query = "SELECT b FROM Boda b WHERE b.fechaActualizacion = :fechaActualizacion")})
-public class Boda implements Serializable {
+    @NamedQuery(name = "Evento.findAll", query = "SELECT e FROM Evento e"),
+    @NamedQuery(name = "Evento.findById", query = "SELECT e FROM Evento e WHERE e.id = :id"),
+    @NamedQuery(name = "Evento.findByFecha", query = "SELECT e FROM Evento e WHERE e.fecha = :fecha"),
+    @NamedQuery(name = "Evento.findByTomo", query = "SELECT e FROM Evento e WHERE e.tomo = :tomo"),
+    @NamedQuery(name = "Evento.findByFolio", query = "SELECT e FROM Evento e WHERE e.folio = :folio"),
+    @NamedQuery(name = "Evento.findByNumero", query = "SELECT e FROM Evento e WHERE e.numero = :numero"),
+    @NamedQuery(name = "Evento.findByEstado", query = "SELECT e FROM Evento e WHERE e.estado = :estado"),
+    @NamedQuery(name = "Evento.findByFechaCreacion", query = "SELECT e FROM Evento e WHERE e.fechaCreacion = :fechaCreacion"),
+    @NamedQuery(name = "Evento.findByFechaActualizacion", query = "SELECT e FROM Evento e WHERE e.fechaActualizacion = :fechaActualizacion")})
+public class Evento implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -72,30 +72,34 @@ public class Boda implements Serializable {
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
-    @Basic(optional = false)
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idBoda", fetch = FetchType.LAZY)
-    private List<ResponsableBoda> responsableBodaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEvento", fetch = FetchType.LAZY)
+    private List<ResponsableEvento> responsableEventoList;
     @JoinColumn(name = "id_lugar", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Lugar idLugar;
     @JoinColumn(name = "id_sacerdote", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Sacerdote idSacerdote;
+    @JoinColumn(name = "id_tipo_evento", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private TipoEvento idTipoEvento;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario idUsuario;
+    @OneToMany(mappedBy = "idEvento", fetch = FetchType.LAZY)
+    private List<Movimiento> movimientoList;
 
-    public Boda() {
+    public Evento() {
     }
 
-    public Boda(Integer id) {
+    public Evento(Integer id) {
         this.id = id;
     }
-    
-    public Boda(Integer id, Date fecha, String tomo, String folio, String numero, boolean estado, Date fechaCreacion, Date fechaActualizacion) {
+
+    public Evento(Integer id, Date fecha, String tomo, String folio, String numero, boolean estado, Date fechaCreacion) {
         this.id = id;
         this.fecha = fecha;
         this.tomo = tomo;
@@ -103,7 +107,6 @@ public class Boda implements Serializable {
         this.numero = numero;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
-        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Integer getId() {
@@ -171,12 +174,12 @@ public class Boda implements Serializable {
     }
 
     @XmlTransient
-    public List<ResponsableBoda> getResponsableBodaList() {
-        return responsableBodaList;
+    public List<ResponsableEvento> getResponsableEventoList() {
+        return responsableEventoList;
     }
 
-    public void setResponsableBodaList(List<ResponsableBoda> responsableBodaList) {
-        this.responsableBodaList = responsableBodaList;
+    public void setResponsableEventoList(List<ResponsableEvento> responsableEventoList) {
+        this.responsableEventoList = responsableEventoList;
     }
 
     public Lugar getIdLugar() {
@@ -195,12 +198,29 @@ public class Boda implements Serializable {
         this.idSacerdote = idSacerdote;
     }
 
+    public TipoEvento getIdTipoEvento() {
+        return idTipoEvento;
+    }
+
+    public void setIdTipoEvento(TipoEvento idTipoEvento) {
+        this.idTipoEvento = idTipoEvento;
+    }
+
     public Usuario getIdUsuario() {
         return idUsuario;
     }
 
     public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    @XmlTransient
+    public List<Movimiento> getMovimientoList() {
+        return movimientoList;
+    }
+
+    public void setMovimientoList(List<Movimiento> movimientoList) {
+        this.movimientoList = movimientoList;
     }
 
     @Override
@@ -213,10 +233,10 @@ public class Boda implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Boda)) {
+        if (!(object instanceof Evento)) {
             return false;
         }
-        Boda other = (Boda) object;
+        Evento other = (Evento) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -225,8 +245,7 @@ public class Boda implements Serializable {
 
     @Override
     public String toString() {
-        return "com.iglesia.entities.Boda[ id=" + id + " ]";
+        return "com.iglesia.entities.Evento[ id=" + id + " ]";
     }
     
 }
-

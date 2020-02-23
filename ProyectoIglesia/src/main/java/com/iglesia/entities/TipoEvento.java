@@ -7,36 +7,40 @@ package com.iglesia.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author alexi
+ * @author remsf
  */
 @Entity
-@Table(name = "responsable_boda")
+@Table(name = "tipo_evento")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ResponsableBoda.findAll", query = "SELECT r FROM ResponsableBoda r"),
-    @NamedQuery(name = "ResponsableBoda.findById", query = "SELECT r FROM ResponsableBoda r WHERE r.id = :id"),
-    @NamedQuery(name = "ResponsableBoda.findByEstado", query = "SELECT r FROM ResponsableBoda r WHERE r.estado = :estado"),
-    @NamedQuery(name = "ResponsableBoda.findByFechaCreacion", query = "SELECT r FROM ResponsableBoda r WHERE r.fechaCreacion = :fechaCreacion"),
-    @NamedQuery(name = "ResponsableBoda.findByFechaActualizacion", query = "SELECT r FROM ResponsableBoda r WHERE r.fechaActualizacion = :fechaActualizacion")})
-public class ResponsableBoda implements Serializable {
+    @NamedQuery(name = "TipoEvento.findAll", query = "SELECT t FROM TipoEvento t"),
+    @NamedQuery(name = "TipoEvento.findById", query = "SELECT t FROM TipoEvento t WHERE t.id = :id"),
+    @NamedQuery(name = "TipoEvento.findByNombre", query = "SELECT t FROM TipoEvento t WHERE t.nombre = :nombre"),
+    @NamedQuery(name = "TipoEvento.findByEstado", query = "SELECT t FROM TipoEvento t WHERE t.estado = :estado"),
+    @NamedQuery(name = "TipoEvento.findByFechaCreacion", query = "SELECT t FROM TipoEvento t WHERE t.fechaCreacion = :fechaCreacion"),
+    @NamedQuery(name = "TipoEvento.findByFechaActualizacion", query = "SELECT t FROM TipoEvento t WHERE t.fechaActualizacion = :fechaActualizacion"),
+    @NamedQuery(name = "TipoEvento.findByIdUsuario", query = "SELECT t FROM TipoEvento t WHERE t.idUsuario = :idUsuario")})
+public class TipoEvento implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,41 +49,37 @@ public class ResponsableBoda implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
+    @Column(name = "nombre")
+    private String nombre;
+    @Basic(optional = false)
     @Column(name = "estado")
     private boolean estado;
     @Basic(optional = false)
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
-    @Basic(optional = false)
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @JoinColumn(name = "id_boda", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Boda idBoda;
-    @JoinColumn(name = "id_persona", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Persona idPersona;
-    @JoinColumn(name = "id_relacion", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Relacion idRelacion;
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Usuario idUsuario;
+    @Basic(optional = false)
+    @Column(name = "id_usuario")
+    private int idUsuario;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTipoEvento", fetch = FetchType.LAZY)
+    private List<Evento> eventoList;
 
-    public ResponsableBoda() {
+    public TipoEvento() {
     }
 
-    public ResponsableBoda(Integer id) {
+    public TipoEvento(Integer id) {
         this.id = id;
     }
 
-    public ResponsableBoda(Integer id, boolean estado, Date fechaCreacion, Date fechaActualizacion) {
+    public TipoEvento(Integer id, String nombre, boolean estado, Date fechaCreacion, int idUsuario) {
         this.id = id;
+        this.nombre = nombre;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
-        this.fechaActualizacion = fechaActualizacion;
+        this.idUsuario = idUsuario;
     }
 
     public Integer getId() {
@@ -88,6 +88,14 @@ public class ResponsableBoda implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public boolean getEstado() {
@@ -114,36 +122,21 @@ public class ResponsableBoda implements Serializable {
         this.fechaActualizacion = fechaActualizacion;
     }
 
-    public Boda getIdBoda() {
-        return idBoda;
-    }
-
-    public void setIdBoda(Boda idBoda) {
-        this.idBoda = idBoda;
-    }
-
-    public Persona getIdPersona() {
-        return idPersona;
-    }
-
-    public void setIdPersona(Persona idPersona) {
-        this.idPersona = idPersona;
-    }
-
-    public Relacion getIdRelacion() {
-        return idRelacion;
-    }
-
-    public void setIdRelacion(Relacion idRelacion) {
-        this.idRelacion = idRelacion;
-    }
-
-    public Usuario getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Usuario idUsuario) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    @XmlTransient
+    public List<Evento> getEventoList() {
+        return eventoList;
+    }
+
+    public void setEventoList(List<Evento> eventoList) {
+        this.eventoList = eventoList;
     }
 
     @Override
@@ -156,10 +149,10 @@ public class ResponsableBoda implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ResponsableBoda)) {
+        if (!(object instanceof TipoEvento)) {
             return false;
         }
-        ResponsableBoda other = (ResponsableBoda) object;
+        TipoEvento other = (TipoEvento) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -168,8 +161,7 @@ public class ResponsableBoda implements Serializable {
 
     @Override
     public String toString() {
-        return "com.iglesia.entities.ResponsableBoda[ id=" + id + " ]";
+        return "com.iglesia.entities.TipoEvento[ id=" + id + " ]";
     }
     
 }
-

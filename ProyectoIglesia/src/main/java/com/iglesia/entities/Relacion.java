@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author alexi
+ * @author remsf
  */
 @Entity
 @Table(name = "relacion")
@@ -59,17 +59,14 @@ public class Relacion implements Serializable {
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
-    @Basic(optional = false)
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario idUsuario;
-    @OneToMany(mappedBy = "idRelacion", fetch = FetchType.LAZY)
-    private List<ResponsableBoda> responsableBodaList;
-    @OneToMany(mappedBy = "idRelacion", fetch = FetchType.LAZY)
-    private List<ResponsableBautizo> responsableBautizoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRelacion", fetch = FetchType.LAZY)
+    private List<ResponsableEvento> responsableEventoList;
 
     public Relacion() {
     }
@@ -78,13 +75,11 @@ public class Relacion implements Serializable {
         this.id = id;
     }
 
-    public Relacion(Integer id, String nombre, boolean estado, Date fechaCreacion, Date fechaActualizacion, Usuario idUsuario) {
+    public Relacion(Integer id, String nombre, boolean estado, Date fechaCreacion) {
         this.id = id;
         this.nombre = nombre;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
-        this.fechaActualizacion = fechaActualizacion;
-        this.idUsuario= idUsuario;
     }
 
     public Integer getId() {
@@ -136,21 +131,12 @@ public class Relacion implements Serializable {
     }
 
     @XmlTransient
-    public List<ResponsableBoda> getResponsableBodaList() {
-        return responsableBodaList;
+    public List<ResponsableEvento> getResponsableEventoList() {
+        return responsableEventoList;
     }
 
-    public void setResponsableBodaList(List<ResponsableBoda> responsableBodaList) {
-        this.responsableBodaList = responsableBodaList;
-    }
-
-    @XmlTransient
-    public List<ResponsableBautizo> getResponsableBautizoList() {
-        return responsableBautizoList;
-    }
-
-    public void setResponsableBautizoList(List<ResponsableBautizo> responsableBautizoList) {
-        this.responsableBautizoList = responsableBautizoList;
+    public void setResponsableEventoList(List<ResponsableEvento> responsableEventoList) {
+        this.responsableEventoList = responsableEventoList;
     }
 
     @Override
@@ -179,4 +165,3 @@ public class Relacion implements Serializable {
     }
     
 }
-
