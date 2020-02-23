@@ -71,19 +71,19 @@ public class LugarController implements Serializable {
         return null;
     }
 
-    public void llenarTabla(JTable tabla, String nombre) {
-        String[] titulo = {"Id", "Nombre", "Estado"};
-        DefaultTableModel model = ProjectUtils.construirModeloTabla(titulo);
-        this.items = this.lugarService.buscarLugar(nombre);
+    public void llenarTabla(JTable tabla, String filtro) {        
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        model = ProjectUtils.removeRows(model);
+        this.items = this.lugarService.buscarLugar(filtro);
         String[] datos = new String[3];
-        for (Lugar user : items) {
+        for (Lugar user : this.getItems()) {
             datos[0] = user.getId().toString();
-            datos[1] = user.getNombre();
+            datos[1] = user.getNombre();            
             datos[2] = user.getEstado() ? "Activo" : "Inactivo";
             model.addRow(datos);
-        }        
+        }
         tabla.setModel(model);
-    }
+    }   
 
 //    public void buscarLugar(String nombre,JTable tabla) {
 //        String[] titulo = {"Id", "Nombre", "Estado"};
@@ -103,6 +103,9 @@ public class LugarController implements Serializable {
 //        return model;
 //    }
 
+    
+    
+    //<editor-fold defaultstate="collapsed" desc="getters & setters">    
     public Lugar getSelected() {
         return selected;
     }
@@ -126,5 +129,6 @@ public class LugarController implements Serializable {
     public void setLugarService(LugarService lugarService) {
         this.lugarService = lugarService;
     }
+    //</editor-fold>
 
 }

@@ -21,13 +21,13 @@ public class LugarService extends CrudUtils<Lugar> {
         super(Lugar.class);
     }
 
-    public List<Lugar> buscarLugar(String nombre) {
+    public List<Lugar> buscarLugar(String filtro) {
         EntityManager em = PersistenceManager.getEntityManager();
         em.getTransaction().begin();
         List<Lugar> lista = null;
         try {
             lista = em.createQuery("select t from Lugar t where t.nombre like :nombre")
-                    .setParameter("nombre", "%" + nombre + "%")
+                    .setParameter("nombre", "%" + filtro + "%")
                     .getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {

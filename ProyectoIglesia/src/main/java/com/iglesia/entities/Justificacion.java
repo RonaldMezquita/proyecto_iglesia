@@ -54,7 +54,7 @@ public class Justificacion implements Serializable {
     private String nombre;
     @Basic(optional = false)
     @Column(name = "estado")
-    private short estado;
+    private boolean estado;
     @Basic(optional = false)
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
@@ -66,7 +66,7 @@ public class Justificacion implements Serializable {
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario idUsuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idJustificacion", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idJustificacion", fetch = FetchType.LAZY)
     private List<Movimiento> movimientoList;
 
     public Justificacion() {
@@ -76,12 +76,13 @@ public class Justificacion implements Serializable {
         this.id = id;
     }
 
-    public Justificacion(Integer id, String nombre, short estado, Date fechaCreacion, Date fechaActualizacion) {
+    public Justificacion(Integer id, String nombre, boolean estado, Date fechaCreacion, Date fechaActualizacion,Usuario idUsuario) {
         this.id = id;
         this.nombre = nombre;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
         this.fechaActualizacion = fechaActualizacion;
+        this.idUsuario= idUsuario;
     }
 
     public Integer getId() {
@@ -100,11 +101,11 @@ public class Justificacion implements Serializable {
         this.nombre = nombre;
     }
 
-    public short getEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(short estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 

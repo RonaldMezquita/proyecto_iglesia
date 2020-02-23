@@ -9,7 +9,11 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
+<<<<<<< HEAD
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-02-20T22:09:16")
+=======
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-02-21T22:20:44")
+>>>>>>> master
 @StaticMetamodel(ResponsableBautizo.class)
 public class ResponsableBautizo_ { 
 
