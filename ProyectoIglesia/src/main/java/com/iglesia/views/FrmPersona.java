@@ -7,6 +7,9 @@ package com.iglesia.views;
 
 import com.iglesia.controllers.PersonaController;
 import com.iglesia.utils.ProjectUtils;
+import com.iglesia.utils.TextPrompt;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -28,41 +31,52 @@ public class FrmPersona extends javax.swing.JFrame {
     public FrmPersona() {
         initComponents();
         this.personaController = new PersonaController();
+        // comienza generacion de campos formateados
         txtdui = ProjectUtils.getCampoDui();
         txtdui.setFont(new java.awt.Font("Dialog", 0, 14));
-        jPanel1.add(txtdui, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 90, -1));
+        jPanel1.add(txtdui, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 210, 90, -1));
 
         txtnit = ProjectUtils.getCampoNit();
         txtnit.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 142, -1));
-
+        jPanel1.add(txtnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 260, 142, -1));
+        // termina generacion de campos formateados
         this.setLocationRelativeTo(null);
         this.txtnombres.requestFocus();
         this.excepciones.add("buscar");
         this.txtid.setVisible(false);
+        this.mostrarTabla("");
+        new TextPrompt("Digite para buscar en nombres o apellidos", this.txtbuscar);
+    }
+
+    private void mostrarTabla(String filtro) {
+        this.personaController.llenarTabla(tbpersona, filtro);
     }
 
     private void crear() {
         this.excepciones.add("idPersona");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (this.personaController.crear() != null) {
-                JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                ProjectUtils.limpiarComponentes(this.jPanel1);
-            }
+            return;
         }
+        if (this.personaController.crear() != null) {
+            JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            ProjectUtils.limpiarComponentes(this.jPanel1);
+            this.mostrarTabla("");
+        }
+
     }
 
     private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (this.personaController.actualizar() != null) {
-                JOptionPane.showMessageDialog(this, "Registro actualizado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                ProjectUtils.limpiarComponentes(this.jPanel1);
-            }
+            return;
         }
+        if (this.personaController.actualizar() != null) {
+            JOptionPane.showMessageDialog(this, "Registro actualizado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            ProjectUtils.limpiarComponentes(this.jPanel1);
+            this.mostrarTabla("");
+        }
+
     }
 
     /**
@@ -91,6 +105,11 @@ public class FrmPersona extends javax.swing.JFrame {
         btnguardar = new javax.swing.JButton();
         btncancelar = new javax.swing.JButton();
         txtid = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbpersona = new javax.swing.JTable();
+        txtbuscar = new javax.swing.JTextField();
+        cbestado = new javax.swing.JCheckBox();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -104,21 +123,21 @@ public class FrmPersona extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Mantenimiento de Personas");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 6, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Nombres");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 90, -1, -1));
 
         txtnombres.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 230, -1));
+        jPanel1.add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 110, 230, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Apellidos");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 140, -1, -1));
 
         txtapellidos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtapellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 230, -1));
+        jPanel1.add(txtapellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 160, 230, -1));
 
         txtsalir.setBackground(new java.awt.Color(204, 0, 0));
         txtsalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -128,34 +147,34 @@ public class FrmPersona extends javax.swing.JFrame {
                 txtsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(txtsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 70, -1));
+        jPanel1.add(txtsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 0, 70, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("DUI");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 190, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setText("NIT");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 240, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setText("Direccion");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+        jLabel6.setText("Estado");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 470, -1, -1));
 
         txtdireccion.setColumns(20);
         txtdireccion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtdireccion.setRows(5);
         jScrollPane1.setViewportView(txtdireccion);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 270, 90));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 370, 270, 90));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel7.setText("Fecha de nacimiento");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 300, -1, -1));
 
         txtfechanacimiento.setDateFormatString("dd/MM/yyyy");
         txtfechanacimiento.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtfechanacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 160, -1));
+        jPanel1.add(txtfechanacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 320, 160, -1));
 
         btnguardar.setBackground(new java.awt.Color(13, 71, 161));
         btnguardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -166,7 +185,7 @@ public class FrmPersona extends javax.swing.JFrame {
                 btnguardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
+        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 530, -1, -1));
 
         btncancelar.setBackground(new java.awt.Color(255, 136, 0));
         btncancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -177,12 +196,77 @@ public class FrmPersona extends javax.swing.JFrame {
                 btncancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, -1, -1));
+        jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 530, -1, -1));
 
         txtid.setName("idPersona"); // NOI18N
-        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 40, -1));
+        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 60, 40, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 560));
+        tbpersona.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombres", "Apellidos", "DUI", "NIT", "F.Nacimiento", "Direccion", "Estado"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbpersona.getTableHeader().setReorderingAllowed(false);
+        tbpersona.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbpersonaMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tbpersona);
+        if (tbpersona.getColumnModel().getColumnCount() > 0) {
+            tbpersona.getColumnModel().getColumn(0).setMinWidth(80);
+            tbpersona.getColumnModel().getColumn(0).setPreferredWidth(80);
+            tbpersona.getColumnModel().getColumn(0).setMaxWidth(80);
+            tbpersona.getColumnModel().getColumn(3).setMinWidth(100);
+            tbpersona.getColumnModel().getColumn(3).setPreferredWidth(100);
+            tbpersona.getColumnModel().getColumn(3).setMaxWidth(100);
+            tbpersona.getColumnModel().getColumn(4).setMinWidth(120);
+            tbpersona.getColumnModel().getColumn(4).setPreferredWidth(120);
+            tbpersona.getColumnModel().getColumn(4).setMaxWidth(120);
+            tbpersona.getColumnModel().getColumn(5).setMinWidth(90);
+            tbpersona.getColumnModel().getColumn(5).setPreferredWidth(90);
+            tbpersona.getColumnModel().getColumn(5).setMaxWidth(90);
+            tbpersona.getColumnModel().getColumn(7).setMinWidth(75);
+            tbpersona.getColumnModel().getColumn(7).setPreferredWidth(75);
+            tbpersona.getColumnModel().getColumn(7).setMaxWidth(75);
+        }
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 830, 400));
+
+        txtbuscar.setName("buscar"); // NOI18N
+        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 380, -1));
+
+        cbestado.setText("Activo");
+        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 490, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel8.setText("Direccion");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 350, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -199,6 +283,7 @@ public class FrmPersona extends javax.swing.JFrame {
         this.personaController.getSelected().setNit(this.txtnit.getText());
         this.personaController.getSelected().setFechaNacimiento(this.txtfechanacimiento.getDate());
         this.personaController.getSelected().setDireccion(this.txtdireccion.getText());
+        this.personaController.getSelected().setEstado(this.cbestado.isSelected());
         if (this.txtid.getText().equals("")) {
             this.crear();
         } else {
@@ -208,8 +293,29 @@ public class FrmPersona extends javax.swing.JFrame {
 
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
         ProjectUtils.limpiarComponentes(this.jPanel1);
-        //this.mostrarTabla("");
+        this.mostrarTabla("");
     }//GEN-LAST:event_btncancelarActionPerformed
+
+    private void tbpersonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbpersonaMouseClicked
+        try {
+            int rowSelected = this.tbpersona.getSelectedRow();
+            this.txtid.setText(this.tbpersona.getValueAt(rowSelected, 0).toString());
+            this.txtnombres.setText(this.tbpersona.getValueAt(rowSelected, 1).toString());
+            this.txtapellidos.setText(this.tbpersona.getValueAt(rowSelected, 2).toString());
+            this.txtdui.setText(this.tbpersona.getValueAt(rowSelected, 3).toString());
+            this.txtnit.setText(this.tbpersona.getValueAt(rowSelected, 4).toString());
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            this.txtfechanacimiento.setDate(sdf.parse(this.tbpersona.getValueAt(rowSelected, 5).toString()));
+            this.txtdireccion.setText(this.tbpersona.getValueAt(rowSelected, 6).toString());
+            this.cbestado.setSelected(this.tbpersona.getValueAt(rowSelected, 7).toString() == "Activo" ? true : false);
+        } catch (ParseException ex) {
+            System.out.println("Error de parseo");
+        }
+    }//GEN-LAST:event_tbpersonaMouseClicked
+
+    private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
+        this.mostrarTabla(this.txtbuscar.getText());
+    }//GEN-LAST:event_txtbuscarKeyReleased
 
     /**
      * @param args the command line arguments
@@ -249,6 +355,7 @@ public class FrmPersona extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btnguardar;
+    private javax.swing.JCheckBox cbestado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -256,9 +363,13 @@ public class FrmPersona extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tbpersona;
     private javax.swing.JTextField txtapellidos;
+    private javax.swing.JTextField txtbuscar;
     private javax.swing.JTextArea txtdireccion;
     private com.toedter.calendar.JDateChooser txtfechanacimiento;
     private javax.swing.JTextField txtid;
