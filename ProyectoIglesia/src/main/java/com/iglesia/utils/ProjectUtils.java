@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.util.List;
 import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -128,6 +129,10 @@ public class ProjectUtils {
     
     public static JFormattedTextField getCampoNit(){
         return new javax.swing.JFormattedTextField(ProjectUtils.mascaraNit());
+    }
+    
+    public static String ftmLike(String param) {
+        return new StringBuilder("%").append(param).append("%").toString();
     }
 }
 

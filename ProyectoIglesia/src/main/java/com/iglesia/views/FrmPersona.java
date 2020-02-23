@@ -5,7 +5,11 @@
  */
 package com.iglesia.views;
 
+import com.iglesia.controllers.PersonaController;
 import com.iglesia.utils.ProjectUtils;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,12 +19,15 @@ public class FrmPersona extends javax.swing.JFrame {
 
     private javax.swing.JFormattedTextField txtdui;
     private javax.swing.JFormattedTextField txtnit;
+    private PersonaController personaController;
+    private List<String> excepciones = new ArrayList<>();
 
     /**
      * Creates new form FrmPersona
      */
     public FrmPersona() {
         initComponents();
+        this.personaController = new PersonaController();
         txtdui = ProjectUtils.getCampoDui();
         txtdui.setFont(new java.awt.Font("Dialog", 0, 14));
         jPanel1.add(txtdui, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 90, -1));
@@ -28,9 +35,33 @@ public class FrmPersona extends javax.swing.JFrame {
         txtnit = ProjectUtils.getCampoNit();
         txtnit.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jPanel1.add(txtnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 142, -1));
-        
+
         this.setLocationRelativeTo(null);
         this.txtnombres.requestFocus();
+        this.excepciones.add("buscar");
+    }
+
+    private void crear() {
+        this.excepciones.add("idPersona");
+        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
+            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (this.personaController.crear() != null) {
+                JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                ProjectUtils.limpiarComponentes(this.jPanel1);
+            }
+        }
+    }
+
+    private void actualizar() {
+        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
+            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (this.personaController.actualizar() != null) {
+                JOptionPane.showMessageDialog(this, "Registro actualizado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                ProjectUtils.limpiarComponentes(this.jPanel1);
+            }
+        }
     }
 
     /**
@@ -55,13 +86,13 @@ public class FrmPersona extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtdireccion = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        txtfechanacimiento = new com.toedter.calendar.JDateChooser();
         btnguardar = new javax.swing.JButton();
         btncancelar = new javax.swing.JButton();
+        txtid = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(560, 560));
         setResizable(false);
         setSize(getPreferredSize());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -96,7 +127,7 @@ public class FrmPersona extends javax.swing.JFrame {
                 txtsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(txtsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 70, -1));
+        jPanel1.add(txtsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 70, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("DUI");
@@ -121,9 +152,9 @@ public class FrmPersona extends javax.swing.JFrame {
         jLabel7.setText("Fecha de nacimiento");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
 
-        jDateChooser1.setDateFormatString("dd/MM/yyyy");
-        jDateChooser1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 160, -1));
+        txtfechanacimiento.setDateFormatString("dd/MM/yyyy");
+        txtfechanacimiento.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jPanel1.add(txtfechanacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 160, -1));
 
         btnguardar.setBackground(new java.awt.Color(13, 71, 161));
         btnguardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -147,7 +178,10 @@ public class FrmPersona extends javax.swing.JFrame {
         });
         jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 560));
+        txtid.setName("idPersona"); // NOI18N
+        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 40, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -157,7 +191,18 @@ public class FrmPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_txtsalirActionPerformed
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
-        
+        this.personaController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
+        this.personaController.getSelected().setNombres(this.txtnombres.getText());
+        this.personaController.getSelected().setApellidos(this.txtapellidos.getText());
+        this.personaController.getSelected().setDui(this.txtdui.getText());
+        this.personaController.getSelected().setNit(this.txtnit.getText());
+        this.personaController.getSelected().setFechaNacimiento(this.txtfechanacimiento.getDate());
+        this.personaController.getSelected().setDireccion(this.txtdireccion.getText());
+        if (this.txtid.getText().equals("")) {
+            this.crear();
+        } else {
+            this.actualizar();
+        }
     }//GEN-LAST:event_btnguardarActionPerformed
 
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
@@ -203,7 +248,6 @@ public class FrmPersona extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btnguardar;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -215,6 +259,8 @@ public class FrmPersona extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtapellidos;
     private javax.swing.JTextArea txtdireccion;
+    private com.toedter.calendar.JDateChooser txtfechanacimiento;
+    private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtnombres;
     private javax.swing.JButton txtsalir;
     // End of variables declaration//GEN-END:variables
