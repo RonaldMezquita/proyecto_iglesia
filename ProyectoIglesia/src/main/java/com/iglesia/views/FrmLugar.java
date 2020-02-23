@@ -180,8 +180,8 @@ public class FrmLugar extends javax.swing.JFrame {
         jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 70, 30));
 
         txtid.setEditable(false);
-        txtid.setText("jTextField1");
-        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+        txtid.setName("id"); // NOI18N
+        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 60, -1));
 
         txtbuscar.setToolTipText("");
         txtbuscar.setName("buscar"); // NOI18N
@@ -235,7 +235,7 @@ public class FrmLugar extends javax.swing.JFrame {
         this.lugarController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.lugarController.getSelected().setNombre(this.txtnombre.getText());
         this.lugarController.getSelected().setEstado(this.cbestado.isSelected());
-        if(this.lugarController.getSelected().getIdUsuario()== null){
+        if(this.lugarController.getSelected().getId()== null){
             this.crear();
         }else{
             this.actualizar();
