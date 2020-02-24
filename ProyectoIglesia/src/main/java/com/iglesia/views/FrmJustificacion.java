@@ -34,6 +34,7 @@ public class FrmJustificacion extends javax.swing.JFrame {
         this.excepciones.add("buscar");
         this.txtnombre.requestFocus();
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
+        this.cbestado.setSelected(true);
 
     }
 
@@ -133,6 +134,14 @@ public class FrmJustificacion extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jtJustificacion);
+        if (jtJustificacion.getColumnModel().getColumnCount() > 0) {
+            jtJustificacion.getColumnModel().getColumn(0).setMinWidth(50);
+            jtJustificacion.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jtJustificacion.getColumnModel().getColumn(0).setMaxWidth(50);
+            jtJustificacion.getColumnModel().getColumn(2).setMinWidth(75);
+            jtJustificacion.getColumnModel().getColumn(2).setPreferredWidth(75);
+            jtJustificacion.getColumnModel().getColumn(2).setMaxWidth(75);
+        }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 350, 180));
 
@@ -192,29 +201,29 @@ public class FrmJustificacion extends javax.swing.JFrame {
         this.excepciones.add("id");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (this.justificacionController.crear() != null) {
-                JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                ProjectUtils.limpiarComponentes(this.jPanel1);
-                this.mostrarTabla("");
-            } else {
-                JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            return;
         }
+        if (this.justificacionController.crear() == null) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        ProjectUtils.limpiarComponentes(this.jPanel1);
+        this.mostrarTabla("");
     }
 
     private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (this.justificacionController.actualizar() != null) {
-                JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                this.mostrarTabla("");
-                ProjectUtils.limpiarComponentes(this.jPanel1);
-            } else {
-                JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            return;
         }
+        if (this.justificacionController.actualizar() == null) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        this.mostrarTabla("");
+        ProjectUtils.limpiarComponentes(this.jPanel1);
     }
     private void jbingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbingresarActionPerformed
         this.justificacionController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));

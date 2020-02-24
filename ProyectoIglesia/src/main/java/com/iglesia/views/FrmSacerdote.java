@@ -23,17 +23,20 @@ public class FrmSacerdote extends javax.swing.JFrame {
      */
     private SacerdoteController sacerdoteController;
     private List<String> excepciones = new ArrayList<>();
+
     public FrmSacerdote() {
         initComponents();
         this.sacerdoteController = new SacerdoteController();
-        this.txtid.setVisible(false);        
+        this.txtid.setVisible(false);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.mostrarTabla("");
         this.excepciones.add("buscar");
         this.txtnombre.requestFocus();
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
+        this.cbestado.setSelected(true);
     }
+
     private void mostrarTabla(String filtro) {
         this.sacerdoteController.llenarTabla(tbsacerdote, filtro);
     }
@@ -198,42 +201,42 @@ public class FrmSacerdote extends javax.swing.JFrame {
     private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnombreActionPerformed
-private void crear() {
+    private void crear() {
         this.excepciones.add("id");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (this.sacerdoteController.crear() != null) {
-                JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                ProjectUtils.limpiarComponentes(this.jPanel1);
-                this.mostrarTabla("");
-            } else {
-                JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            return;
         }
+        if (this.sacerdoteController.crear() == null) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        ProjectUtils.limpiarComponentes(this.jPanel1);
+        this.mostrarTabla("");
     }
 
     private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (this.sacerdoteController.actualizar() != null) {
-                JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                this.mostrarTabla("");
-                ProjectUtils.limpiarComponentes(this.jPanel1);
-            } else {
-                JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            return;
         }
+        if (this.sacerdoteController.actualizar() == null) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        this.mostrarTabla("");
+        ProjectUtils.limpiarComponentes(this.jPanel1);
     }
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         this.sacerdoteController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.sacerdoteController.getSelected().setNombres(this.txtnombre.getText());
-        this.sacerdoteController.getSelected().setApellidos(this.txtapellido.getText());        
+        this.sacerdoteController.getSelected().setApellidos(this.txtapellido.getText());
         this.sacerdoteController.getSelected().setEstado(this.cbestado.isSelected());
-        if(this.sacerdoteController.getSelected().getId()== null){
+        if (this.sacerdoteController.getSelected().getId() == null) {
             this.crear();
-        }else{
+        } else {
             this.actualizar();
         }
     }//GEN-LAST:event_btnguardarActionPerformed
@@ -251,7 +254,7 @@ private void crear() {
         int rowSelect = this.tbsacerdote.getSelectedRow();
         this.txtid.setText(this.tbsacerdote.getValueAt(rowSelect, 0).toString());
         this.txtnombre.setText(this.tbsacerdote.getValueAt(rowSelect, 1).toString());
-        this.txtapellido.setText(this.tbsacerdote.getValueAt(rowSelect, 2).toString());        
+        this.txtapellido.setText(this.tbsacerdote.getValueAt(rowSelect, 2).toString());
         this.cbestado.setSelected(this.tbsacerdote.getValueAt(rowSelect, 4).toString() == "Activo" ? true : false);
     }//GEN-LAST:event_tbsacerdoteMouseClicked
 

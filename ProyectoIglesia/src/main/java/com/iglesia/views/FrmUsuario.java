@@ -35,6 +35,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         this.excepciones.add("buscar");
         this.txtnombre.requestFocus();
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
+        this.cbestado.setSelected(true);
 
     }
 
@@ -227,39 +228,39 @@ public class FrmUsuario extends javax.swing.JFrame {
         this.excepciones.add("idUsuario");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (this.usuarioController.crear() != null) {
-                JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                ProjectUtils.limpiarComponentes(this.jPanel1);
-                this.mostrarTabla("");
-            } else {
-                JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            return;
         }
+        if (this.usuarioController.crear() == null) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        ProjectUtils.limpiarComponentes(this.jPanel1);
+        this.mostrarTabla("");
     }
 
     private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (this.usuarioController.actualizar() != null) {
-                JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                this.mostrarTabla("");
-                ProjectUtils.limpiarComponentes(this.jPanel1);
-            } else {
-                JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            return;
         }
+        if (this.usuarioController.actualizar() == null) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        this.mostrarTabla("");
+        ProjectUtils.limpiarComponentes(this.jPanel1);
     }
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         this.usuarioController.getSelected().setIdUsuario((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.usuarioController.getSelected().setNombre(this.txtnombre.getText());
         this.usuarioController.getSelected().setApellido(this.txtapellido.getText());
-        this.usuarioController.getSelected().setUsuario(this.txtusuario.getText());        
+        this.usuarioController.getSelected().setUsuario(this.txtusuario.getText());
         this.usuarioController.getSelected().setEstado(this.cbestado.isSelected());
-        if(this.usuarioController.getSelected().getIdUsuario()== null){
+        if (this.usuarioController.getSelected().getIdUsuario() == null) {
             this.crear();
-        }else{
+        } else {
             this.actualizar();
         }
 
