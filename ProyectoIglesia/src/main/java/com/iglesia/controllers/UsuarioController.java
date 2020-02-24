@@ -43,7 +43,10 @@ public class UsuarioController implements Serializable {
     }
 
     public Usuario crear() {
-        if (this.selected != null) {
+        if (this.selected == null) {
+            System.out.println("UsuarioController[crear()]-> Objeto Usuario no existe");
+            return null;
+        }
             this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
             try {
                 if (this.usuarioService.crear(this.selected) != null) {
@@ -52,12 +55,14 @@ public class UsuarioController implements Serializable {
             } catch (Exception e) {
                 System.out.println("UsuarioController[crear()]-> " + e.getMessage());
             }
-        }
         return null;
     }
 
     public Usuario actualizar() {
-        if (this.selected != null) {
+        if (this.selected == null) {
+            System.out.println("UsuarioController[actualizar()]-> Objeto Usuario no existe");
+            return null;
+        }
             this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
             try {
                 if (this.usuarioService.actualizar(this.selected) != null) {
@@ -66,7 +71,6 @@ public class UsuarioController implements Serializable {
             } catch (Exception e) {
                 System.out.println("UsuarioController[actualizar()]-> " + e.getMessage());
             }
-        }
         return null;
     }
 

@@ -19,19 +19,20 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Alexis
  */
-public class JustificacionController implements Serializable{
+public class JustificacionController implements Serializable {
+
     private Justificacion selected;
     private List<Justificacion> items;
-    
+
     private JustificacionService justificacionService;
 
     public JustificacionController() {
         this.justificacionService = new JustificacionService();
         this.selected = new Justificacion();
         this.selected.setEstado(true);
-        this.selected.setIdUsuario(new Usuario(1));                
+        this.selected.setIdUsuario(new Usuario(1));
     }
-    
+
     public void consultarTodos() {
         this.items = this.justificacionService.consultarTodos("select t from Relacion t");
     }
@@ -42,40 +43,47 @@ public class JustificacionController implements Serializable{
         return this.selected;
     }
 
-    public Justificacion crear(){
-        if (this.selected != null) {
-            this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
-            try {
-                if (this.justificacionService.crear(this.selected) != null) {
-                    return this.selected;
-                }
-            } catch (Exception e) {
-                System.out.println("RelacionController[crear()]-> "+e.getMessage());
+    public Justificacion crear() {
+        if (this.selected == null) {
+            System.out.println("RelacionController[crear()]-> Objeto Justificacion no existe");
+            return null;
+        }
+        this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
+        try {
+            if (this.justificacionService.crear(this.selected) != null) {
+                return this.selected;
             }
+        } catch (Exception e) {
+            System.out.println("RelacionController[crear()]-> " + e.getMessage());
+        }
+
+        return null;
+    }
+
+    public Justificacion actualizar() {
+        if (this.selected == null) {
+            System.out.println("RelacionController[actualizar()]-> Objeto Justificacion no existe");
+            return null;
+        }
+        this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
+        try {
+            if (this.justificacionService.actualizar(this.selected) != null) {
+                return this.selected;
+            }
+        } catch (Exception e) {
+            System.out.println("RelacionController[actualizar()]-> " + e.getMessage());
         }
         return null;
     }
-    public Justificacion actualizar(){
-        if (this.selected != null) {
-            this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
-            try {
-                if (this.justificacionService.actualizar(this.selected) != null) {
-                    return this.selected;
-                }
-            } catch (Exception e) {
-                System.out.println("RelacionController[actualizar()]-> "+e.getMessage());
-            }
-        }
-        return null;
-    }
-    public void llenarTabla(JTable tabla, String filtro) {        
+
+    public void llenarTabla(JTable tabla, String filtro) {
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         model = ProjectUtils.removeRows(model);
         this.items = this.justificacionService.buscarJustificacion(filtro);
         String[] datos = new String[3];
         for (Justificacion user : this.getItems()) {
             datos[0] = user.getId().toString();
-            datos[1] = user.getNombre();            
+            datos[1] = user.getNombre();
             datos[2] = user.getEstado() ? "Activo" : "Inactivo";
             model.addRow(datos);
         }
@@ -107,8 +115,5 @@ public class JustificacionController implements Serializable{
         this.justificacionService = justificacionService;
     }
     //</editor-fold>
-    
-    
-    
-    
+
 }
