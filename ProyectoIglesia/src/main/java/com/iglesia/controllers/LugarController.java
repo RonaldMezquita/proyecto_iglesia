@@ -44,46 +44,50 @@ public class LugarController implements Serializable {
     }
 
     public Lugar crear() {
-        if (this.selected != null) {
-            this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
-            try {
-                if (this.lugarService.crear(this.selected) != null) {
-                    return this.selected;
-                }
-            } catch (Exception e) {
-                System.out.println("LugarController[crear()]-> " + e.getMessage());
+        if (this.selected == null) {
+            System.out.println("LugarController[crear()]-> Objeto Lugar no existe");
+            return null;
+        }
+        this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
+        try {
+            if (this.lugarService.crear(this.selected) != null) {
+                return this.selected;
             }
+        } catch (Exception e) {
+            System.out.println("LugarController[crear()]-> " + e.getMessage());
         }
         return null;
     }
 
     public Lugar actualizar() {
-        if (this.selected != null) {
-            this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
-            try {
-                if (this.lugarService.actualizar(this.selected) != null) {
-                    return this.selected;
-                }
-            } catch (Exception e) {
-                System.out.println("LugarController[actualizar()]-> " + e.getMessage());
+        if (this.selected == null) {
+            System.out.println("LugarController[actualizar()]-> Objeto Lugar no existe");
+            return null;
+        }
+        this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
+        try {
+            if (this.lugarService.actualizar(this.selected) != null) {
+                return this.selected;
             }
+        } catch (Exception e) {
+            System.out.println("LugarController[actualizar()]-> " + e.getMessage());
         }
         return null;
     }
 
-    public void llenarTabla(JTable tabla, String filtro) {        
+    public void llenarTabla(JTable tabla, String filtro) {
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         model = ProjectUtils.removeRows(model);
         this.items = this.lugarService.buscarLugar(filtro);
         String[] datos = new String[3];
         for (Lugar user : this.getItems()) {
             datos[0] = user.getId().toString();
-            datos[1] = user.getNombre();            
+            datos[1] = user.getNombre();
             datos[2] = user.getEstado() ? "Activo" : "Inactivo";
             model.addRow(datos);
         }
         tabla.setModel(model);
-    }   
+    }
 
 //    public void buscarLugar(String nombre,JTable tabla) {
 //        String[] titulo = {"Id", "Nombre", "Estado"};
@@ -91,7 +95,6 @@ public class LugarController implements Serializable {
 //        model = this.cargarDatos(model, this.lugarService.buscarLugar(nombre));
 //        tabla.setModel(model);
 //    }
-
 //    private DefaultTableModel cargarDatos(DefaultTableModel model, List<Lugar> items) {
 //        String[] datos = new String[3];
 //        for (Lugar user : items) {
@@ -102,9 +105,6 @@ public class LugarController implements Serializable {
 //        }
 //        return model;
 //    }
-
-    
-    
     //<editor-fold defaultstate="collapsed" desc="getters & setters">    
     public Lugar getSelected() {
         return selected;

@@ -43,47 +43,52 @@ public class SacerdoteController implements Serializable {
     }
 
     public Sacerdote crear() {
-        if (this.selected != null) {
-            this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
-            try {
-                if (this.sacerdoteService.crear(this.selected) != null) {
-                    return this.selected;
-                }
-            } catch (Exception e) {
-                System.out.println("SacerdoteController[crear()]-> " + e.getMessage());
+        if (this.selected == null) {
+            System.out.println("SacerdoteController[crear()]-> objeto Sacerdote no existe");
+            return null;
+        }
+        this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
+        try {
+            if (this.sacerdoteService.crear(this.selected) != null) {
+                return this.selected;
             }
+        } catch (Exception e) {
+            System.out.println("SacerdoteController[crear()]-> " + e.getMessage());
         }
         return null;
     }
 
     public Sacerdote actualizar() {
-        if (this.selected != null) {
-            this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
-            try {
-                if (this.sacerdoteService.actualizar(this.selected) != null) {
-                    return this.selected;
-                }
-            } catch (Exception e) {
-                System.out.println("SacerdoteController[actualizar()]-> " + e.getMessage());
+        if (this.selected == null) {
+            System.out.println("SacerdoteController[actualizar()]-> objeto Sacerdote no existe");
+            return null;
+        }
+        this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
+        try {
+            if (this.sacerdoteService.actualizar(this.selected) != null) {
+                return this.selected;
             }
+        } catch (Exception e) {
+            System.out.println("SacerdoteController[actualizar()]-> " + e.getMessage());
         }
         return null;
     }
-    public void llenarTabla(JTable tabla, String filtro){
-        DefaultTableModel model = (DefaultTableModel)tabla.getModel();
+
+    public void llenarTabla(JTable tabla, String filtro) {
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         model = ProjectUtils.removeRows(model);
-        this.items=this.sacerdoteService.buscarSacerdote(filtro);
+        this.items = this.sacerdoteService.buscarSacerdote(filtro);
         String[] datos = new String[4];
-        for (Sacerdote user : this.getItems()){
-            datos[0]= user.getId().toString();
+        for (Sacerdote user : this.getItems()) {
+            datos[0] = user.getId().toString();
             datos[1] = user.getNombres();
-            datos[2] = user.getApellidos();            
-            datos[3]= user.getEstado()?"Activo":"Inactivo";
+            datos[2] = user.getApellidos();
+            datos[3] = user.getEstado() ? "Activo" : "Inactivo";
             model.addRow(datos);
         }
         tabla.setModel(model);
     }
-    
+
 //<editor-fold defaultstate="collapsed" desc="getters & setters">
     public Sacerdote getSelected() {
         return selected;
@@ -109,6 +114,5 @@ public class SacerdoteController implements Serializable {
         this.sacerdoteService = sacerdoteService;
     }
     //</editor-fold>
-    
 
 }

@@ -46,6 +46,7 @@ public class FrmPersona extends javax.swing.JFrame {
         this.txtid.setVisible(false);
         this.mostrarTabla("");
         new TextPrompt("Digite para buscar en nombres o apellidos", this.txtbuscar);
+        this.cbestado.setSelected(true);
     }
 
     private void mostrarTabla(String filtro) {

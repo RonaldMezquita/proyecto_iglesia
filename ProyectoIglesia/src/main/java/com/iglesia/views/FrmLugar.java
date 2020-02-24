@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author alexi
@@ -24,6 +23,7 @@ public class FrmLugar extends javax.swing.JFrame {
      */
     private LugarController lugarController;
     private List<String> excepciones = new ArrayList<>();
+
     public FrmLugar() {
         initComponents();
         this.lugarController = new LugarController();
@@ -35,7 +35,8 @@ public class FrmLugar extends javax.swing.JFrame {
         this.excepciones.add("buscar");
         this.txtnombre.requestFocus();
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
-        
+        this.cbestado.setSelected(true);
+
     }
 
     /**
@@ -204,40 +205,41 @@ public class FrmLugar extends javax.swing.JFrame {
     private void cbestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbestadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbestadoActionPerformed
-    private void crear(){
+    private void crear() {
         this.excepciones.add("id");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (this.lugarController.crear() != null) {
-                JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                ProjectUtils.limpiarComponentes(this.jPanel1);
-                this.mostrarTabla("");
-            } else {
-                JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            return;
         }
+        if (this.lugarController.crear() == null) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        ProjectUtils.limpiarComponentes(this.jPanel1);
+        this.mostrarTabla("");
     }
-    private void actualizar(){
+
+    private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (this.lugarController.actualizar() != null) {
-                JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                this.mostrarTabla("");
-                ProjectUtils.limpiarComponentes(this.jPanel1);
-            } else {
-                JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            return;
         }
+        if (this.lugarController.actualizar() == null) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        this.mostrarTabla("");
+        ProjectUtils.limpiarComponentes(this.jPanel1);
     }
     private void jbingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbingresarActionPerformed
         this.lugarController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.lugarController.getSelected().setNombre(this.txtnombre.getText());
         this.lugarController.getSelected().setEstado(this.cbestado.isSelected());
-        if(this.lugarController.getSelected().getId()== null){
+        if (this.lugarController.getSelected().getId() == null) {
             this.crear();
-        }else{
+        } else {
             this.actualizar();
         }
     }//GEN-LAST:event_jbingresarActionPerformed
@@ -249,7 +251,7 @@ public class FrmLugar extends javax.swing.JFrame {
     private void jtLugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtLugarMouseClicked
         int rowSelect = this.jtLugar.getSelectedRow();
         this.txtid.setText(this.jtLugar.getValueAt(rowSelect, 0).toString());
-        this.txtnombre.setText(this.jtLugar.getValueAt(rowSelect, 1).toString());        
+        this.txtnombre.setText(this.jtLugar.getValueAt(rowSelect, 1).toString());
         this.cbestado.setSelected(this.jtLugar.getValueAt(rowSelect, 2).toString() == "Activo" ? true : false);
     }//GEN-LAST:event_jtLugarMouseClicked
 
@@ -262,9 +264,10 @@ public class FrmLugar extends javax.swing.JFrame {
         this.mostrarTabla(txtbuscar.getText());
     }//GEN-LAST:event_txtbuscarKeyReleased
 
-    private void mostrarTabla(String nombre){
-      this.lugarController.llenarTabla(this.jtLugar,nombre);
+    private void mostrarTabla(String nombre) {
+        this.lugarController.llenarTabla(this.jtLugar, nombre);
     }
+
     /**
      * @param args the command line arguments
      */
@@ -316,6 +319,4 @@ public class FrmLugar extends javax.swing.JFrame {
     private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
 
-    
 }
-
