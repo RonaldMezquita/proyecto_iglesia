@@ -25,18 +25,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author alexi
+ * @author remsf
  */
 @Entity
-@Table(name = "responsable_bautizo")
+@Table(name = "responsable_evento")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ResponsableBautizo.findAll", query = "SELECT r FROM ResponsableBautizo r"),
-    @NamedQuery(name = "ResponsableBautizo.findById", query = "SELECT r FROM ResponsableBautizo r WHERE r.id = :id"),
-    @NamedQuery(name = "ResponsableBautizo.findByEstado", query = "SELECT r FROM ResponsableBautizo r WHERE r.estado = :estado"),
-    @NamedQuery(name = "ResponsableBautizo.findByFechaCreacion", query = "SELECT r FROM ResponsableBautizo r WHERE r.fechaCreacion = :fechaCreacion"),
-    @NamedQuery(name = "ResponsableBautizo.findByFechaActualizacion", query = "SELECT r FROM ResponsableBautizo r WHERE r.fechaActualizacion = :fechaActualizacion")})
-public class ResponsableBautizo implements Serializable {
+    @NamedQuery(name = "ResponsableEvento.findAll", query = "SELECT r FROM ResponsableEvento r"),
+    @NamedQuery(name = "ResponsableEvento.findById", query = "SELECT r FROM ResponsableEvento r WHERE r.id = :id"),
+    @NamedQuery(name = "ResponsableEvento.findByEstado", query = "SELECT r FROM ResponsableEvento r WHERE r.estado = :estado"),
+    @NamedQuery(name = "ResponsableEvento.findByFechaCreacion", query = "SELECT r FROM ResponsableEvento r WHERE r.fechaCreacion = :fechaCreacion"),
+    @NamedQuery(name = "ResponsableEvento.findByFechaActualizacion", query = "SELECT r FROM ResponsableEvento r WHERE r.fechaActualizacion = :fechaActualizacion")})
+public class ResponsableEvento implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -51,13 +51,12 @@ public class ResponsableBautizo implements Serializable {
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
-    @Basic(optional = false)
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @JoinColumn(name = "id_bautizo", referencedColumnName = "id")
+    @JoinColumn(name = "id_evento", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Bautizo idBautizo;
+    private Evento idEvento;
     @JoinColumn(name = "id_persona", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona idPersona;
@@ -68,18 +67,17 @@ public class ResponsableBautizo implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario idUsuario;
 
-    public ResponsableBautizo() {
+    public ResponsableEvento() {
     }
 
-    public ResponsableBautizo(Integer id) {
+    public ResponsableEvento(Integer id) {
         this.id = id;
     }
 
-    public ResponsableBautizo(Integer id, boolean estado, Date fechaCreacion, Date fechaActualizacion) {
+    public ResponsableEvento(Integer id, boolean estado, Date fechaCreacion) {
         this.id = id;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
-        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Integer getId() {
@@ -114,12 +112,12 @@ public class ResponsableBautizo implements Serializable {
         this.fechaActualizacion = fechaActualizacion;
     }
 
-    public Bautizo getIdBautizo() {
-        return idBautizo;
+    public Evento getIdEvento() {
+        return idEvento;
     }
 
-    public void setIdBautizo(Bautizo idBautizo) {
-        this.idBautizo = idBautizo;
+    public void setIdEvento(Evento idEvento) {
+        this.idEvento = idEvento;
     }
 
     public Persona getIdPersona() {
@@ -156,10 +154,10 @@ public class ResponsableBautizo implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ResponsableBautizo)) {
+        if (!(object instanceof ResponsableEvento)) {
             return false;
         }
-        ResponsableBautizo other = (ResponsableBautizo) object;
+        ResponsableEvento other = (ResponsableEvento) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -168,8 +166,7 @@ public class ResponsableBautizo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.iglesia.entities.ResponsableBautizo[ id=" + id + " ]";
+        return "com.iglesia.entities.ResponsableEvento[ id=" + id + " ]";
     }
     
 }
-

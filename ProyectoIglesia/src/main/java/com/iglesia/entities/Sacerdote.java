@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author alexi
+ * @author remsf
  */
 @Entity
 @Table(name = "sacerdote")
@@ -63,17 +63,14 @@ public class Sacerdote implements Serializable {
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
-    @Basic(optional = false)
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @OneToMany(mappedBy = "idSacerdote", fetch = FetchType.LAZY)
-    private List<Boda> bodaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSacerdote", fetch = FetchType.LAZY)
+    private List<Evento> eventoList;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario idUsuario;
-    @OneToMany(mappedBy = "idSacerdote", fetch = FetchType.LAZY)
-    private List<Bautizo> bautizoList;
 
     public Sacerdote() {
     }
@@ -82,17 +79,13 @@ public class Sacerdote implements Serializable {
         this.id = id;
     }
 
-    public Sacerdote(Integer id, String nombres, String apellidos, boolean estado, Date fechaCreacion, Date fechaActualizacion, Usuario idUsuario) {
+    public Sacerdote(Integer id, String nombres, String apellidos, boolean estado, Date fechaCreacion) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
-        this.fechaActualizacion = fechaActualizacion;
-        this.idUsuario = idUsuario;
     }
-
-    
 
     public Integer getId() {
         return id;
@@ -143,12 +136,12 @@ public class Sacerdote implements Serializable {
     }
 
     @XmlTransient
-    public List<Boda> getBodaList() {
-        return bodaList;
+    public List<Evento> getEventoList() {
+        return eventoList;
     }
 
-    public void setBodaList(List<Boda> bodaList) {
-        this.bodaList = bodaList;
+    public void setEventoList(List<Evento> eventoList) {
+        this.eventoList = eventoList;
     }
 
     public Usuario getIdUsuario() {
@@ -157,15 +150,6 @@ public class Sacerdote implements Serializable {
 
     public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    @XmlTransient
-    public List<Bautizo> getBautizoList() {
-        return bautizoList;
-    }
-
-    public void setBautizoList(List<Bautizo> bautizoList) {
-        this.bautizoList = bautizoList;
     }
 
     @Override
@@ -194,4 +178,3 @@ public class Sacerdote implements Serializable {
     }
     
 }
-

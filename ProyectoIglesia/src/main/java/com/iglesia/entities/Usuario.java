@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author alexi
+ * @author remsf
  */
 @Entity
 @Table(name = "usuario")
@@ -65,32 +65,29 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "estado")
     private boolean estado;
+    @Basic(optional = false)
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Relacion> relacionList;
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    private List<ResponsableEvento> responsableEventoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    private List<Evento> eventoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Justificacion> justificacionList;
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Persona> personaList;
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private List<ResponsableBoda> responsableBodaList;
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private List<Boda> bodaList;
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Movimiento> movimientoList;
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Lugar> lugarList;
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
     private List<Sacerdote> sacerdoteList;
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private List<Bautizo> bautizoList;
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private List<ResponsableBautizo> responsableBautizoList;
 
     public Usuario() {
     }
@@ -99,14 +96,14 @@ public class Usuario implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public Usuario(Integer idUsuario, String nombre, String apellido, String usuario, String clave, boolean estado, Date fechaActualizacion) {
+    public Usuario(Integer idUsuario, String nombre, String apellido, String usuario, String clave, boolean estado, Date fechaCreacion) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.usuario = usuario;
         this.clave = clave;
         this.estado = estado;
-        this.fechaActualizacion = fechaActualizacion;
+        this.fechaCreacion = fechaCreacion;
     }
 
     public Integer getIdUsuario() {
@@ -172,12 +169,6 @@ public class Usuario implements Serializable {
     public void setFechaActualizacion(Date fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
     }
-    
-    public String getNombreCompleto(){
-        StringBuilder sb = new StringBuilder(this.nombre);
-        sb.append(" ").append(this.apellido);
-        return sb.toString();
-    }
 
     @XmlTransient
     public List<Relacion> getRelacionList() {
@@ -186,6 +177,24 @@ public class Usuario implements Serializable {
 
     public void setRelacionList(List<Relacion> relacionList) {
         this.relacionList = relacionList;
+    }
+
+    @XmlTransient
+    public List<ResponsableEvento> getResponsableEventoList() {
+        return responsableEventoList;
+    }
+
+    public void setResponsableEventoList(List<ResponsableEvento> responsableEventoList) {
+        this.responsableEventoList = responsableEventoList;
+    }
+
+    @XmlTransient
+    public List<Evento> getEventoList() {
+        return eventoList;
+    }
+
+    public void setEventoList(List<Evento> eventoList) {
+        this.eventoList = eventoList;
     }
 
     @XmlTransient
@@ -204,24 +213,6 @@ public class Usuario implements Serializable {
 
     public void setPersonaList(List<Persona> personaList) {
         this.personaList = personaList;
-    }
-
-    @XmlTransient
-    public List<ResponsableBoda> getResponsableBodaList() {
-        return responsableBodaList;
-    }
-
-    public void setResponsableBodaList(List<ResponsableBoda> responsableBodaList) {
-        this.responsableBodaList = responsableBodaList;
-    }
-
-    @XmlTransient
-    public List<Boda> getBodaList() {
-        return bodaList;
-    }
-
-    public void setBodaList(List<Boda> bodaList) {
-        this.bodaList = bodaList;
     }
 
     @XmlTransient
@@ -251,24 +242,6 @@ public class Usuario implements Serializable {
         this.sacerdoteList = sacerdoteList;
     }
 
-    @XmlTransient
-    public List<Bautizo> getBautizoList() {
-        return bautizoList;
-    }
-
-    public void setBautizoList(List<Bautizo> bautizoList) {
-        this.bautizoList = bautizoList;
-    }
-
-    @XmlTransient
-    public List<ResponsableBautizo> getResponsableBautizoList() {
-        return responsableBautizoList;
-    }
-
-    public void setResponsableBautizoList(List<ResponsableBautizo> responsableBautizoList) {
-        this.responsableBautizoList = responsableBautizoList;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -295,5 +268,3 @@ public class Usuario implements Serializable {
     }
     
 }
-
-

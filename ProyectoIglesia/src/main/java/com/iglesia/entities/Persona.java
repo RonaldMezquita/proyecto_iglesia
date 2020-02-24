@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author alexi
+ * @author remsf
  */
 @Entity
 @Table(name = "persona")
@@ -80,17 +80,14 @@ public class Persona implements Serializable {
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
-    @Basic(optional = false)
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPersona", fetch = FetchType.LAZY)
+    private List<ResponsableEvento> responsableEventoList;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario idUsuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPersona", fetch = FetchType.LAZY)
-    private List<ResponsableBoda> responsableBodaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPersona", fetch = FetchType.LAZY)
-    private List<ResponsableBautizo> responsableBautizoList;
 
     public Persona() {
     }
@@ -99,7 +96,7 @@ public class Persona implements Serializable {
         this.id = id;
     }
 
-    public Persona(Integer id, String nombres, String apellidos, String direccion, String dui, String nit, Date fechaNacimiento, boolean estado, Date fechaCreacion, Date fechaActualizacion) {
+    public Persona(Integer id, String nombres, String apellidos, String direccion, String dui, String nit, Date fechaNacimiento, boolean estado, Date fechaCreacion) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -109,7 +106,6 @@ public class Persona implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
-        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Integer getId() {
@@ -192,30 +188,21 @@ public class Persona implements Serializable {
         this.fechaActualizacion = fechaActualizacion;
     }
 
+    @XmlTransient
+    public List<ResponsableEvento> getResponsableEventoList() {
+        return responsableEventoList;
+    }
+
+    public void setResponsableEventoList(List<ResponsableEvento> responsableEventoList) {
+        this.responsableEventoList = responsableEventoList;
+    }
+
     public Usuario getIdUsuario() {
         return idUsuario;
     }
 
     public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    @XmlTransient
-    public List<ResponsableBoda> getResponsableBodaList() {
-        return responsableBodaList;
-    }
-
-    public void setResponsableBodaList(List<ResponsableBoda> responsableBodaList) {
-        this.responsableBodaList = responsableBodaList;
-    }
-
-    @XmlTransient
-    public List<ResponsableBautizo> getResponsableBautizoList() {
-        return responsableBautizoList;
-    }
-
-    public void setResponsableBautizoList(List<ResponsableBautizo> responsableBautizoList) {
-        this.responsableBautizoList = responsableBautizoList;
     }
 
     @Override
@@ -244,4 +231,3 @@ public class Persona implements Serializable {
     }
     
 }
-
