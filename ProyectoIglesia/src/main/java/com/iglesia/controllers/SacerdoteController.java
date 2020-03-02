@@ -78,12 +78,14 @@ public class SacerdoteController implements Serializable {
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         model = ProjectUtils.removeRows(model);
         this.items = this.sacerdoteService.buscarSacerdote(filtro);
-        String[] datos = new String[4];
+        String[] datos = new String[6];
         for (Sacerdote user : this.getItems()) {
             datos[0] = user.getId().toString();
             datos[1] = user.getNombres();
             datos[2] = user.getApellidos();
-            datos[3] = user.getEstado() ? "Activo" : "Inactivo";
+            datos[3] = user.getDui();
+            datos[4] = user.getNit();
+            datos[5] = user.getEstado() ? "Activo" : "Inactivo";
             model.addRow(datos);
         }
         tabla.setModel(model);

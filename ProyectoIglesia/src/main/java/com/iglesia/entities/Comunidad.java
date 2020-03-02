@@ -27,38 +27,26 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Alexis
  */
 @Entity
-@Table(name = "sacerdote")
+@Table(name = "comunidad")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Sacerdote.findAll", query = "SELECT s FROM Sacerdote s"),
-    @NamedQuery(name = "Sacerdote.findById", query = "SELECT s FROM Sacerdote s WHERE s.id = :id"),
-    @NamedQuery(name = "Sacerdote.findByNombres", query = "SELECT s FROM Sacerdote s WHERE s.nombres = :nombres"),
-    @NamedQuery(name = "Sacerdote.findByApellidos", query = "SELECT s FROM Sacerdote s WHERE s.apellidos = :apellidos"),
-    @NamedQuery(name = "Sacerdote.findByDui", query = "SELECT s FROM Sacerdote s WHERE s.dui = :dui"),
-    @NamedQuery(name = "Sacerdote.findByNit", query = "SELECT s FROM Sacerdote s WHERE s.nit = :nit"),
-    @NamedQuery(name = "Sacerdote.findByEstado", query = "SELECT s FROM Sacerdote s WHERE s.estado = :estado"),
-    @NamedQuery(name = "Sacerdote.findByFechaCreacion", query = "SELECT s FROM Sacerdote s WHERE s.fechaCreacion = :fechaCreacion"),
-    @NamedQuery(name = "Sacerdote.findByFechaActualizacion", query = "SELECT s FROM Sacerdote s WHERE s.fechaActualizacion = :fechaActualizacion")})
-public class Sacerdote implements Serializable {
+    @NamedQuery(name = "Comunidad.findAll", query = "SELECT c FROM Comunidad c"),
+    @NamedQuery(name = "Comunidad.findById", query = "SELECT c FROM Comunidad c WHERE c.id = :id"),
+    @NamedQuery(name = "Comunidad.findByNombre", query = "SELECT c FROM Comunidad c WHERE c.nombre = :nombre"),
+    @NamedQuery(name = "Comunidad.findByEstado", query = "SELECT c FROM Comunidad c WHERE c.estado = :estado"),
+    @NamedQuery(name = "Comunidad.findByFechaCreacion", query = "SELECT c FROM Comunidad c WHERE c.fechaCreacion = :fechaCreacion"),
+    @NamedQuery(name = "Comunidad.findByFechaActualizacion", query = "SELECT c FROM Comunidad c WHERE c.fechaActualizacion = :fechaActualizacion")})
+public class Comunidad implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "nombres")
-    private String nombres;
-    @Basic(optional = false)
-    @Column(name = "apellidos")
-    private String apellidos;
-    @Basic(optional = false)
-    @Column(name = "dui")
-    private String dui;
-    @Basic(optional = false)
-    @Column(name = "nit")
-    private String nit;
+    @Column(name = "nombre")
+    private String nombre;
     @Basic(optional = false)
     @Column(name = "estado")
     private boolean estado;
@@ -69,25 +57,26 @@ public class Sacerdote implements Serializable {
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
+    @JoinColumn(name = "id_sector", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Sector idSector;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
 
-    public Sacerdote() {
+    public Comunidad() {
     }
 
-    public Sacerdote(Integer id) {
+    public Comunidad(Integer id) {
         this.id = id;
     }
 
-    public Sacerdote(Integer id, String nombres, String apellidos, String dui, String nit, boolean estado, Date fechaCreacion) {
+    public Comunidad(Integer id, String nombre, boolean estado, Date fechaCreacion,Usuario idUsuario) {
         this.id = id;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.dui = dui;
-        this.nit = nit;
+        this.nombre = nombre;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
+        this.idUsuario = idUsuario;
     }
 
     public Integer getId() {
@@ -98,36 +87,12 @@ public class Sacerdote implements Serializable {
         this.id = id;
     }
 
-    public String getNombres() {
-        return nombres;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getDui() {
-        return dui;
-    }
-
-    public void setDui(String dui) {
-        this.dui = dui;
-    }
-
-    public String getNit() {
-        return nit;
-    }
-
-    public void setNit(String nit) {
-        this.nit = nit;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public boolean getEstado() {
@@ -154,6 +119,14 @@ public class Sacerdote implements Serializable {
         this.fechaActualizacion = fechaActualizacion;
     }
 
+    public Sector getIdSector() {
+        return idSector;
+    }
+
+    public void setIdSector(Sector idSector) {
+        this.idSector = idSector;
+    }
+
     public Usuario getIdUsuario() {
         return idUsuario;
     }
@@ -172,10 +145,10 @@ public class Sacerdote implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Sacerdote)) {
+        if (!(object instanceof Comunidad)) {
             return false;
         }
-        Sacerdote other = (Sacerdote) object;
+        Comunidad other = (Comunidad) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -184,7 +157,7 @@ public class Sacerdote implements Serializable {
 
     @Override
     public String toString() {
-        return "com.iglesia.entities.Sacerdote[ id=" + id + " ]";
+        return "com.iglesia.entities.Comunidad[ id=" + id + " ]";
     }
     
 }

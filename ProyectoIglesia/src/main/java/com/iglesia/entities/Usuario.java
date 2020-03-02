@@ -12,7 +12,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author remsf
+ * @author Alexis
  */
 @Entity
 @Table(name = "usuario")
@@ -72,21 +71,7 @@ public class Usuario implements Serializable {
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private List<Relacion> relacionList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private List<ResponsableEvento> responsableEventoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private List<Evento> eventoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private List<Justificacion> justificacionList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private List<Persona> personaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private List<Movimiento> movimientoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private List<Lugar> lugarList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<Sacerdote> sacerdoteList;
 
     public Usuario() {
@@ -168,69 +153,6 @@ public class Usuario implements Serializable {
 
     public void setFechaActualizacion(Date fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
-    }
-
-    @XmlTransient
-    public List<Relacion> getRelacionList() {
-        return relacionList;
-    }
-
-    public void setRelacionList(List<Relacion> relacionList) {
-        this.relacionList = relacionList;
-    }
-
-    @XmlTransient
-    public List<ResponsableEvento> getResponsableEventoList() {
-        return responsableEventoList;
-    }
-
-    public void setResponsableEventoList(List<ResponsableEvento> responsableEventoList) {
-        this.responsableEventoList = responsableEventoList;
-    }
-
-    @XmlTransient
-    public List<Evento> getEventoList() {
-        return eventoList;
-    }
-
-    public void setEventoList(List<Evento> eventoList) {
-        this.eventoList = eventoList;
-    }
-
-    @XmlTransient
-    public List<Justificacion> getJustificacionList() {
-        return justificacionList;
-    }
-
-    public void setJustificacionList(List<Justificacion> justificacionList) {
-        this.justificacionList = justificacionList;
-    }
-
-    @XmlTransient
-    public List<Persona> getPersonaList() {
-        return personaList;
-    }
-
-    public void setPersonaList(List<Persona> personaList) {
-        this.personaList = personaList;
-    }
-
-    @XmlTransient
-    public List<Movimiento> getMovimientoList() {
-        return movimientoList;
-    }
-
-    public void setMovimientoList(List<Movimiento> movimientoList) {
-        this.movimientoList = movimientoList;
-    }
-
-    @XmlTransient
-    public List<Lugar> getLugarList() {
-        return lugarList;
-    }
-
-    public void setLugarList(List<Lugar> lugarList) {
-        this.lugarList = lugarList;
     }
 
     @XmlTransient

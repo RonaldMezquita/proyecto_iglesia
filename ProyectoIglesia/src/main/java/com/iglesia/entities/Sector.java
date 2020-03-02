@@ -7,7 +7,9 @@ package com.iglesia.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,29 +19,28 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author Alexis
  */
 @Entity
-@Table(name = "sacerdote")
+@Table(name = "sector")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Sacerdote.findAll", query = "SELECT s FROM Sacerdote s"),
-    @NamedQuery(name = "Sacerdote.findById", query = "SELECT s FROM Sacerdote s WHERE s.id = :id"),
-    @NamedQuery(name = "Sacerdote.findByNombres", query = "SELECT s FROM Sacerdote s WHERE s.nombres = :nombres"),
-    @NamedQuery(name = "Sacerdote.findByApellidos", query = "SELECT s FROM Sacerdote s WHERE s.apellidos = :apellidos"),
-    @NamedQuery(name = "Sacerdote.findByDui", query = "SELECT s FROM Sacerdote s WHERE s.dui = :dui"),
-    @NamedQuery(name = "Sacerdote.findByNit", query = "SELECT s FROM Sacerdote s WHERE s.nit = :nit"),
-    @NamedQuery(name = "Sacerdote.findByEstado", query = "SELECT s FROM Sacerdote s WHERE s.estado = :estado"),
-    @NamedQuery(name = "Sacerdote.findByFechaCreacion", query = "SELECT s FROM Sacerdote s WHERE s.fechaCreacion = :fechaCreacion"),
-    @NamedQuery(name = "Sacerdote.findByFechaActualizacion", query = "SELECT s FROM Sacerdote s WHERE s.fechaActualizacion = :fechaActualizacion")})
-public class Sacerdote implements Serializable {
+    @NamedQuery(name = "Sector.findAll", query = "SELECT s FROM Sector s"),
+    @NamedQuery(name = "Sector.findById", query = "SELECT s FROM Sector s WHERE s.id = :id"),
+    @NamedQuery(name = "Sector.findByNombre", query = "SELECT s FROM Sector s WHERE s.nombre = :nombre"),
+    @NamedQuery(name = "Sector.findByEstado", query = "SELECT s FROM Sector s WHERE s.estado = :estado"),
+    @NamedQuery(name = "Sector.findByFechaCreacion", query = "SELECT s FROM Sector s WHERE s.fechaCreacion = :fechaCreacion"),
+    @NamedQuery(name = "Sector.findByFechaActualizacion", query = "SELECT s FROM Sector s WHERE s.fechaActualizacion = :fechaActualizacion")})
+public class Sector implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,17 +49,8 @@ public class Sacerdote implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "nombres")
-    private String nombres;
-    @Basic(optional = false)
-    @Column(name = "apellidos")
-    private String apellidos;
-    @Basic(optional = false)
-    @Column(name = "dui")
-    private String dui;
-    @Basic(optional = false)
-    @Column(name = "nit")
-    private String nit;
+    @Column(name = "nombre")
+    private String nombre;
     @Basic(optional = false)
     @Column(name = "estado")
     private boolean estado;
@@ -72,22 +64,22 @@ public class Sacerdote implements Serializable {
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
+    @OneToMany(mappedBy = "idSector")
+    private List<Comunidad> comunidadList;
 
-    public Sacerdote() {
+    public Sector() {
     }
 
-    public Sacerdote(Integer id) {
+    public Sector(Integer id) {
         this.id = id;
     }
 
-    public Sacerdote(Integer id, String nombres, String apellidos, String dui, String nit, boolean estado, Date fechaCreacion) {
+    public Sector(Integer id, String nombre, boolean estado, Date fechaCreacion, Usuario idUsuario) {
         this.id = id;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.dui = dui;
-        this.nit = nit;
+        this.nombre = nombre;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
+        this.idUsuario = idUsuario;
     }
 
     public Integer getId() {
@@ -98,36 +90,12 @@ public class Sacerdote implements Serializable {
         this.id = id;
     }
 
-    public String getNombres() {
-        return nombres;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getDui() {
-        return dui;
-    }
-
-    public void setDui(String dui) {
-        this.dui = dui;
-    }
-
-    public String getNit() {
-        return nit;
-    }
-
-    public void setNit(String nit) {
-        this.nit = nit;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public boolean getEstado() {
@@ -162,6 +130,15 @@ public class Sacerdote implements Serializable {
         this.idUsuario = idUsuario;
     }
 
+    @XmlTransient
+    public List<Comunidad> getComunidadList() {
+        return comunidadList;
+    }
+
+    public void setComunidadList(List<Comunidad> comunidadList) {
+        this.comunidadList = comunidadList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -172,19 +149,21 @@ public class Sacerdote implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Sacerdote)) {
+        if (!(object instanceof Sector)) {
             return false;
         }
-        Sacerdote other = (Sacerdote) object;
+        Sector other = (Sector) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
 
+
     @Override
     public String toString() {
-        return "com.iglesia.entities.Sacerdote[ id=" + id + " ]";
+        return  nombre;
     }
     
+
 }
