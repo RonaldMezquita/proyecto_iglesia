@@ -3,8 +3,10 @@
   <persistence-unit name="iglesia_pu" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.iglesia.entities.Evento</class>
-    <class>com.iglesia.entities.TipoEvento</class>
     <class>com.iglesia.entities.ResponsableEvento</class>
+    <class>com.iglesia.entities.Sector</class>
+    <class>com.iglesia.entities.Comunidad</class>
+    <class>com.iglesia.entities.TipoEvento</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_iglesia?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

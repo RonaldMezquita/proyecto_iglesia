@@ -21,12 +21,23 @@ public class FrmSacerdote extends javax.swing.JFrame {
     /**
      * Creates new form FrmSacerdote
      */
+    private javax.swing.JFormattedTextField txtdui;
+    private javax.swing.JFormattedTextField txtnit;
     private SacerdoteController sacerdoteController;
     private List<String> excepciones = new ArrayList<>();
 
     public FrmSacerdote() {
         initComponents();
         this.sacerdoteController = new SacerdoteController();
+        // comienza generacion de campos formateados
+        txtdui = ProjectUtils.getCampoDui();
+        txtdui.setFont(new java.awt.Font("Dialog", 0, 14));
+        jPanel1.add(txtdui, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 90, -1));
+
+        txtnit = ProjectUtils.getCampoNit();
+        txtnit.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jPanel1.add(txtnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 142, -1));
+        // termina generacion de campos formateados
         this.txtid.setVisible(false);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -65,6 +76,8 @@ public class FrmSacerdote extends javax.swing.JFrame {
         tbsacerdote = new javax.swing.JTable();
         jbsalir = new javax.swing.JButton();
         txtid = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -77,12 +90,12 @@ public class FrmSacerdote extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Mantenimiento de Sacerdotes");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 440, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 910, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, -1, -1));
 
         txtnombre.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtnombre.setName("Nombre"); // NOI18N
@@ -91,25 +104,25 @@ public class FrmSacerdote extends javax.swing.JFrame {
                 txtnombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 310, -1));
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, 310, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Apellido");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, -1, -1));
 
         txtapellido.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtapellido.setName("Apellido"); // NOI18N
-        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 310, -1));
+        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 310, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Estado");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, -1, -1));
 
         cbestado.setForeground(new java.awt.Color(0, 0, 0));
         cbestado.setText("Activo");
-        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 310, -1, -1));
 
         btnguardar.setBackground(new java.awt.Color(13, 71, 161));
         btnguardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -120,7 +133,7 @@ public class FrmSacerdote extends javax.swing.JFrame {
                 btnguardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 130, -1));
+        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, 130, -1));
 
         btncancelar.setBackground(new java.awt.Color(255, 136, 0));
         btncancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -131,7 +144,7 @@ public class FrmSacerdote extends javax.swing.JFrame {
                 btncancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 130, -1));
+        jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 340, 130, -1));
 
         txtbuscar.setName("buscar"); // NOI18N
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -139,7 +152,7 @@ public class FrmSacerdote extends javax.swing.JFrame {
                 txtbuscarKeyReleased(evt);
             }
         });
-        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 290, -1));
+        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 290, -1));
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 51));
 
@@ -150,14 +163,14 @@ public class FrmSacerdote extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Nombre", "Apellido", "Estado"
+                "Id", "Nombre", "Apellido", "Dui", "Nit", "Estado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -176,8 +189,19 @@ public class FrmSacerdote extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tbsacerdote);
+        if (tbsacerdote.getColumnModel().getColumnCount() > 0) {
+            tbsacerdote.getColumnModel().getColumn(0).setMinWidth(50);
+            tbsacerdote.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tbsacerdote.getColumnModel().getColumn(0).setMaxWidth(50);
+            tbsacerdote.getColumnModel().getColumn(3).setMinWidth(100);
+            tbsacerdote.getColumnModel().getColumn(3).setPreferredWidth(100);
+            tbsacerdote.getColumnModel().getColumn(3).setMaxWidth(100);
+            tbsacerdote.getColumnModel().getColumn(4).setMinWidth(120);
+            tbsacerdote.getColumnModel().getColumn(4).setPreferredWidth(120);
+            tbsacerdote.getColumnModel().getColumn(4).setMaxWidth(120);
+        }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 390, 240));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 550, 240));
 
         jbsalir.setBackground(new java.awt.Color(204, 0, 0));
         jbsalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -187,13 +211,23 @@ public class FrmSacerdote extends javax.swing.JFrame {
                 jbsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 60, 30));
+        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 60, 30));
 
         txtid.setEditable(false);
         txtid.setName("id"); // NOI18N
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 550));
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Dui");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Nit");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -233,6 +267,8 @@ public class FrmSacerdote extends javax.swing.JFrame {
         this.sacerdoteController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.sacerdoteController.getSelected().setNombres(this.txtnombre.getText());
         this.sacerdoteController.getSelected().setApellidos(this.txtapellido.getText());
+        this.sacerdoteController.getSelected().setDui(this.txtdui.getText());
+        this.sacerdoteController.getSelected().setNit(this.txtnit.getText());
         this.sacerdoteController.getSelected().setEstado(this.cbestado.isSelected());
         if (this.sacerdoteController.getSelected().getId() == null) {
             this.crear();
@@ -255,7 +291,9 @@ public class FrmSacerdote extends javax.swing.JFrame {
         this.txtid.setText(this.tbsacerdote.getValueAt(rowSelect, 0).toString());
         this.txtnombre.setText(this.tbsacerdote.getValueAt(rowSelect, 1).toString());
         this.txtapellido.setText(this.tbsacerdote.getValueAt(rowSelect, 2).toString());
-        this.cbestado.setSelected(this.tbsacerdote.getValueAt(rowSelect, 4).toString() == "Activo" ? true : false);
+        this.txtdui.setText(this.tbsacerdote.getValueAt(rowSelect, 3).toString());
+        this.txtnit.setText(this.tbsacerdote.getValueAt(rowSelect, 4).toString());
+        this.cbestado.setSelected(this.tbsacerdote.getValueAt(rowSelect, 5).toString() == "Activo" ? true : false);
     }//GEN-LAST:event_tbsacerdoteMouseClicked
 
     private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
@@ -304,6 +342,8 @@ public class FrmSacerdote extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
