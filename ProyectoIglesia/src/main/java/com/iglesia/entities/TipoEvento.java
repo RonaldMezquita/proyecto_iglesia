@@ -7,27 +7,24 @@ package com.iglesia.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author remsf
+ * @author Alexis
  */
 @Entity
 @Table(name = "tipo_evento")
@@ -38,8 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "TipoEvento.findByNombre", query = "SELECT t FROM TipoEvento t WHERE t.nombre = :nombre"),
     @NamedQuery(name = "TipoEvento.findByEstado", query = "SELECT t FROM TipoEvento t WHERE t.estado = :estado"),
     @NamedQuery(name = "TipoEvento.findByFechaCreacion", query = "SELECT t FROM TipoEvento t WHERE t.fechaCreacion = :fechaCreacion"),
-    @NamedQuery(name = "TipoEvento.findByFechaActualizacion", query = "SELECT t FROM TipoEvento t WHERE t.fechaActualizacion = :fechaActualizacion"),
-    @NamedQuery(name = "TipoEvento.findByIdUsuario", query = "SELECT t FROM TipoEvento t WHERE t.idUsuario = :idUsuario")})
+    @NamedQuery(name = "TipoEvento.findByFechaActualizacion", query = "SELECT t FROM TipoEvento t WHERE t.fechaActualizacion = :fechaActualizacion")})
 public class TipoEvento implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,11 +57,9 @@ public class TipoEvento implements Serializable {
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @Basic(optional = false)
-    @Column(name = "id_usuario")
-    private int idUsuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTipoEvento", fetch = FetchType.LAZY)
-    private List<Evento> eventoList;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @ManyToOne(optional = false)
+    private Usuario idUsuario;
 
     public TipoEvento() {
     }
@@ -74,12 +68,11 @@ public class TipoEvento implements Serializable {
         this.id = id;
     }
 
-    public TipoEvento(Integer id, String nombre, boolean estado, Date fechaCreacion, int idUsuario) {
+    public TipoEvento(Integer id, String nombre, boolean estado, Date fechaCreacion) {
         this.id = id;
         this.nombre = nombre;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
-        this.idUsuario = idUsuario;
     }
 
     public Integer getId() {
@@ -122,21 +115,12 @@ public class TipoEvento implements Serializable {
         this.fechaActualizacion = fechaActualizacion;
     }
 
-    public int getIdUsuario() {
+    public Usuario getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    @XmlTransient
-    public List<Evento> getEventoList() {
-        return eventoList;
-    }
-
-    public void setEventoList(List<Evento> eventoList) {
-        this.eventoList = eventoList;
     }
 
     @Override
