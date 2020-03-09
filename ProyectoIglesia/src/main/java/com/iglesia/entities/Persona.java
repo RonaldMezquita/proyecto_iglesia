@@ -8,11 +8,11 @@ package com.iglesia.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javafx.beans.binding.StringBinding;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author remsf
+ * @author Alexis
  */
 @Entity
 @Table(name = "persona")
@@ -63,10 +63,8 @@ public class Persona implements Serializable {
     @Basic(optional = false)
     @Column(name = "direccion")
     private String direccion;
-    @Basic(optional = false)
     @Column(name = "dui")
     private String dui;
-    @Basic(optional = false)
     @Column(name = "nit")
     private String nit;
     @Basic(optional = false)
@@ -83,10 +81,14 @@ public class Persona implements Serializable {
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPersona", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPersona")
     private List<ResponsableEvento> responsableEventoList;
+    @OneToMany(mappedBy = "idPadre")
+    private List<ResponsableEvento> responsableEventoList1;
+    @OneToMany(mappedBy = "idMadre")
+    private List<ResponsableEvento> responsableEventoList2;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Usuario idUsuario;
 
     public Persona() {
@@ -96,13 +98,11 @@ public class Persona implements Serializable {
         this.id = id;
     }
 
-    public Persona(Integer id, String nombres, String apellidos, String direccion, String dui, String nit, Date fechaNacimiento, boolean estado, Date fechaCreacion) {
+    public Persona(Integer id, String nombres, String apellidos, String direccion, Date fechaNacimiento, boolean estado, Date fechaCreacion) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.direccion = direccion;
-        this.dui = dui;
-        this.nit = nit;
         this.fechaNacimiento = fechaNacimiento;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
@@ -197,6 +197,24 @@ public class Persona implements Serializable {
         this.responsableEventoList = responsableEventoList;
     }
 
+    @XmlTransient
+    public List<ResponsableEvento> getResponsableEventoList1() {
+        return responsableEventoList1;
+    }
+
+    public void setResponsableEventoList1(List<ResponsableEvento> responsableEventoList1) {
+        this.responsableEventoList1 = responsableEventoList1;
+    }
+
+    @XmlTransient
+    public List<ResponsableEvento> getResponsableEventoList2() {
+        return responsableEventoList2;
+    }
+
+    public void setResponsableEventoList2(List<ResponsableEvento> responsableEventoList2) {
+        this.responsableEventoList2 = responsableEventoList2;
+    }
+
     public Usuario getIdUsuario() {
         return idUsuario;
     }
@@ -227,7 +245,7 @@ public class Persona implements Serializable {
 
     @Override
     public String toString() {
-        return "com.iglesia.entities.Persona[ id=" + id + " ]";
+        return new StringBuilder(this.nombres).append(" ").append(this.apellidos).toString();
     }
     
 }

@@ -46,6 +46,7 @@ public class FrmSacerdote extends javax.swing.JFrame {
         this.txtnombre.requestFocus();
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
         this.cbestado.setSelected(true);
+        this.cbParroco.setSelected(true);
     }
 
     private void mostrarTabla(String filtro) {
@@ -78,12 +79,15 @@ public class FrmSacerdote extends javax.swing.JFrame {
         txtid = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        cbParroco = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(158, 158, 158));
+        jPanel1.setToolTipText("si esta activo es parroco");
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -117,12 +121,12 @@ public class FrmSacerdote extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Estado");
+        jLabel6.setText("Parroco");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, -1, -1));
 
         cbestado.setForeground(new java.awt.Color(0, 0, 0));
         cbestado.setText("Activo");
-        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 310, -1, -1));
+        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, -1, -1));
 
         btnguardar.setBackground(new java.awt.Color(13, 71, 161));
         btnguardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -133,7 +137,7 @@ public class FrmSacerdote extends javax.swing.JFrame {
                 btnguardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, 130, -1));
+        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 130, -1));
 
         btncancelar.setBackground(new java.awt.Color(255, 136, 0));
         btncancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -144,7 +148,7 @@ public class FrmSacerdote extends javax.swing.JFrame {
                 btncancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 340, 130, -1));
+        jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 400, 130, -1));
 
         txtbuscar.setName("buscar"); // NOI18N
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -163,14 +167,14 @@ public class FrmSacerdote extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Nombre", "Apellido", "Dui", "Nit", "Estado"
+                "Id", "Nombre", "Apellido", "Dui", "Nit", "Parroco", "Estado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -201,7 +205,7 @@ public class FrmSacerdote extends javax.swing.JFrame {
             tbsacerdote.getColumnModel().getColumn(4).setMaxWidth(120);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 550, 240));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 550, 320));
 
         jbsalir.setBackground(new java.awt.Color(204, 0, 0));
         jbsalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -211,7 +215,7 @@ public class FrmSacerdote extends javax.swing.JFrame {
                 jbsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 60, 30));
+        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 0, 60, 30));
 
         txtid.setEditable(false);
         txtid.setName("id"); // NOI18N
@@ -227,7 +231,17 @@ public class FrmSacerdote extends javax.swing.JFrame {
         jLabel5.setText("Nit");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 400));
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Estado");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, -1, -1));
+
+        cbParroco.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cbParroco.setForeground(new java.awt.Color(0, 0, 0));
+        cbParroco.setText("Es Parroco");
+        jPanel1.add(cbParroco, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -269,6 +283,7 @@ public class FrmSacerdote extends javax.swing.JFrame {
         this.sacerdoteController.getSelected().setApellidos(this.txtapellido.getText());
         this.sacerdoteController.getSelected().setDui(this.txtdui.getText());
         this.sacerdoteController.getSelected().setNit(this.txtnit.getText());
+        this.sacerdoteController.getSelected().setParroco(this.cbParroco.isSelected());
         this.sacerdoteController.getSelected().setEstado(this.cbestado.isSelected());
         if (this.sacerdoteController.getSelected().getId() == null) {
             this.crear();
@@ -293,7 +308,8 @@ public class FrmSacerdote extends javax.swing.JFrame {
         this.txtapellido.setText(this.tbsacerdote.getValueAt(rowSelect, 2).toString());
         this.txtdui.setText(this.tbsacerdote.getValueAt(rowSelect, 3).toString());
         this.txtnit.setText(this.tbsacerdote.getValueAt(rowSelect, 4).toString());
-        this.cbestado.setSelected(this.tbsacerdote.getValueAt(rowSelect, 5).toString() == "Activo" ? true : false);
+        this.cbParroco.setSelected(this.tbsacerdote.getValueAt(rowSelect, 5).toString() == "Parroco" ? true : false);
+        this.cbestado.setSelected(this.tbsacerdote.getValueAt(rowSelect, 6).toString() == "Activo" ? true : false);
     }//GEN-LAST:event_tbsacerdoteMouseClicked
 
     private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
@@ -338,6 +354,7 @@ public class FrmSacerdote extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btnguardar;
+    private javax.swing.JCheckBox cbParroco;
     private javax.swing.JCheckBox cbestado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -345,6 +362,7 @@ public class FrmSacerdote extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbsalir;

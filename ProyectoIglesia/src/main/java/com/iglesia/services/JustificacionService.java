@@ -6,7 +6,6 @@
 package com.iglesia.services;
 
 import com.iglesia.entities.Justificacion;
-import com.iglesia.entities.Relacion;
 import com.iglesia.utils.CrudUtils;
 import com.iglesia.utils.PersistenceManager;
 import java.util.List;

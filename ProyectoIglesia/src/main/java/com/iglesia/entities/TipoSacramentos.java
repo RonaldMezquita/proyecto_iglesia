@@ -7,7 +7,9 @@ package com.iglesia.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,26 +19,28 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author Alexis
  */
 @Entity
-@Table(name = "tipo_evento")
+@Table(name = "tipo_sacramentos")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TipoEvento.findAll", query = "SELECT t FROM TipoEvento t"),
-    @NamedQuery(name = "TipoEvento.findById", query = "SELECT t FROM TipoEvento t WHERE t.id = :id"),
-    @NamedQuery(name = "TipoEvento.findByNombre", query = "SELECT t FROM TipoEvento t WHERE t.nombre = :nombre"),
-    @NamedQuery(name = "TipoEvento.findByEstado", query = "SELECT t FROM TipoEvento t WHERE t.estado = :estado"),
-    @NamedQuery(name = "TipoEvento.findByFechaCreacion", query = "SELECT t FROM TipoEvento t WHERE t.fechaCreacion = :fechaCreacion"),
-    @NamedQuery(name = "TipoEvento.findByFechaActualizacion", query = "SELECT t FROM TipoEvento t WHERE t.fechaActualizacion = :fechaActualizacion")})
-public class TipoEvento implements Serializable {
+    @NamedQuery(name = "TipoSacramentos.findAll", query = "SELECT t FROM TipoSacramentos t"),
+    @NamedQuery(name = "TipoSacramentos.findById", query = "SELECT t FROM TipoSacramentos t WHERE t.id = :id"),
+    @NamedQuery(name = "TipoSacramentos.findByNombre", query = "SELECT t FROM TipoSacramentos t WHERE t.nombre = :nombre"),
+    @NamedQuery(name = "TipoSacramentos.findByEstado", query = "SELECT t FROM TipoSacramentos t WHERE t.estado = :estado"),
+    @NamedQuery(name = "TipoSacramentos.findByFechaCreacion", query = "SELECT t FROM TipoSacramentos t WHERE t.fechaCreacion = :fechaCreacion"),
+    @NamedQuery(name = "TipoSacramentos.findByFechaActualizacion", query = "SELECT t FROM TipoSacramentos t WHERE t.fechaActualizacion = :fechaActualizacion")})
+public class TipoSacramentos implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,18 +61,20 @@ public class TipoEvento implements Serializable {
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTipoSacramento")
+    private List<Evento> eventoList;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
 
-    public TipoEvento() {
+    public TipoSacramentos() {
     }
 
-    public TipoEvento(Integer id) {
+    public TipoSacramentos(Integer id) {
         this.id = id;
     }
 
-    public TipoEvento(Integer id, String nombre, boolean estado, Date fechaCreacion) {
+    public TipoSacramentos(Integer id, String nombre, boolean estado, Date fechaCreacion) {
         this.id = id;
         this.nombre = nombre;
         this.estado = estado;
@@ -115,6 +121,15 @@ public class TipoEvento implements Serializable {
         this.fechaActualizacion = fechaActualizacion;
     }
 
+    @XmlTransient
+    public List<Evento> getEventoList() {
+        return eventoList;
+    }
+
+    public void setEventoList(List<Evento> eventoList) {
+        this.eventoList = eventoList;
+    }
+
     public Usuario getIdUsuario() {
         return idUsuario;
     }
@@ -133,10 +148,10 @@ public class TipoEvento implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TipoEvento)) {
+        if (!(object instanceof TipoSacramentos)) {
             return false;
         }
-        TipoEvento other = (TipoEvento) object;
+        TipoSacramentos other = (TipoSacramentos) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -145,7 +160,7 @@ public class TipoEvento implements Serializable {
 
     @Override
     public String toString() {
-        return "com.iglesia.entities.TipoEvento[ id=" + id + " ]";
+        return "com.iglesia.entities.TipoSacramentos[ id=" + id + " ]";
     }
     
 }

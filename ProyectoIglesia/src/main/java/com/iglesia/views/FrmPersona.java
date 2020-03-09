@@ -33,16 +33,20 @@ public class FrmPersona extends javax.swing.JFrame {
         this.personaController = new PersonaController();
         // comienza generacion de campos formateados
         txtdui = ProjectUtils.getCampoDui();
+        txtdui.setName("dui");
         txtdui.setFont(new java.awt.Font("Dialog", 0, 14));
         jPanel1.add(txtdui, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 210, 90, -1));
 
         txtnit = ProjectUtils.getCampoNit();
+        txtnit.setName("nit");
         txtnit.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jPanel1.add(txtnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 260, 142, -1));
         // termina generacion de campos formateados
         this.setLocationRelativeTo(null);
         this.txtnombres.requestFocus();
         this.excepciones.add("buscar");
+        this.excepciones.add("dui");
+        this.excepciones.add("nit");
         this.txtid.setVisible(false);
         this.mostrarTabla("");
         new TextPrompt("Digite para buscar en nombres o apellidos", this.txtbuscar);
@@ -312,8 +316,10 @@ public class FrmPersona extends javax.swing.JFrame {
             this.txtid.setText(this.tbpersona.getValueAt(rowSelected, 0).toString());
             this.txtnombres.setText(this.tbpersona.getValueAt(rowSelected, 1).toString());
             this.txtapellidos.setText(this.tbpersona.getValueAt(rowSelected, 2).toString());
-            this.txtdui.setText(this.tbpersona.getValueAt(rowSelected, 3).toString());
-            this.txtnit.setText(this.tbpersona.getValueAt(rowSelected, 4).toString());
+            String dui = this.tbpersona.getValueAt(rowSelected, 3) != null ? this.tbpersona.getValueAt(rowSelected, 3).toString() : "";
+            this.txtdui.setText(dui);
+            String nit = this.tbpersona.getValueAt(rowSelected, 4) != null ? this.tbpersona.getValueAt(rowSelected, 4).toString() : "";
+            this.txtnit.setText(nit);
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             this.txtfechanacimiento.setDate(sdf.parse(this.tbpersona.getValueAt(rowSelected, 5).toString()));
             this.txtdireccion.setText(this.tbpersona.getValueAt(rowSelected, 6).toString());

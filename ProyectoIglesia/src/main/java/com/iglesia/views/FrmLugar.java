@@ -165,6 +165,9 @@ public class FrmLugar extends javax.swing.JFrame {
             jtLugar.getColumnModel().getColumn(0).setMinWidth(50);
             jtLugar.getColumnModel().getColumn(0).setPreferredWidth(50);
             jtLugar.getColumnModel().getColumn(0).setMaxWidth(50);
+            jtLugar.getColumnModel().getColumn(2).setMinWidth(65);
+            jtLugar.getColumnModel().getColumn(2).setPreferredWidth(65);
+            jtLugar.getColumnModel().getColumn(2).setMaxWidth(65);
         }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 350, 180));

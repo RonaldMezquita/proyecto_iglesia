@@ -64,7 +64,7 @@ public class Sector implements Serializable {
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
-    @OneToMany(mappedBy = "idSector")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSector")
     private List<Comunidad> comunidadList;
 
     public Sector() {
@@ -74,12 +74,11 @@ public class Sector implements Serializable {
         this.id = id;
     }
 
-    public Sector(Integer id, String nombre, boolean estado, Date fechaCreacion, Usuario idUsuario) {
+    public Sector(Integer id, String nombre, boolean estado, Date fechaCreacion) {
         this.id = id;
         this.nombre = nombre;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
-        this.idUsuario = idUsuario;
     }
 
     public Integer getId() {
@@ -159,11 +158,9 @@ public class Sector implements Serializable {
         return true;
     }
 
-
     @Override
     public String toString() {
-        return  nombre;
+        return nombre;
     }
-    
 
 }
