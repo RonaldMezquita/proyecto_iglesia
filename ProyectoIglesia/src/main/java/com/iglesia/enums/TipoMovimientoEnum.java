@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.iglesia.utils;
+package com.iglesia.enums;
 
 /**
  *
  * @author remsf
  */
-public enum TipoMovimiento {
+public enum TipoMovimientoEnum {
     MOV_IN("ENTRADA"), MOV_OUT("SALIDA");
 
     private final String value;
 
-    private TipoMovimiento(String value) {
+    private TipoMovimientoEnum(String value) {
         this.value = value;
     }
 

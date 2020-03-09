@@ -40,9 +40,9 @@ public class Comunidad implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Basic(optional = false)
     @Column(name = "nombre")
@@ -71,12 +71,11 @@ public class Comunidad implements Serializable {
         this.id = id;
     }
 
-    public Comunidad(Integer id, String nombre, boolean estado, Date fechaCreacion,Usuario idUsuario) {
+    public Comunidad(Integer id, String nombre, boolean estado, Date fechaCreacion) {
         this.id = id;
         this.nombre = nombre;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
-        this.idUsuario = idUsuario;
     }
 
     public Integer getId() {

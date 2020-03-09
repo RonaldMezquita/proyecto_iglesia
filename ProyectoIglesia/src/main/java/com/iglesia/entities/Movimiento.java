@@ -11,7 +11,6 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author remsf
+ * @author Alexis
  */
 @Entity
 @Table(name = "movimiento")
@@ -65,13 +64,13 @@ public class Movimiento implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
     @JoinColumn(name = "id_evento", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Evento idEvento;
     @JoinColumn(name = "id_justificacion", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Justificacion idJustificacion;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Usuario idUsuario;
 
     public Movimiento() {

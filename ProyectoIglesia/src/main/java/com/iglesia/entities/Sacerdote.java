@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Sacerdote.findByApellidos", query = "SELECT s FROM Sacerdote s WHERE s.apellidos = :apellidos"),
     @NamedQuery(name = "Sacerdote.findByDui", query = "SELECT s FROM Sacerdote s WHERE s.dui = :dui"),
     @NamedQuery(name = "Sacerdote.findByNit", query = "SELECT s FROM Sacerdote s WHERE s.nit = :nit"),
+    @NamedQuery(name = "Sacerdote.findByParroco", query = "SELECT s FROM Sacerdote s WHERE s.parroco = :parroco"),
     @NamedQuery(name = "Sacerdote.findByEstado", query = "SELECT s FROM Sacerdote s WHERE s.estado = :estado"),
     @NamedQuery(name = "Sacerdote.findByFechaCreacion", query = "SELECT s FROM Sacerdote s WHERE s.fechaCreacion = :fechaCreacion"),
     @NamedQuery(name = "Sacerdote.findByFechaActualizacion", query = "SELECT s FROM Sacerdote s WHERE s.fechaActualizacion = :fechaActualizacion")})
@@ -60,6 +61,9 @@ public class Sacerdote implements Serializable {
     @Column(name = "nit")
     private String nit;
     @Basic(optional = false)
+    @Column(name = "parroco")
+    private boolean parroco;
+    @Basic(optional = false)
     @Column(name = "estado")
     private boolean estado;
     @Basic(optional = false)
@@ -80,12 +84,13 @@ public class Sacerdote implements Serializable {
         this.id = id;
     }
 
-    public Sacerdote(Integer id, String nombres, String apellidos, String dui, String nit, boolean estado, Date fechaCreacion) {
+    public Sacerdote(Integer id, String nombres, String apellidos, String dui, String nit, boolean parroco, boolean estado, Date fechaCreacion) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.dui = dui;
         this.nit = nit;
+        this.parroco = parroco;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
     }
@@ -128,6 +133,14 @@ public class Sacerdote implements Serializable {
 
     public void setNit(String nit) {
         this.nit = nit;
+    }
+
+    public boolean getParroco() {
+        return parroco;
+    }
+
+    public void setParroco(boolean parroco) {
+        this.parroco = parroco;
     }
 
     public boolean getEstado() {

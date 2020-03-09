@@ -13,15 +13,20 @@ import javax.persistence.EntityManager;
  * @author remsf
  */
 public class Test {
+
     public static void main(String[] args) {
-        EntityManager em= PersistenceManager.getEntityManager();
-        em.getTransaction().begin();
-        Usuario u = (Usuario) em.createQuery("select t from Usuario t where t.idUsuario=:usuario")
-                .setParameter("usuario", 1)
-                .getSingleResult();
-        em.getTransaction().commit();
-        System.out.println(u.getNombre());
+//        EntityManager em= PersistenceManager.getEntityManager();
+//        em.getTransaction().begin();
+//        Usuario u = (Usuario) em.createQuery("select t from Usuario t where t.idUsuario=:usuario")
+//                .setParameter("usuario", 1)
+//                .getSingleResult();
+//        em.getTransaction().commit();
+//        System.out.println(u.getNombre());
+        StringBuilder fecha = new StringBuilder("A los ")
+                .append(NumeroALetras.cantidadConLetra("2").toLowerCase()).append("dias del mes de ")
+                .append(FechasUtils.getMonthName(5).toLowerCase()).append(" del año ")
+                .append(NumeroALetras.cantidadConLetra("2020").toLowerCase());
+
+        System.out.println(fecha);
     }
 }
-
-

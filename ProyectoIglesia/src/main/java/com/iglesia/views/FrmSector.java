@@ -185,6 +185,11 @@ public class FrmSector extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jtSector);
+        if (jtSector.getColumnModel().getColumnCount() > 0) {
+            jtSector.getColumnModel().getColumn(0).setMinWidth(50);
+            jtSector.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jtSector.getColumnModel().getColumn(0).setMaxWidth(50);
+        }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 350, 180));
 

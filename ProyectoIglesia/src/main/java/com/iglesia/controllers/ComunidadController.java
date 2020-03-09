@@ -77,11 +77,12 @@ public class ComunidadController implements Serializable {
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         model = ProjectUtils.removeRows(model);
         this.items = this.comunidadService.buscarComunidad(filtro);
-        String[] datos = new String[3];
+        Object[] datos = new Object[4];
         for (Comunidad user : this.getItems()) {
             datos[0] = user.getId().toString();
             datos[1] = user.getNombre();
-            datos[2] = user.getEstado() ? "Activo" : "Inactivo";
+            datos[2] = user.getIdSector();
+            datos[3] = user.getEstado() ? "Activo" : "Inactivo";
             model.addRow(datos);
         }
         tabla.setModel(model);

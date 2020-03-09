@@ -40,14 +40,14 @@ public class FrmComunidad extends javax.swing.JFrame {
         this.txtnombre.requestFocus();
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
         this.cbestado.setSelected(true);
-        this.llenarCombo(jbcSector);
+        this.llenarCombo();
     }
     
     private void mostrarTabla(String nombre) {
         this.comunidadController.llenarTabla(this.jtComunidad, nombre);
     }
 
-    private void llenarCombo(JComboBox<Sector> cbSector) {
+    private void llenarCombo() {
         this.sectorController.getCombobox(jbcSector);
     }
 
@@ -164,7 +164,7 @@ public class FrmComunidad extends javax.swing.JFrame {
                 txtbuscarKeyReleased(evt);
             }
         });
-        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 350, -1));
+        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 360, -1));
 
         jtComunidad.setBackground(new java.awt.Color(224, 224, 224));
         jtComunidad.setForeground(new java.awt.Color(0, 0, 0));
@@ -173,14 +173,14 @@ public class FrmComunidad extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Nombre", "Estado"
+                "Id", "Nombre", "Sector", "Estado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -199,8 +199,13 @@ public class FrmComunidad extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jtComunidad);
+        if (jtComunidad.getColumnModel().getColumnCount() > 0) {
+            jtComunidad.getColumnModel().getColumn(0).setMinWidth(50);
+            jtComunidad.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jtComunidad.getColumnModel().getColumn(0).setMaxWidth(50);
+        }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 350, 180));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 360, 180));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -210,7 +215,7 @@ public class FrmComunidad extends javax.swing.JFrame {
         jbcSector.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jPanel1.add(jbcSector, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 360, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 540));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -284,7 +289,8 @@ public class FrmComunidad extends javax.swing.JFrame {
         int rowSelect = this.jtComunidad.getSelectedRow();
         this.txtid.setText(this.jtComunidad.getValueAt(rowSelect, 0).toString());
         this.txtnombre.setText(this.jtComunidad.getValueAt(rowSelect, 1).toString());
-        this.cbestado.setSelected(this.jtComunidad.getValueAt(rowSelect, 2).toString() == "Activo" ? true : false);
+        this.jbcSector.setSelectedItem(this.jtComunidad.getValueAt(rowSelect, 2));
+        this.cbestado.setSelected(this.jtComunidad.getValueAt(rowSelect, 3).toString() == "Activo" ? true : false);
     }//GEN-LAST:event_jtComunidadMouseClicked
 
     /**

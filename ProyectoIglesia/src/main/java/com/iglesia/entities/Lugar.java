@@ -12,7 +12,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author remsf
+ * @author Alexis
  */
 @Entity
 @Table(name = "lugar")
@@ -62,10 +61,10 @@ public class Lugar implements Serializable {
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idLugar", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idLugar")
     private List<Evento> eventoList;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Usuario idUsuario;
 
     public Lugar() {
