@@ -10,7 +10,6 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author remsf
+ * @author Alexis
  */
 @Entity
 @Table(name = "responsable_evento")
@@ -55,16 +54,22 @@ public class ResponsableEvento implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
     @JoinColumn(name = "id_evento", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Evento idEvento;
     @JoinColumn(name = "id_persona", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Persona idPersona;
+    @JoinColumn(name = "id_padre", referencedColumnName = "id")
+    @ManyToOne
+    private Persona idPadre;
+    @JoinColumn(name = "id_madre", referencedColumnName = "id")
+    @ManyToOne
+    private Persona idMadre;
     @JoinColumn(name = "id_relacion", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Relacion idRelacion;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Usuario idUsuario;
 
     public ResponsableEvento() {
@@ -126,6 +131,22 @@ public class ResponsableEvento implements Serializable {
 
     public void setIdPersona(Persona idPersona) {
         this.idPersona = idPersona;
+    }
+
+    public Persona getIdPadre() {
+        return idPadre;
+    }
+
+    public void setIdPadre(Persona idPadre) {
+        this.idPadre = idPadre;
+    }
+
+    public Persona getIdMadre() {
+        return idMadre;
+    }
+
+    public void setIdMadre(Persona idMadre) {
+        this.idMadre = idMadre;
     }
 
     public Relacion getIdRelacion() {

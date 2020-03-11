@@ -12,7 +12,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author remsf
+ * @author Alexis
  */
 @Entity
 @Table(name = "evento")
@@ -75,21 +74,21 @@ public class Evento implements Serializable {
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEvento", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEvento")
     private List<ResponsableEvento> responsableEventoList;
     @JoinColumn(name = "id_lugar", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Lugar idLugar;
     @JoinColumn(name = "id_sacerdote", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Sacerdote idSacerdote;
-    @JoinColumn(name = "id_tipo_evento", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private TipoEvento idTipoEvento;
+    @JoinColumn(name = "id_tipo_sacramento", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private TipoSacramentos idTipoSacramento;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Usuario idUsuario;
-    @OneToMany(mappedBy = "idEvento", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idEvento")
     private List<Movimiento> movimientoList;
 
     public Evento() {
@@ -198,12 +197,12 @@ public class Evento implements Serializable {
         this.idSacerdote = idSacerdote;
     }
 
-    public TipoEvento getIdTipoEvento() {
-        return idTipoEvento;
+    public TipoSacramentos getIdTipoSacramento() {
+        return idTipoSacramento;
     }
 
-    public void setIdTipoEvento(TipoEvento idTipoEvento) {
-        this.idTipoEvento = idTipoEvento;
+    public void setIdTipoSacramento(TipoSacramentos idTipoSacramento) {
+        this.idTipoSacramento = idTipoSacramento;
     }
 
     public Usuario getIdUsuario() {

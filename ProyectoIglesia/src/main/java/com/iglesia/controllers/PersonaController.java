@@ -10,9 +10,12 @@ import com.iglesia.entities.Usuario;
 import com.iglesia.services.PersonaService;
 import com.iglesia.utils.FechasUtils;
 import com.iglesia.utils.ProjectUtils;
+import com.iglesia.utils.RenderCellTable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,24 +24,24 @@ import javax.swing.table.DefaultTableModel;
  * @author remsf
  */
 public class PersonaController {
-
+    
     private List<Persona> items = new ArrayList<>();
     private Persona selected;
     private PersonaService personaService;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
+    
     public PersonaController() {
         this.personaService = new PersonaService();
         this.selected = new Persona();
         this.selected.setEstado(true);
     }
-
+    
     public void consultarTodos() {
         this.items = this.personaService.consultarTodos("select t from Persona t");
     }
-
+    
     public void llenarTabla(JTable tabla, String filtro) {
-        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();        
         model = ProjectUtils.removeRows(model);
         this.items = this.personaService.buscarPersona(filtro);
         String[] row = new String[8];
@@ -54,7 +57,23 @@ public class PersonaController {
             model.addRow(row);
         }
     }
-
+    
+    public void llenarTablaBusqueda(JTable tabla, String filtro) {
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        tabla.setDefaultRenderer(Object.class, new RenderCellTable());
+        model = ProjectUtils.removeRows(model);
+        this.items = this.personaService.buscarPersona(filtro);
+        Object[] row = new Object[8];
+        for (Persona item : this.items) {
+            row[0] = item.getId().toString();
+            row[1] = item.getNombres();
+            row[2] = item.getApellidos();
+            row[3] = item.getDui();
+            row[4] = new JButton("Seleccionar");
+            model.addRow(row);
+        }
+    }
+    
     public Persona crear() {
         if (this.selected == null) {
             System.out.println("PersonaController[crear()]-> Objeto persona no existe");
@@ -71,7 +90,7 @@ public class PersonaController {
         }
         return null;
     }
-
+    
     public Persona actualizar() {
         if (this.selected != null) {
             System.out.println("PersonaController[actualizar()]-> Objeto persona no existe");
@@ -88,20 +107,31 @@ public class PersonaController {
         }
         return null;
     }
+    
+    public void getCombobox(JComboBox<Persona> cbSector) {
+        this.consultarTodos();
+        Persona per = new Persona();
+        per.setNombres("*** Seleccione ***");
+        per.setApellidos("");
+        cbSector.addItem(per);
+        for (Persona item : this.items) {
+            cbSector.addItem(item);
+        }
+    }
 
     //<editor-fold defaultstate="collapsed" desc="getters & setters">
     public List<Persona> getItems() {
         return items;
     }
-
+    
     public void setItems(List<Persona> items) {
         this.items = items;
     }
-
+    
     public Persona getSelected() {
         return selected;
     }
-
+    
     public void setSelected(Persona selected) {
         this.selected = selected;
     }

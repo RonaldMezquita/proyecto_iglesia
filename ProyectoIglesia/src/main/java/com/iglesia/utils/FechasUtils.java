@@ -45,5 +45,53 @@ public class FechasUtils {
         }
         return 0;
     }
+    
+    /**
+     * Retorna el nombre del mes ingresado en formato de enteros
+     * @param mes
+     * @return 
+     */
+    public static String getMonthName(Integer mes){
+        StringBuilder monthName = new StringBuilder();
+        switch(mes){
+            case 1:
+                monthName.append("Enero");
+                break;
+            case 2:
+                monthName.append("Febrero");
+                break;
+            case 3:
+                monthName.append("Marzo");
+                break;
+            case 4:
+                monthName.append("Abril");
+                break;
+            case 5:
+                monthName.append("Mayo");
+                break;
+            case 6:
+                monthName.append("Junio");
+                break;
+            case 7:
+                monthName.append("Julio");
+                break;
+            case 8:
+                monthName.append("Agosto");
+                break;
+            case 9:
+                monthName.append("Septiembre");
+                break;
+            case 10:
+                monthName.append("Octubre");
+                break;
+            case 11:
+                monthName.append("Noviembre");
+                break;
+            case 12:
+                monthName.append("Diciembre");
+                break;
+        }
+        return monthName.toString();
+    }    
 }
 

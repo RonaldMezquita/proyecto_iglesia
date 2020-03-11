@@ -6,7 +6,7 @@
 package com.iglesia.services;
 
 import com.iglesia.entities.Sacerdote;
-import com.iglesia.entities.TipoEvento;
+import com.iglesia.entities.TipoSacramentos;
 import com.iglesia.utils.CrudUtils;
 import com.iglesia.utils.PersistenceManager;
 import java.util.List;
@@ -16,17 +16,17 @@ import javax.persistence.EntityManager;
  *
  * @author Alexis
  */
-public class TipoEventoService extends CrudUtils<TipoEvento>{
+public class TipoSacramentosService extends CrudUtils<TipoSacramentos>{
 
-    public TipoEventoService() {
-        super(TipoEvento.class);
+    public TipoSacramentosService() {
+        super(TipoSacramentos.class);
     }
-    public List<TipoEvento> buscarTipoEvento(String filtro) {
+    public List<TipoSacramentos> buscarTipoEvento(String filtro) {
         EntityManager em = PersistenceManager.getEntityManager();
         em.getTransaction().begin();
-        List<TipoEvento> lista = null;
+        List<TipoSacramentos> lista = null;
         try {
-            lista = em.createQuery("select t from TipoEvento t where t.nombre like :nombre")
+            lista = em.createQuery("select t from TipoSacramentos t where t.nombre like :nombre")
                     .setParameter("nombre", "%" + filtro + "%")
                     .getResultList();
             em.getTransaction().commit();
