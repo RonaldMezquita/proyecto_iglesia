@@ -10,25 +10,25 @@ import com.iglesia.controllers.SectorController;
 import com.iglesia.entities.Sector;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Alexis
  */
-public class FrmComunidad extends javax.swing.JFrame {
+public class DlgComunidad extends javax.swing.JDialog {
 
     /**
-     * Creates new form FrmComunidad
+     * Creates new form DlgComunidad
      */
     private ComunidadController comunidadController;
     private List<String> excepciones = new ArrayList<>();
     private SectorController sectorController;
-    
-    public FrmComunidad() {
+    public DlgComunidad(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         this.comunidadController = new ComunidadController();
         this.sectorController = new SectorController();
@@ -42,7 +42,6 @@ public class FrmComunidad extends javax.swing.JFrame {
         this.cbestado.setSelected(true);
         this.llenarCombo();
     }
-    
     private void mostrarTabla(String nombre) {
         this.comunidadController.llenarTabla(this.jtComunidad, nombre);
     }
@@ -50,7 +49,34 @@ public class FrmComunidad extends javax.swing.JFrame {
     private void llenarCombo() {
         this.sectorController.getCombobox(jbcSector);
     }
-
+    private void crear() {
+        this.excepciones.add("id");
+        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
+            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (this.comunidadController.crear() == null) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        ProjectUtils.limpiarComponentes(this.jPanel1);
+        this.mostrarTabla("");
+    }
+    
+    private void actualizar() {
+        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
+            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (this.comunidadController.actualizar() == null) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        this.mostrarTabla("");
+        ProjectUtils.limpiarComponentes(this.jPanel1);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,7 +102,7 @@ public class FrmComunidad extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jbcSector = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -199,11 +225,6 @@ public class FrmComunidad extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jtComunidad);
-        if (jtComunidad.getColumnModel().getColumnCount() > 0) {
-            jtComunidad.getColumnModel().getColumn(0).setMinWidth(50);
-            jtComunidad.getColumnModel().getColumn(0).setPreferredWidth(50);
-            jtComunidad.getColumnModel().getColumn(0).setMaxWidth(50);
-        }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 360, 180));
 
@@ -221,7 +242,7 @@ public class FrmComunidad extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
-        System.exit(0);
+        this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jbsalirActionPerformed
 
     private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
@@ -231,44 +252,17 @@ public class FrmComunidad extends javax.swing.JFrame {
     private void cbestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbestadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbestadoActionPerformed
-    private void crear() {
-        this.excepciones.add("id");
-        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (this.comunidadController.crear() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-        ProjectUtils.limpiarComponentes(this.jPanel1);
-        this.mostrarTabla("");
-    }
-    
-    private void actualizar() {
-        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (this.comunidadController.actualizar() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-        this.mostrarTabla("");
-        ProjectUtils.limpiarComponentes(this.jPanel1);
-    }
+
     private void jbingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbingresarActionPerformed
         this.comunidadController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.comunidadController.getSelected().setNombre(this.txtnombre.getText());
-        this.comunidadController.getSelected().setEstado(this.cbestado.isSelected());       
+        this.comunidadController.getSelected().setEstado(this.cbestado.isSelected());
         if (((Sector) this.jbcSector.getSelectedItem()).getId() == null) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         this.comunidadController.getSelected().setIdSector((Sector) this.jbcSector.getSelectedItem());
-//        this.comunidadController.getSelected().setIdSector(((Sector) this.jbcSector.getSelectedItem()).getId() != null ? this.jbcSector.getSelectedItem() : null);
+        //        this.comunidadController.getSelected().setIdSector(((Sector) this.jbcSector.getSelectedItem()).getId() != null ? this.jbcSector.getSelectedItem() : null);
         if (this.comunidadController.getSelected().getId() == null) {
             this.crear();
         } else {
@@ -310,20 +304,28 @@ public class FrmComunidad extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmComunidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgComunidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmComunidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgComunidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmComunidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgComunidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmComunidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgComunidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmComunidad().setVisible(true);
+                DlgComunidad dialog = new DlgComunidad(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

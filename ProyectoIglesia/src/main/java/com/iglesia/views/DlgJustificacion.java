@@ -8,6 +8,7 @@ package com.iglesia.views;
 import com.iglesia.controllers.JustificacionController;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -16,15 +17,16 @@ import javax.swing.JOptionPane;
  *
  * @author Alexis
  */
-public class FrmJustificacion extends javax.swing.JFrame {
+public class DlgJustificacion extends javax.swing.JDialog {
 
     /**
-     * Creates new form FrmJustificacion
+     * Creates new form DlgJustificacion
      */
     private JustificacionController justificacionController;
     private List<String> excepciones = new ArrayList<>();
-
-    public FrmJustificacion() {
+    
+    public DlgJustificacion(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         this.justificacionController = new JustificacionController();
         this.txtid.setVisible(false);
@@ -35,7 +37,37 @@ public class FrmJustificacion extends javax.swing.JFrame {
         this.txtnombre.requestFocus();
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
         this.cbestado.setSelected(true);
+    }
+    private void mostrarTabla(String nombre) {
+        this.justificacionController.llenarTabla(this.jtJustificacion, nombre);
+    }
+    private void crear() {
+        this.excepciones.add("id");
+        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
+            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (this.justificacionController.crear() == null) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        ProjectUtils.limpiarComponentes(this.jPanel1);
+        this.mostrarTabla("");
+    }
 
+    private void actualizar() {
+        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
+            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (this.justificacionController.actualizar() == null) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        this.mostrarTabla("");
+        ProjectUtils.limpiarComponentes(this.jPanel1);
     }
 
     /**
@@ -61,7 +93,7 @@ public class FrmJustificacion extends javax.swing.JFrame {
         jbsalir = new javax.swing.JButton();
         txtid = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -134,14 +166,6 @@ public class FrmJustificacion extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jtJustificacion);
-        if (jtJustificacion.getColumnModel().getColumnCount() > 0) {
-            jtJustificacion.getColumnModel().getColumn(0).setMinWidth(50);
-            jtJustificacion.getColumnModel().getColumn(0).setPreferredWidth(50);
-            jtJustificacion.getColumnModel().getColumn(0).setMaxWidth(50);
-            jtJustificacion.getColumnModel().getColumn(2).setMinWidth(75);
-            jtJustificacion.getColumnModel().getColumn(2).setPreferredWidth(75);
-            jtJustificacion.getColumnModel().getColumn(2).setMaxWidth(75);
-        }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 350, 180));
 
@@ -197,34 +221,7 @@ public class FrmJustificacion extends javax.swing.JFrame {
         this.txtnombre.setText(this.jtJustificacion.getValueAt(rowSelect, 1).toString());
         this.cbestado.setSelected(this.jtJustificacion.getValueAt(rowSelect, 2).toString() == "Activo" ? true : false);
     }//GEN-LAST:event_jtJustificacionMouseClicked
-    private void crear() {
-        this.excepciones.add("id");
-        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (this.justificacionController.crear() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-        ProjectUtils.limpiarComponentes(this.jPanel1);
-        this.mostrarTabla("");
-    }
 
-    private void actualizar() {
-        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (this.justificacionController.actualizar() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-        this.mostrarTabla("");
-        ProjectUtils.limpiarComponentes(this.jPanel1);
-    }
     private void jbingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbingresarActionPerformed
         this.justificacionController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.justificacionController.getSelected().setNombre(this.txtnombre.getText());
@@ -242,12 +239,8 @@ public class FrmJustificacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jblimpiarActionPerformed
 
     private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
-        System.exit(0);
+        this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jbsalirActionPerformed
-
-    private void mostrarTabla(String nombre) {
-        this.justificacionController.llenarTabla(this.jtJustificacion, nombre);
-    }
 
     /**
      * @param args the command line arguments
@@ -266,20 +259,28 @@ public class FrmJustificacion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmJustificacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgJustificacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmJustificacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgJustificacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmJustificacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgJustificacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmJustificacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgJustificacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmJustificacion().setVisible(true);
+                DlgJustificacion dialog = new DlgJustificacion(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
