@@ -8,7 +8,6 @@ package com.iglesia.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javafx.beans.binding.StringBinding;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -221,6 +220,10 @@ public class Persona implements Serializable {
 
     public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
+    }
+    
+    public String nombreCompleto(){
+        return new StringBuilder(this.nombres).append(" ").append(this.apellidos).toString();
     }
 
     @Override
