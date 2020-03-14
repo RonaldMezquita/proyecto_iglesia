@@ -116,18 +116,18 @@ public class DlgSacerdote extends javax.swing.JDialog {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(158, 158, 158));
+        jPanel1.setBackground(new java.awt.Color(55, 71, 79));
         jPanel1.setToolTipText("si esta activo es parroco");
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Mantenimiento de Sacerdotes");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 910, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, -1, -1));
 
@@ -141,7 +141,7 @@ public class DlgSacerdote extends javax.swing.JDialog {
         jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, 310, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Apellido");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, -1, -1));
 
@@ -150,11 +150,11 @@ public class DlgSacerdote extends javax.swing.JDialog {
         jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 310, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Parroco");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, -1, -1));
 
-        cbestado.setForeground(new java.awt.Color(0, 0, 0));
+        cbestado.setForeground(new java.awt.Color(255, 255, 255));
         cbestado.setText("Activo");
         jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, -1, -1));
 
@@ -241,22 +241,22 @@ public class DlgSacerdote extends javax.swing.JDialog {
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Dui");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nit");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Estado");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, -1, -1));
 
         cbParroco.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        cbParroco.setForeground(new java.awt.Color(0, 0, 0));
+        cbParroco.setForeground(new java.awt.Color(255, 255, 255));
         cbParroco.setText("Es Parroco");
         jPanel1.add(cbParroco, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, -1, -1));
 

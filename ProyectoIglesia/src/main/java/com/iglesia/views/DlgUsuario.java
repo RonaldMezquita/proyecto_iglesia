@@ -108,7 +108,7 @@ public class DlgUsuario extends javax.swing.JDialog {
         setSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(158, 158, 158));
+        jPanel1.setBackground(new java.awt.Color(55, 71, 79));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtid.setEditable(false);
@@ -116,7 +116,7 @@ public class DlgUsuario extends javax.swing.JDialog {
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, -1));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ingreso de Usuarios");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
@@ -186,12 +186,12 @@ public class DlgUsuario extends javax.swing.JDialog {
         jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 310, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Apellido");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, -1, -1));
 
@@ -200,7 +200,7 @@ public class DlgUsuario extends javax.swing.JDialog {
         jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 310, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Usuario");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, -1, -1));
 
@@ -208,11 +208,11 @@ public class DlgUsuario extends javax.swing.JDialog {
         jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 310, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Estado");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, -1, -1));
 
-        cbestado.setForeground(new java.awt.Color(0, 0, 0));
+        cbestado.setForeground(new java.awt.Color(255, 255, 255));
         cbestado.setText("Activo");
         jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, -1, -1));
 

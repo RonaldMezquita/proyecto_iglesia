@@ -106,7 +106,7 @@ public class DlgComunidad extends javax.swing.JDialog {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(158, 158, 158));
+        jPanel1.setBackground(new java.awt.Color(55, 71, 79));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtid.setEditable(false);
@@ -116,23 +116,23 @@ public class DlgComunidad extends javax.swing.JDialog {
         jbsalir.setBackground(new java.awt.Color(204, 0, 0));
         jbsalir.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         jbsalir.setForeground(new java.awt.Color(255, 255, 255));
-        jbsalir.setText("Salir");
+        jbsalir.setText("X");
         jbsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 70, 30));
+        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 40, 30));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Mantenimiento Comunidades");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 360, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Sector");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
@@ -147,12 +147,12 @@ public class DlgComunidad extends javax.swing.JDialog {
         jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 360, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Estado");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
         cbestado.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        cbestado.setForeground(new java.awt.Color(0, 0, 0));
+        cbestado.setForeground(new java.awt.Color(255, 255, 255));
         cbestado.setText("Activo");
         cbestado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,7 +229,7 @@ public class DlgComunidad extends javax.swing.JDialog {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 360, 180));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 

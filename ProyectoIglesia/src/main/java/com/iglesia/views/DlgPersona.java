@@ -122,18 +122,18 @@ public class DlgPersona extends javax.swing.JDialog {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(158, 158, 158));
+        jPanel1.setBackground(new java.awt.Color(55, 71, 79));
         jPanel1.setForeground(new java.awt.Color(189, 189, 189));
         jPanel1.setPreferredSize(new java.awt.Dimension(560, 560));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Mantenimiento de Personas");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombres");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 90, -1, -1));
 
@@ -141,7 +141,7 @@ public class DlgPersona extends javax.swing.JDialog {
         jPanel1.add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 110, 230, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Apellidos");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 140, -1, -1));
 
@@ -159,17 +159,17 @@ public class DlgPersona extends javax.swing.JDialog {
         jPanel1.add(txtsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 0, 70, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("DUI");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 190, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("NIT");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 240, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Estado");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 470, -1, -1));
 
@@ -181,7 +181,7 @@ public class DlgPersona extends javax.swing.JDialog {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 370, 270, 90));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Fecha de nacimiento");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 300, -1, -1));
 
@@ -255,11 +255,12 @@ public class DlgPersona extends javax.swing.JDialog {
         });
         jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 380, -1));
 
+        cbestado.setForeground(new java.awt.Color(255, 255, 255));
         cbestado.setText("Activo");
         jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 490, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Direccion");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 350, -1, -1));
 
