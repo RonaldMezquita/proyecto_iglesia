@@ -8,6 +8,7 @@ package com.iglesia.views;
 import com.iglesia.controllers.SacerdoteController;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -16,17 +17,18 @@ import javax.swing.JOptionPane;
  *
  * @author Alexis
  */
-public class FrmSacerdote extends javax.swing.JFrame {
+public class DlgSacerdote extends javax.swing.JDialog {
 
     /**
-     * Creates new form FrmSacerdote
+     * Creates new form DlgSacerdote
      */
     private javax.swing.JFormattedTextField txtdui;
     private javax.swing.JFormattedTextField txtnit;
     private SacerdoteController sacerdoteController;
     private List<String> excepciones = new ArrayList<>();
-
-    public FrmSacerdote() {
+    
+    public DlgSacerdote(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         this.sacerdoteController = new SacerdoteController();
         // comienza generacion de campos formateados
@@ -48,9 +50,37 @@ public class FrmSacerdote extends javax.swing.JFrame {
         this.cbestado.setSelected(true);
         this.cbParroco.setSelected(true);
     }
-
+    
     private void mostrarTabla(String filtro) {
         this.sacerdoteController.llenarTabla(tbsacerdote, filtro);
+    }
+    private void crear() {
+        this.excepciones.add("id");
+        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
+            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (this.sacerdoteController.crear() == null) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        ProjectUtils.limpiarComponentes(this.jPanel1);
+        this.mostrarTabla("");
+    }
+
+    private void actualizar() {
+        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
+            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (this.sacerdoteController.actualizar() == null) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        this.mostrarTabla("");
+        ProjectUtils.limpiarComponentes(this.jPanel1);
     }
 
     /**
@@ -82,7 +112,7 @@ public class FrmSacerdote extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         cbParroco = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -193,17 +223,6 @@ public class FrmSacerdote extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tbsacerdote);
-        if (tbsacerdote.getColumnModel().getColumnCount() > 0) {
-            tbsacerdote.getColumnModel().getColumn(0).setMinWidth(50);
-            tbsacerdote.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tbsacerdote.getColumnModel().getColumn(0).setMaxWidth(50);
-            tbsacerdote.getColumnModel().getColumn(3).setMinWidth(100);
-            tbsacerdote.getColumnModel().getColumn(3).setPreferredWidth(100);
-            tbsacerdote.getColumnModel().getColumn(3).setMaxWidth(100);
-            tbsacerdote.getColumnModel().getColumn(4).setMinWidth(120);
-            tbsacerdote.getColumnModel().getColumn(4).setPreferredWidth(120);
-            tbsacerdote.getColumnModel().getColumn(4).setMaxWidth(120);
-        }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 550, 320));
 
@@ -249,34 +268,7 @@ public class FrmSacerdote extends javax.swing.JFrame {
     private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnombreActionPerformed
-    private void crear() {
-        this.excepciones.add("id");
-        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (this.sacerdoteController.crear() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-        ProjectUtils.limpiarComponentes(this.jPanel1);
-        this.mostrarTabla("");
-    }
 
-    private void actualizar() {
-        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (this.sacerdoteController.actualizar() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-        this.mostrarTabla("");
-        ProjectUtils.limpiarComponentes(this.jPanel1);
-    }
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         this.sacerdoteController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.sacerdoteController.getSelected().setNombres(this.txtnombre.getText());
@@ -313,7 +305,7 @@ public class FrmSacerdote extends javax.swing.JFrame {
     }//GEN-LAST:event_tbsacerdoteMouseClicked
 
     private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
-        System.exit(0);
+        this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jbsalirActionPerformed
 
     /**
@@ -333,20 +325,27 @@ public class FrmSacerdote extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmSacerdote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgSacerdote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmSacerdote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgSacerdote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmSacerdote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgSacerdote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmSacerdote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgSacerdote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmSacerdote().setVisible(true);
+                DlgSacerdote dialog = new DlgSacerdote(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
