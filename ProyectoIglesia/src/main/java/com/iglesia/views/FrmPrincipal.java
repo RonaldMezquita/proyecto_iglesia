@@ -32,7 +32,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnBoda = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmFile = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        menuUsuarios = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -56,8 +56,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jmFile.setText("File");
         jMenuBar1.add(jmFile);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        menuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-clientes.png"))); // NOI18N
+        menuUsuarios.setText("Usuarios");
+        menuUsuarios.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        menuUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuUsuariosMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(menuUsuarios);
 
         setJMenuBar(jMenuBar1);
 
@@ -73,6 +80,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 //        obj.setShape(rectangle);
         obj.setVisible(true);
     }//GEN-LAST:event_btnBodaActionPerformed
+
+    private void menuUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuUsuariosMouseClicked
+        DlgUsuario obj = new DlgUsuario(this, true);
+        obj.setVisible(true);
+    }//GEN-LAST:event_menuUsuariosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -112,9 +124,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBoda;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton jbAbrirDialog;
     private javax.swing.JMenu jmFile;
+    private javax.swing.JMenu menuUsuarios;
     // End of variables declaration//GEN-END:variables
 }

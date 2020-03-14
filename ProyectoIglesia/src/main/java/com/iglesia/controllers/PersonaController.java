@@ -72,7 +72,7 @@ public class PersonaController {
         tabla.setDefaultRenderer(Object.class, new RenderCellTable());
         model = ProjectUtils.removeRows(model);
         this.items = this.personaService.buscarPersona(filtro);
-        ImageIcon imagen = new ImageIcon(this.getClass().getResource("/META-INF/images/select.png"));
+        ImageIcon imagen = new ImageIcon(this.getClass().getResource("/META-INF/images/icon/x26-aceptar2_azul.png"));
         int ancho = 25; // ancho en pixeles que tendra el icono escalado
         int alto = 25;//-1; // alto (para que conserve la proporcion pasamos -1)
 
@@ -82,6 +82,7 @@ public class PersonaController {
         JButton btn = new JButton();
         btn.setLayout(new AbsoluteLayout());
         btn.setBounds(0, 0, 25, 25);
+        btn.setToolTipText("Click para seleccionar persona.!");
         btn.setSize(alto, ancho);
 //        icono = new ImageIcon(imagen.getImage().getScaledInstance(btn.getWidth(), btn.getHeight(), Image.SCALE_DEFAULT));
         btn.setIcon(iconoEscala);

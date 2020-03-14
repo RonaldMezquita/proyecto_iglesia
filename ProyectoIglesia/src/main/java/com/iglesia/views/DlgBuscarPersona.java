@@ -37,6 +37,7 @@ public class DlgBuscarPersona extends javax.swing.JDialog {
         this.mostrarTabla("");
         new TextPrompt("Digite para buscar en nombres o apellidos", this.txtBuscar);
         this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.black));
+        this.txtBuscar.requestFocus();
     }
 
     private void mostrarTabla(String filtro) {
@@ -65,7 +66,7 @@ public class DlgBuscarPersona extends javax.swing.JDialog {
         setSize(new java.awt.Dimension(520, 410));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(158, 158, 158));
+        jPanel1.setBackground(new java.awt.Color(55, 71, 79));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tbpersona.setModel(new javax.swing.table.DefaultTableModel(
@@ -119,8 +120,10 @@ public class DlgBuscarPersona extends javax.swing.JDialog {
         });
         jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 390, -1));
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-listar.png"))); // NOI18N
         jLabel1.setText("Haga click en el boton seleccionar para elegir una persona");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 340, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 370, -1));
 
         jbCerrar.setBackground(new java.awt.Color(204, 0, 0));
         jbCerrar.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
@@ -131,7 +134,7 @@ public class DlgBuscarPersona extends javax.swing.JDialog {
                 jbCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 70, -1));
+        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 50, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 410));
 
