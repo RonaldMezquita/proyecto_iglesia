@@ -8,6 +8,7 @@ package com.iglesia.views;
 import com.iglesia.controllers.PersonaController;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
+import java.awt.event.WindowEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,19 +17,20 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author remsf
+ * @author Alexis
  */
-public class FrmPersona extends javax.swing.JFrame {
+public class DlgPersona extends javax.swing.JDialog {
 
+    /**
+     * Creates new form DlgPersona
+     */
     private javax.swing.JFormattedTextField txtdui;
     private javax.swing.JFormattedTextField txtnit;
     private PersonaController personaController;
     private List<String> excepciones = new ArrayList<>();
-
-    /**
-     * Creates new form FrmPersona
-     */
-    public FrmPersona() {
+    
+    public DlgPersona(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         this.personaController = new PersonaController();
         // comienza generacion de campos formateados
@@ -52,7 +54,7 @@ public class FrmPersona extends javax.swing.JFrame {
         new TextPrompt("Digite para buscar en nombres o apellidos", this.txtbuscar);
         this.cbestado.setSelected(true);
     }
-
+    
     private void mostrarTabla(String filtro) {
         this.personaController.llenarTabla(tbpersona, filtro);
     }
@@ -116,10 +118,8 @@ public class FrmPersona extends javax.swing.JFrame {
         cbestado = new javax.swing.JCheckBox();
         jLabel8 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
-        setResizable(false);
-        setSize(getPreferredSize());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(158, 158, 158));
@@ -244,23 +244,6 @@ public class FrmPersona extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(tbpersona);
-        if (tbpersona.getColumnModel().getColumnCount() > 0) {
-            tbpersona.getColumnModel().getColumn(0).setMinWidth(80);
-            tbpersona.getColumnModel().getColumn(0).setPreferredWidth(80);
-            tbpersona.getColumnModel().getColumn(0).setMaxWidth(80);
-            tbpersona.getColumnModel().getColumn(3).setMinWidth(100);
-            tbpersona.getColumnModel().getColumn(3).setPreferredWidth(100);
-            tbpersona.getColumnModel().getColumn(3).setMaxWidth(100);
-            tbpersona.getColumnModel().getColumn(4).setMinWidth(120);
-            tbpersona.getColumnModel().getColumn(4).setPreferredWidth(120);
-            tbpersona.getColumnModel().getColumn(4).setMaxWidth(120);
-            tbpersona.getColumnModel().getColumn(5).setMinWidth(90);
-            tbpersona.getColumnModel().getColumn(5).setPreferredWidth(90);
-            tbpersona.getColumnModel().getColumn(5).setMaxWidth(90);
-            tbpersona.getColumnModel().getColumn(7).setMinWidth(75);
-            tbpersona.getColumnModel().getColumn(7).setPreferredWidth(75);
-            tbpersona.getColumnModel().getColumn(7).setMaxWidth(75);
-        }
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 830, 400));
 
@@ -286,7 +269,7 @@ public class FrmPersona extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsalirActionPerformed
-        System.exit(0);
+        this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_txtsalirActionPerformed
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
@@ -350,20 +333,27 @@ public class FrmPersona extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmPersona().setVisible(true);
+                DlgPersona dialog = new DlgPersona(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

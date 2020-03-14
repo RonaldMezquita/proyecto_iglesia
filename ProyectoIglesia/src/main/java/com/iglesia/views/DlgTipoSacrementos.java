@@ -5,9 +5,10 @@
  */
 package com.iglesia.views;
 
-import com.iglesia.controllers.SectorController;
+import com.iglesia.controllers.TipoSacramentosController;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -16,16 +17,18 @@ import javax.swing.JOptionPane;
  *
  * @author Alexis
  */
-public class FrmSector extends javax.swing.JFrame {
+public class DlgTipoSacrementos extends javax.swing.JDialog {
 
     /**
-     * Creates new form FrmSector
+     * Creates new form DlgTipoSacrementos
      */
-    private SectorController sectorController;
+    private TipoSacramentosController tipoEventoController;
     private List<String> excepciones = new ArrayList<>();
-    public FrmSector() {
-        initComponents();        
-        this.sectorController = new SectorController();
+
+    public DlgTipoSacrementos(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        this.tipoEventoController = new TipoSacramentosController();
         this.txtid.setVisible(false);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -35,8 +38,38 @@ public class FrmSector extends javax.swing.JFrame {
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
         this.cbestado.setSelected(true);
     }
+
     private void mostrarTabla(String nombre) {
-        this.sectorController.llenarTabla(this.jtSector, nombre);
+        this.tipoEventoController.llenarTabla(this.jtTipoEvento, nombre);
+    }
+
+    private void crear() {
+        this.excepciones.add("id");
+        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
+            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (this.tipoEventoController.crear() == null) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        ProjectUtils.limpiarComponentes(this.jPanel1);
+        this.mostrarTabla("");
+    }
+
+    private void actualizar() {
+        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
+            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (this.tipoEventoController.actualizar() == null) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        this.mostrarTabla("");
+        ProjectUtils.limpiarComponentes(this.jPanel1);
     }
 
     /**
@@ -60,13 +93,15 @@ public class FrmSector extends javax.swing.JFrame {
         jblimpiar = new javax.swing.JButton();
         txtbuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtSector = new javax.swing.JTable();
+        jtTipoEvento = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(158, 158, 158));
+        jPanel1.setMinimumSize(new java.awt.Dimension(380, 490));
+        jPanel1.setPreferredSize(new java.awt.Dimension(380, 490));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtid.setEditable(false);
@@ -87,7 +122,7 @@ public class FrmSector extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Mantenimiento Sector");
+        jLabel1.setText("Mantenimiento Tipo de Sacramento");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 360, -1));
 
@@ -104,7 +139,7 @@ public class FrmSector extends javax.swing.JFrame {
                 txtnombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 360, -1));
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 350, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -152,9 +187,9 @@ public class FrmSector extends javax.swing.JFrame {
         });
         jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 350, -1));
 
-        jtSector.setBackground(new java.awt.Color(224, 224, 224));
-        jtSector.setForeground(new java.awt.Color(0, 0, 0));
-        jtSector.setModel(new javax.swing.table.DefaultTableModel(
+        jtTipoEvento.setBackground(new java.awt.Color(224, 224, 224));
+        jtTipoEvento.setForeground(new java.awt.Color(0, 0, 0));
+        jtTipoEvento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -177,29 +212,24 @@ public class FrmSector extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jtSector.setSelectionBackground(new java.awt.Color(189, 189, 189));
-        jtSector.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jtSector.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtTipoEvento.setSelectionBackground(new java.awt.Color(189, 189, 189));
+        jtTipoEvento.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        jtTipoEvento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtSectorMouseClicked(evt);
+                jtTipoEventoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jtSector);
-        if (jtSector.getColumnModel().getColumnCount() > 0) {
-            jtSector.getColumnModel().getColumn(0).setMinWidth(50);
-            jtSector.getColumnModel().getColumn(0).setPreferredWidth(50);
-            jtSector.getColumnModel().getColumn(0).setMaxWidth(50);
-        }
+        jScrollPane1.setViewportView(jtTipoEvento);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 350, 180));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 350, 200));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 470));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
-        System.exit(0);
+        this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jbsalirActionPerformed
 
     private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
@@ -210,39 +240,11 @@ public class FrmSector extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbestadoActionPerformed
 
-    private void crear() {
-        this.excepciones.add("id");
-        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (this.sectorController.crear() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-        ProjectUtils.limpiarComponentes(this.jPanel1);
-        this.mostrarTabla("");
-    }
-
-    private void actualizar() {
-        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (this.sectorController.actualizar() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-        this.mostrarTabla("");
-        ProjectUtils.limpiarComponentes(this.jPanel1);
-    }
     private void jbingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbingresarActionPerformed
-        this.sectorController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
-        this.sectorController.getSelected().setNombre(this.txtnombre.getText());
-        this.sectorController.getSelected().setEstado(this.cbestado.isSelected());
-        if (this.sectorController.getSelected().getId() == null) {
+        this.tipoEventoController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
+        this.tipoEventoController.getSelected().setNombre(this.txtnombre.getText());
+        this.tipoEventoController.getSelected().setEstado(this.cbestado.isSelected());
+        if (this.tipoEventoController.getSelected().getId() == null) {
             this.crear();
         } else {
             this.actualizar();
@@ -258,12 +260,12 @@ public class FrmSector extends javax.swing.JFrame {
         this.mostrarTabla(txtbuscar.getText());
     }//GEN-LAST:event_txtbuscarKeyReleased
 
-    private void jtSectorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtSectorMouseClicked
-        int rowSelect = this.jtSector.getSelectedRow();
-        this.txtid.setText(this.jtSector.getValueAt(rowSelect, 0).toString());
-        this.txtnombre.setText(this.jtSector.getValueAt(rowSelect, 1).toString());
-        this.cbestado.setSelected(this.jtSector.getValueAt(rowSelect, 2).toString() == "Activo" ? true : false);
-    }//GEN-LAST:event_jtSectorMouseClicked
+    private void jtTipoEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtTipoEventoMouseClicked
+        int rowSelect = this.jtTipoEvento.getSelectedRow();
+        this.txtid.setText(this.jtTipoEvento.getValueAt(rowSelect, 0).toString());
+        this.txtnombre.setText(this.jtTipoEvento.getValueAt(rowSelect, 1).toString());
+        this.cbestado.setSelected(this.jtTipoEvento.getValueAt(rowSelect, 2).toString() == "Activo" ? true : false);
+    }//GEN-LAST:event_jtTipoEventoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -282,20 +284,27 @@ public class FrmSector extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmSector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgTipoSacrementos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmSector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgTipoSacrementos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmSector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgTipoSacrementos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmSector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgTipoSacrementos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmSector().setVisible(true);
+                DlgTipoSacrementos dialog = new DlgTipoSacrementos(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -310,7 +319,7 @@ public class FrmSector extends javax.swing.JFrame {
     private javax.swing.JButton jbingresar;
     private javax.swing.JButton jblimpiar;
     private javax.swing.JButton jbsalir;
-    private javax.swing.JTable jtSector;
+    private javax.swing.JTable jtTipoEvento;
     private javax.swing.JTextField txtbuscar;
     private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtnombre;
