@@ -97,22 +97,22 @@ public class DlgJustificacion extends javax.swing.JDialog {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(158, 158, 158));
+        jPanel1.setBackground(new java.awt.Color(55, 71, 79));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Mantenimiento de Justificación");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 400, -1));
 
         lbNombre.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        lbNombre.setForeground(new java.awt.Color(0, 0, 0));
+        lbNombre.setForeground(new java.awt.Color(255, 255, 255));
         lbNombre.setText("Nombre");
         jPanel1.add(lbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 70, -1));
 
         lbEstado.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        lbEstado.setForeground(new java.awt.Color(0, 0, 0));
+        lbEstado.setForeground(new java.awt.Color(255, 255, 255));
         lbEstado.setText("Estado");
         jPanel1.add(lbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 50, -1));
 
@@ -120,7 +120,7 @@ public class DlgJustificacion extends javax.swing.JDialog {
         jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 360, -1));
 
         cbestado.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        cbestado.setForeground(new java.awt.Color(0, 0, 0));
+        cbestado.setForeground(new java.awt.Color(255, 255, 255));
         cbestado.setText("Activo");
         jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 100, -1));
 
