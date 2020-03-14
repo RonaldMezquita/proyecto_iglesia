@@ -6,26 +6,37 @@
 package com.iglesia.views;
 
 import com.iglesia.controllers.PersonaController;
+import com.iglesia.entities.Persona;
 import com.iglesia.utils.TextPrompt;
+import java.awt.Color;
+import java.awt.event.WindowEvent;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 /**
  *
- * @author Alexis
+ * @author remsf
  */
-public class FrmBuscar extends javax.swing.JFrame {
+public class DlgBuscarPersona extends javax.swing.JDialog {
+
+    private PersonaController personaController;
+    private Persona persona;
+
+    public Persona getPersona() {
+        return persona;
+    }
 
     /**
-     * Creates new form FrmBuscar
+     * Creates new form DlgBuscarPersona
      */
-    private PersonaController personaController;
-
-    public FrmBuscar() {
+    public DlgBuscarPersona(javax.swing.JDialog parent, boolean modal) {
+        super(parent, modal);
         initComponents();
-        this.personaController = new PersonaController();
         this.setLocationRelativeTo(null);
+        this.personaController = new PersonaController();
         this.mostrarTabla("");
-        new TextPrompt("Digite para buscar en nombres o apellidos", this.txtbuscar);
+        new TextPrompt("Digite para buscar en nombres o apellidos", this.txtBuscar);
+        this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.black));
     }
 
     private void mostrarTabla(String filtro) {
@@ -42,24 +53,20 @@ public class FrmBuscar extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtbuscar = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbpersona = new javax.swing.JTable();
+        txtBuscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jbCerrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
+        setResizable(false);
+        setSize(new java.awt.Dimension(520, 410));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(158, 158, 158));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtbuscarKeyReleased(evt);
-            }
-        });
-        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 360, -1));
 
         tbpersona.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,9 +100,11 @@ public class FrmBuscar extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tbpersona);
         if (tbpersona.getColumnModel().getColumnCount() > 0) {
-            tbpersona.getColumnModel().getColumn(0).setMinWidth(50);
-            tbpersona.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tbpersona.getColumnModel().getColumn(0).setMaxWidth(50);
+            tbpersona.getColumnModel().getColumn(0).setMinWidth(30);
+            tbpersona.getColumnModel().getColumn(0).setPreferredWidth(30);
+            tbpersona.getColumnModel().getColumn(0).setMaxWidth(45);
+            tbpersona.getColumnModel().getColumn(3).setResizable(false);
+            tbpersona.getColumnModel().getColumn(3).setPreferredWidth(40);
             tbpersona.getColumnModel().getColumn(4).setMinWidth(25);
             tbpersona.getColumnModel().getColumn(4).setPreferredWidth(25);
             tbpersona.getColumnModel().getColumn(4).setMaxWidth(25);
@@ -103,11 +112,26 @@ public class FrmBuscar extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 480, 250));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Buscar Persona");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 480, -1));
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 390, -1));
+
+        jLabel1.setText("Haga click en el boton seleccionar para elegir una persona");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 340, -1));
+
+        jbCerrar.setBackground(new java.awt.Color(204, 0, 0));
+        jbCerrar.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        jbCerrar.setText("X");
+        jbCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCerrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 70, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 410));
 
@@ -124,16 +148,20 @@ public class FrmBuscar extends javax.swing.JFrame {
             if (value instanceof JButton) {
                 ((JButton) value).doClick();
                 JButton btn = (JButton) value;
-                String id = this.tbpersona.getValueAt(row, 0).toString();
-                System.out.println("click enb el boton= "+id);
+                Integer id = Integer.parseInt(this.tbpersona.getValueAt(row, 0).toString());
+                this.persona = this.personaController.consultarPorId(id);
+                this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
             }
         }
-
     }//GEN-LAST:event_tbpersonaMouseClicked
 
-    private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
-        this.mostrarTabla(this.txtbuscar.getText());
-    }//GEN-LAST:event_txtbuscarKeyReleased
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        this.mostrarTabla(this.txtBuscar.getText());
+    }//GEN-LAST:event_txtBuscarKeyReleased
+
+    private void jbCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarActionPerformed
+        this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+    }//GEN-LAST:event_jbCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,20 +180,29 @@ public class FrmBuscar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgBuscarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgBuscarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgBuscarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgBuscarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmBuscar().setVisible(true);
+                DlgBuscarPersona dialog = new DlgBuscarPersona(new javax.swing.JDialog(), true
+                );
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -174,7 +211,8 @@ public class FrmBuscar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton jbCerrar;
     private javax.swing.JTable tbpersona;
-    private javax.swing.JTextField txtbuscar;
+    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
