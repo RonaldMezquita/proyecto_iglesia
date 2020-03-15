@@ -30,6 +30,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jbAbrirDialog = new javax.swing.JButton();
         btnBoda = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmFile = new javax.swing.JMenu();
         menuUsuarios = new javax.swing.JMenu();
@@ -37,6 +38,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jbAbrirDialog.setBackground(new java.awt.Color(62, 69, 81));
+        jbAbrirDialog.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jbAbrirDialog.setForeground(new java.awt.Color(255, 255, 255));
         jbAbrirDialog.setText("Abrir Dialogo");
         jbAbrirDialog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,6 +49,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(jbAbrirDialog, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
+        btnBoda.setBackground(new java.awt.Color(62, 69, 81));
+        btnBoda.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnBoda.setForeground(new java.awt.Color(255, 255, 255));
+        btnBoda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/x26-clientes.png"))); // NOI18N
         btnBoda.setText("Boda");
         btnBoda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,6 +60,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBoda, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Fondo.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jmFile.setText("File");
         jMenuBar1.add(jmFile);
@@ -124,6 +135,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBoda;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton jbAbrirDialog;
     private javax.swing.JMenu jmFile;
