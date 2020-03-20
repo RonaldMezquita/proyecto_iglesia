@@ -175,6 +175,10 @@ public class Sacerdote implements Serializable {
         this.idUsuario = idUsuario;
     }
 
+    public String getNombreCompleto() {
+        return new StringBuilder(this.nombres).append(" ").append(this.apellidos).toString();
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -199,5 +203,5 @@ public class Sacerdote implements Serializable {
     public String toString() {
         return "com.iglesia.entities.Sacerdote[ id=" + id + " ]";
     }
-    
+
 }

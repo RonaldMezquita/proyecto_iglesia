@@ -8,11 +8,13 @@ package com.iglesia.views;
 import com.iglesia.controllers.PersonaController;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
+import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,7 +30,7 @@ public class DlgPersona extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField txtnit;
     private PersonaController personaController;
     private List<String> excepciones = new ArrayList<>();
-    
+
     public DlgPersona(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -37,12 +39,12 @@ public class DlgPersona extends javax.swing.JDialog {
         txtdui = ProjectUtils.getCampoDui();
         txtdui.setName("dui");
         txtdui.setFont(new java.awt.Font("Dialog", 0, 14));
-        jPanel1.add(txtdui, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 210, 90, -1));
+        jPanel1.add(txtdui, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 210, 90, -1));
 
         txtnit = ProjectUtils.getCampoNit();
         txtnit.setName("nit");
         txtnit.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 260, 142, -1));
+        jPanel1.add(txtnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 260, 142, -1));
         // termina generacion de campos formateados
         this.setLocationRelativeTo(null);
         this.txtnombres.requestFocus();
@@ -53,8 +55,9 @@ public class DlgPersona extends javax.swing.JDialog {
         this.mostrarTabla("");
         new TextPrompt("Digite para buscar en nombres o apellidos", this.txtbuscar);
         this.cbestado.setSelected(true);
+        this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
     }
-    
+
     private void mostrarTabla(String filtro) {
         this.personaController.llenarTabla(tbpersona, filtro);
     }
@@ -101,7 +104,7 @@ public class DlgPersona extends javax.swing.JDialog {
         txtnombres = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtapellidos = new javax.swing.JTextField();
-        txtsalir = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -135,59 +138,59 @@ public class DlgPersona extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombres");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 90, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 90, -1, -1));
 
         txtnombres.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 110, 230, -1));
+        jPanel1.add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 110, 230, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Apellidos");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 140, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 140, -1, -1));
 
         txtapellidos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtapellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 160, 230, -1));
+        jPanel1.add(txtapellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 160, 230, -1));
 
-        txtsalir.setBackground(new java.awt.Color(204, 0, 0));
-        txtsalir.setForeground(new java.awt.Color(255, 255, 255));
-        txtsalir.setText("Salir");
-        txtsalir.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setBackground(new java.awt.Color(204, 0, 0));
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setText("X");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtsalirActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(txtsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 0, 70, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 0, 40, 32));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("DUI");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 190, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("NIT");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 240, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 240, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Estado");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 470, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 470, -1, -1));
 
         txtdireccion.setColumns(20);
         txtdireccion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtdireccion.setRows(5);
         jScrollPane1.setViewportView(txtdireccion);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 370, 270, 90));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, 270, 90));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Fecha de nacimiento");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 300, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 300, -1, -1));
 
         txtfechanacimiento.setDateFormatString("dd/MM/yyyy");
         txtfechanacimiento.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtfechanacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 320, 160, -1));
+        jPanel1.add(txtfechanacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 320, 160, -1));
 
         btnguardar.setBackground(new java.awt.Color(13, 71, 161));
         btnguardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -198,7 +201,7 @@ public class DlgPersona extends javax.swing.JDialog {
                 btnguardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 530, -1, -1));
+        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 530, -1, -1));
 
         btncancelar.setBackground(new java.awt.Color(255, 136, 0));
         btncancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -209,7 +212,7 @@ public class DlgPersona extends javax.swing.JDialog {
                 btncancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 530, -1, -1));
+        jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 530, -1, -1));
 
         txtid.setName("idPersona"); // NOI18N
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 60, 40, -1));
@@ -244,8 +247,25 @@ public class DlgPersona extends javax.swing.JDialog {
             }
         });
         jScrollPane2.setViewportView(tbpersona);
+        if (tbpersona.getColumnModel().getColumnCount() > 0) {
+            tbpersona.getColumnModel().getColumn(0).setMinWidth(40);
+            tbpersona.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tbpersona.getColumnModel().getColumn(0).setMaxWidth(40);
+            tbpersona.getColumnModel().getColumn(3).setMinWidth(85);
+            tbpersona.getColumnModel().getColumn(3).setPreferredWidth(85);
+            tbpersona.getColumnModel().getColumn(3).setMaxWidth(85);
+            tbpersona.getColumnModel().getColumn(4).setMinWidth(120);
+            tbpersona.getColumnModel().getColumn(4).setPreferredWidth(120);
+            tbpersona.getColumnModel().getColumn(4).setMaxWidth(120);
+            tbpersona.getColumnModel().getColumn(5).setMinWidth(85);
+            tbpersona.getColumnModel().getColumn(5).setPreferredWidth(85);
+            tbpersona.getColumnModel().getColumn(5).setMaxWidth(85);
+            tbpersona.getColumnModel().getColumn(7).setMinWidth(60);
+            tbpersona.getColumnModel().getColumn(7).setPreferredWidth(60);
+            tbpersona.getColumnModel().getColumn(7).setMaxWidth(60);
+        }
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 830, 400));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 780, 400));
 
         txtbuscar.setName("buscar"); // NOI18N
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -257,23 +277,24 @@ public class DlgPersona extends javax.swing.JDialog {
 
         cbestado.setForeground(new java.awt.Color(255, 255, 255));
         cbestado.setText("Activo");
-        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 490, -1, -1));
+        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 490, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Direccion");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 350, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 350, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 580));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsalirActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
-    }//GEN-LAST:event_txtsalirActionPerformed
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+//        this.personaController.prepararCrear();
         this.personaController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.personaController.getSelected().setNombres(this.txtnombres.getText());
         this.personaController.getSelected().setApellidos(this.txtapellidos.getText());
@@ -360,6 +381,7 @@ public class DlgPersona extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btnguardar;
     private javax.swing.JCheckBox cbestado;
@@ -381,6 +403,5 @@ public class DlgPersona extends javax.swing.JDialog {
     private com.toedter.calendar.JDateChooser txtfechanacimiento;
     private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtnombres;
-    private javax.swing.JButton txtsalir;
     // End of variables declaration//GEN-END:variables
 }
