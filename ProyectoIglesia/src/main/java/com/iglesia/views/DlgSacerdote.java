@@ -8,9 +8,11 @@ package com.iglesia.views;
 import com.iglesia.controllers.SacerdoteController;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
+import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
 /**
@@ -49,6 +51,7 @@ public class DlgSacerdote extends javax.swing.JDialog {
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
         this.cbestado.setSelected(true);
         this.cbParroco.setSelected(true);
+        this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
     }
     
     private void mostrarTabla(String filtro) {
@@ -117,7 +120,6 @@ public class DlgSacerdote extends javax.swing.JDialog {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(55, 71, 79));
-        jPanel1.setToolTipText("si esta activo es parroco");
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -223,18 +225,35 @@ public class DlgSacerdote extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(tbsacerdote);
+        if (tbsacerdote.getColumnModel().getColumnCount() > 0) {
+            tbsacerdote.getColumnModel().getColumn(0).setMinWidth(30);
+            tbsacerdote.getColumnModel().getColumn(0).setPreferredWidth(30);
+            tbsacerdote.getColumnModel().getColumn(0).setMaxWidth(45);
+            tbsacerdote.getColumnModel().getColumn(3).setMinWidth(80);
+            tbsacerdote.getColumnModel().getColumn(3).setPreferredWidth(80);
+            tbsacerdote.getColumnModel().getColumn(3).setMaxWidth(80);
+            tbsacerdote.getColumnModel().getColumn(4).setMinWidth(125);
+            tbsacerdote.getColumnModel().getColumn(4).setPreferredWidth(125);
+            tbsacerdote.getColumnModel().getColumn(4).setMaxWidth(125);
+            tbsacerdote.getColumnModel().getColumn(5).setMinWidth(55);
+            tbsacerdote.getColumnModel().getColumn(5).setPreferredWidth(55);
+            tbsacerdote.getColumnModel().getColumn(5).setMaxWidth(55);
+            tbsacerdote.getColumnModel().getColumn(6).setMinWidth(51);
+            tbsacerdote.getColumnModel().getColumn(6).setPreferredWidth(51);
+            tbsacerdote.getColumnModel().getColumn(6).setMaxWidth(51);
+        }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 550, 320));
 
         jbsalir.setBackground(new java.awt.Color(204, 0, 0));
         jbsalir.setForeground(new java.awt.Color(255, 255, 255));
-        jbsalir.setText("Salir");
+        jbsalir.setText("X");
         jbsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 0, 60, 30));
+        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, 40, 32));
 
         txtid.setEditable(false);
         txtid.setName("id"); // NOI18N

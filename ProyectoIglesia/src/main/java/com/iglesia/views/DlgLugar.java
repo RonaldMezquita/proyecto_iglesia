@@ -8,9 +8,11 @@ package com.iglesia.views;
 import com.iglesia.controllers.LugarController;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
+import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,6 +39,7 @@ public class DlgLugar extends javax.swing.JDialog {
         this.txtnombre.requestFocus();
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
         this.cbestado.setSelected(true);
+        this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
     }
     private void mostrarTabla(String nombre) {
         this.lugarController.llenarTabla(this.jtLugar, nombre);
@@ -196,15 +199,14 @@ public class DlgLugar extends javax.swing.JDialog {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 350, 180));
 
         jbsalir.setBackground(new java.awt.Color(204, 0, 0));
-        jbsalir.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         jbsalir.setForeground(new java.awt.Color(255, 255, 255));
-        jbsalir.setText("Salir");
+        jbsalir.setText("X");
         jbsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 70, 30));
+        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 40, 32));
 
         txtid.setEditable(false);
         txtid.setName("id"); // NOI18N

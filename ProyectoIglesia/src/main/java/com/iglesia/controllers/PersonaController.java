@@ -7,6 +7,7 @@ package com.iglesia.controllers;
 
 import com.iglesia.entities.Persona;
 import com.iglesia.entities.Usuario;
+import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.services.PersonaService;
 import com.iglesia.utils.FechasUtils;
 import com.iglesia.utils.ProjectUtils;
@@ -14,13 +15,10 @@ import com.iglesia.utils.RenderCellTable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 /**
  *
@@ -35,6 +33,10 @@ public class PersonaController {
 
     public PersonaController() {
         this.personaService = new PersonaService();
+        this.prepararCrear();
+    }
+
+    public void prepararCrear() {
         this.selected = new Persona();
         this.selected.setEstado(true);
     }
@@ -52,7 +54,7 @@ public class PersonaController {
     public void llenarTabla(JTable tabla, String filtro) {
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         model = ProjectUtils.removeRows(model);
-        this.items = this.personaService.buscarPersona(filtro);
+        this.items = this.personaService.buscarPersona(filtro.trim(), TipoBusquedaEnum.NOMBRE);
         String[] row = new String[8];
         for (Persona item : this.items) {
             row[0] = item.getId().toString();
@@ -67,26 +69,13 @@ public class PersonaController {
         }
     }
 
-    public void llenarTablaBusqueda(JTable tabla, String filtro) {
+    public void llenarTablaBusqueda(JTable tabla, String filtro, TipoBusquedaEnum tipo) {
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         tabla.setDefaultRenderer(Object.class, new RenderCellTable());
         model = ProjectUtils.removeRows(model);
-        this.items = this.personaService.buscarPersona(filtro);
-        ImageIcon imagen = new ImageIcon(this.getClass().getResource("/META-INF/images/icon/x26-aceptar2_azul.png"));
-        int ancho = 25; // ancho en pixeles que tendra el icono escalado
-        int alto = 25;//-1; // alto (para que conserve la proporcion pasamos -1)
-
-// Obtiene un icono en escala con las dimensiones especificadas
-        ImageIcon iconoEscala = new ImageIcon(imagen.getImage().getScaledInstance(ancho, alto, java.awt.Image.SCALE_DEFAULT));
-        Icon icono;
-        JButton btn = new JButton();
-        btn.setLayout(new AbsoluteLayout());
-        btn.setBounds(0, 0, 25, 25);
-        btn.setToolTipText("Click para seleccionar persona.!");
-        btn.setSize(alto, ancho);
-//        icono = new ImageIcon(imagen.getImage().getScaledInstance(btn.getWidth(), btn.getHeight(), Image.SCALE_DEFAULT));
-        btn.setIcon(iconoEscala);
-        Object[] row = new Object[8];
+        this.items = this.personaService.buscarPersona(filtro.trim(), tipo);
+        JButton btn = ProjectUtils.getButtonToSelect(this.getClass());
+        Object[] row = new Object[5];
         for (Persona item : this.items) {
             row[0] = item.getId().toString();
             row[1] = item.getNombres();
@@ -115,7 +104,7 @@ public class PersonaController {
     }
 
     public Persona actualizar() {
-        if (this.selected != null) {
+        if (this.selected == null) {
             System.out.println("PersonaController[actualizar()]-> Objeto persona no existe");
             return null;
         }

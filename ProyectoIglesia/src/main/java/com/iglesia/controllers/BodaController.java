@@ -5,7 +5,7 @@
  */
 package com.iglesia.controllers;
 
-import com.iglesia.dto.BodaDto;
+import com.iglesia.dtos.BodaDto;
 import com.iglesia.utils.FechasUtils;
 import java.util.List;
 
