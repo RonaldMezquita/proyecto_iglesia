@@ -62,13 +62,12 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tbpersona">
+            <Component class="javax.swing.JTable" name="tbSacerdote">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="0">
+                  <Table columnCount="4" rowCount="0">
                     <Column editable="false" title="ID" type="java.lang.String"/>
-                    <Column editable="false" title="Nombres" type="java.lang.String"/>
-                    <Column editable="false" title="Apellidos" type="java.lang.String"/>
+                    <Column editable="false" title="Nombre Completo" type="java.lang.String"/>
                     <Column editable="false" title="DUI" type="java.lang.String"/>
                     <Column editable="false" title="" type="java.lang.Object"/>
                   </Table>
@@ -85,12 +84,7 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="40" resizable="false">
+                    <Column maxWidth="90" minWidth="90" prefWidth="90" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -108,7 +102,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbpersonaMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbSacerdoteMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
@@ -131,7 +125,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/META-INF/images/icon/x26-listar.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Haga click en el boton seleccionar para elegir una persona"/>
+            <Property name="text" type="java.lang.String" value="Haga click en el boton seleccionar para elegir un sacerdote"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -158,16 +152,16 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JButton" name="btnNuevaPersona">
+        <Component class="javax.swing.JButton" name="btnNuevoSacerdote">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/META-INF/images/icon/x26-addUser.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Registrar nueva persona"/>
+            <Property name="text" type="java.lang.String" value="Registrar nuevo sacedote"/>
             <Property name="horizontalAlignment" type="int" value="10"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNuevaPersonaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNuevoSacerdoteActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -224,7 +218,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Busqueda de Personas"/>
+            <Property name="text" type="java.lang.String" value="Busqueda de Sacerdote"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

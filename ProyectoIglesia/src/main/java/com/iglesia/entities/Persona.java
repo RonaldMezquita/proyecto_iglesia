@@ -222,7 +222,7 @@ public class Persona implements Serializable {
         this.idUsuario = idUsuario;
     }
     
-    public String nombreCompleto(){
+    public String getNombreCompleto(){
         return new StringBuilder(this.nombres).append(" ").append(this.apellidos).toString();
     }
 

@@ -8,9 +8,11 @@ package com.iglesia.views;
 import com.iglesia.controllers.UsuarioController;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
+import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,6 +39,7 @@ public class DlgUsuario extends javax.swing.JDialog {
         this.txtnombre.requestFocus();
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
         this.cbestado.setSelected(true);
+        this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
     }
 
     DlgUsuario() {
@@ -122,13 +125,14 @@ public class DlgUsuario extends javax.swing.JDialog {
 
         jbsalir.setBackground(new java.awt.Color(204, 0, 0));
         jbsalir.setForeground(new java.awt.Color(255, 255, 255));
-        jbsalir.setText("Salir");
+        jbsalir.setText("X");
+        jbsalir.setToolTipText("");
         jbsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 60, 30));
+        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 32));
 
         txtbuscar.setName("buscar"); // NOI18N
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {

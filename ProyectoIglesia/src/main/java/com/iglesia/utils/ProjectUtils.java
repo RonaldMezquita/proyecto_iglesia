@@ -9,9 +9,10 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.Component;
 import java.text.ParseException;
 import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -131,8 +132,26 @@ public class ProjectUtils {
         return new javax.swing.JFormattedTextField(ProjectUtils.mascaraNit());
     }
     
-    public static String fmtLike(String param) {
+    public static String fmtLikeContain(String param) {
         return new StringBuilder("%").append(param).append("%").toString();
+    }
+    public static String fmtLikeBegins(String param) {
+        return new StringBuilder(param).append("%").toString();
+    }
+    public static String fmtLikeEnds(String param) {
+        return new StringBuilder("%").append(param).toString();
+    }
+    
+    public static JButton getButtonToSelect(Class clase){
+        ImageIcon img = new ImageIcon(clase.getResource("/META-INF/images/icon/x26-aceptar2_azul.png"));
+        //int ancho = 25; // ancho en pixeles que tendra el icono escalado
+        //int alto = 25;//-1; // alto (para que conserve la proporcion pasamos -1)
+
+        // Obtiene un icono en escala con las dimensiones especificadas        
+        //ImageIcon icon = new ImageIcon(img.getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT));
+        JButton btn = new JButton();
+        btn.setIcon(img);
+        return btn;
     }
 }
 

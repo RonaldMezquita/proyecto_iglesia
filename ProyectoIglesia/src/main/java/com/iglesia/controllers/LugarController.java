@@ -7,11 +7,14 @@ package com.iglesia.controllers;
 
 import com.iglesia.entities.Lugar;
 import com.iglesia.entities.Usuario;
+import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.services.LugarService;
 import com.iglesia.utils.FechasUtils;
 import com.iglesia.utils.ProjectUtils;
+import com.iglesia.utils.RenderCellTable;
 import java.io.Serializable;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -84,6 +87,21 @@ public class LugarController implements Serializable {
             datos[0] = user.getId().toString();
             datos[1] = user.getNombre();
             datos[2] = user.getEstado() ? "Activo" : "Inactivo";
+            model.addRow(datos);
+        }
+        tabla.setModel(model);
+    }
+    public void llenarTablaBusqueda(JTable tabla, String filtro, TipoBusquedaEnum tipo) {
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        tabla.setDefaultRenderer(Object.class, new RenderCellTable());
+        model = ProjectUtils.removeRows(model);
+        this.items = this.lugarService.buscarLugar(filtro);
+        JButton btn = ProjectUtils.getButtonToSelect(this.getClass());
+        Object[] datos = new Object[3];
+        for (Lugar user : this.getItems()) {
+            datos[0] = user.getId().toString();
+            datos[1] = user.getNombre();
+            datos[2] = btn;
             model.addRow(datos);
         }
         tabla.setModel(model);
