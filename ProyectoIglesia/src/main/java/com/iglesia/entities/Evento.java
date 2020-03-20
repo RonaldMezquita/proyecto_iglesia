@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -74,7 +73,7 @@ public class Evento implements Serializable {
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEvento")
+    @OneToMany(mappedBy = "idEvento")
     private List<ResponsableEvento> responsableEventoList;
     @JoinColumn(name = "id_lugar", referencedColumnName = "id")
     @ManyToOne(optional = false)
