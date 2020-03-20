@@ -34,6 +34,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jmFile = new javax.swing.JMenu();
         menuUsuarios = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -52,7 +53,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnBoda.setBackground(new java.awt.Color(62, 69, 81));
         btnBoda.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBoda.setForeground(new java.awt.Color(255, 255, 255));
-        btnBoda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/x26-clientes.png"))); // NOI18N
+        btnBoda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/Boda.png"))); // NOI18N
         btnBoda.setText("Boda");
         btnBoda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +76,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 menuUsuariosMouseClicked(evt);
             }
         });
+
+        jMenuItem1.setText("Usuarios");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuUsuarios.add(jMenuItem1);
+
         jMenuBar1.add(menuUsuarios);
 
         setJMenuBar(jMenuBar1);
@@ -93,9 +103,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBodaActionPerformed
 
     private void menuUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuUsuariosMouseClicked
+        
+    }//GEN-LAST:event_menuUsuariosMouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         DlgUsuario obj = new DlgUsuario(this, true);
         obj.setVisible(true);
-    }//GEN-LAST:event_menuUsuariosMouseClicked
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,6 +151,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnBoda;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JButton jbAbrirDialog;
     private javax.swing.JMenu jmFile;
     private javax.swing.JMenu menuUsuarios;
