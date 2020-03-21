@@ -74,7 +74,7 @@ public class PersonaController {
         tabla.setDefaultRenderer(Object.class, new RenderCellTable());
         model = ProjectUtils.removeRows(model);
         this.items = this.personaService.buscarPersona(filtro.trim(), tipo);
-        JButton btn = ProjectUtils.getButtonToSelect(this.getClass());
+        JButton btn = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/x26-aceptar2_azul.png"), null);
         Object[] row = new Object[5];
         for (Persona item : this.items) {
             row[0] = item.getId().toString();

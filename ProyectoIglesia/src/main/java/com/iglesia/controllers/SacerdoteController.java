@@ -23,28 +23,28 @@ import javax.swing.table.DefaultTableModel;
  * @author Alexis
  */
 public class SacerdoteController implements Serializable {
-    
+
     private Sacerdote selected;
     private List<Sacerdote> items;
     private SacerdoteService sacerdoteService;
-    
+
     public SacerdoteController() {
         this.sacerdoteService = new SacerdoteService();
         this.selected = new Sacerdote();
         this.selected.setEstado(true);
         this.selected.setIdUsuario(new Usuario(1));
     }
-    
+
     public void consultarTodos() {
         this.items = this.sacerdoteService.consultarTodos("select t from Sacerdote t");
     }
-    
+
     public Sacerdote consultarPorId(Integer id) {
         this.selected = this.sacerdoteService.consultarPor("select t from Sacerdote t where t.id=:id",
                 "id", id);
         return this.selected;
     }
-    
+
     public Sacerdote crear() {
         if (this.selected == null) {
             System.out.println("SacerdoteController[crear()]-> objeto Sacerdote no existe");
@@ -60,7 +60,7 @@ public class SacerdoteController implements Serializable {
         }
         return null;
     }
-    
+
     public Sacerdote actualizar() {
         if (this.selected == null) {
             System.out.println("SacerdoteController[actualizar()]-> objeto Sacerdote no existe");
@@ -76,7 +76,7 @@ public class SacerdoteController implements Serializable {
         }
         return null;
     }
-    
+
     public void llenarTabla(JTable tabla, String filtro) {
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         model = ProjectUtils.removeRows(model);
@@ -94,13 +94,13 @@ public class SacerdoteController implements Serializable {
         }
         tabla.setModel(model);
     }
-    
+
     public void llenarTablaBusqueda(JTable tabla, String filtro, TipoBusquedaEnum tipo) {
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         tabla.setDefaultRenderer(Object.class, new RenderCellTable());
         model = ProjectUtils.removeRows(model);
-        this.items = this.sacerdoteService.buscarSacerdote(filtro.trim(), tipo);        
-        JButton btn = ProjectUtils.getButtonToSelect(this.getClass());
+        this.items = this.sacerdoteService.buscarSacerdote(filtro.trim(), tipo);
+        JButton btn = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/x26-aceptar2_azul.png"), null);
         Object[] datos = new Object[4];
         for (Sacerdote item : this.getItems()) {
             datos[0] = item.getId().toString();
@@ -116,23 +116,23 @@ public class SacerdoteController implements Serializable {
     public Sacerdote getSelected() {
         return selected;
     }
-    
+
     public void setSelected(Sacerdote selected) {
         this.selected = selected;
     }
-    
+
     public List<Sacerdote> getItems() {
         return items;
     }
-    
+
     public void setItems(List<Sacerdote> items) {
         this.items = items;
     }
-    
+
     public SacerdoteService getSacerdoteService() {
         return sacerdoteService;
     }
-    
+
     public void setSacerdoteService(SacerdoteService sacerdoteService) {
         this.sacerdoteService = sacerdoteService;
     }

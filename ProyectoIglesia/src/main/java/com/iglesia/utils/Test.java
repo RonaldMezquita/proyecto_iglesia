@@ -2,11 +2,14 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+*/
 package com.iglesia.utils;
 
-import com.iglesia.entities.Usuario;
-import javax.persistence.EntityManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,11 +25,21 @@ public class Test {
 //                .getSingleResult();
 //        em.getTransaction().commit();
 //        System.out.println(u.getNombre());
-        StringBuilder fecha = new StringBuilder("A los ")
-                .append(NumeroALetras.cantidadConLetra("2").toLowerCase()).append("dias del mes de ")
-                .append(FechasUtils.getMonthName(5).toLowerCase()).append(" del año ")
-                .append(NumeroALetras.cantidadConLetra("2020").toLowerCase());
-
-        System.out.println(fecha);
-    }
+//        StringBuilder fecha = new StringBuilder("A los ")
+//                .append(NumeroALetras.cantidadConLetra("2").toLowerCase()).append("dias del mes de ")
+//                .append(FechasUtils.getMonthName(5).toLowerCase()).append(" del año ")
+//                .append(NumeroALetras.cantidadConLetra("2020").toLowerCase());
+//
+//        System.out.println(fecha);
+        Conexion con = new Conexion();
+        try {
+            PreparedStatement ps = con.getConexion().prepareStatement("select * from persona");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                System.out.println(rs.getString("nombres"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+        }               
+    }    
 }

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.iglesia.enums;
+package com.iglesia.utils;
 
 /**
  *
- * @author remsf
+ * @author Alexis
  */
-public enum TipoBusquedaEnum {
-    NOMBRE,DUI,FECHA,RANGO_FECHA;
+class PreparadStatement {
+    
 }
