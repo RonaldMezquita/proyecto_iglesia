@@ -10,5 +10,5 @@ package com.iglesia.enums;
  * @author remsf
  */
 public enum TipoBusquedaEnum {
-    NOMBRE,DUI;
+    NOMBRE,DUI,FECHA,RANGO_FECHA;
 }

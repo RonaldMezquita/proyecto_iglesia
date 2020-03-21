@@ -152,7 +152,7 @@ WHERE e.id= $P{id_evento}]]>
 			<staticText>
 				<reportElement x="0" y="20" width="550" height="30" uuid="35817342-7453-458b-a0f6-2bea4bb1641e"/>
 				<textElement textAlignment="Center">
-					<font size="18"/>
+					<font size="18" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[FE DE CONFIRMACION]]></text>
 			</staticText>
@@ -168,7 +168,7 @@ WHERE e.id= $P{id_evento}]]>
 		<band height="211" splitType="Stretch">
 			<textField>
 				<reportElement x="37" y="0" width="483" height="120" uuid="8260706c-c48a-43b3-9350-6c21e80903a4"/>
-				<textFieldExpression><![CDATA["El infrascrito Párroco de “Nuestra Señora de Valvanera” CERTIFICA: que en el Tomo " +$F{tomo}+", folio "+$F{folio}+" Nº "+$F{numero}+" de Confirmaciones de este Archivo Parroquial, se registra la partida que literalmente dice: Nos, Mons. Romeo Tovar Astorga, por la gracia de Dios y benignidad de la Sede Apostólica Obispado de la Diócesis de Santa Ana, "+ $P{fecha_evento}+", en la Iglesia parroquial de "+$F{locacion}+" administramos el SACRAMENTO DE LA CONFIRMACIÓN a: "+$F{sacramentado_nombre} +", hijo de"+ $F{padre_nombre}+" y de "+$F{madre_nombre}+". Nació el "+$P{fecha_nacimiento}+". Bautizado en la parroquia El Carmen. Padrino: "+$F{padrino}+". Conste. Al margen se lee: Nº "+$F{numero}+" "+$F{sacramentado_nombre}+". "]]></textFieldExpression>
+				<textFieldExpression><![CDATA["El infrascrito Párroco de  <b> “Nuestra Señora de Valvanera” </b> CERTIFICA: que en el Tomo " +$F{tomo}+", folio "+$F{folio}+" Nº "+$F{numero}+" de Confirmaciones de este Archivo Parroquial, se registra la partida que literalmente dice: Nos, Mons. Romeo Tovar Astorga, por la gracia de Dios y benignidad de la Sede Apostólica Obispado de la Diócesis de Santa Ana, "+ $P{fecha_evento}+", en la Iglesia parroquial de "+$F{locacion}+" administramos el  <b>SACRAMENTO DE LA CONFIRMACIÓN </b> a:  <b>"+$F{sacramentado_nombre} +" </b>, hijo de"+ $F{padre_nombre}+" y de "+$F{madre_nombre}+". Nació el "+$P{fecha_nacimiento}+". Bautizado en la parroquia El Carmen. Padrino: "+$F{padrino}+". Conste. Al margen se lee: Nº "+$F{numero}+" "+$F{sacramentado_nombre}+". "]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="49" y="160" width="472" height="30" uuid="7c671e44-66a1-4e95-8348-c3733f7b44d0"/>

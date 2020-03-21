@@ -5,7 +5,7 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="id_evento" class="java.lang.Integer"/>
 	<parameter name="fecha_evento" class="java.lang.String"/>
-	<parameter name="fecha_emicion" class="java.lang.String"/>
+	<parameter name="fecha_emision" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[WITH testigo AS(
 SELECT res.id idRes,
@@ -209,7 +209,7 @@ WHERE e.id=$P{id_evento}]]>
 			<staticText>
 				<reportElement x="0" y="20" width="550" height="30" uuid="35eb3a5c-533d-42ce-bfff-55b052a55b6b"/>
 				<textElement textAlignment="Center">
-					<font size="18"/>
+					<font fontName="Times New Roman" size="18" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ACTA DE MATRIMONIO RELIGIOSO]]></text>
 			</staticText>
@@ -222,34 +222,33 @@ WHERE e.id=$P{id_evento}]]>
 		<band height="61" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="217" splitType="Stretch">
+		<band height="293" splitType="Stretch">
 			<textField>
 				<reportElement x="49" y="10" width="472" height="160" uuid="14f068cc-afd4-4a5c-b15d-19067b566d21"/>
+				<textElement markup="html">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["El infrascrito Párroco de <b>\"Nuestra Señora de Valvanera\"</b> CERTIFICA: que en el <b>Tomo "+$F{tomo} +", Folio " +$F{folio}+"</b> de Matrimonios de este Archivo Parroquial, se registra la partida que literalmente dice: En la Parroquia de"+$F{Locacion}+", el día "+$P{fecha_evento}+", previos los trámites del Derecho Civil y Canónico, el Señor <b>"+$F{novio_nombre} +" DUI# "+$F{novio_dui}+"</b> de "+$F{novio_edad}+" años de edad, hijo de "+$F{novio_padre_nombre}+" y de "+$F{novio_madre_nombre}+". Originario de Santa Ana, El Salvador y vecino de "+$F{novio_padre_dir}+". Contrajo Matrimonio Eclesiástico con <b>"+$F{novia_nombre}+" DUI# "+$F{novia_dui}+"</b> de "+$F{novia_edad}+" años de edad, hija de "+$F{novia_padre_nombre}+" y de "+$F{novia_madre_nombre}+". Originaria de San Salvador, El Salvador y vecina de "+$F{novia_padre_dir}+".   Fueron testigos: "+$F{testigo1_nombre}+" DUI# "+$F{testigo1_dui}+" y "+$F{testigo2_nombre}+" DUI# "+$F{testigo2_dui}+".<br/>Dado en Santa Ana, a "+$P{fecha_emision}+"."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="230" width="210" height="20" uuid="e762ea5a-45df-4c03-be32-fdad1e325f4a"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pbro  "+$F{Nombre_parroco}
+]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="49" y="250" width="211" height="20" uuid="f7837279-518e-43b9-bf7e-7d4e5bd11a5b"/>
 				<textElement>
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA["El infrascrito Párroco de \"Nuestra Señora de Valvanera\" CERTIFICA: que en el Tomo "+$F{tomo} +", Folio" +$F{folio}+" de Matrimonios de este Archivo Parroquial, se registra la partida que literalmente dice: En la Parroquia de"+$F{Locacion}+", el día"+$P{fecha_evento}+", previos los trámites del Derecho Civil y Canónico, el Señor "+$F{novio_nombre} +" DUI# "+$F{novio_dui}+" de "+$F{novio_edad}+" años de edad, hijo de "+$F{novio_padre_nombre}+" y de "+$F{novio_madre_nombre}+". Originario de Santa Ana, El Salvador y vecino de "+$F{novio_padre_dir}+". Contrajo Matrimonio Eclesiástico con "+$F{novia_nombre}+" DUI# "+$F{novia_dui}+" de "+$F{novia_edad}+" años de edad, hija de "+$F{novia_padre_nombre}+" y de "+$F{novia_madre_nombre}+". Originaria de San Salvador, El Salvador y vecina de "+$F{novia_padre_dir}+".   Fueron testigos: "+$F{testigo1_nombre}+" DUI# "+$F{testigo1_dui}+" y "+$F{testigo2_nombre}+" DUI# "+$F{testigo2_dui}+"."]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="49" y="180" width="472" height="30" uuid="872d87e5-4e2d-4704-85f8-f0a093e0fd09"/>
-				<textFieldExpression><![CDATA["Dado en Santa Ana, a "+$P{fecha_emicion}+"."]]></textFieldExpression>
-			</textField>
+				<text><![CDATA[Párroco]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="90" splitType="Stretch">
-			<line direction="BottomUp">
-				<reportElement x="138" y="34" width="290" height="1" uuid="b98c8789-9089-4e23-98d0-4bd3eb8cca63">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-			</line>
-			<textField>
-				<reportElement x="210" y="40" width="140" height="50" uuid="e762ea5a-45df-4c03-be32-fdad1e325f4a"/>
-				<textFieldExpression><![CDATA["Pbro  "+$F{Nombre_parroco}+
-"				Parroco"]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="48" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>

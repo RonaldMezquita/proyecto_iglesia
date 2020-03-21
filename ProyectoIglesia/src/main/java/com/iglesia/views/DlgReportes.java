@@ -5,13 +5,20 @@
  */
 package com.iglesia.views;
 
+import com.iglesia.controllers.EventoController;
+import com.iglesia.entities.Evento;
+import java.awt.Color;
 import java.awt.event.WindowEvent;
+import javax.swing.BorderFactory;
 
 /**
  *
  * @author Alexis
  */
 public class DlgReportes extends javax.swing.JDialog {
+
+    private final EventoController eventoController;
+    private Evento evento;
 
     /**
      * Creates new form DlgReportes
@@ -21,6 +28,8 @@ public class DlgReportes extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+        this.eventoController = new EventoController();
     }
 
     /**
@@ -33,12 +42,12 @@ public class DlgReportes extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jbsalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNovio = new javax.swing.JTextField();
+        txtEvento = new javax.swing.JTextField();
         btnBuscarNovio = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
+        jbCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -47,27 +56,19 @@ public class DlgReportes extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(55, 71, 79));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jbsalir.setBackground(new java.awt.Color(204, 0, 0));
-        jbsalir.setForeground(new java.awt.Color(255, 255, 255));
-        jbsalir.setText("Salir");
-        jbsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbsalirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 60, 30));
-
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Fe de Bautizo");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 330, -1));
+        jLabel1.setText("Informe a Imprimir");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 440, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Buscar");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
-        jPanel1.add(txtNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 200, -1));
+
+        txtEvento.setEditable(false);
+        jPanel1.add(txtEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 310, -1));
 
         btnBuscarNovio.setText("Buscar");
         btnBuscarNovio.addActionListener(new java.awt.event.ActionListener() {
@@ -75,25 +76,52 @@ public class DlgReportes extends javax.swing.JDialog {
                 btnBuscarNovioActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 80, 30));
+        jPanel1.add(btnBuscarNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 80, 30));
 
-        jButton1.setBackground(new java.awt.Color(13, 71, 161));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setText("Imprimir");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
+        btnImprimir.setBackground(new java.awt.Color(13, 71, 161));
+        btnImprimir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnImprimir.setForeground(new java.awt.Color(255, 255, 255));
+        btnImprimir.setText("Imprimir");
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 220));
+        jbCerrar.setBackground(new java.awt.Color(204, 0, 0));
+        jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        jbCerrar.setText("X");
+        jbCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCerrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 40, 32));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 220));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
-        this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
-    }//GEN-LAST:event_jbsalirActionPerformed
-
     private void btnBuscarNovioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNovioActionPerformed
-        
+        DlgBuscarEvento obj = new DlgBuscarEvento(this, true);
+        obj.setVisible(true);
+        if (obj.getEvento() != null) {
+            this.evento = obj.getEvento();
+            this.txtEvento.setText(this.evento.getIdTipoSacramento().getNombre() + ", Folio " + this.evento.getFolio() + ", número " + this.evento.getNumero());
+        }
     }//GEN-LAST:event_btnBuscarNovioActionPerformed
+
+    private void jbCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarActionPerformed
+        this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+    }//GEN-LAST:event_jbCerrarActionPerformed
+
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        if (this.evento != null) {
+            this.eventoController.generarRpt(this.evento);
+        }
+    }//GEN-LAST:event_btnImprimirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,11 +167,11 @@ public class DlgReportes extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarNovio;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton jbsalir;
-    private javax.swing.JTextField txtNovio;
+    private javax.swing.JButton jbCerrar;
+    private javax.swing.JTextField txtEvento;
     // End of variables declaration//GEN-END:variables
 }
