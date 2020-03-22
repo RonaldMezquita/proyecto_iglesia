@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Matrimonio" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="72fa48b4-21b8-4abd-88db-011d95246478">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Iglesia"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="id_evento" class="java.lang.Integer"/>
+	<parameter name="fecha_evento" class="java.lang.String"/>
+	<parameter name="fecha_emision" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[WITH testigo AS(
+SELECT res.id idRes,
+p.dui AS testigo1_dui, 
+p.nit AS testigo1_nit, 
+CONCAT_WS(' ', p.nombres, p.apellidos) AS testigo1_nombre,
+MAX(CASE WHEN res.id_relacion = 5 THEN p.dui ELSE '' END) testigo2_dui, 
+MAX(CASE WHEN res.id_relacion = 5 THEN p.nit ELSE '' END) testigo2_nit, 
+MAX(CASE WHEN res.id_relacion = 5 THEN CONCAT_WS(' ', p.nombres, p.apellidos) ELSE '' END) testigo2_nombre 
+FROM persona p
+INNER JOIN responsable_evento res ON res.id_persona=p.id 
+where res.id_relacion=5 AND res.id_evento=$P{id_evento}  
+),
+novio AS(
+SELECT res.id AS idRes, p.nit as novio_nit, p.dui AS novio_dui, CONCAT_WS(' ', p.nombres, p.apellidos) AS novio_nombre,  
+madre.dui AS madre_dui, madre.nit AS madre_nit, CONCAT_WS(' ', madre.nombres, madre.apellidos) AS madre_nombre,
+padre.dui AS padre_dui, padre.nit AS padre_nit, padre.direccion, CONCAT_WS(' ', padre.nombres, padre.apellidos) AS padre_nombre,
+YEAR(CURDATE())-YEAR(p.fecha_nacimiento) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > 
+DATE_FORMAT(p.fecha_nacimiento,'%m-%d'), 0 , -1 )AS novio_edad
+FROM persona p 
+INNER JOIN responsable_evento res ON res.id_persona=p.id 
+INNER JOIN persona madre ON madre.id=res.id_madre
+INNER JOIN persona padre ON padre.id=res.id_padre
+where res.id_relacion=3 AND res.id_evento=$P{id_evento} 
+),
+novia AS(
+SELECT res.id AS idRes, p.nit as novia_nit, p.dui AS novia_dui, CONCAT_WS(' ', p.nombres, p.apellidos) AS novia_nombre,  
+madre.dui AS madre_dui, madre.nit AS madre_nit, CONCAT_WS(' ', madre.nombres, madre.apellidos) AS madre_nombre,
+padre.dui AS padre_dui, padre.nit AS padre_nit, padre.direccion, CONCAT_WS(' ', padre.nombres, padre.apellidos) AS padre_nombre,
+YEAR(CURDATE())-YEAR(p.fecha_nacimiento) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > 
+DATE_FORMAT(p.fecha_nacimiento,'%m-%d'), 0 , -1 )AS novia_edad
+FROM persona p 
+INNER JOIN responsable_evento res ON res.id_persona=p.id 
+INNER JOIN persona madre ON madre.id=res.id_madre
+INNER JOIN persona padre ON padre.id=res.id_padre
+where res.id_relacion=4 AND res.id_evento=$P{id_evento} 
+)
+SELECT e.tomo,e.folio,e.numero,
+l.nombre Locacion,
+CONCAT_WS(' ', s.nombres,s.apellidos) AS Nombre_parroco,s.dui dui_pco,s.nit nit_pco,
+e.fecha f_evento,
+MAX(CASE WHEN res.id_relacion = 4 THEN novia.novia_dui ELSE '' END) novia_dui,
+MAX(CASE WHEN res.id_relacion = 4 THEN novia.novia_nit ELSE '' END) novia_nit,
+MAX(CASE WHEN res.id_relacion = 4 THEN novia.novia_nombre ELSE '' END) novia_nombre,
+MAX(CASE WHEN res.id_relacion = 4 THEN novia.novia_edad ELSE '' END) novia_edad,
+MAX(CASE WHEN res.id_relacion = 4 THEN novia.madre_dui ELSE '' END) novia_madre_dui,
+MAX(CASE WHEN res.id_relacion = 4 THEN novia.madre_nit ELSE '' END) novia_madre_nit,
+MAX(CASE WHEN res.id_relacion = 4 THEN novia.madre_nombre ELSE '' END) novia_madre_nombre,
+MAX(CASE WHEN res.id_relacion = 4 THEN novia.padre_dui ELSE '' END) novia_padre_dui,
+MAX(CASE WHEN res.id_relacion = 4 THEN novia.padre_nit ELSE '' END) novia_padre_nit,
+MAX(CASE WHEN res.id_relacion = 4 THEN novia.padre_nombre ELSE '' END) novia_padre_nombre,
+MAX(CASE WHEN res.id_relacion = 4 THEN novia.direccion ELSE '' END) novia_padre_dir,
+MAX(CASE WHEN res.id_relacion = 3 THEN novio.novio_dui ELSE '' END) novio_dui,
+MAX(CASE WHEN res.id_relacion = 3 THEN novio.novio_nit ELSE '' END) novio_nit,
+MAX(CASE WHEN res.id_relacion = 3 THEN novio.novio_nombre ELSE '' END) novio_nombre,
+MAX(CASE WHEN res.id_relacion = 3 THEN novio.novio_edad ELSE '' END) novio_edad,
+MAX(CASE WHEN res.id_relacion = 3 THEN novio.madre_dui ELSE '' END) novio_madre_dui,
+MAX(CASE WHEN res.id_relacion = 3 THEN novio.madre_nit ELSE '' END) novio_madre_nit,
+MAX(CASE WHEN res.id_relacion = 3 THEN novio.madre_nombre ELSE '' END) novio_madre_nombre,
+MAX(CASE WHEN res.id_relacion = 3 THEN novio.padre_dui ELSE '' END) novio_padre_dui,
+MAX(CASE WHEN res.id_relacion = 3 THEN novio.padre_nit ELSE '' END) novio_padre_nit,
+MAX(CASE WHEN res.id_relacion = 3 THEN novio.padre_nombre ELSE '' END) novio_padre_nombre,
+MAX(CASE WHEN res.id_relacion = 3 THEN novio.direccion ELSE '' END) novio_padre_dir,
+MAX(CASE WHEN res.id_relacion = 5 THEN testigo.testigo1_dui ELSE '' END)  testigo1_dui,
+MAX(CASE WHEN res.id_relacion = 5 THEN testigo.testigo1_nit ELSE '' END)  testigo1_nit,
+MAX(CASE WHEN res.id_relacion = 5 THEN testigo.testigo1_nombre ELSE '' END) testigo1_nombre,
+MAX(CASE WHEN res.id_relacion = 5 THEN testigo.testigo2_dui ELSE '' END)  testigo2_dui,
+MAX(CASE WHEN res.id_relacion = 5 THEN testigo.testigo2_nit ELSE '' END)  testigo2_nit,
+MAX(CASE WHEN res.id_relacion = 5 THEN testigo.testigo2_nombre ELSE '' END) testigo2_nombre
+FROM responsable_evento res
+LEFT JOIN testigo ON testigo.idRes=res.id
+LEFT JOIN novio ON novio.idRes=res.id
+LEFT JOIN novia ON novia.idRes=res.id
+INNER JOIN evento e ON e.id=res.id_evento
+INNER JOIN lugar l ON l.id=e.id_lugar
+INNER JOIN relacion r ON res.id_relacion = r.id
+INNER JOIN sacerdote s ON e.id_sacerdote =s.id
+INNER JOIN usuario u ON res.id_usuario= u.id_usuario
+WHERE e.id=$P{id_evento}]]>
+	</queryString>
+	<field name="tomo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tomo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="evento"/>
+	</field>
+	<field name="folio" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="folio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="evento"/>
+	</field>
+	<field name="numero" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="numero"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="evento"/>
+	</field>
+	<field name="Locacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Locacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lugar"/>
+	</field>
+	<field name="Nombre_parroco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Nombre_parroco"/>
+	</field>
+	<field name="dui_pco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dui_pco"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sacerdote"/>
+	</field>
+	<field name="nit_pco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nit_pco"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sacerdote"/>
+	</field>
+	<field name="f_evento" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="f_evento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="evento"/>
+	</field>
+	<field name="novia_dui" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novia_dui"/>
+	</field>
+	<field name="novia_nit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novia_nit"/>
+	</field>
+	<field name="novia_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novia_nombre"/>
+	</field>
+	<field name="novia_edad" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novia_edad"/>
+	</field>
+	<field name="novia_madre_dui" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novia_madre_dui"/>
+	</field>
+	<field name="novia_madre_nit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novia_madre_nit"/>
+	</field>
+	<field name="novia_madre_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novia_madre_nombre"/>
+	</field>
+	<field name="novia_padre_dui" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novia_padre_dui"/>
+	</field>
+	<field name="novia_padre_nit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novia_padre_nit"/>
+	</field>
+	<field name="novia_padre_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novia_padre_nombre"/>
+	</field>
+	<field name="novia_padre_dir" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novia_padre_dir"/>
+	</field>
+	<field name="novio_dui" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novio_dui"/>
+	</field>
+	<field name="novio_nit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novio_nit"/>
+	</field>
+	<field name="novio_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novio_nombre"/>
+	</field>
+	<field name="novio_edad" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novio_edad"/>
+	</field>
+	<field name="novio_madre_dui" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novio_madre_dui"/>
+	</field>
+	<field name="novio_madre_nit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novio_madre_nit"/>
+	</field>
+	<field name="novio_madre_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novio_madre_nombre"/>
+	</field>
+	<field name="novio_padre_dui" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novio_padre_dui"/>
+	</field>
+	<field name="novio_padre_nit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novio_padre_nit"/>
+	</field>
+	<field name="novio_padre_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novio_padre_nombre"/>
+	</field>
+	<field name="novio_padre_dir" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novio_padre_dir"/>
+	</field>
+	<field name="testigo1_dui" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="testigo1_dui"/>
+	</field>
+	<field name="testigo1_nit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="testigo1_nit"/>
+	</field>
+	<field name="testigo1_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="testigo1_nombre"/>
+	</field>
+	<field name="testigo2_dui" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="testigo2_dui"/>
+	</field>
+	<field name="testigo2_nit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="testigo2_nit"/>
+	</field>
+	<field name="testigo2_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="testigo2_nombre"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="20" width="550" height="30" uuid="35eb3a5c-533d-42ce-bfff-55b052a55b6b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="18" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[ACTA DE MATRIMONIO RELIGIOSO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="293" splitType="Stretch">
+			<textField>
+				<reportElement x="49" y="10" width="472" height="160" uuid="14f068cc-afd4-4a5c-b15d-19067b566d21"/>
+				<textElement markup="html">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["El infrascrito Párroco de <b>\"Nuestra Señora de Valvanera\"</b> CERTIFICA: que en el <b>Tomo "+$F{tomo} +", Folio " +$F{folio}+"</b> de Matrimonios de este Archivo Parroquial, se registra la partida que literalmente dice: En la Parroquia de"+$F{Locacion}+", el día "+$P{fecha_evento}+", previos los trámites del Derecho Civil y Canónico, el Señor <b>"+$F{novio_nombre} +" DUI# "+$F{novio_dui}+"</b> de "+$F{novio_edad}+" años de edad, hijo de "+$F{novio_padre_nombre}+" y de "+$F{novio_madre_nombre}+". Originario de Santa Ana, El Salvador y vecino de "+$F{novio_padre_dir}+". Contrajo Matrimonio Eclesiástico con <b>"+$F{novia_nombre}+" DUI# "+$F{novia_dui}+"</b> de "+$F{novia_edad}+" años de edad, hija de "+$F{novia_padre_nombre}+" y de "+$F{novia_madre_nombre}+". Originaria de San Salvador, El Salvador y vecina de "+$F{novia_padre_dir}+".   Fueron testigos: "+$F{testigo1_nombre}+" DUI# "+$F{testigo1_dui}+" y "+$F{testigo2_nombre}+" DUI# "+$F{testigo2_dui}+".<br/>Dado en Santa Ana, a "+$P{fecha_emision}+"."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="230" width="210" height="20" uuid="e762ea5a-45df-4c03-be32-fdad1e325f4a"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pbro  "+$F{Nombre_parroco}
+]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="49" y="250" width="211" height="20" uuid="f7837279-518e-43b9-bf7e-7d4e5bd11a5b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Párroco]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="48" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

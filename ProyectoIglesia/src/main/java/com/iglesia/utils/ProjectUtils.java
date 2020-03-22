@@ -7,6 +7,7 @@ package com.iglesia.utils;
 
 import com.toedter.calendar.JDateChooser;
 import java.awt.Component;
+import java.net.URL;
 import java.text.ParseException;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -45,11 +46,11 @@ public class ProjectUtils {
                     vacio = true;
                     break;
                 }
-            }            
+            }
         }
         return vacio;
     }
-    
+
     public static void limpiarComponentes(JPanel panel) {
         Component[] components = panel.getComponents();
         for (int i = 0; i < components.length; i++) {
@@ -59,9 +60,9 @@ public class ProjectUtils {
             if (components[i] instanceof JCheckBox) {
                 ((JCheckBox) components[i]).setSelected(false);
             }
-            if (components[i] instanceof JScrollPane) {                
+            if (components[i] instanceof JScrollPane) {
                 if (((JScrollPane) components[i]).getViewport().getView() instanceof JTextArea) {
-                    ((JTextArea)((JScrollPane) components[i]).getViewport().getView()).setText("");
+                    ((JTextArea) ((JScrollPane) components[i]).getViewport().getView()).setText("");
                 }
             }
             if (components[i] instanceof JDateChooser) {
@@ -69,32 +70,33 @@ public class ProjectUtils {
             }
         }
     }
-    
-    public static DefaultTableModel construirModeloTabla(String[] titulo){
-        DefaultTableModel model;        
-        model = new DefaultTableModel(null, titulo){
+
+    public static DefaultTableModel construirModeloTabla(String[] titulo) {
+        DefaultTableModel model;
+        model = new DefaultTableModel(null, titulo) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
-            }            
-        };        
+            }
+        };
         return model;
     }
-    
+
     /**
      * Elimina las filas de un DefaultTableModel
+     *
      * @param model
-     * @return 
+     * @return
      */
-    public static DefaultTableModel removeRows(DefaultTableModel model){
+    public static DefaultTableModel removeRows(DefaultTableModel model) {
         int numRows = model.getRowCount();
-        for (int i = 0; i < numRows; i++) {            
+        for (int i = 0; i < numRows; i++) {
             model.removeRow(0);
         }
         return model;
     }
-    
-    private static MaskFormatter mascaraDui(){
+
+    private static MaskFormatter mascaraDui() {
         MaskFormatter mask = new MaskFormatter();
         try {
             /*
@@ -106,57 +108,56 @@ public class ProjectUtils {
             A -> cualquier letra o numero
             ? -> cualquier caracter
             H -> cualquier caracter hexagonal [0-9, a-f, A-F]            
-            */
+             */
             mask = new MaskFormatter("########-#");
         } catch (ParseException ex) {
             System.out.println(ex.getMessage());
         }
         return mask;
     }
-    
-    private static MaskFormatter mascaraNit(){
+
+    private static MaskFormatter mascaraNit() {
         MaskFormatter mask = new MaskFormatter();
-        try {            
+        try {
             mask = new MaskFormatter("####-######-###-#");
         } catch (ParseException ex) {
             System.out.println(ex.getMessage());
         }
         return mask;
     }
-    
-    public static JFormattedTextField getCampoDui(){
+
+    public static JFormattedTextField getCampoDui() {
         return new javax.swing.JFormattedTextField(ProjectUtils.mascaraDui());
     }
-    
-    public static JFormattedTextField getCampoNit(){
+
+    public static JFormattedTextField getCampoNit() {
         return new javax.swing.JFormattedTextField(ProjectUtils.mascaraNit());
     }
-    
+
     public static String fmtLikeContain(String param) {
         return new StringBuilder("%").append(param).append("%").toString();
     }
+
     public static String fmtLikeBegins(String param) {
         return new StringBuilder(param).append("%").toString();
     }
+
     public static String fmtLikeEnds(String param) {
         return new StringBuilder("%").append(param).toString();
     }
-    
-    public static JButton getButtonToSelect(Class clase){
-        ImageIcon img = new ImageIcon(clase.getResource("/META-INF/images/icon/x26-aceptar2_azul.png"));
+
+    public static JButton getButton(URL url, String tooltip) {
+        ImageIcon img = new ImageIcon(url);
         //int ancho = 25; // ancho en pixeles que tendra el icono escalado
         //int alto = 25;//-1; // alto (para que conserve la proporcion pasamos -1)
 
         // Obtiene un icono en escala con las dimensiones especificadas        
         //ImageIcon icon = new ImageIcon(img.getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT));
         JButton btn = new JButton();
+        if (tooltip != null) {
+            btn.setToolTipText(tooltip);
+        }
         btn.setIcon(img);
         return btn;
     }
 }
-
-
-
-
-
-

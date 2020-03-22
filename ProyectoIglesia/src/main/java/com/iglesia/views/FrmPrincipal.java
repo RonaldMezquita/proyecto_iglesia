@@ -33,6 +33,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnSacerdotes = new javax.swing.JButton();
         btnLugares = new javax.swing.JButton();
         btnTiposSacramento = new javax.swing.JButton();
+        btnReportes = new javax.swing.JButton();
         btnBoda = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -79,7 +80,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnLugaresActionPerformed(evt);
             }
         });
-        panelMenu.add(btnLugares, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 0, -1, -1));
+        panelMenu.add(btnLugares, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, -1, -1));
 
         btnTiposSacramento.setBackground(new java.awt.Color(62, 69, 81));
         btnTiposSacramento.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -92,14 +93,27 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnTiposSacramentoActionPerformed(evt);
             }
         });
-        panelMenu.add(btnTiposSacramento, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, -1, -1));
+        panelMenu.add(btnTiposSacramento, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, -1, -1));
+
+        btnReportes.setBackground(new java.awt.Color(62, 69, 81));
+        btnReportes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnReportes.setForeground(new java.awt.Color(255, 255, 255));
+        btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/x26-clientes.png"))); // NOI18N
+        btnReportes.setText("Reportes");
+        btnReportes.setToolTipText("");
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
+        panelMenu.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, -1, -1));
 
         getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 40));
 
         btnBoda.setBackground(new java.awt.Color(62, 69, 81));
         btnBoda.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBoda.setForeground(new java.awt.Color(255, 255, 255));
-        btnBoda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/x26-clientes.png"))); // NOI18N
+        btnBoda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/Boda.png"))); // NOI18N
         btnBoda.setText("Boda");
         btnBoda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +130,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAbrirDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAbrirDialogActionPerformed
-         DlgPersona obj = new DlgPersona(this, true);
+        DlgPersona obj = new DlgPersona(this, true);
         obj.setVisible(true);
     }//GEN-LAST:event_jbAbrirDialogActionPerformed
 
@@ -139,6 +153,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnTiposSacramentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiposSacramentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTiposSacramentoActionPerformed
+
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+//        DlgReportes obj = new DlgReportes(this, false);
+        DlgBuscarEvento obj = new DlgBuscarEvento(null, false);
+        obj.setVisible(true);
+//        FrmReporte obj = new FrmReporte();
+//        obj.setVisible(true);
+    }//GEN-LAST:event_btnReportesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,6 +201,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBoda;
     private javax.swing.JButton btnLugares;
+    private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnSacerdotes;
     private javax.swing.JButton btnTiposSacramento;
     private javax.swing.JLabel jLabel2;
