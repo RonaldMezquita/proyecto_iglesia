@@ -6,7 +6,7 @@
 	<parameter name="id_evento" class="java.lang.Integer"/>
 	<parameter name="fecha_nacimiento" class="java.lang.String"/>
 	<parameter name="fecha_evento" class="java.lang.String"/>
-	<parameter name="fecha_emicion" class="java.lang.String"/>
+	<parameter name="fecha_emision" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[WITH padrino AS(
 SELECT res.id idRes,p.id, p.nit, p.dui, CONCAT_WS(' ', p.nombres, p.apellidos) AS nombre FROM persona p
@@ -27,6 +27,7 @@ SELECT e.tomo,e.folio,e.numero,
 l.nombre locacion,
 CONCAT_WS(' ', s.nombres,s.apellidos) AS nombre_sacerdote,s.dui dui_sacerdote,s.nit nit_sacerdote,
 e.fecha f_evento,YEAR(e.fecha) AS anio,
+ts.nombre AS sacramento_nombre,
 sacramentado.sacramentado_dui,
 sacramentado.sacramentado_nit,
 sacramentado.sacramentado_nombre,
@@ -52,6 +53,7 @@ INNER JOIN evento e ON e.id=res.id_evento
 INNER JOIN lugar l ON l.id=e.id_lugar
 INNER JOIN relacion r ON res.id_relacion = r.id
 INNER JOIN sacerdote s ON e.id_sacerdote = s.id
+INNER JOIN tipo_sacramentos ts ON e.id_tipo_sacramento=ts.id
 INNER JOIN usuario u ON res.id_usuario= u.id_usuario
 WHERE e.id= $P{id_evento}]]>
 	</queryString>
@@ -89,42 +91,46 @@ WHERE e.id= $P{id_evento}]]>
 	<field name="anio" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="anio"/>
 	</field>
+	<field name="sacramento_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sacramento_nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tipo_sacramentos"/>
+	</field>
 	<field name="sacramentado_dui" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="sacramentado_dui"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="p"/>
 	</field>
 	<field name="sacramentado_nit" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="sacramentado_nit"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="p"/>
 	</field>
 	<field name="sacramentado_nombre" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="sacramentado_nombre"/>
 	</field>
 	<field name="sacramentado_nacimiento" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.label" value="sacramentado_nacimiento"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="p"/>
 	</field>
 	<field name="sacramentado_edad" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="sacramentado_edad"/>
 	</field>
 	<field name="madre_dui" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="madre_dui"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="madre"/>
 	</field>
 	<field name="madre_nit" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="madre_nit"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="madre"/>
 	</field>
 	<field name="madre_nombre" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="madre_nombre"/>
 	</field>
 	<field name="padre_dui" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="padre_dui"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="madre"/>
 	</field>
 	<field name="padre_nit" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="padre_nit"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="padre"/>
 	</field>
 	<field name="padre_nombre" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="padre_nombre"/>
@@ -155,7 +161,7 @@ WHERE e.id= $P{id_evento}]]>
 			<staticText>
 				<reportElement x="0" y="20" width="550" height="30" uuid="10e26734-5804-40da-8ff0-f8aa4571ea1c"/>
 				<textElement textAlignment="Center">
-					<font size="18"/>
+					<font size="18" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[CONSTANCIA DE ADMINISTRACIÓN DE SACRAMENTOS]]></text>
 			</staticText>
@@ -165,40 +171,41 @@ WHERE e.id= $P{id_evento}]]>
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="152" splitType="Stretch"/>
+		<band height="67" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="237" splitType="Stretch">
+		<band height="392" splitType="Stretch">
 			<textField isBlankWhenNull="false">
-				<reportElement x="48" y="10" width="472" height="168" uuid="b4965787-6aae-41b6-9c3d-da86485f190c"/>
-				<textElement markup="styled">
+				<reportElement x="48" y="10" width="472" height="250" uuid="b4965787-6aae-41b6-9c3d-da86485f190c"/>
+				<textElement markup="html">
 					<font fontName="Times New Roman" size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Yo,  Pbro. "+$F{parroco_nombre}+", salvadoreño por nacimiento, con DUI № "+$F{parroco_dui}+" y NIT № "+$F{parroco_nit}+";  Párroco de la Parroquia Nuestra Señora de Valvanera de la Diócesis de Santa Ana, a petición de la parte interesada, hago constar que:\n\n"+$F{sacramentado_nombre}+" que nació el "+$P{fecha_nacimiento}+", siendo hijo de "+$F{padre_nombre}+" y de "+$F{madre_nombre}+".\n\nRecibió el SACRAMENTO de su COMU a sus "+$F{sacramentado_edad}+" años, en la Parroquia "+$F{locacion}+", en el año de "+$F{anio}+" por el Pbro. Roberto "+$F{nombre_sacerdote}+"."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Yo,  <b> Pbro. "+$F{parroco_nombre}+" </b>, salvadoreño por nacimiento, con  <b>DUI № "+$F{parroco_dui}+" y NIT № "+$F{parroco_nit}+";  Párroco de la Parroquia Nuestra Señora de Valvanera de la Diócesis de Santa Ana </b>, a petición de la parte interesada, hago constar que:<br/><br/> <b>"+$F{sacramentado_nombre}+" </b> que nació el "+$P{fecha_nacimiento}+", siendo hijo(a) de "+$F{padre_nombre}+" y de "+$F{madre_nombre}+".<br/><br/>Recibió el  <b>SACRAMENTO de su "+ $F{sacramento_nombre}+" </b> a sus "+$F{sacramentado_edad}+" años, en la Parroquia  <b>"+$F{locacion}+" </b>, en el año de "+$F{anio}+" por el Pbro. Roberto "+$F{nombre_sacerdote}+".<br/><br/><br/>Dado en Santa Ana, a "+$P{fecha_emision}+"."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="48" y="201" width="472" height="30" uuid="8843a36a-db5d-4049-9cb8-9c595104cc4a"/>
+				<reportElement x="48" y="312" width="282" height="28" uuid="1178532f-06b6-49f7-adff-ad8ac96b6c86"/>
 				<textElement>
-					<font fontName="Times New Roman" size="14" isBold="false"/>
+					<font fontName="Times New Roman" size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Dado en Santa Ana, a "+$P{fecha_emicion}+"."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Pbro  "+$F{parroco_nombre}]]></textFieldExpression>
 			</textField>
-		</band>
-	</detail>
-	<columnFooter>
-		<band height="138" splitType="Stretch">
 			<line direction="BottomUp">
-				<reportElement x="48" y="30" width="290" height="1" uuid="23a12e43-ee0f-4cc3-8e45-f9f679dbb576">
+				<reportElement x="48" y="311" width="290" height="1" uuid="23a12e43-ee0f-4cc3-8e45-f9f679dbb576">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 			</line>
-			<textField>
-				<reportElement x="48" y="31" width="153" height="60" uuid="1178532f-06b6-49f7-adff-ad8ac96b6c86"/>
-				<textFieldExpression><![CDATA["Pbro  "+$F{parroco_nombre}+
-"Parroco"]]></textFieldExpression>
-			</textField>
+			<staticText>
+				<reportElement x="48" y="340" width="100" height="30" uuid="29912d43-c57a-423b-9ac4-d338b4ab5c6e"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<text><![CDATA["Parroco"]]></text>
+			</staticText>
 		</band>
+	</detail>
+	<columnFooter>
+		<band height="60" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>
