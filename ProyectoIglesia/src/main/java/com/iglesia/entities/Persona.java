@@ -67,6 +67,9 @@ public class Persona implements Serializable {
     @Column(name = "nit")
     private String nit;
     @Basic(optional = false)
+    @Column(name = "genero")
+    private String genero;
+    @Basic(optional = false)
     @Column(name = "fecha_nacimiento")
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
@@ -155,6 +158,14 @@ public class Persona implements Serializable {
         this.nit = nit;
     }
 
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -221,8 +232,8 @@ public class Persona implements Serializable {
     public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
     }
-    
-    public String getNombreCompleto(){
+
+    public String getNombreCompleto() {
         return new StringBuilder(this.nombres).append(" ").append(this.apellidos).toString();
     }
 
@@ -250,5 +261,5 @@ public class Persona implements Serializable {
     public String toString() {
         return new StringBuilder(this.nombres).append(" ").append(this.apellidos).toString();
     }
-    
+
 }

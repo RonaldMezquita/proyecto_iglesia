@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bautizo" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7f30754a-ea97-4ab2-bc0a-b9a9b2668fa1">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Iglesia"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DB_IGLESIA"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="id_evento" class="java.lang.Integer"/>
 	<parameter name="fecha_nacimiento" class="java.lang.String"/>
 	<parameter name="fecha_evento" class="java.lang.String"/>
 	<parameter name="fecha_emision" class="java.lang.String"/>
+	<parameter name="edad_letras" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[WITH padrino AS(
 SELECT res.id idRes,p.id, p.nit, p.dui, CONCAT_WS(' ', p.nombres, p.apellidos) AS nombre FROM persona p
-INNER JOIN responsable_evento res ON res.id_persona=p.id AND res.id_relacion=1 AND res.id_evento=$P{id_evento} 
+INNER JOIN responsable_evento res ON res.id_persona=p.id AND res.id_relacion=1 AND res.id_evento = $P{id_evento} 
+),
+madrina AS(
+SELECT res.id idRes,p.id, p.nit, p.dui, CONCAT_WS(' ', p.nombres, p.apellidos) AS nombre FROM persona p
+INNER JOIN responsable_evento res ON res.id_persona=p.id AND res.id_relacion=2 AND res.id_evento=1 
 ),
 sacramentado AS (
-SELECT res.id, p.nit as sacramentado_nit, p.dui AS sacramentado_dui,
+SELECT res.id, p.nit as sacramentado_nit, p.dui AS sacramentado_dui, p.genero AS sacramentado_genero,
 CONCAT_WS(' ', p.nombres, p.apellidos) AS sacramentado_nombre, p.fecha_nacimiento AS sacramentado_nacimiento, 
 madre.dui AS madre_dui, madre.nit AS madre_nit, CONCAT_WS(' ', madre.nombres, madre.apellidos) AS madre_nombre,
 madre.dui AS padre_dui, padre.nit AS padre_nit, CONCAT_WS(' ', padre.nombres, padre.apellidos) AS padre_nombre
@@ -21,41 +26,46 @@ FROM persona p
 INNER JOIN responsable_evento res ON res.id_persona=p.id 
 INNER JOIN persona madre ON madre.id=res.id_madre
 INNER JOIN persona padre ON padre.id=res.id_padre
-where res.id_relacion=6 AND res.id_evento=$P{id_evento} 
+where res.id_relacion=6 AND res.id_evento = $P{id_evento} 
 )
 SELECT e.tomo,e.folio,e.numero,
 l.nombre locacion,
+ts.nombre AS sacramento_nombre,
 CONCAT_WS(' ', s.nombres,s.apellidos) AS nombre_sacerdote,s.dui dui_sacerdote,s.nit nit_sacerdote,
 e.fecha f_evento,YEAR(e.fecha) AS anio,
-ts.nombre AS sacramento_nombre,
-sacramentado.sacramentado_dui,
-sacramentado.sacramentado_nit,
-sacramentado.sacramentado_nombre,
-sacramentado.sacramentado_nacimiento,
-YEAR(CURDATE())-YEAR(sacramentado.sacramentado_nacimiento) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > 
-DATE_FORMAT(sacramentado.sacramentado_nacimiento,'%m-%d'), 0 , -1 )AS sacramentado_edad,
-sacramentado.madre_dui,
-sacramentado.madre_nit,
-sacramentado.madre_nombre,
-sacramentado.padre_dui,
-sacramentado.padre_nit,
-sacramentado.padre_nombre,
+MAX(CASE WHEN res.id_relacion = 6 THEN sacramentado.madre_dui ELSE '' END) madre_dui,
+MAX(CASE WHEN res.id_relacion = 6 THEN sacramentado.madre_nit ELSE '' END) madre_nit,
+MAX(CASE WHEN res.id_relacion = 6 THEN sacramentado.madre_nombre ELSE '' END) madre_nombre,
+MAX(CASE WHEN res.id_relacion = 6 THEN sacramentado.padre_dui ELSE '' END) padre_dui,
+MAX(CASE WHEN res.id_relacion = 6 THEN sacramentado.padre_nit ELSE '' END) padre_nit,
+MAX(CASE WHEN res.id_relacion = 6 THEN sacramentado.padre_nombre ELSE '' END) padre_nombre,
+MAX(CASE WHEN res.id_relacion = 6 THEN sacramentado_dui ELSE '' END) sacramentado_dui,
+MAX(CASE WHEN res.id_relacion = 6 THEN sacramentado_nit ELSE '' END) sacramentado_nit,
+MAX(CASE WHEN res.id_relacion = 6 THEN sacramentado_nombre ELSE '' END) sacramentado_nombre,
+MAX(CASE WHEN res.id_relacion = 6 THEN sacramentado_genero ELSE '' END) sacramentado_genero,
+MAX(CASE WHEN res.id_relacion = 6 THEN 
+(YEAR(CURDATE())-YEAR(sacramentado.sacramentado_nacimiento) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > 
+DATE_FORMAT(sacramentado.sacramentado_nacimiento,'%m-%d'), 0 , -1 )) ELSE '' END) sacramentado_edad,
 MAX(CASE WHEN res.id_relacion = 1 THEN padrino.dui ELSE '' END)  padrino_dui,
 MAX(CASE WHEN res.id_relacion = 1 THEN padrino.nit ELSE '' END)  padrino_nit,
 MAX(CASE WHEN res.id_relacion = 1 THEN padrino.nombre ELSE '' END) padrino,
+MAX(CASE WHEN res.id_relacion = 2 THEN madrina.dui ELSE '' END)  madrina_dui,
+MAX(CASE WHEN res.id_relacion = 2 THEN madrina.nit ELSE '' END)  madrina_nit,
+MAX(CASE WHEN res.id_relacion = 2 THEN madrina.nombre ELSE '' END) madrina,
 (SELECT dui FROM sacerdote WHERE parroco=1) parroco_dui,
 (SELECT nit FROM sacerdote WHERE parroco=1) parroco_nit,
 (SELECT CONCAT_WS('',nombres,apellidos) FROM sacerdote WHERE parroco=1) parroco_nombre
 FROM responsable_evento res
-left JOIN padrino ON padrino.idRes=res.id
 LEFT JOIN sacramentado ON sacramentado.id=res.id
+LEFT JOIN padrino ON padrino.idRes=res.id
+LEFT JOIN madrina ON madrina.idRes=res.id
 INNER JOIN evento e ON e.id=res.id_evento
 INNER JOIN lugar l ON l.id=e.id_lugar
 INNER JOIN relacion r ON res.id_relacion = r.id
 INNER JOIN sacerdote s ON e.id_sacerdote = s.id
 INNER JOIN tipo_sacramentos ts ON e.id_tipo_sacramento=ts.id
 INNER JOIN usuario u ON res.id_usuario= u.id_usuario
-WHERE e.id= $P{id_evento}]]>
+WHERE e.id = $P{id_evento}]]>
 	</queryString>
 	<field name="tomo" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="tomo"/>
@@ -72,6 +82,10 @@ WHERE e.id= $P{id_evento}]]>
 	<field name="locacion" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="locacion"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="lugar"/>
+	</field>
+	<field name="sacramento_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sacramento_nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tipo_sacramentos"/>
 	</field>
 	<field name="nombre_sacerdote" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nombre_sacerdote"/>
@@ -90,28 +104,6 @@ WHERE e.id= $P{id_evento}]]>
 	</field>
 	<field name="anio" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="anio"/>
-	</field>
-	<field name="sacramento_nombre" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="sacramento_nombre"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="tipo_sacramentos"/>
-	</field>
-	<field name="sacramentado_dui" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="sacramentado_dui"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="p"/>
-	</field>
-	<field name="sacramentado_nit" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="sacramentado_nit"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="p"/>
-	</field>
-	<field name="sacramentado_nombre" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="sacramentado_nombre"/>
-	</field>
-	<field name="sacramentado_nacimiento" class="java.sql.Date">
-		<property name="com.jaspersoft.studio.field.label" value="sacramentado_nacimiento"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="p"/>
-	</field>
-	<field name="sacramentado_edad" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="sacramentado_edad"/>
 	</field>
 	<field name="madre_dui" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="madre_dui"/>
@@ -135,6 +127,23 @@ WHERE e.id= $P{id_evento}]]>
 	<field name="padre_nombre" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="padre_nombre"/>
 	</field>
+	<field name="sacramentado_dui" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sacramentado_dui"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="p"/>
+	</field>
+	<field name="sacramentado_nit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sacramentado_nit"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="p"/>
+	</field>
+	<field name="sacramentado_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sacramentado_nombre"/>
+	</field>
+	<field name="sacramentado_genero" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sacramentado_genero"/>
+	</field>
+	<field name="sacramentado_edad" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sacramentado_edad"/>
+	</field>
 	<field name="padrino_dui" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="padrino_dui"/>
 	</field>
@@ -143,6 +152,15 @@ WHERE e.id= $P{id_evento}]]>
 	</field>
 	<field name="padrino" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="padrino"/>
+	</field>
+	<field name="madrina_dui" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="madrina_dui"/>
+	</field>
+	<field name="madrina_nit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="madrina_nit"/>
+	</field>
+	<field name="madrina" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="madrina"/>
 	</field>
 	<field name="parroco_dui" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="parroco_dui"/>
@@ -180,14 +198,14 @@ WHERE e.id= $P{id_evento}]]>
 				<textElement markup="html">
 					<font fontName="Times New Roman" size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Yo,  <b> Pbro. "+$F{parroco_nombre}+" </b>, salvadoreño por nacimiento, con  <b>DUI № "+$F{parroco_dui}+" y NIT № "+$F{parroco_nit}+";  Párroco de la Parroquia Nuestra Señora de Valvanera de la Diócesis de Santa Ana </b>, a petición de la parte interesada, hago constar que:<br/><br/> <b>"+$F{sacramentado_nombre}+" </b> que nació el "+$P{fecha_nacimiento}+", siendo hijo(a) de "+$F{padre_nombre}+" y de "+$F{madre_nombre}+".<br/><br/>Recibió el  <b>SACRAMENTO de su "+ $F{sacramento_nombre}+" </b> a sus "+$F{sacramentado_edad}+" años, en la Parroquia  <b>"+$F{locacion}+" </b>, en el año de "+$F{anio}+" por el Pbro. Roberto "+$F{nombre_sacerdote}+".<br/><br/><br/>Dado en Santa Ana, a "+$P{fecha_emision}+"."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Yo,  <b> Pbro. "+$F{parroco_nombre}+" </b>, salvadoreño por nacimiento, con  <b>DUI № "+$F{parroco_dui}+" y NIT № "+$F{parroco_nit}+";  Párroco de la Parroquia Nuestra Señora de Valvanera de la Diócesis de Santa Ana </b>, a petición de la parte interesada, hago constar que:<br/><br/> <b>"+$F{sacramentado_nombre}+" </b> que nació el "+$P{fecha_nacimiento}+", siendo "+($F{sacramentado_genero}.equals("M")  ? "hijo": "hija")+" de "+$F{padre_nombre}+" y de "+$F{madre_nombre}+".<br/><br/>Recibió el  <b>SACRAMENTO de su "+ $F{sacramento_nombre}+" </b> a sus "+ $P{edad_letras} +" años, en la Parroquia  <b>\""+$F{locacion}+"\" </b>, en el año de "+$F{anio}+" por el Pbro. Roberto "+$F{nombre_sacerdote}+".<br/><br/><br/>Dado en Santa Ana, a "+$P{fecha_emision}+"."]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="48" y="312" width="282" height="28" uuid="1178532f-06b6-49f7-adff-ad8ac96b6c86"/>
 				<textElement>
 					<font fontName="Times New Roman" size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Pbro  "+$F{parroco_nombre}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Pbro.  "+$F{parroco_nombre}]]></textFieldExpression>
 			</textField>
 			<line direction="BottomUp">
 				<reportElement x="48" y="311" width="290" height="1" uuid="23a12e43-ee0f-4cc3-8e45-f9f679dbb576">
@@ -196,11 +214,11 @@ WHERE e.id= $P{id_evento}]]>
 				</reportElement>
 			</line>
 			<staticText>
-				<reportElement x="48" y="340" width="100" height="30" uuid="29912d43-c57a-423b-9ac4-d338b4ab5c6e"/>
+				<reportElement x="48" y="331" width="100" height="30" uuid="29912d43-c57a-423b-9ac4-d338b4ab5c6e"/>
 				<textElement>
 					<font fontName="Times New Roman" size="14"/>
 				</textElement>
-				<text><![CDATA["Parroco"]]></text>
+				<text><![CDATA[Parroco]]></text>
 			</staticText>
 		</band>
 	</detail>

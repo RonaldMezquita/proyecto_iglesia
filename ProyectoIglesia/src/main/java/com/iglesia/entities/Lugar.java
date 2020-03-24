@@ -160,7 +160,7 @@ public class Lugar implements Serializable {
 
     @Override
     public String toString() {
-        return "com.iglesia.entities.Lugar[ id=" + id + " ]";
+        return this.nombre;
     }
-    
+
 }

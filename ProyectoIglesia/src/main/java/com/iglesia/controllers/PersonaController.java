@@ -55,7 +55,7 @@ public class PersonaController {
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         model = ProjectUtils.removeRows(model);
         this.items = this.personaService.buscarPersona(filtro.trim(), TipoBusquedaEnum.NOMBRE);
-        String[] row = new String[8];
+        String[] row = new String[9];
         for (Persona item : this.items) {
             row[0] = item.getId().toString();
             row[1] = item.getNombres();
@@ -64,7 +64,8 @@ public class PersonaController {
             row[4] = item.getNit();
             row[5] = this.sdf.format(item.getFechaNacimiento());
             row[6] = item.getDireccion();
-            row[7] = item.getEstado() ? "Activo" : "Inactivo";
+            row[7] = item.getGenero();
+            row[8] = item.getEstado() ? "Activo" : "Inactivo";
             model.addRow(row);
         }
     }

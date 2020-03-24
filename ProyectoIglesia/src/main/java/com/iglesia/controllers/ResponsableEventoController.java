@@ -45,10 +45,12 @@ public class ResponsableEventoController implements Serializable {
             row[2] = item.getIdRelacion().getNombre();
             row[3] = item.getIdPadre() != null ? item.getIdPadre().getNombreCompleto() : "";
             row[4] = item.getIdMadre() != null ? item.getIdMadre().getNombreCompleto() : "";
-            row[5] = this.sdf.format(item.getIdEvento().getFecha());            
+            row[5] = this.sdf.format(item.getIdEvento().getFecha());
             model.addRow(row);
         }
     }
+    
+    //<editor-fold defaultstate="collapsed" desc="getters & setters">
 
     public ResponsableEvento getSelected() {
         return selected;
@@ -65,5 +67,6 @@ public class ResponsableEventoController implements Serializable {
     public void setItems(List<ResponsableEvento> items) {
         this.items = items;
     }
+    //</editor-fold>
 
 }

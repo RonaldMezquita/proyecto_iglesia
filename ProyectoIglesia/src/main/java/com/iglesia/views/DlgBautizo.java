@@ -5,7 +5,7 @@
  */
 package com.iglesia.views;
 
-import com.iglesia.controllers.BodaController;
+import com.iglesia.controllers.BautizoController;
 import com.iglesia.controllers.EventoController;
 import com.iglesia.utils.ProjectUtils;
 import java.awt.Color;
@@ -18,19 +18,19 @@ import javax.swing.JOptionPane;
  *
  * @author remsf
  */
-public class DlgBoda extends javax.swing.JDialog {
+public class DlgBautizo extends javax.swing.JDialog {
 
     private final EventoController eventoCtrl;
     Shape dialogShape;
 
     /**
-     * Creates new form DlgBoda
+     * Creates new form DlgBautizo
      */
-    public DlgBoda(java.awt.Frame parent, boolean modal) {
+    public DlgBautizo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(null);        
-        this.eventoCtrl = new EventoController();                
+        this.setLocationRelativeTo(null);
+        this.eventoCtrl = new EventoController();
         this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
         this.txtTomo.requestFocus();
     }
@@ -77,33 +77,24 @@ public class DlgBoda extends javax.swing.JDialog {
         txtFecha = new com.toedter.calendar.JDateChooser();
         txtLugar = new javax.swing.JTextField();
         btnBuscarLugar = new javax.swing.JButton();
-        txtNovio = new javax.swing.JTextField();
-        btnBuscarNovio = new javax.swing.JButton();
-        txtPadreNovio = new javax.swing.JTextField();
-        btnBuscarPadreNovio = new javax.swing.JButton();
+        txtSacramentado = new javax.swing.JTextField();
+        btnBuscarSacramentado = new javax.swing.JButton();
+        txtPadre = new javax.swing.JTextField();
+        btnBuscarPadre = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        txtMadreNovio = new javax.swing.JTextField();
-        btnBuscarMadreNovio = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        txtNovia = new javax.swing.JTextField();
-        btnBuscarNovia = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        txtPadreNovia = new javax.swing.JTextField();
-        btnBuscarPadreNovia = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        txtMadreNovia = new javax.swing.JTextField();
-        btnBuscarMadreNovia = new javax.swing.JButton();
+        txtMadre = new javax.swing.JTextField();
+        btnBuscarMadre = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        txtTestigo1 = new javax.swing.JTextField();
-        btnBuscarTestigo1 = new javax.swing.JButton();
+        txtPadrino = new javax.swing.JTextField();
+        btnBuscarPadrino = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         txtSacerdote = new javax.swing.JTextField();
         btnBuscarSacerdote = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
-        txtTestigo2 = new javax.swing.JTextField();
-        btnBuscarTestigo2 = new javax.swing.JButton();
+        txtMadrina = new javax.swing.JTextField();
+        btnBuscarMadrina = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -140,12 +131,12 @@ public class DlgBoda extends javax.swing.JDialog {
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Novio");
+        jLabel7.setText("Sacramentado");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Padre del Novio");
+        jLabel8.setText("Padre");
         jLabel8.setToolTipText("");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
@@ -161,8 +152,9 @@ public class DlgBoda extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Registro de Boda");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Registro de Bautizo");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 750, -1));
         jPanel1.add(txtTomo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 100, -1));
         jPanel1.add(txtFolio, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 100, -1));
         jPanel1.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 100, -1));
@@ -182,142 +174,82 @@ public class DlgBoda extends javax.swing.JDialog {
         });
         jPanel1.add(btnBuscarLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 105, 30));
 
-        txtNovio.setEditable(false);
-        jPanel1.add(txtNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 200, -1));
+        txtSacramentado.setEditable(false);
+        jPanel1.add(txtSacramentado, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 200, -1));
 
-        btnBuscarNovio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
-        btnBuscarNovio.setText("Buscar");
-        btnBuscarNovio.setToolTipText("Buscar novio");
-        btnBuscarNovio.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnBuscarNovio.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarSacramentado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarSacramentado.setText("Buscar");
+        btnBuscarSacramentado.setToolTipText("Buscar novio");
+        btnBuscarSacramentado.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnBuscarSacramentado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarNovioActionPerformed(evt);
+                btnBuscarSacramentadoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, 105, 30));
+        jPanel1.add(btnBuscarSacramentado, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, 105, 30));
 
-        txtPadreNovio.setEditable(false);
-        jPanel1.add(txtPadreNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 200, -1));
+        txtPadre.setEditable(false);
+        jPanel1.add(txtPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 200, -1));
 
-        btnBuscarPadreNovio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
-        btnBuscarPadreNovio.setText("Buscar");
-        btnBuscarPadreNovio.setToolTipText("Buscar padre de novio");
-        btnBuscarPadreNovio.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnBuscarPadreNovio.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarPadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarPadre.setText("Buscar");
+        btnBuscarPadre.setToolTipText("Buscar padre de novio");
+        btnBuscarPadre.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnBuscarPadre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarPadreNovioActionPerformed(evt);
+                btnBuscarPadreActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarPadreNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 105, 30));
+        jPanel1.add(btnBuscarPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 105, 30));
 
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Madre del Novio");
+        jLabel14.setText("Madre");
         jLabel14.setToolTipText("");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, -1, -1));
 
-        txtMadreNovio.setEditable(false);
-        jPanel1.add(txtMadreNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 200, -1));
+        txtMadre.setEditable(false);
+        jPanel1.add(txtMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 200, -1));
 
-        btnBuscarMadreNovio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
-        btnBuscarMadreNovio.setText("Buscar");
-        btnBuscarMadreNovio.setToolTipText("Buscar madre de novio");
-        btnBuscarMadreNovio.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnBuscarMadreNovio.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarMadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarMadre.setText("Buscar");
+        btnBuscarMadre.setToolTipText("Buscar madre de novio");
+        btnBuscarMadre.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnBuscarMadre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarMadreNovioActionPerformed(evt);
+                btnBuscarMadreActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarMadreNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, 105, 30));
-
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Novia");
-        jLabel9.setToolTipText("");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
-
-        txtNovia.setEditable(false);
-        txtNovia.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(txtNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 200, -1));
-
-        btnBuscarNovia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
-        btnBuscarNovia.setText("Buscar");
-        btnBuscarNovia.setToolTipText("Buscar novia");
-        btnBuscarNovia.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnBuscarNovia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarNoviaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnBuscarNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 105, 30));
-
-        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Padre Novia");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, -1, -1));
-
-        txtPadreNovia.setEditable(false);
-        jPanel1.add(txtPadreNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 200, -1));
-
-        btnBuscarPadreNovia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
-        btnBuscarPadreNovia.setText("Buscar");
-        btnBuscarPadreNovia.setToolTipText("Buscar padre de novia");
-        btnBuscarPadreNovia.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnBuscarPadreNovia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarPadreNoviaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnBuscarPadreNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 105, 30));
-
-        jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Madre Novia");
-        jLabel11.setToolTipText("");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
-
-        txtMadreNovia.setEditable(false);
-        jPanel1.add(txtMadreNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 200, -1));
-
-        btnBuscarMadreNovia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
-        btnBuscarMadreNovia.setText("Buscar");
-        btnBuscarMadreNovia.setToolTipText("Buscar madre de novia");
-        btnBuscarMadreNovia.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnBuscarMadreNovia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarMadreNoviaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnBuscarMadreNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 105, 30));
+        jPanel1.add(btnBuscarMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, 105, 30));
 
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Testigo");
+        jLabel12.setText("Padrino");
         jLabel12.setToolTipText("");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
 
-        txtTestigo1.setEditable(false);
-        jPanel1.add(txtTestigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 200, -1));
+        txtPadrino.setEditable(false);
+        jPanel1.add(txtPadrino, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 200, -1));
 
-        btnBuscarTestigo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
-        btnBuscarTestigo1.setText("Buscar");
-        btnBuscarTestigo1.setToolTipText("Buscar madre de novia");
-        btnBuscarTestigo1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnBuscarTestigo1.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarPadrino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarPadrino.setText("Buscar");
+        btnBuscarPadrino.setToolTipText("Buscar madre de novia");
+        btnBuscarPadrino.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnBuscarPadrino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarTestigo1ActionPerformed(evt);
+                btnBuscarPadrinoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarTestigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 105, 30));
+        jPanel1.add(btnBuscarPadrino, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 105, 30));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Sacerdote");
         jLabel13.setToolTipText("");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 330, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
         txtSacerdote.setEditable(false);
-        jPanel1.add(txtSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 200, -1));
+        jPanel1.add(txtSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 200, -1));
 
         btnBuscarSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
         btnBuscarSacerdote.setText("Buscar");
@@ -328,7 +260,7 @@ public class DlgBoda extends javax.swing.JDialog {
                 btnBuscarSacerdoteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 350, 105, 30));
+        jPanel1.add(btnBuscarSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 105, 30));
 
         btnGuardar.setBackground(new java.awt.Color(13, 71, 161));
         btnGuardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -341,7 +273,7 @@ public class DlgBoda extends javax.swing.JDialog {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 130, -1));
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 130, -1));
 
         btnCancelar.setBackground(new java.awt.Color(255, 136, 0));
         btnCancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -349,29 +281,29 @@ public class DlgBoda extends javax.swing.JDialog {
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-limpiar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 460, 130, -1));
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 350, 130, -1));
 
         jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Testigo");
+        jLabel15.setText("Madrina");
         jLabel15.setToolTipText("");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, -1, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, -1, -1));
 
-        txtTestigo2.setEditable(false);
-        jPanel1.add(txtTestigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, 200, -1));
+        txtMadrina.setEditable(false);
+        jPanel1.add(txtMadrina, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 200, -1));
 
-        btnBuscarTestigo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
-        btnBuscarTestigo2.setText("Buscar");
-        btnBuscarTestigo2.setToolTipText("Buscar madre de novia");
-        btnBuscarTestigo2.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnBuscarTestigo2.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarMadrina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarMadrina.setText("Buscar");
+        btnBuscarMadrina.setToolTipText("Buscar madre de novia");
+        btnBuscarMadrina.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnBuscarMadrina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarTestigo2ActionPerformed(evt);
+                btnBuscarMadrinaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarTestigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 400, 105, 30));
+        jPanel1.add(btnBuscarMadrina, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 105, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 520));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -389,68 +321,41 @@ public class DlgBoda extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnBuscarLugarActionPerformed
 
-    private void btnBuscarNovioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNovioActionPerformed
+    private void btnBuscarSacramentadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSacramentadoActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
-            this.eventoCtrl.getDtoSelected().setNovio(obj.getPersona());
-            this.txtNovio.setText(this.eventoCtrl.getDtoSelected().getNovio().getNombreCompleto());
+            this.eventoCtrl.getDtoSelected().setSacramentado(obj.getPersona());
+            this.txtSacramentado.setText(this.eventoCtrl.getDtoSelected().getSacramentado().getNombreCompleto());
         }
-    }//GEN-LAST:event_btnBuscarNovioActionPerformed
+    }//GEN-LAST:event_btnBuscarSacramentadoActionPerformed
 
-    private void btnBuscarPadreNovioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPadreNovioActionPerformed
+    private void btnBuscarPadreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPadreActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
-            this.eventoCtrl.getDtoSelected().setPadreNovio(obj.getPersona());
-            this.txtPadreNovio.setText(this.eventoCtrl.getDtoSelected().getPadreNovio().getNombreCompleto());
+            this.eventoCtrl.getDtoSelected().setPadreSacramentado(obj.getPersona());
+            this.txtPadre.setText(this.eventoCtrl.getDtoSelected().getPadreSacramentado().getNombreCompleto());
         }
-    }//GEN-LAST:event_btnBuscarPadreNovioActionPerformed
+    }//GEN-LAST:event_btnBuscarPadreActionPerformed
 
-    private void btnBuscarMadreNovioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMadreNovioActionPerformed
+    private void btnBuscarMadreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMadreActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
-            this.eventoCtrl.getDtoSelected().setMadreNovio(obj.getPersona());
-            this.txtMadreNovio.setText(this.eventoCtrl.getDtoSelected().getMadreNovio().getNombreCompleto());
+            this.eventoCtrl.getDtoSelected().setMadreSacramentado(obj.getPersona());
+            this.txtMadre.setText(this.eventoCtrl.getDtoSelected().getMadreSacramentado().getNombreCompleto());
         }
-    }//GEN-LAST:event_btnBuscarMadreNovioActionPerformed
+    }//GEN-LAST:event_btnBuscarMadreActionPerformed
 
-    private void btnBuscarNoviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNoviaActionPerformed
+    private void btnBuscarPadrinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPadrinoActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
-            this.eventoCtrl.getDtoSelected().setNovia(obj.getPersona());
-            this.txtNovia.setText(this.eventoCtrl.getDtoSelected().getNovia().getNombreCompleto());
+            this.eventoCtrl.getDtoSelected().setPadrino(obj.getPersona());
+            this.txtPadrino.setText(this.eventoCtrl.getDtoSelected().getPadrino().getNombreCompleto());
         }
-    }//GEN-LAST:event_btnBuscarNoviaActionPerformed
-
-    private void btnBuscarPadreNoviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPadreNoviaActionPerformed
-        DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
-        obj.setVisible(true);
-        if (obj.getPersona() != null) {
-            this.eventoCtrl.getDtoSelected().setPadreNovia(obj.getPersona());
-            this.txtPadreNovia.setText(this.eventoCtrl.getDtoSelected().getPadreNovia().getNombreCompleto());
-        }
-    }//GEN-LAST:event_btnBuscarPadreNoviaActionPerformed
-
-    private void btnBuscarMadreNoviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMadreNoviaActionPerformed
-        DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
-        obj.setVisible(true);
-        if (obj.getPersona() != null) {
-            this.eventoCtrl.getDtoSelected().setMadreNovia(obj.getPersona());
-            this.txtMadreNovia.setText(this.eventoCtrl.getDtoSelected().getMadreNovia().getNombreCompleto());
-        }
-    }//GEN-LAST:event_btnBuscarMadreNoviaActionPerformed
-
-    private void btnBuscarTestigo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTestigo1ActionPerformed
-        DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
-        obj.setVisible(true);
-        if (obj.getPersona() != null) {
-            this.eventoCtrl.getDtoSelected().setTestigo1(obj.getPersona());
-            this.txtTestigo1.setText(this.eventoCtrl.getDtoSelected().getTestigo1().getNombreCompleto());
-        }
-    }//GEN-LAST:event_btnBuscarTestigo1ActionPerformed
+    }//GEN-LAST:event_btnBuscarPadrinoActionPerformed
 
     private void btnBuscarSacerdoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSacerdoteActionPerformed
         DlgBuscarSacerdote obj = new DlgBuscarSacerdote(this, true);
@@ -476,7 +381,7 @@ public class DlgBoda extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if (this.eventoCtrl.registrarEvento(new BodaController())) {
+        if (this.eventoCtrl.registrarEvento(new BautizoController())) {
             JOptionPane.showMessageDialog(this, "Registro realizado correctamente.!", "Información", JOptionPane.INFORMATION_MESSAGE);
             ProjectUtils.limpiarComponentes(this.jPanel1);
         } else {
@@ -484,14 +389,14 @@ public class DlgBoda extends javax.swing.JDialog {
         }
     }
 
-    private void btnBuscarTestigo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTestigo2ActionPerformed
+    private void btnBuscarMadrinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMadrinaActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
-            this.eventoCtrl.getDtoSelected().setTestigo2(obj.getPersona());
-            this.txtTestigo2.setText(this.eventoCtrl.getDtoSelected().getTestigo2().getNombreCompleto());
+            this.eventoCtrl.getDtoSelected().setMadrina(obj.getPersona());
+            this.txtMadrina.setText(this.eventoCtrl.getDtoSelected().getMadrina().getNombreCompleto());
         }
-    }//GEN-LAST:event_btnBuscarTestigo2ActionPerformed
+    }//GEN-LAST:event_btnBuscarMadrinaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -510,14 +415,18 @@ public class DlgBoda extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DlgBoda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgBautizo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DlgBoda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgBautizo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DlgBoda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgBautizo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DlgBoda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgBautizo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -526,7 +435,7 @@ public class DlgBoda extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DlgBoda dialog = new DlgBoda(new javax.swing.JFrame(), true);
+                DlgBautizo dialog = new DlgBautizo(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -540,20 +449,15 @@ public class DlgBoda extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarLugar;
-    private javax.swing.JButton btnBuscarMadreNovia;
-    private javax.swing.JButton btnBuscarMadreNovio;
-    private javax.swing.JButton btnBuscarNovia;
-    private javax.swing.JButton btnBuscarNovio;
-    private javax.swing.JButton btnBuscarPadreNovia;
-    private javax.swing.JButton btnBuscarPadreNovio;
+    private javax.swing.JButton btnBuscarMadre;
+    private javax.swing.JButton btnBuscarMadrina;
+    private javax.swing.JButton btnBuscarPadre;
+    private javax.swing.JButton btnBuscarPadrino;
     private javax.swing.JButton btnBuscarSacerdote;
-    private javax.swing.JButton btnBuscarTestigo1;
-    private javax.swing.JButton btnBuscarTestigo2;
+    private javax.swing.JButton btnBuscarSacramentado;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -565,22 +469,18 @@ public class DlgBoda extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbCerrar;
     private com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtFolio;
     private javax.swing.JTextField txtLugar;
-    private javax.swing.JTextField txtMadreNovia;
-    private javax.swing.JTextField txtMadreNovio;
-    private javax.swing.JTextField txtNovia;
-    private javax.swing.JTextField txtNovio;
+    private javax.swing.JTextField txtMadre;
+    private javax.swing.JTextField txtMadrina;
     private javax.swing.JTextField txtNumero;
-    private javax.swing.JTextField txtPadreNovia;
-    private javax.swing.JTextField txtPadreNovio;
+    private javax.swing.JTextField txtPadre;
+    private javax.swing.JTextField txtPadrino;
     private javax.swing.JTextField txtSacerdote;
-    private javax.swing.JTextField txtTestigo1;
-    private javax.swing.JTextField txtTestigo2;
+    private javax.swing.JTextField txtSacramentado;
     private javax.swing.JTextField txtTomo;
     // End of variables declaration//GEN-END:variables
 }

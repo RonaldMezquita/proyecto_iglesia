@@ -5,13 +5,15 @@
  */
 package com.iglesia.controllers;
 
+import com.iglesia.dtos.EventosDto;
 import com.iglesia.entities.Evento;
 import com.iglesia.entities.Persona;
 import com.iglesia.entities.ResponsableEvento;
 import com.iglesia.entities.Usuario;
 import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.enums.TipoRelacionEnum;
-import com.iglesia.enums.TipoSacramentosEnum;
+import com.iglesia.enums.TipoSacramentoEnum;
+import com.iglesia.interfaces.IEvento;
 import com.iglesia.services.EventoService;
 import com.iglesia.utils.FechasUtils;
 import com.iglesia.utils.NumeroALetras;
@@ -36,12 +38,14 @@ public class EventoController implements Serializable {
     private EventoService eventoService;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private ResponsableEventoController responsableEventoController;
+    private EventosDto dtoSelected;
 
     public EventoController() {
         this.eventoService = new EventoService();
         this.selected = new Evento();
         this.selected.setEstado(true);
         this.selected.setIdUsuario(new Usuario(1));
+        this.dtoSelected = new EventosDto();
     }
 
     public void consultarTodos() {
@@ -87,17 +91,17 @@ public class EventoController implements Serializable {
             row[4] = item.getIdTipoSacramento().getNombre();
             row[5] = btnDetail;
             row[6] = btnPrint;
-            row[7] = item.getIdTipoSacramento().getId() != TipoSacramentosEnum.BODA.getValue() ? btnPrintConstancia : null;
+            row[7] = item.getIdTipoSacramento().getId() != TipoSacramentoEnum.BODA.getValue() ? btnPrintConstancia : null;
             model.addRow(row);
         }
     }
 
     public void generarRpt(Evento evento) {
-        if (evento.getIdTipoSacramento().getId() == TipoSacramentosEnum.BODA.getValue()) {
+        if (evento.getIdTipoSacramento().getId() == TipoSacramentoEnum.BODA.getValue()) {
             this.generarRptBoda(evento);
-        } else if (evento.getIdTipoSacramento().getId() == TipoSacramentosEnum.BAUTIZO.getValue()) {
+        } else if (evento.getIdTipoSacramento().getId() == TipoSacramentoEnum.BAUTIZO.getValue()) {
             this.generarRptBautizo(evento);
-        } else if (evento.getIdTipoSacramento().getId() == TipoSacramentosEnum.CONFIRMACION.getValue()) {
+        } else if (evento.getIdTipoSacramento().getId() == TipoSacramentoEnum.CONFIRMACION.getValue()) {
             this.generarRptConfirmacion(evento);
         }
     }
@@ -112,7 +116,7 @@ public class EventoController implements Serializable {
         String fecha_evento = new StringBuilder()
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
                 .append("del mes de ")
-                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH + 1)).toLowerCase()).append(" del año ")
+                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
         ;
         cal.setTime(FechasUtils.getCurrentDate());
@@ -120,7 +124,7 @@ public class EventoController implements Serializable {
         String fecha_emision = new StringBuilder("los ")
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
                 .append("dias del mes de ")
-                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH + 1)).toLowerCase()).append(" del año ")
+                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
 
         rc.getParametros().put("fecha_evento", fecha_evento);
@@ -150,15 +154,15 @@ public class EventoController implements Serializable {
 
         String fecha_nacimiento = new StringBuilder()
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
-                .append("del mes de ")
-                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH + 1)).toLowerCase()).append(" del año ")
+                .append("días del mes de ")
+                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
 
         cal.setTime(evento.getFecha());
         String fecha_evento = new StringBuilder()
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
                 .append("del mes de ")
-                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH + 1)).toLowerCase()).append(" del año ")
+                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
 
         cal.setTime(FechasUtils.getCurrentDate());
@@ -166,7 +170,7 @@ public class EventoController implements Serializable {
         String fecha_emision = new StringBuilder("los ")
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
                 .append("dias del mes de ")
-                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH + 1)).toLowerCase()).append(" del año ")
+                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
 
         rc.getParametros().put("fecha_nacimiento", fecha_nacimiento);
@@ -199,14 +203,14 @@ public class EventoController implements Serializable {
         String fecha_nacimiento = new StringBuilder()
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
                 .append("del mes de ")
-                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH + 1)).toLowerCase()).append(" del año ")
+                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
 
         cal.setTime(evento.getFecha());
         String fecha_evento = new StringBuilder()
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
                 .append("del mes de ")
-                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH + 1)).toLowerCase()).append(" del año ")
+                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
 
         cal.setTime(FechasUtils.getCurrentDate());
@@ -214,7 +218,7 @@ public class EventoController implements Serializable {
         String fecha_emision = new StringBuilder("los ")
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
                 .append("dias del mes de ")
-                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH + 1)).toLowerCase()).append(" del año ")
+                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
 
         rc.getParametros().put("fecha_nacimiento", fecha_nacimiento);
@@ -246,14 +250,14 @@ public class EventoController implements Serializable {
         String fecha_nacimiento = new StringBuilder()
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
                 .append("del mes de ")
-                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH + 1)).toLowerCase()).append(" del año ")
+                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
 
         cal.setTime(evento.getFecha());
         String fecha_evento = new StringBuilder()
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
                 .append("del mes de ")
-                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH + 1)).toLowerCase()).append(" del año ")
+                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
 
         cal.setTime(FechasUtils.getCurrentDate());
@@ -261,13 +265,26 @@ public class EventoController implements Serializable {
         String fecha_emision = new StringBuilder("los ")
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
                 .append("dias del mes de ")
-                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH + 1)).toLowerCase()).append(" del año ")
+                .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
+                
+        String edad_letras = NumeroALetras.cantidadConLetra(String.valueOf(
+                FechasUtils.calcularEdad(persona.getFechaNacimiento()))).toLowerCase();
 
+        rc.getParametros().put("edad_letras", edad_letras);
         rc.getParametros().put("fecha_nacimiento", fecha_nacimiento);
         rc.getParametros().put("fecha_evento", fecha_evento);
         rc.getParametros().put("fecha_emision", fecha_emision);
         rc.generarRepote();
+    }
+
+    /**
+     * Metodo para registrar los eventos
+     * @param evento Clase que implementa la interfaz IEvento
+     * @return 
+     */
+    public boolean registrarEvento(IEvento evento) {
+        return evento.registrar(this.dtoSelected);
     }
 
     //<editor-fold defaultstate="collapsed" desc="getters & setters">
@@ -285,6 +302,14 @@ public class EventoController implements Serializable {
 
     public void setItems(List<Evento> items) {
         this.items = items;
+    }
+
+    public EventosDto getDtoSelected() {
+        return dtoSelected;
+    }
+
+    public void setDtoSelected(EventosDto dtoSelected) {
+        this.dtoSelected = dtoSelected;
     }
     //</editor-fold>
 
