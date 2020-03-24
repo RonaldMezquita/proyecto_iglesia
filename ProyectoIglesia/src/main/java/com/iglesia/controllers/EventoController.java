@@ -267,13 +267,22 @@ public class EventoController implements Serializable {
                 .append("dias del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
+                
+        String edad_letras = NumeroALetras.cantidadConLetra(String.valueOf(
+                FechasUtils.calcularEdad(persona.getFechaNacimiento()))).toLowerCase();
 
+        rc.getParametros().put("edad_letras", edad_letras);
         rc.getParametros().put("fecha_nacimiento", fecha_nacimiento);
         rc.getParametros().put("fecha_evento", fecha_evento);
         rc.getParametros().put("fecha_emision", fecha_emision);
         rc.generarRepote();
     }
 
+    /**
+     * Metodo para registrar los eventos
+     * @param evento Clase que implementa la interfaz IEvento
+     * @return 
+     */
     public boolean registrarEvento(IEvento evento) {
         return evento.registrar(this.dtoSelected);
     }

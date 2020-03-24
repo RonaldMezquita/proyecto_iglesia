@@ -17,9 +17,10 @@ import java.util.Date;
  * @author remsf
  */
 public class FechasUtils {
-    
+
     /**
      * Retorna la fecha actual en formato util.Date
+     *
      * @return
      */
     public static Date getCurrentDate() {
@@ -45,15 +46,16 @@ public class FechasUtils {
         }
         return 0;
     }
-    
+
     /**
      * Retorna el nombre del mes ingresado en formato de enteros
+     *
      * @param mes
-     * @return 
+     * @return
      */
-    public static String getMonthName(Integer mes){
+    public static String getMonthName(Integer mes) {
         StringBuilder monthName = new StringBuilder();
-        switch(mes){
+        switch (mes) {
             case 1:
                 monthName.append("Enero");
                 break;
@@ -92,6 +94,25 @@ public class FechasUtils {
                 break;
         }
         return monthName.toString();
-    }    
-}
+    }
 
+    public static int calcularEdad(Date fechaNacimiento) {
+        Calendar fechaActual = Calendar.getInstance();
+        Calendar fechaNac = Calendar.getInstance();
+        fechaNac.setTime(fechaNacimiento);
+
+        // Cálculo de las diferencias.
+        int years = fechaActual.get(Calendar.YEAR) - fechaNac.get(Calendar.YEAR);
+        int months = fechaActual.get(Calendar.MONTH) - fechaNac.get(Calendar.MONTH);
+        int days = fechaActual.get(Calendar.DAY_OF_MONTH) - fechaNac.get(Calendar.DAY_OF_MONTH);
+
+        // Hay que comprobar si el día de su cumpleaños es posterior
+        // a la fecha actual, para restar 1 a la diferencia de años,
+        // pues aún no ha sido su cumpleaños.
+        if (months < 0 // Aún no es el mes de su cumpleaños
+                || (months == 0 && days < 0)) { // o es el mes pero no ha llegado el día.
+            years--;
+        }
+        return years;
+    }
+}
