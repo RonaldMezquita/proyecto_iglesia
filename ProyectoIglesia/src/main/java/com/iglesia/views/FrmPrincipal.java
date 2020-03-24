@@ -33,8 +33,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnSacerdotes = new javax.swing.JButton();
         btnLugares = new javax.swing.JButton();
         btnTiposSacramento = new javax.swing.JButton();
-        btnReportes = new javax.swing.JButton();
+        btnEventos = new javax.swing.JButton();
         btnBoda = new javax.swing.JButton();
+        btnBautizo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
@@ -67,7 +68,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnSacerdotesActionPerformed(evt);
             }
         });
-        panelMenu.add(btnSacerdotes, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, -1, -1));
+        panelMenu.add(btnSacerdotes, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 0, -1, -1));
 
         btnLugares.setBackground(new java.awt.Color(62, 69, 81));
         btnLugares.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -80,7 +81,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnLugaresActionPerformed(evt);
             }
         });
-        panelMenu.add(btnLugares, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, -1, -1));
+        panelMenu.add(btnLugares, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, -1, -1));
 
         btnTiposSacramento.setBackground(new java.awt.Color(62, 69, 81));
         btnTiposSacramento.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -93,20 +94,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnTiposSacramentoActionPerformed(evt);
             }
         });
-        panelMenu.add(btnTiposSacramento, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, -1, -1));
+        panelMenu.add(btnTiposSacramento, new org.netbeans.lib.awtextra.AbsoluteConstraints(487, 0, -1, -1));
 
-        btnReportes.setBackground(new java.awt.Color(62, 69, 81));
-        btnReportes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnReportes.setForeground(new java.awt.Color(255, 255, 255));
-        btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/x26-clientes.png"))); // NOI18N
-        btnReportes.setText("Reportes");
-        btnReportes.setToolTipText("");
-        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+        btnEventos.setBackground(new java.awt.Color(62, 69, 81));
+        btnEventos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnEventos.setForeground(new java.awt.Color(255, 255, 255));
+        btnEventos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/x26-clientes.png"))); // NOI18N
+        btnEventos.setText("Eventos");
+        btnEventos.setToolTipText("");
+        btnEventos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReportesActionPerformed(evt);
+                btnEventosActionPerformed(evt);
             }
         });
-        panelMenu.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, -1, -1));
+        panelMenu.add(btnEventos, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, -1, -1));
 
         getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 40));
 
@@ -120,7 +121,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnBodaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBoda, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+        getContentPane().add(btnBoda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 112, -1));
+
+        btnBautizo.setBackground(new java.awt.Color(62, 69, 81));
+        btnBautizo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnBautizo.setForeground(new java.awt.Color(255, 255, 255));
+        btnBautizo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/Boda.png"))); // NOI18N
+        btnBautizo.setText("Bautizo");
+        btnBautizo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBautizoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBautizo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 81, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Fondo.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -154,13 +167,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTiposSacramentoActionPerformed
 
-    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+    private void btnEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventosActionPerformed
 //        DlgReportes obj = new DlgReportes(this, false);
         DlgBuscarEvento obj = new DlgBuscarEvento(null, false);
         obj.setVisible(true);
 //        FrmReporte obj = new FrmReporte();
 //        obj.setVisible(true);
-    }//GEN-LAST:event_btnReportesActionPerformed
+    }//GEN-LAST:event_btnEventosActionPerformed
+
+    private void btnBautizoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBautizoActionPerformed
+        DlgBautizo obj = new DlgBautizo(this, true);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnBautizoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,9 +217,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBautizo;
     private javax.swing.JButton btnBoda;
+    private javax.swing.JButton btnEventos;
     private javax.swing.JButton btnLugares;
-    private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnSacerdotes;
     private javax.swing.JButton btnTiposSacramento;
     private javax.swing.JLabel jLabel2;

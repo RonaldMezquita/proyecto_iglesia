@@ -35,14 +35,29 @@ public class ProjectUtils {
                 if (((JTextField) components[i]).getText().isEmpty()) {
                     if (excepciones != null) {
                         if (!excepciones.contains(((JTextField) components[i]).getName())) {
-                            System.out.println("Campo vacio " + ((JTextField) components[i]).getName());
+                            System.out.println("Campo tipo texto vacio " + ((JTextField) components[i]).getName());
                             vacio = true;
                             break;
                         } else {
                             continue;
                         }
                     }
-                    System.out.println("Campo vacio " + ((JTextField) components[i]).getName());
+                    System.out.println("Campo tipo texto vacio " + ((JTextField) components[i]).getName());
+                    vacio = true;
+                    break;
+                }
+            } else if (components[i] instanceof JDateChooser) {
+                if (((JDateChooser) components[i]).getDate() == null) {
+                    if (excepciones != null) {
+                        if (!excepciones.contains(((JDateChooser) components[i]).getName())) {
+                            System.out.println("Campo tipo fecha vacio " + ((JDateChooser) components[i]).getName());
+                            vacio = true;
+                            break;
+                        } else {
+                            continue;
+                        }
+                    }
+                    System.out.println("Campo tipo fecha vacio " + ((JDateChooser) components[i]).getName());
                     vacio = true;
                     break;
                 }

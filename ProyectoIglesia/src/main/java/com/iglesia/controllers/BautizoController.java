@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.iglesia.controllers;
 
 import com.iglesia.dtos.EventosDto;
@@ -23,11 +18,11 @@ import java.util.List;
  *
  * @author Ronald Mezquita
  */
-public class BodaController implements IEvento {
+public class BautizoController implements IEvento{
 
     private final ResponsableEventoService service;
 
-    public BodaController() {
+    public BautizoController() {
         this.service = new ResponsableEventoService();
     }
 
@@ -37,7 +32,7 @@ public class BodaController implements IEvento {
             try {
                 Evento evento = new Evento();
                 List<ResponsableEvento> resLst = new ArrayList<>();
-                data.setTipoSacramento(new TipoSacramentos(TipoSacramentoEnum.BODA.getValue()));
+                data.setTipoSacramento(new TipoSacramentos(TipoSacramentoEnum.BAUTIZO.getValue()));
                 evento.setEstado(true);
                 evento.setFecha(data.getFecha());
                 evento.setFechaCreacion(FechasUtils.getCurrentDate());
@@ -49,53 +44,43 @@ public class BodaController implements IEvento {
                 evento.setNumero(data.getNumero());
                 evento.setTomo(data.getTomo());
 
-                // Novio
+                // sacramentado
                 ResponsableEvento resEve = new ResponsableEvento();
                 resEve.setEstado(true);
                 resEve.setFechaCreacion(evento.getFechaCreacion());
-                resEve.setIdMadre(data.getMadreNovio());
-                resEve.setIdPadre(data.getPadreNovio());
-                resEve.setIdPersona(data.getNovio());
-                resEve.setIdRelacion(new Relacion(TipoRelacionEnum.NOVIO.getValue()));
+                resEve.setIdMadre(data.getMadreSacramentado());
+                resEve.setIdPadre(data.getPadreSacramentado());
+                resEve.setIdPersona(data.getSacramentado());
+                resEve.setIdRelacion(new Relacion(TipoRelacionEnum.SACRAMENTADO.getValue()));
                 resEve.setIdUsuario(new Usuario(1));
                 resLst.add(resEve);
 
-                // Novia
+                // padrino
                 resEve = new ResponsableEvento();
                 resEve.setEstado(true);
                 resEve.setFechaCreacion(evento.getFechaCreacion());
-                resEve.setIdMadre(data.getMadreNovia());
-                resEve.setIdPadre(data.getPadreNovia());
-                resEve.setIdPersona(data.getNovia());
-                resEve.setIdRelacion(new Relacion(TipoRelacionEnum.NOVIA.getValue()));
+                resEve.setIdPersona(data.getPadrino());
+                resEve.setIdRelacion(new Relacion(TipoRelacionEnum.PADRINO.getValue()));
                 resEve.setIdUsuario(new Usuario(1));
                 resLst.add(resEve);
 
-                // Testigo 1
+                // madrina
                 resEve = new ResponsableEvento();
                 resEve.setEstado(true);
                 resEve.setFechaCreacion(evento.getFechaCreacion());
-                resEve.setIdPersona(data.getTestigo1());
-                resEve.setIdRelacion(new Relacion(TipoRelacionEnum.TESTIGO.getValue()));
-                resEve.setIdUsuario(new Usuario(1));
-                resLst.add(resEve);
-
-                // Testigo 2
-                resEve = new ResponsableEvento();
-                resEve.setEstado(true);
-                resEve.setFechaCreacion(evento.getFechaCreacion());
-                resEve.setIdPersona(data.getTestigo2());
-                resEve.setIdRelacion(new Relacion(TipoRelacionEnum.TESTIGO.getValue()));
+                resEve.setIdPersona(data.getMadrina());
+                resEve.setIdRelacion(new Relacion(TipoRelacionEnum.MADRINA.getValue()));
                 resEve.setIdUsuario(new Usuario(1));
                 resLst.add(resEve);
 
                 return this.service.registrarEvento(evento, resLst);
             } catch (Exception e) {
-                System.out.println("[BodaController][registrarBoda]->error=" + e.getMessage());
+                System.out.println("[BautizoController][registrarBautizo]->error=" + e.getMessage());
             }
         } else {
-            System.out.println("[BodaController][registrarBoda]->Ocurrio un error al registrar la boda");
+            System.out.println("[BautizoController][registrarBautizo]->Ocurrio un error al registrar la bautizo");
         }
         return false;
     }
+
 }

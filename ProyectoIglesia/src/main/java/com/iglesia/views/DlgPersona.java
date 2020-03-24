@@ -39,12 +39,12 @@ public class DlgPersona extends javax.swing.JDialog {
         txtdui = ProjectUtils.getCampoDui();
         txtdui.setName("dui");
         txtdui.setFont(new java.awt.Font("Dialog", 0, 14));
-        jPanel1.add(txtdui, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 210, 90, -1));
+        jPanel1.add(txtdui, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 210, 90, -1));
 
         txtnit = ProjectUtils.getCampoNit();
         txtnit.setName("nit");
         txtnit.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 260, 142, -1));
+        jPanel1.add(txtnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 260, 142, -1));
         // termina generacion de campos formateados
         this.setLocationRelativeTo(null);
         this.txtnombres.requestFocus();
@@ -98,6 +98,7 @@ public class DlgPersona extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGroupGenero = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -120,6 +121,9 @@ public class DlgPersona extends javax.swing.JDialog {
         txtbuscar = new javax.swing.JTextField();
         cbestado = new javax.swing.JCheckBox();
         jLabel8 = new javax.swing.JLabel();
+        rbMasculino = new javax.swing.JRadioButton();
+        rbFemenino = new javax.swing.JRadioButton();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -138,18 +142,18 @@ public class DlgPersona extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombres");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 90, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 90, -1, -1));
 
         txtnombres.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 110, 230, -1));
+        jPanel1.add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 110, 230, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Apellidos");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 140, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 140, -1, -1));
 
         txtapellidos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtapellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 160, 230, -1));
+        jPanel1.add(txtapellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 160, 230, -1));
 
         btnSalir.setBackground(new java.awt.Color(204, 0, 0));
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,38 +163,38 @@ public class DlgPersona extends javax.swing.JDialog {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 0, 40, 32));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 0, 40, 32));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("DUI");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 190, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("NIT");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 240, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 240, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Estado");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 470, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 520, -1, -1));
 
         txtdireccion.setColumns(20);
         txtdireccion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtdireccion.setRows(5);
         jScrollPane1.setViewportView(txtdireccion);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, 270, 90));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 420, 270, 90));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Fecha de nacimiento");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 300, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 300, -1, -1));
 
         txtfechanacimiento.setDateFormatString("dd/MM/yyyy");
         txtfechanacimiento.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtfechanacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 320, 160, -1));
+        jPanel1.add(txtfechanacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 320, 160, -1));
 
         btnguardar.setBackground(new java.awt.Color(13, 71, 161));
         btnguardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -201,7 +205,7 @@ public class DlgPersona extends javax.swing.JDialog {
                 btnguardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 530, -1, -1));
+        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 580, -1, -1));
 
         btncancelar.setBackground(new java.awt.Color(255, 136, 0));
         btncancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -212,7 +216,7 @@ public class DlgPersona extends javax.swing.JDialog {
                 btncancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 530, -1, -1));
+        jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 580, -1, -1));
 
         txtid.setName("idPersona"); // NOI18N
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 60, 40, -1));
@@ -222,14 +226,14 @@ public class DlgPersona extends javax.swing.JDialog {
 
             },
             new String [] {
-                "ID", "Nombres", "Apellidos", "DUI", "NIT", "F.Nacimiento", "Direccion", "Estado"
+                "ID", "Nombres", "Apellidos", "DUI", "NIT", "F.Nacimiento", "Direccion", "Genero", "Estado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -260,12 +264,15 @@ public class DlgPersona extends javax.swing.JDialog {
             tbpersona.getColumnModel().getColumn(5).setMinWidth(85);
             tbpersona.getColumnModel().getColumn(5).setPreferredWidth(85);
             tbpersona.getColumnModel().getColumn(5).setMaxWidth(85);
-            tbpersona.getColumnModel().getColumn(7).setMinWidth(60);
-            tbpersona.getColumnModel().getColumn(7).setPreferredWidth(60);
-            tbpersona.getColumnModel().getColumn(7).setMaxWidth(60);
+            tbpersona.getColumnModel().getColumn(7).setMinWidth(50);
+            tbpersona.getColumnModel().getColumn(7).setPreferredWidth(50);
+            tbpersona.getColumnModel().getColumn(7).setMaxWidth(50);
+            tbpersona.getColumnModel().getColumn(8).setMinWidth(60);
+            tbpersona.getColumnModel().getColumn(8).setPreferredWidth(60);
+            tbpersona.getColumnModel().getColumn(8).setMaxWidth(60);
         }
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 780, 400));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 850, 500));
 
         txtbuscar.setName("buscar"); // NOI18N
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -277,14 +284,34 @@ public class DlgPersona extends javax.swing.JDialog {
 
         cbestado.setForeground(new java.awt.Color(255, 255, 255));
         cbestado.setText("Activo");
-        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 490, -1, -1));
+        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 540, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Direccion");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 350, -1, -1));
+        jLabel8.setText("Genero");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 350, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 580));
+        btnGroupGenero.add(rbMasculino);
+        rbMasculino.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        rbMasculino.setForeground(new java.awt.Color(255, 255, 255));
+        rbMasculino.setSelected(true);
+        rbMasculino.setText("Masculino");
+        rbMasculino.setActionCommand("M");
+        jPanel1.add(rbMasculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 370, -1, -1));
+
+        btnGroupGenero.add(rbFemenino);
+        rbFemenino.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        rbFemenino.setForeground(new java.awt.Color(255, 255, 255));
+        rbFemenino.setText("Femenino");
+        rbFemenino.setActionCommand("F");
+        jPanel1.add(rbFemenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 370, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Direccion");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 400, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -300,6 +327,7 @@ public class DlgPersona extends javax.swing.JDialog {
         this.personaController.getSelected().setApellidos(this.txtapellidos.getText());
         this.personaController.getSelected().setDui(this.txtdui.getText());
         this.personaController.getSelected().setNit(this.txtnit.getText());
+        this.personaController.getSelected().setGenero(this.btnGroupGenero.getSelection().getActionCommand());
         this.personaController.getSelected().setFechaNacimiento(this.txtfechanacimiento.getDate());
         this.personaController.getSelected().setDireccion(this.txtdireccion.getText());
         this.personaController.getSelected().setEstado(this.cbestado.isSelected());
@@ -328,7 +356,12 @@ public class DlgPersona extends javax.swing.JDialog {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             this.txtfechanacimiento.setDate(sdf.parse(this.tbpersona.getValueAt(rowSelected, 5).toString()));
             this.txtdireccion.setText(this.tbpersona.getValueAt(rowSelected, 6).toString());
-            this.cbestado.setSelected(this.tbpersona.getValueAt(rowSelected, 7).toString() == "Activo" ? true : false);
+            if (this.tbpersona.getValueAt(rowSelected, 7).toString().equals("M")) {
+                this.rbMasculino.setSelected(true);
+            } else {
+                this.rbFemenino.setSelected(true);
+            }
+            this.cbestado.setSelected(this.tbpersona.getValueAt(rowSelected, 8).toString() == "Activo" ? true : false);
         } catch (ParseException ex) {
             System.out.println("Error de parseo");
         }
@@ -381,6 +414,7 @@ public class DlgPersona extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btnGroupGenero;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btnguardar;
@@ -393,9 +427,12 @@ public class DlgPersona extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JRadioButton rbFemenino;
+    private javax.swing.JRadioButton rbMasculino;
     private javax.swing.JTable tbpersona;
     private javax.swing.JTextField txtapellidos;
     private javax.swing.JTextField txtbuscar;

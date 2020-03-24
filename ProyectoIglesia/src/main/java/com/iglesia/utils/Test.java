@@ -2,14 +2,8 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
-*/
+ */
 package com.iglesia.utils;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -31,15 +25,16 @@ public class Test {
 //                .append(NumeroALetras.cantidadConLetra("2020").toLowerCase());
 //
 //        System.out.println(fecha);
-        Conexion con = new Conexion();
-        try {
-            PreparedStatement ps = con.getConexion().prepareStatement("select * from persona");
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                System.out.println(rs.getString("nombres"));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
-        }               
-    }    
+//        Conexion con = new Conexion();
+//        try {
+//            PreparedStatement ps = con.getConexion().prepareStatement("select * from persona");
+//            ResultSet rs = ps.executeQuery();
+//            while(rs.next()){
+//                System.out.println(rs.getString("nombres"));
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+//        }               
+
+    }
 }

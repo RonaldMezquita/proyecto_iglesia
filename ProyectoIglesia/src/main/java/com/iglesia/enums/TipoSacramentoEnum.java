@@ -9,11 +9,11 @@ package com.iglesia.enums;
  *
  * @author Alexis
  */
-public enum TipoSacramentosEnum {
+public enum TipoSacramentoEnum {
     BODA(1), BAUTIZO(2), CONFIRMACION(3);
     private final Integer value;
 
-    private TipoSacramentosEnum(Integer value) {
+    private TipoSacramentoEnum(Integer value) {
         this.value = value;
     }
 

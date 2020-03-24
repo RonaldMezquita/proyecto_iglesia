@@ -12,8 +12,8 @@ package com.iglesia.enums;
 public enum TipoRelacionEnum {
     PADRINO(1),
     MADRINA(2),
-    ESPOSO(3),
-    ESPOSA(4),
+    NOVIO(3),
+    NOVIA(4),
     TESTIGO(5),
     SACRAMENTADO(6);
 

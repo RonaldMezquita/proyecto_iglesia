@@ -15,7 +15,7 @@ import java.util.Date;
  *
  * @author Ronald Mezquita
  */
-public class BodaDto {
+public class EventosDto {
 
     private String tomo;
     private String folio;
@@ -24,6 +24,7 @@ public class BodaDto {
     private Lugar lugar;
     private Sacerdote sacerdote;
     private Date fecha;
+    // boda
     private Persona novio;
     private Persona padreNovio;
     private Persona madreNovio;
@@ -32,11 +33,17 @@ public class BodaDto {
     private Persona madreNovia;
     private Persona testigo1;
     private Persona testigo2;
+    // bautizo, confirmacion
+    private Persona sacramentado;
+    private Persona padreSacramentado;
+    private Persona madreSacramentado;
+    private Persona padrino;
+    private Persona madrina;
 
-    public BodaDto() {
+    public EventosDto() {
     }
 
-    public BodaDto(String tomo, String folio, String numero, TipoSacramentos tipoSacramento, Lugar lugar, Sacerdote sacerdote, Date fecha, Persona novio, Persona padreNovio, Persona madreNovio, Persona novia, Persona padreNovia, Persona madreNovia, Persona testigo1, Persona testigo2) {
+    public EventosDto(String tomo, String folio, String numero, TipoSacramentos tipoSacramento, Lugar lugar, Sacerdote sacerdote, Date fecha, Persona novio, Persona padreNovio, Persona madreNovio, Persona novia, Persona padreNovia, Persona madreNovia, Persona testigo1, Persona testigo2, Persona sacramentado, Persona padreSacramentado, Persona madreSacramentado, Persona padrino, Persona madrina) {
         this.tomo = tomo;
         this.folio = folio;
         this.numero = numero;
@@ -52,6 +59,11 @@ public class BodaDto {
         this.madreNovia = madreNovia;
         this.testigo1 = testigo1;
         this.testigo2 = testigo2;
+        this.sacramentado = sacramentado;
+        this.padreSacramentado = padreSacramentado;
+        this.madreSacramentado = madreSacramentado;
+        this.padrino = padrino;
+        this.madrina = madrina;
     }
 
     public String getTomo() {
@@ -172,6 +184,46 @@ public class BodaDto {
 
     public void setTestigo2(Persona testigo2) {
         this.testigo2 = testigo2;
+    }
+
+    public Persona getSacramentado() {
+        return sacramentado;
+    }
+
+    public void setSacramentado(Persona sacramentado) {
+        this.sacramentado = sacramentado;
+    }
+
+    public Persona getPadreSacramentado() {
+        return padreSacramentado;
+    }
+
+    public void setPadreSacramentado(Persona padreSacramentado) {
+        this.padreSacramentado = padreSacramentado;
+    }
+
+    public Persona getMadreSacramentado() {
+        return madreSacramentado;
+    }
+
+    public void setMadreSacramentado(Persona madreSacramentado) {
+        this.madreSacramentado = madreSacramentado;
+    }
+
+    public Persona getPadrino() {
+        return padrino;
+    }
+
+    public void setPadrino(Persona padrino) {
+        this.padrino = padrino;
+    }
+
+    public Persona getMadrina() {
+        return madrina;
+    }
+
+    public void setMadrina(Persona madrina) {
+        this.madrina = madrina;
     }
 
 }

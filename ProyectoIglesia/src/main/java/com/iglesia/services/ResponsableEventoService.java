@@ -5,6 +5,7 @@
  */
 package com.iglesia.services;
 
+import com.iglesia.entities.Evento;
 import com.iglesia.entities.ResponsableEvento;
 import com.iglesia.utils.CrudUtils;
 import com.iglesia.utils.PersistenceManager;
@@ -45,6 +46,34 @@ public class ResponsableEventoService extends CrudUtils<ResponsableEvento> {
             PersistenceManager.close();
         }
         return lista;
+    }
+    
+    /**
+     * Registra los eventos
+     * @param evento
+     * @param det
+     * @return 
+     */
+    public boolean registrarEvento(Evento evento, List<ResponsableEvento> det){
+        EntityManager em = PersistenceManager.getEntityManager();
+        em.getTransaction().begin();
+        boolean result = false;
+        try {
+            em.persist(evento);
+            
+            for (ResponsableEvento item : det) {
+                item.setIdEvento(evento);
+                em.persist(item);
+            }
+            
+            em.getTransaction().commit();
+            result = true;
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+        }finally{
+            PersistenceManager.close();
+        }
+        return result;
     }
 
 }
