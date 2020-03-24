@@ -152,7 +152,7 @@ WHERE e.id= $P{id_evento}]]>
 			<staticText>
 				<reportElement x="0" y="20" width="550" height="30" uuid="10e26734-5804-40da-8ff0-f8aa4571ea1c"/>
 				<textElement textAlignment="Center">
-					<font size="18"/>
+					<font size="18" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[FE DE BAUTISMO]]></text>
 			</staticText>
@@ -168,10 +168,10 @@ WHERE e.id= $P{id_evento}]]>
 		<band height="223" splitType="Stretch">
 			<textField>
 				<reportElement x="49" y="10" width="472" height="110" uuid="8af3d33e-ed28-4b59-9849-e42159687e1f"/>
-				<textElement>
+				<textElement markup="html">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA["El infrascrito Párroco de \"Nuestra Señora de Valvanera\" CERTIFICA: que en el Tomo "+ $F{tomo}+", folio"+ $F{folio}+" Nº "+ $F{numero}+" de Bautismos de este Archivo Parroquial, se registra la partida que literalmente dice: En la Parroquia  "+$F{locacion}+" a los "+$P{fecha_evento}+", el Padre "+$F{nombre_sacerdote}+" bautizó solemnemente a "+$F{sacramentado_nombre}+" que nació el "+$P{fecha_nacimiento}+". Hija legítima de "+$F{padre_nombre}+" y de "+$F{madre_nombre}+". Madrina: "+$F{padrino}+". Al margen se lee: Nº "+$F{numero}+". "+$F{sacramentado_nombre}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["El infrascrito Párroco de  <b>\"Nuestra Señora de Valvanera\" </b> CERTIFICA: que en el Tomo "+ $F{tomo}+", folio"+ $F{folio}+" Nº "+ $F{numero}+" de Bautismos de este Archivo Parroquial, se registra la partida que literalmente dice: En la Parroquia  "+$F{locacion}+" a los "+$P{fecha_evento}+", el Padre  <b>"+$F{nombre_sacerdote}+" </b> bautizó solemnemente a <b> "+$F{sacramentado_nombre}+" </b> que nació el "+$P{fecha_nacimiento}+". Hija legítima de "+$F{padre_nombre}+" y de "+$F{madre_nombre}+". Madrina: "+$F{padrino}+". Al margen se lee: Nº "+$F{numero}+". "+$F{sacramentado_nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="49" y="160" width="472" height="30" uuid="4c576e6d-312e-4601-937b-f08ad93bfc53"/>
