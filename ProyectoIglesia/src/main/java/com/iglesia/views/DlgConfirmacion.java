@@ -46,7 +46,6 @@ public class DlgConfirmacion extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnEliminarLugar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -83,25 +82,12 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         btnBuscarMadrina = new javax.swing.JButton();
         btnEliminarPadre = new javax.swing.JButton();
         btnEliminarPadrino = new javax.swing.JButton();
-        btnEliminarSacerdote = new javax.swing.JButton();
-        btnEliminarSacramentado = new javax.swing.JButton();
         btnEliminarMadre = new javax.swing.JButton();
         btnEliminarMadrina = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(780, 420));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnEliminarLugar.setBackground(new java.awt.Color(204, 0, 0));
-        btnEliminarLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-basura.png"))); // NOI18N
-        btnEliminarLugar.setToolTipText("Eliminar lugar");
-        btnEliminarLugar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarLugarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnEliminarLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 40, 30));
 
         jPanel1.setBackground(new java.awt.Color(55, 71, 79));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -347,26 +333,6 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         });
         jPanel1.add(btnEliminarPadrino, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 40, 30));
 
-        btnEliminarSacerdote.setBackground(new java.awt.Color(204, 0, 0));
-        btnEliminarSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-basura.png"))); // NOI18N
-        btnEliminarSacerdote.setToolTipText("Eliminar lugar");
-        btnEliminarSacerdote.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarSacerdoteActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnEliminarSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 40, 30));
-
-        btnEliminarSacramentado.setBackground(new java.awt.Color(204, 0, 0));
-        btnEliminarSacramentado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-basura.png"))); // NOI18N
-        btnEliminarSacramentado.setToolTipText("Eliminar lugar");
-        btnEliminarSacramentado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarSacramentadoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnEliminarSacramentado, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 200, 40, 30));
-
         btnEliminarMadre.setBackground(new java.awt.Color(204, 0, 0));
         btnEliminarMadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-basura.png"))); // NOI18N
         btnEliminarMadre.setToolTipText("Eliminar lugar");
@@ -482,11 +448,6 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnBuscarMadrinaActionPerformed
 
-    private void btnEliminarLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarLugarActionPerformed
-        this.eventoCtrl.getDtoSelected().setLugar(null);
-        this.txtLugar.setText("");
-    }//GEN-LAST:event_btnEliminarLugarActionPerformed
-
     private void btnEliminarPadreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPadreActionPerformed
         this.eventoCtrl.getDtoSelected().setPadreSacramentado(null);
         this.txtPadre.setText("");
@@ -496,16 +457,6 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         this.eventoCtrl.getDtoSelected().setPadrino(null);
         this.txtPadrino.setText("");
     }//GEN-LAST:event_btnEliminarPadrinoActionPerformed
-
-    private void btnEliminarSacerdoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarSacerdoteActionPerformed
-        this.eventoCtrl.getDtoSelected().setSacerdote(null);
-        this.txtSacerdote.setText("");
-    }//GEN-LAST:event_btnEliminarSacerdoteActionPerformed
-
-    private void btnEliminarSacramentadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarSacramentadoActionPerformed
-        this.eventoCtrl.getDtoSelected().setSacramentado(null);
-        this.txtSacramentado.setText("");
-    }//GEN-LAST:event_btnEliminarSacramentadoActionPerformed
 
     private void btnEliminarMadreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMadreActionPerformed
         this.eventoCtrl.getDtoSelected().setMadreSacramentado(null);
@@ -583,13 +534,10 @@ public class DlgConfirmacion extends javax.swing.JDialog {
     private javax.swing.JButton btnBuscarSacerdote;
     private javax.swing.JButton btnBuscarSacramentado;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnEliminarLugar;
     private javax.swing.JButton btnEliminarMadre;
     private javax.swing.JButton btnEliminarMadrina;
     private javax.swing.JButton btnEliminarPadre;
     private javax.swing.JButton btnEliminarPadrino;
-    private javax.swing.JButton btnEliminarSacerdote;
-    private javax.swing.JButton btnEliminarSacramentado;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
