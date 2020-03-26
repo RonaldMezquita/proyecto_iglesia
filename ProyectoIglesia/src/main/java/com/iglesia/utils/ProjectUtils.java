@@ -13,6 +13,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -82,6 +83,10 @@ public class ProjectUtils {
             }
             if (components[i] instanceof JDateChooser) {
                 ((JDateChooser) components[i]).setDate(null);
+            }
+            
+            if (components[i] instanceof JComboBox) {
+                ((JComboBox) components[i]).setSelectedItem(((JComboBox) components[i]).getItemAt(0));
             }
         }
     }

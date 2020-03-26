@@ -18,11 +18,11 @@ import java.util.List;
  *
  * @author Ronald Mezquita
  */
-public class BautizoController implements IEvento{
+public class ConfirmacionController implements IEvento{
 
     private final ResponsableEventoService service;
 
-    public BautizoController() {
+    public ConfirmacionController() {
         this.service = new ResponsableEventoService();
     }
 
@@ -32,7 +32,7 @@ public class BautizoController implements IEvento{
             try {
                 Evento evento = new Evento();
                 List<ResponsableEvento> resLst = new ArrayList<>();
-                data.setTipoSacramento(new TipoSacramentos(TipoSacramentoEnum.BAUTIZO.getValue()));
+                data.setTipoSacramento(new TipoSacramentos(TipoSacramentoEnum.CONFIRMACION.getValue()));
                 evento.setEstado(true);
                 evento.setFecha(data.getFecha());
                 evento.setFechaCreacion(FechasUtils.getCurrentDate());
@@ -75,10 +75,10 @@ public class BautizoController implements IEvento{
 
                 return this.service.registrarEvento(evento, resLst);
             } catch (Exception e) {
-                System.out.println("[BautizoController][registrar]->error=" + e.getMessage());
+                System.out.println("[ConfirmacionController][registrar]->error=" + e.getMessage());
             }
         } else {
-            System.out.println("[BautizoController][registrar]->Ocurrio un error al registrar la bautizo");
+            System.out.println("[ConfirmacionController][registrar]->Ocurrio un error al registrar la bautizo");
         }
         return false;
     }

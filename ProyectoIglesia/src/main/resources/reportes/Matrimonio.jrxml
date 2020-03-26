@@ -1,44 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Matrimonio" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="72fa48b4-21b8-4abd-88db-011d95246478">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Iglesia"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DB_IGLESIA"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="id_evento" class="java.lang.Integer"/>
 	<parameter name="fecha_evento" class="java.lang.String"/>
 	<parameter name="fecha_emision" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[WITH testigo AS(
-SELECT res.id idRes,
-p.dui AS testigo1_dui, 
-p.nit AS testigo1_nit, 
-CONCAT_WS(' ', p.nombres, p.apellidos) AS testigo1_nombre,
-MAX(CASE WHEN res.id_relacion = 5 THEN p.dui ELSE '' END) testigo2_dui, 
-MAX(CASE WHEN res.id_relacion = 5 THEN p.nit ELSE '' END) testigo2_nit, 
-MAX(CASE WHEN res.id_relacion = 5 THEN CONCAT_WS(' ', p.nombres, p.apellidos) ELSE '' END) testigo2_nombre 
-FROM persona p
-INNER JOIN responsable_evento res ON res.id_persona=p.id 
-where res.id_relacion=5 AND res.id_evento=$P{id_evento}  
+WITH t1 AS(
+SELECT MIN(res.id) AS idRes FROM responsable_evento res WHERE res.id_relacion=5 AND res.id_evento=$P{id_evento}
+),
+testigo1 AS (
+SELECT res.id AS idRes, p.dui, p.nit, CONCAT_WS(' ', p.nombres, p.apellidos) nombre
+FROM responsable_evento res 
+INNER JOIN t1 ON t1.idRes = res.id 
+INNER JOIN persona p ON p.id=res.id_persona
+WHERE res.id_relacion=5 and res.id_evento=$P{id_evento}
+),
+t2 AS(
+SELECT MAX(res.id) AS idRes FROM responsable_evento res WHERE res.id_relacion=5 AND res.id_evento=$P{id_evento}
+),
+testigo2 AS (
+SELECT res.id AS idRes, p.dui, p.nit, CONCAT_WS(' ', p.nombres, p.apellidos) nombre
+FROM responsable_evento res 
+INNER JOIN t2 ON t2.idRes = res.id 
+INNER JOIN persona p ON p.id=res.id_persona
+WHERE res.id_relacion=5 and res.id_evento=$P{id_evento}
+)
+SELECT 
+res.id idRes,
+MAX(testigo1.dui) t1_dui,
+MAX(testigo1.nit) t1_nit,
+max(testigo1.nombre) t1_nombre,
+MAX(testigo2.dui) t2_dui,
+MAX(testigo2.nit) t2_nit,
+max(testigo2.nombre) t2_nombre
+FROM responsable_evento res 
+LEFT JOIN testigo1 ON testigo1.idRes = res.id
+LEFT JOIN testigo2 ON testigo2.idRes = res.id
+WHERE res.id_relacion=5 and res.id_evento=$P{id_evento}
 ),
 novio AS(
 SELECT res.id AS idRes, p.nit as novio_nit, p.dui AS novio_dui, CONCAT_WS(' ', p.nombres, p.apellidos) AS novio_nombre,  
+CONCAT(depto.nombre,', ',ps.nombre) originario,
 madre.dui AS madre_dui, madre.nit AS madre_nit, CONCAT_WS(' ', madre.nombres, madre.apellidos) AS madre_nombre,
 padre.dui AS padre_dui, padre.nit AS padre_nit, padre.direccion, CONCAT_WS(' ', padre.nombres, padre.apellidos) AS padre_nombre,
 YEAR(CURDATE())-YEAR(p.fecha_nacimiento) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > 
 DATE_FORMAT(p.fecha_nacimiento,'%m-%d'), 0 , -1 )AS novio_edad
 FROM persona p 
 INNER JOIN responsable_evento res ON res.id_persona=p.id 
+INNER JOIN departamento depto ON depto.id=p.id_depto_origen
+INNER JOIN pais ps ON ps.id=depto.id_pais
 INNER JOIN persona madre ON madre.id=res.id_madre
 INNER JOIN persona padre ON padre.id=res.id_padre
 where res.id_relacion=3 AND res.id_evento=$P{id_evento} 
 ),
 novia AS(
 SELECT res.id AS idRes, p.nit as novia_nit, p.dui AS novia_dui, CONCAT_WS(' ', p.nombres, p.apellidos) AS novia_nombre,  
+CONCAT(depto.nombre,', ',ps.nombre) originaria,
 madre.dui AS madre_dui, madre.nit AS madre_nit, CONCAT_WS(' ', madre.nombres, madre.apellidos) AS madre_nombre,
 padre.dui AS padre_dui, padre.nit AS padre_nit, padre.direccion, CONCAT_WS(' ', padre.nombres, padre.apellidos) AS padre_nombre,
 YEAR(CURDATE())-YEAR(p.fecha_nacimiento) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > 
 DATE_FORMAT(p.fecha_nacimiento,'%m-%d'), 0 , -1 )AS novia_edad
 FROM persona p 
 INNER JOIN responsable_evento res ON res.id_persona=p.id 
+INNER JOIN departamento depto ON depto.id=p.id_depto_origen
+INNER JOIN pais ps ON ps.id=depto.id_pais
 INNER JOIN persona madre ON madre.id=res.id_madre
 INNER JOIN persona padre ON padre.id=res.id_padre
 where res.id_relacion=4 AND res.id_evento=$P{id_evento} 
@@ -51,6 +79,7 @@ MAX(CASE WHEN res.id_relacion = 4 THEN novia.novia_dui ELSE '' END) novia_dui,
 MAX(CASE WHEN res.id_relacion = 4 THEN novia.novia_nit ELSE '' END) novia_nit,
 MAX(CASE WHEN res.id_relacion = 4 THEN novia.novia_nombre ELSE '' END) novia_nombre,
 MAX(CASE WHEN res.id_relacion = 4 THEN novia.novia_edad ELSE '' END) novia_edad,
+MAX(CASE WHEN res.id_relacion = 4 THEN novia.originaria ELSE '' END) novia_originaria,
 MAX(CASE WHEN res.id_relacion = 4 THEN novia.madre_dui ELSE '' END) novia_madre_dui,
 MAX(CASE WHEN res.id_relacion = 4 THEN novia.madre_nit ELSE '' END) novia_madre_nit,
 MAX(CASE WHEN res.id_relacion = 4 THEN novia.madre_nombre ELSE '' END) novia_madre_nombre,
@@ -62,6 +91,7 @@ MAX(CASE WHEN res.id_relacion = 3 THEN novio.novio_dui ELSE '' END) novio_dui,
 MAX(CASE WHEN res.id_relacion = 3 THEN novio.novio_nit ELSE '' END) novio_nit,
 MAX(CASE WHEN res.id_relacion = 3 THEN novio.novio_nombre ELSE '' END) novio_nombre,
 MAX(CASE WHEN res.id_relacion = 3 THEN novio.novio_edad ELSE '' END) novio_edad,
+MAX(CASE WHEN res.id_relacion = 3 THEN novio.originario ELSE '' END) novio_originario,
 MAX(CASE WHEN res.id_relacion = 3 THEN novio.madre_dui ELSE '' END) novio_madre_dui,
 MAX(CASE WHEN res.id_relacion = 3 THEN novio.madre_nit ELSE '' END) novio_madre_nit,
 MAX(CASE WHEN res.id_relacion = 3 THEN novio.madre_nombre ELSE '' END) novio_madre_nombre,
@@ -69,12 +99,12 @@ MAX(CASE WHEN res.id_relacion = 3 THEN novio.padre_dui ELSE '' END) novio_padre_
 MAX(CASE WHEN res.id_relacion = 3 THEN novio.padre_nit ELSE '' END) novio_padre_nit,
 MAX(CASE WHEN res.id_relacion = 3 THEN novio.padre_nombre ELSE '' END) novio_padre_nombre,
 MAX(CASE WHEN res.id_relacion = 3 THEN novio.direccion ELSE '' END) novio_padre_dir,
-MAX(CASE WHEN res.id_relacion = 5 THEN testigo.testigo1_dui ELSE '' END)  testigo1_dui,
-MAX(CASE WHEN res.id_relacion = 5 THEN testigo.testigo1_nit ELSE '' END)  testigo1_nit,
-MAX(CASE WHEN res.id_relacion = 5 THEN testigo.testigo1_nombre ELSE '' END) testigo1_nombre,
-MAX(CASE WHEN res.id_relacion = 5 THEN testigo.testigo2_dui ELSE '' END)  testigo2_dui,
-MAX(CASE WHEN res.id_relacion = 5 THEN testigo.testigo2_nit ELSE '' END)  testigo2_nit,
-MAX(CASE WHEN res.id_relacion = 5 THEN testigo.testigo2_nombre ELSE '' END) testigo2_nombre
+MAX(CASE WHEN res.id_relacion = 5 THEN testigo.t1_dui ELSE '' END)  testigo1_dui,
+MAX(CASE WHEN res.id_relacion = 5 THEN testigo.t1_nit ELSE '' END)  testigo1_nit,
+MAX(CASE WHEN res.id_relacion = 5 THEN testigo.t1_nombre ELSE '' END) testigo1_nombre,
+MAX(CASE WHEN res.id_relacion = 5 THEN testigo.t2_dui ELSE '' END)  testigo2_dui,
+MAX(CASE WHEN res.id_relacion = 5 THEN testigo.t2_nit ELSE '' END)  testigo2_nit,
+MAX(CASE WHEN res.id_relacion = 5 THEN testigo.t2_nombre ELSE '' END) testigo2_nombre
 FROM responsable_evento res
 LEFT JOIN testigo ON testigo.idRes=res.id
 LEFT JOIN novio ON novio.idRes=res.id
@@ -84,7 +114,7 @@ INNER JOIN lugar l ON l.id=e.id_lugar
 INNER JOIN relacion r ON res.id_relacion = r.id
 INNER JOIN sacerdote s ON e.id_sacerdote =s.id
 INNER JOIN usuario u ON res.id_usuario= u.id_usuario
-WHERE e.id=$P{id_evento}]]>
+WHERE e.id = $P{id_evento}]]>
 	</queryString>
 	<field name="tomo" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="tomo"/>
@@ -129,6 +159,9 @@ WHERE e.id=$P{id_evento}]]>
 	<field name="novia_edad" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="novia_edad"/>
 	</field>
+	<field name="novia_originaria" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novia_originaria"/>
+	</field>
 	<field name="novia_madre_dui" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="novia_madre_dui"/>
 	</field>
@@ -161,6 +194,9 @@ WHERE e.id=$P{id_evento}]]>
 	</field>
 	<field name="novio_edad" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="novio_edad"/>
+	</field>
+	<field name="novio_originario" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="novio_originario"/>
 	</field>
 	<field name="novio_madre_dui" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="novio_madre_dui"/>
@@ -225,18 +261,17 @@ WHERE e.id=$P{id_evento}]]>
 		<band height="293" splitType="Stretch">
 			<textField>
 				<reportElement x="49" y="10" width="472" height="160" uuid="14f068cc-afd4-4a5c-b15d-19067b566d21"/>
-				<textElement markup="html">
+				<textElement textAlignment="Justified" markup="html">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA["El infrascrito Párroco de <b>\"Nuestra Señora de Valvanera\"</b> CERTIFICA: que en el <b>Tomo "+$F{tomo} +", Folio " +$F{folio}+"</b> de Matrimonios de este Archivo Parroquial, se registra la partida que literalmente dice: En la Parroquia de"+$F{Locacion}+", el día "+$P{fecha_evento}+", previos los trámites del Derecho Civil y Canónico, el Señor <b>"+$F{novio_nombre} +" DUI# "+$F{novio_dui}+"</b> de "+$F{novio_edad}+" años de edad, hijo de "+$F{novio_padre_nombre}+" y de "+$F{novio_madre_nombre}+". Originario de Santa Ana, El Salvador y vecino de "+$F{novio_padre_dir}+". Contrajo Matrimonio Eclesiástico con <b>"+$F{novia_nombre}+" DUI# "+$F{novia_dui}+"</b> de "+$F{novia_edad}+" años de edad, hija de "+$F{novia_padre_nombre}+" y de "+$F{novia_madre_nombre}+". Originaria de San Salvador, El Salvador y vecina de "+$F{novia_padre_dir}+".   Fueron testigos: "+$F{testigo1_nombre}+" DUI# "+$F{testigo1_dui}+" y "+$F{testigo2_nombre}+" DUI# "+$F{testigo2_dui}+".<br/>Dado en Santa Ana, a "+$P{fecha_emision}+"."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["El infrascrito Párroco de <b>\"Nuestra Señora de Valvanera\"</b> CERTIFICA: que en el <b>Tomo "+$F{tomo} +", Folio " +$F{folio}+"</b> de Matrimonios de este Archivo Parroquial, se registra la partida que literalmente dice: En la Parroquia de"+$F{Locacion}+", el día "+$P{fecha_evento}+", previos los trámites del Derecho Civil y Canónico, el Señor <b>"+$F{novio_nombre} +" DUI# "+$F{novio_dui}+"</b> de "+$F{novio_edad}+" años de edad, hijo de "+$F{novio_padre_nombre}+" y de "+$F{novio_madre_nombre}+". Originario de "+$F{novio_originario}+" y vecino de "+$F{novio_padre_dir}+". Contrajo Matrimonio Eclesiástico con <b>"+$F{novia_nombre}+" DUI# "+$F{novia_dui}+"</b> de "+$F{novia_edad}+" años de edad, hija de "+$F{novia_padre_nombre}+" y de "+$F{novia_madre_nombre}+". Originaria de "+$F{novia_originaria}+" y vecina de "+$F{novia_padre_dir}+".   Fueron testigos: "+$F{testigo1_nombre}+" DUI# "+$F{testigo1_dui}+" y "+$F{testigo2_nombre}+" DUI# "+$F{testigo2_dui}+".<br/>Dado en Santa Ana, a "+$P{fecha_emision}+"."]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="50" y="230" width="210" height="20" uuid="e762ea5a-45df-4c03-be32-fdad1e325f4a"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Pbro  "+$F{Nombre_parroco}
-]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Pbro  "+$F{Nombre_parroco}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="49" y="250" width="211" height="20" uuid="f7837279-518e-43b9-bf7e-7d4e5bd11a5b"/>

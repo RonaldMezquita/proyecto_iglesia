@@ -9,9 +9,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -83,15 +83,18 @@ public class Persona implements Serializable {
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPersona")
+    @OneToMany(mappedBy = "idPersona", fetch = FetchType.LAZY)
     private List<ResponsableEvento> responsableEventoList;
-    @OneToMany(mappedBy = "idPadre")
+    @OneToMany(mappedBy = "idPadre", fetch = FetchType.LAZY)
     private List<ResponsableEvento> responsableEventoList1;
-    @OneToMany(mappedBy = "idMadre")
+    @OneToMany(mappedBy = "idMadre", fetch = FetchType.LAZY)
     private List<ResponsableEvento> responsableEventoList2;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
+    @JoinColumn(name = "id_depto_origen", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Departamento idDepartamento;
 
     public Persona() {
     }
@@ -231,6 +234,14 @@ public class Persona implements Serializable {
 
     public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public Departamento getIdDepartamento() {
+        return idDepartamento;
+    }
+
+    public void setIdDepartamento(Departamento idDepartamento) {
+        this.idDepartamento = idDepartamento;
     }
 
     public String getNombreCompleto() {

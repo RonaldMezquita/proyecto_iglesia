@@ -171,6 +171,9 @@ public class DlgBoda extends javax.swing.JDialog {
         txtLugar.setEditable(false);
         jPanel1.add(txtLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 200, -1));
 
+        btnBuscarLugar.setBackground(new java.awt.Color(0, 126, 51));
+        btnBuscarLugar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnBuscarLugar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
         btnBuscarLugar.setText("Buscar");
         btnBuscarLugar.setToolTipText("Buscar novio");
@@ -180,11 +183,14 @@ public class DlgBoda extends javax.swing.JDialog {
                 btnBuscarLugarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 105, 30));
+        jPanel1.add(btnBuscarLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, 30));
 
         txtNovio.setEditable(false);
         jPanel1.add(txtNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 200, -1));
 
+        btnBuscarNovio.setBackground(new java.awt.Color(0, 126, 51));
+        btnBuscarNovio.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnBuscarNovio.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarNovio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
         btnBuscarNovio.setText("Buscar");
         btnBuscarNovio.setToolTipText("Buscar novio");
@@ -194,11 +200,14 @@ public class DlgBoda extends javax.swing.JDialog {
                 btnBuscarNovioActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, 105, 30));
+        jPanel1.add(btnBuscarNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, -1, 30));
 
         txtPadreNovio.setEditable(false);
         jPanel1.add(txtPadreNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 200, -1));
 
+        btnBuscarPadreNovio.setBackground(new java.awt.Color(0, 126, 51));
+        btnBuscarPadreNovio.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnBuscarPadreNovio.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarPadreNovio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
         btnBuscarPadreNovio.setText("Buscar");
         btnBuscarPadreNovio.setToolTipText("Buscar padre de novio");
@@ -208,7 +217,7 @@ public class DlgBoda extends javax.swing.JDialog {
                 btnBuscarPadreNovioActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarPadreNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 105, 30));
+        jPanel1.add(btnBuscarPadreNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, -1, 30));
 
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -219,6 +228,9 @@ public class DlgBoda extends javax.swing.JDialog {
         txtMadreNovio.setEditable(false);
         jPanel1.add(txtMadreNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 200, -1));
 
+        btnBuscarMadreNovio.setBackground(new java.awt.Color(0, 126, 51));
+        btnBuscarMadreNovio.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnBuscarMadreNovio.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarMadreNovio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
         btnBuscarMadreNovio.setText("Buscar");
         btnBuscarMadreNovio.setToolTipText("Buscar madre de novio");
@@ -228,7 +240,7 @@ public class DlgBoda extends javax.swing.JDialog {
                 btnBuscarMadreNovioActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarMadreNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, 105, 30));
+        jPanel1.add(btnBuscarMadreNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, -1, 30));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -240,6 +252,9 @@ public class DlgBoda extends javax.swing.JDialog {
         txtNovia.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(txtNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 200, -1));
 
+        btnBuscarNovia.setBackground(new java.awt.Color(0, 126, 51));
+        btnBuscarNovia.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnBuscarNovia.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarNovia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
         btnBuscarNovia.setText("Buscar");
         btnBuscarNovia.setToolTipText("Buscar novia");
@@ -249,7 +264,7 @@ public class DlgBoda extends javax.swing.JDialog {
                 btnBuscarNoviaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 105, 30));
+        jPanel1.add(btnBuscarNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, -1, 30));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -259,6 +274,9 @@ public class DlgBoda extends javax.swing.JDialog {
         txtPadreNovia.setEditable(false);
         jPanel1.add(txtPadreNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 200, -1));
 
+        btnBuscarPadreNovia.setBackground(new java.awt.Color(0, 126, 51));
+        btnBuscarPadreNovia.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnBuscarPadreNovia.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarPadreNovia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
         btnBuscarPadreNovia.setText("Buscar");
         btnBuscarPadreNovia.setToolTipText("Buscar padre de novia");
@@ -268,7 +286,7 @@ public class DlgBoda extends javax.swing.JDialog {
                 btnBuscarPadreNoviaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarPadreNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 105, 30));
+        jPanel1.add(btnBuscarPadreNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, -1, 30));
 
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -279,6 +297,9 @@ public class DlgBoda extends javax.swing.JDialog {
         txtMadreNovia.setEditable(false);
         jPanel1.add(txtMadreNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 200, -1));
 
+        btnBuscarMadreNovia.setBackground(new java.awt.Color(0, 126, 51));
+        btnBuscarMadreNovia.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnBuscarMadreNovia.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarMadreNovia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
         btnBuscarMadreNovia.setText("Buscar");
         btnBuscarMadreNovia.setToolTipText("Buscar madre de novia");
@@ -288,7 +309,7 @@ public class DlgBoda extends javax.swing.JDialog {
                 btnBuscarMadreNoviaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarMadreNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 105, 30));
+        jPanel1.add(btnBuscarMadreNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, -1, 30));
 
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -299,6 +320,9 @@ public class DlgBoda extends javax.swing.JDialog {
         txtTestigo1.setEditable(false);
         jPanel1.add(txtTestigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 200, -1));
 
+        btnBuscarTestigo1.setBackground(new java.awt.Color(0, 126, 51));
+        btnBuscarTestigo1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnBuscarTestigo1.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarTestigo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
         btnBuscarTestigo1.setText("Buscar");
         btnBuscarTestigo1.setToolTipText("Buscar madre de novia");
@@ -308,7 +332,7 @@ public class DlgBoda extends javax.swing.JDialog {
                 btnBuscarTestigo1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarTestigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 105, 30));
+        jPanel1.add(btnBuscarTestigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, -1, 30));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -319,6 +343,9 @@ public class DlgBoda extends javax.swing.JDialog {
         txtSacerdote.setEditable(false);
         jPanel1.add(txtSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 200, -1));
 
+        btnBuscarSacerdote.setBackground(new java.awt.Color(0, 126, 51));
+        btnBuscarSacerdote.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnBuscarSacerdote.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
         btnBuscarSacerdote.setText("Buscar");
         btnBuscarSacerdote.setToolTipText("Buscar madre de novia");
@@ -328,7 +355,7 @@ public class DlgBoda extends javax.swing.JDialog {
                 btnBuscarSacerdoteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 350, 105, 30));
+        jPanel1.add(btnBuscarSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 350, -1, 30));
 
         btnGuardar.setBackground(new java.awt.Color(13, 71, 161));
         btnGuardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -346,7 +373,7 @@ public class DlgBoda extends javax.swing.JDialog {
         btnCancelar.setBackground(new java.awt.Color(255, 136, 0));
         btnCancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-limpiar.png"))); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-cancelar_azul.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 460, 130, -1));
@@ -360,6 +387,9 @@ public class DlgBoda extends javax.swing.JDialog {
         txtTestigo2.setEditable(false);
         jPanel1.add(txtTestigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, 200, -1));
 
+        btnBuscarTestigo2.setBackground(new java.awt.Color(0, 126, 51));
+        btnBuscarTestigo2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnBuscarTestigo2.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarTestigo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
         btnBuscarTestigo2.setText("Buscar");
         btnBuscarTestigo2.setToolTipText("Buscar madre de novia");
@@ -369,7 +399,7 @@ public class DlgBoda extends javax.swing.JDialog {
                 btnBuscarTestigo2ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarTestigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 400, 105, 30));
+        jPanel1.add(btnBuscarTestigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 400, -1, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 520));
 

@@ -114,18 +114,18 @@ public class EventoController implements Serializable {
         cal.setTime(evento.getFecha());
 
         String fecha_evento = new StringBuilder()
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
                 .append("del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
         ;
         cal.setTime(FechasUtils.getCurrentDate());
 
         String fecha_emision = new StringBuilder("los ")
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
                 .append("dias del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
         rc.getParametros().put("fecha_evento", fecha_evento);
         rc.getParametros().put("fecha_emision", fecha_emision);
@@ -153,25 +153,25 @@ public class EventoController implements Serializable {
         cal.setTime(persona.getFechaNacimiento());
 
         String fecha_nacimiento = new StringBuilder()
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
                 .append("días del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
         cal.setTime(evento.getFecha());
         String fecha_evento = new StringBuilder()
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
                 .append("del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
         cal.setTime(FechasUtils.getCurrentDate());
 
         String fecha_emision = new StringBuilder("los ")
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
                 .append("dias del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
         rc.getParametros().put("fecha_nacimiento", fecha_nacimiento);
         rc.getParametros().put("fecha_evento", fecha_evento);
@@ -201,25 +201,25 @@ public class EventoController implements Serializable {
         cal.setTime(persona.getFechaNacimiento());
 
         String fecha_nacimiento = new StringBuilder()
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
                 .append("del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
         cal.setTime(evento.getFecha());
         String fecha_evento = new StringBuilder()
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
                 .append("del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
         cal.setTime(FechasUtils.getCurrentDate());
 
         String fecha_emision = new StringBuilder("los ")
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
                 .append("dias del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
         rc.getParametros().put("fecha_nacimiento", fecha_nacimiento);
         rc.getParametros().put("fecha_evento", fecha_evento);
@@ -248,28 +248,28 @@ public class EventoController implements Serializable {
         cal.setTime(persona.getFechaNacimiento());
 
         String fecha_nacimiento = new StringBuilder()
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
                 .append("del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
         cal.setTime(evento.getFecha());
         String fecha_evento = new StringBuilder()
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
                 .append("del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
         cal.setTime(FechasUtils.getCurrentDate());
 
         String fecha_emision = new StringBuilder("los ")
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.DATE))).toLowerCase())
-                .append("dias del mes de ")
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
+                .append(" dias del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
-                .append(NumeroALetras.cantidadConLetra(String.valueOf(cal.get(Calendar.YEAR))).trim().toLowerCase()).toString();
+                .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
                 
-        String edad_letras = NumeroALetras.cantidadConLetra(String.valueOf(
-                FechasUtils.calcularEdad(persona.getFechaNacimiento()))).toLowerCase();
+        String edad_letras = NumeroALetras.convertirLetras(
+                FechasUtils.calcularEdad(persona.getFechaNacimiento()));
 
         rc.getParametros().put("edad_letras", edad_letras);
         rc.getParametros().put("fecha_nacimiento", fecha_nacimiento);

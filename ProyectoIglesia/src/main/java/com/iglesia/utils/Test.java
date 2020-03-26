@@ -35,6 +35,9 @@ public class Test {
 //        } catch (SQLException ex) {
 //            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
 //        }               
-
+//        System.out.println(NumeroALetras.cantidadConLetra("1981"));
+        
+        String res = NumeroALetras.convertirLetras(1);
+        System.out.println(res);
     }
 }

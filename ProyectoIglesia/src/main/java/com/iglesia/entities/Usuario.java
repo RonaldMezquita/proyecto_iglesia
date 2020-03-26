@@ -9,9 +9,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -71,8 +71,12 @@ public class Usuario implements Serializable {
     @Column(name = "fecha_actualizacion")
     @Temporal(TemporalType.DATE)
     private Date fechaActualizacion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    @OneToMany(mappedBy = "idUsuario")
     private List<Sacerdote> sacerdoteList;
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    private List<Departamento> departamentoList;
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    private List<Pais> paisList;
 
     public Usuario() {
     }
@@ -164,6 +168,22 @@ public class Usuario implements Serializable {
         this.sacerdoteList = sacerdoteList;
     }
 
+    public List<Departamento> getDepartamentoList() {
+        return departamentoList;
+    }
+
+    public void setDepartamentoList(List<Departamento> departamentoList) {
+        this.departamentoList = departamentoList;
+    }
+
+    public List<Pais> getPaisList() {
+        return paisList;
+    }
+
+    public void setPaisList(List<Pais> paisList) {
+        this.paisList = paisList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -188,5 +208,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "com.iglesia.entities.Usuario[ idUsuario=" + idUsuario + " ]";
     }
-    
+
 }

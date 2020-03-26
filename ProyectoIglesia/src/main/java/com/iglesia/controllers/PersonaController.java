@@ -42,20 +42,25 @@ public class PersonaController {
     }
 
     public void consultarTodos() {
-        this.items = this.personaService.consultarTodos("select t from Persona t");
+        this.items = this.personaService.consultarTodos("select t from Persona t "
+                + "inner join fetch t.idDepartamento depto ");
     }
 
     public Persona consultarPorId(Integer idPersona) {
-        this.selected = this.personaService.consultarPor("select t from Persona t where t.id=:id",
+        this.selected = this.personaService.consultarPor("select t from Persona t "
+                + "inner join fetch t.idDepartamento depto "
+                + "where t.id=:id",
                 "id", idPersona);
         return this.selected;
     }
 
     public void llenarTabla(JTable tabla, String filtro) {
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        tabla.setDefaultRenderer(Object.class, new RenderCellTable());
         model = ProjectUtils.removeRows(model);
         this.items = this.personaService.buscarPersona(filtro.trim(), TipoBusquedaEnum.NOMBRE);
-        String[] row = new String[9];
+        JButton btn = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/x26-editar_doc.png"), null);
+        Object[] row = new Object[10];
         for (Persona item : this.items) {
             row[0] = item.getId().toString();
             row[1] = item.getNombres();
@@ -66,6 +71,7 @@ public class PersonaController {
             row[6] = item.getDireccion();
             row[7] = item.getGenero();
             row[8] = item.getEstado() ? "Activo" : "Inactivo";
+            row[9] = btn;
             model.addRow(row);
         }
     }

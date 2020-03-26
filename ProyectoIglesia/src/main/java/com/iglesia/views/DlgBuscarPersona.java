@@ -160,8 +160,11 @@ public class DlgBuscarPersona extends javax.swing.JDialog {
         });
         jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 40, 32));
 
-        btnNuevaPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-addUser.png"))); // NOI18N
-        btnNuevaPersona.setText("Registrar nueva persona");
+        btnNuevaPersona.setBackground(new java.awt.Color(108, 117, 125));
+        btnNuevaPersona.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnNuevaPersona.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevaPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-add_azul.png"))); // NOI18N
+        btnNuevaPersona.setText("Nueva persona");
         btnNuevaPersona.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnNuevaPersona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
