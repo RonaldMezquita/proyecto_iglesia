@@ -95,6 +95,10 @@ public class DlgBautizo extends javax.swing.JDialog {
         jLabel15 = new javax.swing.JLabel();
         txtMadrina = new javax.swing.JTextField();
         btnBuscarMadrina = new javax.swing.JButton();
+        btnEliminarPadrino = new javax.swing.JButton();
+        btnEliminarPadre = new javax.swing.JButton();
+        btnEliminarMadre = new javax.swing.JButton();
+        btnEliminarMadrina = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -148,7 +152,7 @@ public class DlgBautizo extends javax.swing.JDialog {
                 jbCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 40, 32));
+        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 40, 32));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -324,7 +328,47 @@ public class DlgBautizo extends javax.swing.JDialog {
         });
         jPanel1.add(btnBuscarMadrina, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 110, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 420));
+        btnEliminarPadrino.setBackground(new java.awt.Color(204, 0, 0));
+        btnEliminarPadrino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-basura.png"))); // NOI18N
+        btnEliminarPadrino.setToolTipText("Eliminar lugar");
+        btnEliminarPadrino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarPadrinoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEliminarPadrino, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 40, 30));
+
+        btnEliminarPadre.setBackground(new java.awt.Color(204, 0, 0));
+        btnEliminarPadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-basura.png"))); // NOI18N
+        btnEliminarPadre.setToolTipText("Eliminar lugar");
+        btnEliminarPadre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarPadreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEliminarPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 40, 30));
+
+        btnEliminarMadre.setBackground(new java.awt.Color(204, 0, 0));
+        btnEliminarMadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-basura.png"))); // NOI18N
+        btnEliminarMadre.setToolTipText("Eliminar lugar");
+        btnEliminarMadre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarMadreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEliminarMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, 40, 30));
+
+        btnEliminarMadrina.setBackground(new java.awt.Color(204, 0, 0));
+        btnEliminarMadrina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-basura.png"))); // NOI18N
+        btnEliminarMadrina.setToolTipText("Eliminar lugar");
+        btnEliminarMadrina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarMadrinaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEliminarMadrina, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 300, 40, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -397,7 +441,7 @@ public class DlgBautizo extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void crear() {        
+    private void crear() {
         if (ProjectUtils.validarVacios(this.jPanel1, null)) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -418,6 +462,26 @@ public class DlgBautizo extends javax.swing.JDialog {
             this.txtMadrina.setText(this.eventoCtrl.getDtoSelected().getMadrina().getNombreCompleto());
         }
     }//GEN-LAST:event_btnBuscarMadrinaActionPerformed
+
+    private void btnEliminarPadreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPadreActionPerformed
+        this.eventoCtrl.getDtoSelected().setPadreSacramentado(null);
+        this.txtPadre.setText("");
+    }//GEN-LAST:event_btnEliminarPadreActionPerformed
+
+    private void btnEliminarPadrinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPadrinoActionPerformed
+        this.eventoCtrl.getDtoSelected().setPadrino(null);
+        this.txtPadrino.setText("");
+    }//GEN-LAST:event_btnEliminarPadrinoActionPerformed
+
+    private void btnEliminarMadreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMadreActionPerformed
+        this.eventoCtrl.getDtoSelected().setMadreSacramentado(null);
+        this.txtMadre.setText("");
+    }//GEN-LAST:event_btnEliminarMadreActionPerformed
+
+    private void btnEliminarMadrinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMadrinaActionPerformed
+        this.eventoCtrl.getDtoSelected().setMadrina(null);
+        this.txtMadrina.setText("");
+    }//GEN-LAST:event_btnEliminarMadrinaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -477,6 +541,10 @@ public class DlgBautizo extends javax.swing.JDialog {
     private javax.swing.JButton btnBuscarSacerdote;
     private javax.swing.JButton btnBuscarSacramentado;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEliminarMadre;
+    private javax.swing.JButton btnEliminarMadrina;
+    private javax.swing.JButton btnEliminarPadre;
+    private javax.swing.JButton btnEliminarPadrino;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;

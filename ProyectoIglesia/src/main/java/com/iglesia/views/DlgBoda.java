@@ -157,7 +157,7 @@ public class DlgBoda extends javax.swing.JDialog {
                 jbCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 40, 32));
+        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 40, 32));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -401,7 +401,7 @@ public class DlgBoda extends javax.swing.JDialog {
         });
         jPanel1.add(btnBuscarTestigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 400, -1, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 520));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
