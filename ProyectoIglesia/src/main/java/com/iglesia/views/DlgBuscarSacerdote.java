@@ -161,8 +161,11 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
         });
         jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 40, 32));
 
-        btnNuevoSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-addUser.png"))); // NOI18N
-        btnNuevoSacerdote.setText("Registrar nuevo sacedote");
+        btnNuevoSacerdote.setBackground(new java.awt.Color(108, 117, 125));
+        btnNuevoSacerdote.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnNuevoSacerdote.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevoSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-add_azul.png"))); // NOI18N
+        btnNuevoSacerdote.setText("Nuevo sacedote");
         btnNuevoSacerdote.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnNuevoSacerdote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

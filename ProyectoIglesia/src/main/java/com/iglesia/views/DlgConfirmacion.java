@@ -5,11 +5,10 @@
  */
 package com.iglesia.views;
 
-import com.iglesia.controllers.BautizoController;
+import com.iglesia.controllers.ConfirmacionController;
 import com.iglesia.controllers.EventoController;
 import com.iglesia.utils.ProjectUtils;
 import java.awt.Color;
-import java.awt.Shape;
 import java.awt.event.WindowEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -18,15 +17,14 @@ import javax.swing.JOptionPane;
  *
  * @author remsf
  */
-public class DlgBautizo extends javax.swing.JDialog {
+public class DlgConfirmacion extends javax.swing.JDialog {
 
     private final EventoController eventoCtrl;
-    Shape dialogShape;
 
     /**
-     * Creates new form DlgBautizo
+     * Creates new form DlgConfirmacion
      */
-    public DlgBautizo(java.awt.Frame parent, boolean modal) {
+    public DlgConfirmacion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -39,19 +37,6 @@ public class DlgBautizo extends javax.swing.JDialog {
 
     }
 
-//    private void onlyRead() {
-//        this.txtNovio.setEditable(false);
-//        this.txtPadreNovio.setEditable(false);
-//        this.txtMadreNovio.setEditable(false);
-//        this.txtNovia.setEditable(false);
-//        this.txtPadreNovia.setEditable(false);
-//        this.txtMadreNovia.setEditable(false);
-//    }
-//    @Override
-//    public void paint(Graphics g) {
-//        super.paint(g);
-//        AWTUtilities.setWindowShape(this, dialogShape);
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -153,7 +138,7 @@ public class DlgBautizo extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Registro de Bautizo");
+        jLabel1.setText("Registro de Confirmación");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 750, -1));
         jPanel1.add(txtTomo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 100, -1));
         jPanel1.add(txtFolio, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 100, -1));
@@ -402,7 +387,7 @@ public class DlgBautizo extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if (this.eventoCtrl.registrarEvento(new BautizoController())) {
+        if (this.eventoCtrl.registrarEvento(new ConfirmacionController())) {
             JOptionPane.showMessageDialog(this, "Registro realizado correctamente.!", "Información", JOptionPane.INFORMATION_MESSAGE);
             ProjectUtils.limpiarComponentes(this.jPanel1);
         } else {
@@ -436,14 +421,22 @@ public class DlgBautizo extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DlgBautizo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgConfirmacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DlgBautizo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgConfirmacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DlgBautizo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgConfirmacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DlgBautizo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgConfirmacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -456,7 +449,7 @@ public class DlgBautizo extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DlgBautizo dialog = new DlgBautizo(new javax.swing.JFrame(), true);
+                DlgConfirmacion dialog = new DlgConfirmacion(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

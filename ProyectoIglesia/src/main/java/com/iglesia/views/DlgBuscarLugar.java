@@ -136,15 +136,18 @@ public class DlgBuscarLugar extends javax.swing.JDialog {
         });
         jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 0, 40, 32));
 
-        btnNuevaSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-addUser.png"))); // NOI18N
-        btnNuevaSacerdote.setText("Registrar nuevo lugar");
+        btnNuevaSacerdote.setBackground(new java.awt.Color(108, 117, 125));
+        btnNuevaSacerdote.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnNuevaSacerdote.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevaSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-add_azul.png"))); // NOI18N
+        btnNuevaSacerdote.setText("Nuevo lugar");
         btnNuevaSacerdote.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnNuevaSacerdote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevaSacerdoteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNuevaSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, -1));
+        jPanel1.add(btnNuevaSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 95, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));

@@ -187,7 +187,7 @@ WHERE e.id = $P{id_evento}]]>
 		<band height="223" splitType="Stretch">
 			<textField>
 				<reportElement x="49" y="10" width="472" height="110" uuid="8af3d33e-ed28-4b59-9849-e42159687e1f"/>
-				<textElement markup="html">
+				<textElement textAlignment="Justified" markup="html">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA["El infrascrito Párroco de <b>\"Nuestra Señora de Valvanera\"</b> CERTIFICA: que en el <b>Tomo "+ $F{tomo}+", folio"+ $F{folio}+" Nº "+ $F{numero}+"</b> de Bautismos de este Archivo Parroquial, se registra la partida que literalmente dice: En la Parroquia  "+$F{locacion}+" a los "+$P{fecha_evento}+", el Padre <b>"+$F{nombre_sacerdote}+"</b> bautizó solemnemente a "+$F{sacramentado_nombre}+" que nació a los "+$P{fecha_nacimiento}+". "+($F{sacramentado_genero}.equals("M")  ? "Hijo legitimo": "Hija legitima")+" de "+$F{padre_nombre}+" y de "+$F{madre_nombre}+ ($F{madrina} !=null ? ", Madrina: "+$F{madrina} : null) + ($F{padrino} != null ? ", Padrino: "+$F{padrino} : null)+ ". Al margen se lee: Nº "+$F{numero}+". "+$F{sacramentado_nombre}+"."]]></textFieldExpression>
@@ -214,8 +214,7 @@ WHERE e.id = $P{id_evento}]]>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Pbro  "+$F{parroco_nombre}
-]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Pbro  "+$F{parroco_nombre}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="210" y="54" width="140" height="20" uuid="87faf94d-53b5-49e5-99b1-fc9d97126ec1"/>

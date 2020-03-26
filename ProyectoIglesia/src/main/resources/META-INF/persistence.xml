@@ -26,5 +26,7 @@
     <class>com.iglesia.entities.Sector</class>
     <class>com.iglesia.entities.TipoSacramento</class>
     <class>com.iglesia.entities.Usuario</class>
+    <class>com.iglesia.entities.Pais</class>
+    <class>com.iglesia.entities.Departamento</class>
   </persistence-unit>
 </persistence>

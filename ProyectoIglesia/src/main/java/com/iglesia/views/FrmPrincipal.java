@@ -29,13 +29,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         panelMenu = new javax.swing.JPanel();
-        jbAbrirDialog = new javax.swing.JButton();
         btnSacerdotes = new javax.swing.JButton();
         btnLugares = new javax.swing.JButton();
         btnTiposSacramento = new javax.swing.JButton();
         btnEventos = new javax.swing.JButton();
         btnBoda = new javax.swing.JButton();
         btnBautizo = new javax.swing.JButton();
+        btnConsultarPersona = new javax.swing.JButton();
+        btnNewPersona1 = new javax.swing.JButton();
+        btnConfirmacion = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
@@ -44,18 +46,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         panelMenu.setBackground(new java.awt.Color(46, 46, 46));
         panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jbAbrirDialog.setBackground(new java.awt.Color(62, 69, 81));
-        jbAbrirDialog.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jbAbrirDialog.setForeground(new java.awt.Color(255, 255, 255));
-        jbAbrirDialog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-clientes.png"))); // NOI18N
-        jbAbrirDialog.setText("Personas");
-        jbAbrirDialog.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAbrirDialogActionPerformed(evt);
-            }
-        });
-        panelMenu.add(jbAbrirDialog, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         btnSacerdotes.setBackground(new java.awt.Color(62, 69, 81));
         btnSacerdotes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -121,7 +111,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnBodaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBoda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 112, -1));
+        getContentPane().add(btnBoda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 112, -1));
 
         btnBautizo.setBackground(new java.awt.Color(62, 69, 81));
         btnBautizo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -133,7 +123,43 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnBautizoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBautizo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 81, -1, -1));
+        getContentPane().add(btnBautizo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 145, -1, -1));
+
+        btnConsultarPersona.setBackground(new java.awt.Color(62, 69, 81));
+        btnConsultarPersona.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnConsultarPersona.setForeground(new java.awt.Color(255, 255, 255));
+        btnConsultarPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-clientes.png"))); // NOI18N
+        btnConsultarPersona.setText("Consulta de Personas");
+        btnConsultarPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarPersonaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnConsultarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
+
+        btnNewPersona1.setBackground(new java.awt.Color(62, 69, 81));
+        btnNewPersona1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnNewPersona1.setForeground(new java.awt.Color(255, 255, 255));
+        btnNewPersona1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-add_azul.png"))); // NOI18N
+        btnNewPersona1.setText("Nueva Persona");
+        btnNewPersona1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewPersona1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNewPersona1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 75, -1, -1));
+
+        btnConfirmacion.setBackground(new java.awt.Color(62, 69, 81));
+        btnConfirmacion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnConfirmacion.setForeground(new java.awt.Color(255, 255, 255));
+        btnConfirmacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/Confirmacion.png"))); // NOI18N
+        btnConfirmacion.setText("Confirmacion");
+        btnConfirmacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmacionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnConfirmacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Fondo.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -142,10 +168,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbAbrirDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAbrirDialogActionPerformed
-        DlgPersona obj = new DlgPersona(this, true);
+    private void btnConsultarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPersonaActionPerformed
+        DlgConsultaPersona obj = new DlgConsultaPersona(this, true);
         obj.setVisible(true);
-    }//GEN-LAST:event_jbAbrirDialogActionPerformed
+    }//GEN-LAST:event_btnConsultarPersonaActionPerformed
 
     private void btnBodaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBodaActionPerformed
         DlgBoda obj = new DlgBoda(this, true);
@@ -179,6 +205,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
         DlgBautizo obj = new DlgBautizo(this, true);
         obj.setVisible(true);
     }//GEN-LAST:event_btnBautizoActionPerformed
+
+    private void btnNewPersona1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewPersona1ActionPerformed
+        DlgPersona obj = new DlgPersona(this, true);
+        obj.setRedirect(true);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnNewPersona1ActionPerformed
+
+    private void btnConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmacionActionPerformed
+        DlgConfirmacion obj = new DlgConfirmacion(this, true);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnConfirmacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,13 +256,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBautizo;
     private javax.swing.JButton btnBoda;
+    private javax.swing.JButton btnConfirmacion;
+    private javax.swing.JButton btnConsultarPersona;
     private javax.swing.JButton btnEventos;
     private javax.swing.JButton btnLugares;
+    private javax.swing.JButton btnNewPersona1;
     private javax.swing.JButton btnSacerdotes;
     private javax.swing.JButton btnTiposSacramento;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JButton jbAbrirDialog;
     private javax.swing.JPanel panelMenu;
     // End of variables declaration//GEN-END:variables
 }

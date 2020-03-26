@@ -175,6 +175,7 @@ public class DlgJustificacion extends javax.swing.JDialog {
         jbingresar.setBackground(new java.awt.Color(13, 71, 161));
         jbingresar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbingresar.setForeground(new java.awt.Color(255, 255, 255));
+        jbingresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-guardar.png"))); // NOI18N
         jbingresar.setText("Guardar");
         jbingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,13 +187,14 @@ public class DlgJustificacion extends javax.swing.JDialog {
         jblimpiar.setBackground(new java.awt.Color(255, 136, 0));
         jblimpiar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jblimpiar.setForeground(new java.awt.Color(255, 255, 255));
+        jblimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-cancelar_azul.png"))); // NOI18N
         jblimpiar.setText("Cancelar");
         jblimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jblimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(jblimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 130, -1));
+        jPanel1.add(jblimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 130, -1));
 
         jbsalir.setBackground(new java.awt.Color(204, 0, 0));
         jbsalir.setForeground(new java.awt.Color(255, 255, 255));

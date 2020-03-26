@@ -47,7 +47,9 @@ public class PersonaService extends CrudUtils<Persona> {
         try {
             // Si la longitud de filtro(DUI) sin guion es menor a 8, se le quita el guion, de lo contrario no se le quita
             filtro = filtro.replace("-", "").trim().length() < 8 ? filtro.replace("-", "").trim() : filtro.trim();
-            query = em.createQuery("select t from Persona t where t.dui like :dui")
+            query = em.createQuery("select t from Persona t "
+                    + "inner join fetch t.idDepartamento depto "
+                    + "where t.dui like :dui")
                     .setParameter("dui", ProjectUtils.fmtLikeBegins(filtro));
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -58,7 +60,9 @@ public class PersonaService extends CrudUtils<Persona> {
     public Query buscarPersonaPorNombres(EntityManager em, String filtro) {
         Query query = null;
         try {
-            query = em.createQuery("select t from Persona t where CONCAT(t.nombres, ' ', t.apellidos) like :filtro")
+            query = em.createQuery("select t from Persona t "
+                    + "inner join fetch t.idDepartamento depto "
+                    + "where CONCAT(t.nombres, ' ', t.apellidos) like :filtro")
                     .setParameter("filtro", ProjectUtils.fmtLikeContain(filtro));
         } catch (Exception e) {
             System.out.println(e.getMessage());
