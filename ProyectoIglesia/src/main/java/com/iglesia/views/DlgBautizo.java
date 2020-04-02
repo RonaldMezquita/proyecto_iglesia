@@ -146,7 +146,7 @@ public class DlgBautizo extends javax.swing.JDialog {
 
         jbCerrar.setBackground(new java.awt.Color(204, 0, 0));
         jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
-        jbCerrar.setText("X");
+        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
         jbCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCerrarActionPerformed(evt);
@@ -170,7 +170,7 @@ public class DlgBautizo extends javax.swing.JDialog {
         btnBuscarLugar.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarLugar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarLugar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarLugar.setText("Buscar");
         btnBuscarLugar.setToolTipText("Buscar novio");
         btnBuscarLugar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -187,7 +187,7 @@ public class DlgBautizo extends javax.swing.JDialog {
         btnBuscarSacramentado.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarSacramentado.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarSacramentado.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarSacramentado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarSacramentado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarSacramentado.setText("Buscar");
         btnBuscarSacramentado.setToolTipText("Buscar novio");
         btnBuscarSacramentado.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -204,7 +204,7 @@ public class DlgBautizo extends javax.swing.JDialog {
         btnBuscarPadre.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarPadre.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarPadre.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarPadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarPadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarPadre.setText("Buscar");
         btnBuscarPadre.setToolTipText("Buscar padre de novio");
         btnBuscarPadre.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -227,7 +227,7 @@ public class DlgBautizo extends javax.swing.JDialog {
         btnBuscarMadre.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarMadre.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarMadre.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarMadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarMadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarMadre.setText("Buscar");
         btnBuscarMadre.setToolTipText("Buscar madre de novio");
         btnBuscarMadre.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -250,7 +250,7 @@ public class DlgBautizo extends javax.swing.JDialog {
         btnBuscarPadrino.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarPadrino.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarPadrino.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarPadrino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarPadrino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarPadrino.setText("Buscar");
         btnBuscarPadrino.setToolTipText("Buscar madre de novia");
         btnBuscarPadrino.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -273,7 +273,7 @@ public class DlgBautizo extends javax.swing.JDialog {
         btnBuscarSacerdote.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarSacerdote.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarSacerdote.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarSacerdote.setText("Buscar");
         btnBuscarSacerdote.setToolTipText("Buscar madre de novia");
         btnBuscarSacerdote.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -287,7 +287,7 @@ public class DlgBautizo extends javax.swing.JDialog {
         btnGuardar.setBackground(new java.awt.Color(13, 71, 161));
         btnGuardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-guardar.png"))); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save.png"))); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -300,7 +300,7 @@ public class DlgBautizo extends javax.swing.JDialog {
         btnCancelar.setBackground(new java.awt.Color(255, 136, 0));
         btnCancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-cancelar_azul.png"))); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 350, 130, -1));
@@ -317,7 +317,7 @@ public class DlgBautizo extends javax.swing.JDialog {
         btnBuscarMadrina.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarMadrina.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarMadrina.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarMadrina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarMadrina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarMadrina.setText("Buscar");
         btnBuscarMadrina.setToolTipText("Buscar madre de novia");
         btnBuscarMadrina.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -329,44 +329,44 @@ public class DlgBautizo extends javax.swing.JDialog {
         jPanel1.add(btnBuscarMadrina, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 110, 30));
 
         btnEliminarPadrino.setBackground(new java.awt.Color(204, 0, 0));
-        btnEliminarPadrino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-basura.png"))); // NOI18N
-        btnEliminarPadrino.setToolTipText("Eliminar lugar");
+        btnEliminarPadrino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/delete.png"))); // NOI18N
+        btnEliminarPadrino.setToolTipText("Quitar Padrino");
         btnEliminarPadrino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarPadrinoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminarPadrino, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 40, 30));
+        jPanel1.add(btnEliminarPadrino, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 30, 30));
 
         btnEliminarPadre.setBackground(new java.awt.Color(204, 0, 0));
-        btnEliminarPadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-basura.png"))); // NOI18N
-        btnEliminarPadre.setToolTipText("Eliminar lugar");
+        btnEliminarPadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/delete.png"))); // NOI18N
+        btnEliminarPadre.setToolTipText("Quitar Padre");
         btnEliminarPadre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarPadreActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminarPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 40, 30));
+        jPanel1.add(btnEliminarPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 30, 30));
 
         btnEliminarMadre.setBackground(new java.awt.Color(204, 0, 0));
-        btnEliminarMadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-basura.png"))); // NOI18N
-        btnEliminarMadre.setToolTipText("Eliminar lugar");
+        btnEliminarMadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/delete.png"))); // NOI18N
+        btnEliminarMadre.setToolTipText("Quitar Madre");
         btnEliminarMadre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarMadreActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminarMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, 40, 30));
+        jPanel1.add(btnEliminarMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, 30, 30));
 
         btnEliminarMadrina.setBackground(new java.awt.Color(204, 0, 0));
-        btnEliminarMadrina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-basura.png"))); // NOI18N
-        btnEliminarMadrina.setToolTipText("Eliminar lugar");
+        btnEliminarMadrina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/delete.png"))); // NOI18N
+        btnEliminarMadrina.setToolTipText("Quitar Madrina");
         btnEliminarMadrina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarMadrinaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminarMadrina, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 300, 40, 30));
+        jPanel1.add(btnEliminarMadrina, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 300, 30, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 420));
 

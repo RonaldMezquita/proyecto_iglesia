@@ -81,7 +81,7 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
 
         btnSalir.setBackground(new java.awt.Color(204, 0, 0));
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalir.setText("X");
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -157,7 +157,7 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
         btnNuevaPersona.setBackground(new java.awt.Color(108, 117, 125));
         btnNuevaPersona.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnNuevaPersona.setForeground(new java.awt.Color(255, 255, 255));
-        btnNuevaPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-add_azul.png"))); // NOI18N
+        btnNuevaPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/agregar.png"))); // NOI18N
         btnNuevaPersona.setText("Nueva persona");
         btnNuevaPersona.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnNuevaPersona.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +165,7 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
                 btnNuevaPersonaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNuevaPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, -1));
+        jPanel1.add(btnNuevaPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 75, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 660));
 

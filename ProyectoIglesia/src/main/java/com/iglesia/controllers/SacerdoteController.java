@@ -100,7 +100,7 @@ public class SacerdoteController implements Serializable {
         tabla.setDefaultRenderer(Object.class, new RenderCellTable());
         model = ProjectUtils.removeRows(model);
         this.items = this.sacerdoteService.buscarSacerdote(filtro.trim(), tipo);
-        JButton btn = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/x26-aceptar2_azul.png"), null);
+        JButton btn = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/seleccionar.png"), null);
         Object[] datos = new Object[4];
         for (Sacerdote item : this.getItems()) {
             datos[0] = item.getId().toString();

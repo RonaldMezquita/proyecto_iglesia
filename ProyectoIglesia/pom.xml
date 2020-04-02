@@ -74,7 +74,27 @@
             <artifactId>jasperreports</artifactId>
             <version>6.1.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.NefAnimacion_V2.local</groupId>
+            <artifactId>NefAnimacion_V2</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.FiveCodMoverJDialogJFrame.local</groupId>
+            <artifactId>FiveCodMoverJDialogJFrame</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+<!--        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>material-components-web</artifactId>
+            <version>4.0.0</version>
+        </dependency>-->
+<!--        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>RSMaterialComponents_3.0</artifactId>
+            <version>SNAPSHOT</version>
+        </dependency>-->
+        
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

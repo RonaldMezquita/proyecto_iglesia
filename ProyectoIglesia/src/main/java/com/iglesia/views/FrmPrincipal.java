@@ -74,7 +74,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnConsultarPersona.setBackground(new java.awt.Color(62, 69, 81));
         btnConsultarPersona.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnConsultarPersona.setForeground(new java.awt.Color(255, 255, 255));
-        btnConsultarPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-clientes.png"))); // NOI18N
+        btnConsultarPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
         btnConsultarPersona.setText("Consulta de Personas");
         btnConsultarPersona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,7 +86,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnNewPersona1.setBackground(new java.awt.Color(62, 69, 81));
         btnNewPersona1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnNewPersona1.setForeground(new java.awt.Color(255, 255, 255));
-        btnNewPersona1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-add_azul.png"))); // NOI18N
+        btnNewPersona1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
         btnNewPersona1.setText("Nueva Persona");
         btnNewPersona1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +110,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnLugar.setBackground(new java.awt.Color(62, 69, 81));
         btnLugar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnLugar.setForeground(new java.awt.Color(255, 255, 255));
-        btnLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-clientes.png"))); // NOI18N
+        btnLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
         btnLugar.setText("Lugar");
         btnLugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,7 +122,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnComunidad.setBackground(new java.awt.Color(62, 69, 81));
         btnComunidad.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnComunidad.setForeground(new java.awt.Color(255, 255, 255));
-        btnComunidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-clientes.png"))); // NOI18N
+        btnComunidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
         btnComunidad.setText("Comunidad");
         btnComunidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +134,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnSector.setBackground(new java.awt.Color(62, 69, 81));
         btnSector.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnSector.setForeground(new java.awt.Color(255, 255, 255));
-        btnSector.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-clientes.png"))); // NOI18N
+        btnSector.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
         btnSector.setText("Sector");
         btnSector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +146,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnJustificacion.setBackground(new java.awt.Color(62, 69, 81));
         btnJustificacion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnJustificacion.setForeground(new java.awt.Color(255, 255, 255));
-        btnJustificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/x26-clientes.png"))); // NOI18N
+        btnJustificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
         btnJustificacion.setText("Justificacion");
         btnJustificacion.setToolTipText("");
         btnJustificacion.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +159,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnSacerdotes.setBackground(new java.awt.Color(62, 69, 81));
         btnSacerdotes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnSacerdotes.setForeground(new java.awt.Color(255, 255, 255));
-        btnSacerdotes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/x26-clientes.png"))); // NOI18N
+        btnSacerdotes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
         btnSacerdotes.setText("Sacerdotes");
         btnSacerdotes.setToolTipText("");
         btnSacerdotes.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +172,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnTiposSacramento.setBackground(new java.awt.Color(62, 69, 81));
         btnTiposSacramento.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnTiposSacramento.setForeground(new java.awt.Color(255, 255, 255));
-        btnTiposSacramento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/x26-clientes.png"))); // NOI18N
+        btnTiposSacramento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
         btnTiposSacramento.setText("Tipos de sacramentos");
         btnTiposSacramento.setToolTipText("");
         btnTiposSacramento.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +185,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnEventos.setBackground(new java.awt.Color(62, 69, 81));
         btnEventos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnEventos.setForeground(new java.awt.Color(255, 255, 255));
-        btnEventos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/x26-clientes.png"))); // NOI18N
+        btnEventos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
         btnEventos.setText("Eventos");
         btnEventos.setToolTipText("");
         btnEventos.addActionListener(new java.awt.event.ActionListener() {

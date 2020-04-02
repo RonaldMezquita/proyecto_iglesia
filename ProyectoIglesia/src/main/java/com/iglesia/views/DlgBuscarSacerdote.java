@@ -147,13 +147,13 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
         jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 280, -1));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-listar.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/detalle.png"))); // NOI18N
         jLabel1.setText("Haga click en el boton seleccionar para elegir un sacerdote");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 370, -1));
 
         jbCerrar.setBackground(new java.awt.Color(204, 0, 0));
         jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
-        jbCerrar.setText("X");
+        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
         jbCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCerrarActionPerformed(evt);
@@ -164,7 +164,7 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
         btnNuevoSacerdote.setBackground(new java.awt.Color(108, 117, 125));
         btnNuevoSacerdote.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnNuevoSacerdote.setForeground(new java.awt.Color(255, 255, 255));
-        btnNuevoSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-add_azul.png"))); // NOI18N
+        btnNuevoSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/agregar.png"))); // NOI18N
         btnNuevoSacerdote.setText("Nuevo sacedote");
         btnNuevoSacerdote.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnNuevoSacerdote.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +172,7 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
                 btnNuevoSacerdoteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNuevoSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 90, -1, -1));
+        jPanel1.add(btnNuevoSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 95, -1, -1));
 
         bgBusqueda.add(rbNombre);
         rbNombre.setForeground(new java.awt.Color(255, 255, 255));

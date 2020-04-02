@@ -57,6 +57,10 @@ public class Movimiento implements Serializable {
     @Column(name = "estado")
     private boolean estado;
     @Basic(optional = false)
+    @Column(name = "fecha_mov")
+    @Temporal(TemporalType.DATE)
+    private Date fechaMov;
+    @Basic(optional = false)
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
@@ -118,6 +122,14 @@ public class Movimiento implements Serializable {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
+    }
+
+    public Date getFechaMov() {
+        return fechaMov;
+    }
+
+    public void setFechaMov(Date fechaMov) {
+        this.fechaMov = fechaMov;
     }
 
     public Date getFechaCreacion() {
@@ -184,5 +196,5 @@ public class Movimiento implements Serializable {
     public String toString() {
         return "com.iglesia.entities.Movimiento[ id=" + id + " ]";
     }
-    
+
 }
