@@ -151,7 +151,7 @@ public class DlgBoda extends javax.swing.JDialog {
 
         jbCerrar.setBackground(new java.awt.Color(204, 0, 0));
         jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
-        jbCerrar.setText("X");
+        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
         jbCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCerrarActionPerformed(evt);
@@ -174,7 +174,7 @@ public class DlgBoda extends javax.swing.JDialog {
         btnBuscarLugar.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarLugar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarLugar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarLugar.setText("Buscar");
         btnBuscarLugar.setToolTipText("Buscar novio");
         btnBuscarLugar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -191,7 +191,7 @@ public class DlgBoda extends javax.swing.JDialog {
         btnBuscarNovio.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarNovio.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarNovio.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarNovio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarNovio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarNovio.setText("Buscar");
         btnBuscarNovio.setToolTipText("Buscar novio");
         btnBuscarNovio.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -208,7 +208,7 @@ public class DlgBoda extends javax.swing.JDialog {
         btnBuscarPadreNovio.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarPadreNovio.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarPadreNovio.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarPadreNovio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarPadreNovio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarPadreNovio.setText("Buscar");
         btnBuscarPadreNovio.setToolTipText("Buscar padre de novio");
         btnBuscarPadreNovio.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -231,7 +231,7 @@ public class DlgBoda extends javax.swing.JDialog {
         btnBuscarMadreNovio.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarMadreNovio.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarMadreNovio.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarMadreNovio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarMadreNovio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarMadreNovio.setText("Buscar");
         btnBuscarMadreNovio.setToolTipText("Buscar madre de novio");
         btnBuscarMadreNovio.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -255,7 +255,7 @@ public class DlgBoda extends javax.swing.JDialog {
         btnBuscarNovia.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarNovia.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarNovia.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarNovia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarNovia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarNovia.setText("Buscar");
         btnBuscarNovia.setToolTipText("Buscar novia");
         btnBuscarNovia.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -277,7 +277,7 @@ public class DlgBoda extends javax.swing.JDialog {
         btnBuscarPadreNovia.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarPadreNovia.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarPadreNovia.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarPadreNovia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarPadreNovia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarPadreNovia.setText("Buscar");
         btnBuscarPadreNovia.setToolTipText("Buscar padre de novia");
         btnBuscarPadreNovia.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -300,7 +300,7 @@ public class DlgBoda extends javax.swing.JDialog {
         btnBuscarMadreNovia.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarMadreNovia.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarMadreNovia.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarMadreNovia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarMadreNovia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarMadreNovia.setText("Buscar");
         btnBuscarMadreNovia.setToolTipText("Buscar madre de novia");
         btnBuscarMadreNovia.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -323,7 +323,7 @@ public class DlgBoda extends javax.swing.JDialog {
         btnBuscarTestigo1.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarTestigo1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarTestigo1.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarTestigo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarTestigo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarTestigo1.setText("Buscar");
         btnBuscarTestigo1.setToolTipText("Buscar madre de novia");
         btnBuscarTestigo1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -346,7 +346,7 @@ public class DlgBoda extends javax.swing.JDialog {
         btnBuscarSacerdote.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarSacerdote.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarSacerdote.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarSacerdote.setText("Buscar");
         btnBuscarSacerdote.setToolTipText("Buscar madre de novia");
         btnBuscarSacerdote.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -360,7 +360,7 @@ public class DlgBoda extends javax.swing.JDialog {
         btnGuardar.setBackground(new java.awt.Color(13, 71, 161));
         btnGuardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-guardar.png"))); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save.png"))); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -373,7 +373,7 @@ public class DlgBoda extends javax.swing.JDialog {
         btnCancelar.setBackground(new java.awt.Color(255, 136, 0));
         btnCancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-cancelar_azul.png"))); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 460, 130, -1));
@@ -390,7 +390,7 @@ public class DlgBoda extends javax.swing.JDialog {
         btnBuscarTestigo2.setBackground(new java.awt.Color(0, 126, 51));
         btnBuscarTestigo2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarTestigo2.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarTestigo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        btnBuscarTestigo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         btnBuscarTestigo2.setText("Buscar");
         btnBuscarTestigo2.setToolTipText("Buscar madre de novia");
         btnBuscarTestigo2.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);

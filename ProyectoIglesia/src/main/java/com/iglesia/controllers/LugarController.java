@@ -96,7 +96,7 @@ public class LugarController implements Serializable {
         tabla.setDefaultRenderer(Object.class, new RenderCellTable());
         model = ProjectUtils.removeRows(model);
         this.items = this.lugarService.buscarLugar(filtro);
-        JButton btn = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/x26-aceptar2_azul.png"), null);
+        JButton btn = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/seleccionar.png"), null);
         Object[] datos = new Object[3];
         for (Lugar user : this.getItems()) {
             datos[0] = user.getId().toString();

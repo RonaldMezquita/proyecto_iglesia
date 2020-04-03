@@ -76,7 +76,7 @@ public class ComunidadController implements Serializable {
     public void llenarTabla(JTable tabla, String filtro) {
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         model = ProjectUtils.removeRows(model);
-        this.items = this.comunidadService.buscarComunidad(filtro);
+        this.items = this.comunidadService.buscarComunidad(filtro.trim());
         Object[] datos = new Object[4];
         for (Comunidad user : this.getItems()) {
             datos[0] = user.getId().toString();

@@ -101,7 +101,7 @@ public class DlgDetalleEvento extends javax.swing.JDialog {
 
         jbCerrar.setBackground(new java.awt.Color(204, 0, 0));
         jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
-        jbCerrar.setText("X");
+        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
         jbCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCerrarActionPerformed(evt);

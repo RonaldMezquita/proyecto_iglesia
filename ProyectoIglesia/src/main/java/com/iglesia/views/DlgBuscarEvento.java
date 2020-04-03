@@ -21,11 +21,11 @@ import javax.swing.JOptionPane;
  * @author remsf
  */
 public class DlgBuscarEvento extends javax.swing.JDialog {
-    
+
     private final EventoController eventoController;
     private final ResponsableEventoController responsableEventoController;
     private Evento evento;
-    
+
     public Evento getEvento() {
         return evento;
     }
@@ -41,8 +41,10 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
         this.responsableEventoController = new ResponsableEventoController();
         this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
         this.txtfechaFin.setDate(FechasUtils.getCurrentDate());
+        Object[] fechas = {FechasUtils.operateDate(FechasUtils.getCurrentDate(), -30), FechasUtils.getCurrentDate()};
+        this.mostrarTabla(fechas, TipoBusquedaEnum.RANGO_FECHA);
     }
-    
+
     private void mostrarTabla(Object[] filtro, TipoBusquedaEnum tipo) {
         this.eventoController.llenarTablaBusqueda(tbEvento, filtro, tipo);
     }
@@ -65,6 +67,7 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
         txtfechaInicio = new com.toedter.calendar.JDateChooser();
         txtfechaFin = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -83,14 +86,14 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
 
             },
             new String [] {
-                "ID", "Fecha", "Lugar", "Sacerdote", "Sacramento", "", "", ""
+                "ID", "Fecha", "Lugar", "Sacerdote", "Sacramento", "", "", "", ""
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -125,13 +128,16 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
             tbEvento.getColumnModel().getColumn(7).setMinWidth(25);
             tbEvento.getColumnModel().getColumn(7).setPreferredWidth(25);
             tbEvento.getColumnModel().getColumn(7).setMaxWidth(25);
+            tbEvento.getColumnModel().getColumn(8).setMinWidth(25);
+            tbEvento.getColumnModel().getColumn(8).setPreferredWidth(25);
+            tbEvento.getColumnModel().getColumn(8).setMaxWidth(25);
         }
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 590, 290));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 590, 290));
 
         jbCerrar.setBackground(new java.awt.Color(204, 0, 0));
         jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
-        jbCerrar.setText("X");
+        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
         jbCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCerrarActionPerformed(evt);
@@ -148,24 +154,29 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
         jButton1.setBackground(new java.awt.Color(0, 126, 51));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/x26-buscar.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 65, 110, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 110, -1));
 
         txtfechaInicio.setDateFormatString("dd/MM/yyyy");
         txtfechaInicio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtfechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 160, -1));
+        jPanel1.add(txtfechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 160, -1));
 
         txtfechaFin.setDateFormatString("dd/MM/yyyy");
         txtfechaFin.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtfechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 160, -1));
+        jPanel1.add(txtfechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 160, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 410));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/detalle_white.png"))); // NOI18N
+        jLabel1.setText("Por defecto se mostraran los registros de los últimos 30 días.");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 390, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -173,7 +184,7 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
     private void tbEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEventoMouseClicked
         int column = this.tbEvento.getColumnModel().getColumnIndexAtX(evt.getX());
         int row = evt.getY() / this.tbEvento.getRowHeight();
-        
+
         if (row < this.tbEvento.getRowCount() && row >= 0
                 && column < this.tbEvento.getColumnCount() && column >= 0) {
             Object value = this.tbEvento.getValueAt(row, column);
@@ -193,6 +204,9 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
                     if (this.evento != null) {
                         this.eventoController.generarRptConstancia(this.evento);
                     }
+                } else if (column == 8){
+                    this.evento = this.eventoController.consultarPorId(id);
+                    this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
                 }
             }
         }
@@ -204,7 +218,7 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (this.txtfechaInicio.getDate() == null || this.txtfechaFin.getDate() == null) {
-            JOptionPane.showMessageDialog(this, "Es necesario seleccionar un rango de fechas.","Aviso",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Es necesario seleccionar un rango de fechas.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
         Object[] obj = {this.txtfechaInicio.getDate(), this.txtfechaFin.getDate()};
@@ -271,6 +285,7 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;

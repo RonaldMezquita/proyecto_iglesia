@@ -129,7 +129,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/META-INF/images/icon/x26-listar.png"/>
+              <Image iconType="3" name="/META-INF/images/icon/detalle.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Haga click en el boton seleccionar para elegir una persona"/>
           </Properties>
@@ -147,7 +147,9 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="X"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/META-INF/images/icon/cancel.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCerrarActionPerformed"/>
@@ -170,7 +172,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/META-INF/images/icon/x26-add_azul.png"/>
+              <Image iconType="3" name="/META-INF/images/icon/agregar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nueva persona"/>
             <Property name="horizontalAlignment" type="int" value="10"/>
@@ -180,7 +182,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="305" y="90" width="-1" height="-1"/>
+              <AbsoluteConstraints x="305" y="95" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

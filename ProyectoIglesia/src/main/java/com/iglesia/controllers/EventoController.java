@@ -75,14 +75,16 @@ public class EventoController implements Serializable {
         if (this.items == null) {
             return;
         }
-        JButton btnDetail = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/x26-lista.png"),
+        JButton btnDetail = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/detalle.png"),
                 "Click para ver detalle del evento");
-        JButton btnPrint = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/x26-imprimir.png"),
+        JButton btnPrint = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/imprimir.png"),
                 "Click para generar reporte");
-        JButton btnPrintConstancia = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/x26-ticket.png"),
+        JButton btnPrintConstancia = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/archivo.png"),
                 "Click para generar constancia");
-
-        Object[] row = new Object[8];
+        JButton btnSeleccionar = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/seleccionar.png"),
+                "Click para seleccionar evento");
+                
+        Object[] row = new Object[9];
         for (Evento item : this.items) {
             row[0] = item.getId().toString();
             row[1] = this.sdf.format(item.getFecha());
@@ -92,6 +94,7 @@ public class EventoController implements Serializable {
             row[5] = btnDetail;
             row[6] = btnPrint;
             row[7] = item.getIdTipoSacramento().getId() != TipoSacramentoEnum.BODA.getValue() ? btnPrintConstancia : null;
+            row[8] = btnSeleccionar;
             model.addRow(row);
         }
     }
@@ -267,7 +270,7 @@ public class EventoController implements Serializable {
                 .append(" dias del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
-                
+
         String edad_letras = NumeroALetras.convertirLetras(
                 FechasUtils.calcularEdad(persona.getFechaNacimiento()));
 
@@ -280,8 +283,9 @@ public class EventoController implements Serializable {
 
     /**
      * Metodo para registrar los eventos
+     *
      * @param evento Clase que implementa la interfaz IEvento
-     * @return 
+     * @return
      */
     public boolean registrarEvento(IEvento evento) {
         return evento.registrar(this.dtoSelected);
