@@ -92,7 +92,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/META-INF/images/icon/x26-clientes.png"/>
+          <Image iconType="3" name="/META-INF/images/icon/server-rack-w.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Consulta de Personas"/>
       </Properties>
@@ -117,7 +117,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/META-INF/images/icon/x26-add_azul.png"/>
+          <Image iconType="3" name="/META-INF/images/icon/server-rack-w.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Nueva Persona"/>
       </Properties>
@@ -167,7 +167,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/META-INF/images/icon/x26-clientes.png"/>
+          <Image iconType="3" name="/META-INF/images/icon/server-rack-w.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Lugar"/>
       </Properties>
@@ -192,7 +192,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/META-INF/images/icon/x26-clientes.png"/>
+          <Image iconType="3" name="/META-INF/images/icon/server-rack-w.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Comunidad"/>
       </Properties>
@@ -217,7 +217,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/META-INF/images/icon/x26-clientes.png"/>
+          <Image iconType="3" name="/META-INF/images/icon/server-rack-w.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Sector"/>
       </Properties>
@@ -242,7 +242,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/META-INF/images/Icon/x26-clientes.png"/>
+          <Image iconType="3" name="/META-INF/images/icon/server-rack-w.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Justificacion"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -268,7 +268,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/META-INF/images/Icon/x26-clientes.png"/>
+          <Image iconType="3" name="/META-INF/images/icon/server-rack-w.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Sacerdotes"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -294,7 +294,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/META-INF/images/Icon/x26-clientes.png"/>
+          <Image iconType="3" name="/META-INF/images/icon/server-rack-w.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Tipos de sacramentos"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -320,7 +320,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/META-INF/images/Icon/x26-clientes.png"/>
+          <Image iconType="3" name="/META-INF/images/icon/server-rack-w.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Eventos"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>

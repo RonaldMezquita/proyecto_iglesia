@@ -115,4 +115,19 @@ public class FechasUtils {
         }
         return years;
     }
+
+    /**
+     * Metodo para <b>sumar</b> o <b>restar</b> dias a una fecha
+     *
+     * @param dateToOperate Fecha sobre la cual se va a operar
+     * @param numDays Numero de dias a operar(si es negativo se realiza una
+     * resta de los dias especificados sino se realiza una suma)
+     * @return
+     */
+    public static Date operateDate(Date dateToOperate, Integer numDays) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateToOperate);
+        cal.add(Calendar.DAY_OF_YEAR, numDays);
+        return cal.getTime();
+    }
 }

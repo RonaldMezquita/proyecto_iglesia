@@ -5,6 +5,8 @@
  */
 package com.iglesia.utils;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author remsf
@@ -37,7 +39,9 @@ public class Test {
 //        }               
 //        System.out.println(NumeroALetras.cantidadConLetra("1981"));
         
-        String res = NumeroALetras.convertirLetras(1);
-        System.out.println(res);
+//        String res = NumeroALetras.convertirLetras(1);
+//        System.out.println(res);
+//        System.out.println(FechasUtils.operateDate(FechasUtils.getCurrentDate(), -10));
+            System.out.println(ProjectUtils.formatearMoneda(new BigDecimal("1226424.159")));
     }
 }

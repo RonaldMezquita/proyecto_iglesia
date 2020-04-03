@@ -59,7 +59,7 @@ public class PersonaController {
         tabla.setDefaultRenderer(Object.class, new RenderCellTable());
         model = ProjectUtils.removeRows(model);
         this.items = this.personaService.buscarPersona(filtro.trim(), TipoBusquedaEnum.NOMBRE);
-        JButton btn = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/x26-editar_doc.png"), null);
+        JButton btn = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/editar_black.png"), null);
         Object[] row = new Object[10];
         for (Persona item : this.items) {
             row[0] = item.getId().toString();
@@ -81,7 +81,7 @@ public class PersonaController {
         tabla.setDefaultRenderer(Object.class, new RenderCellTable());
         model = ProjectUtils.removeRows(model);
         this.items = this.personaService.buscarPersona(filtro.trim(), tipo);
-        JButton btn = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/x26-aceptar2_azul.png"), null);
+        JButton btn = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/seleccionar.png"), null);
         Object[] row = new Object[5];
         for (Persona item : this.items) {
             row[0] = item.getId().toString();

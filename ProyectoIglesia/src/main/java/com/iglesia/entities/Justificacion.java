@@ -160,7 +160,7 @@ public class Justificacion implements Serializable {
 
     @Override
     public String toString() {
-        return "com.iglesia.entities.Justificacion[ id=" + id + " ]";
+        return this.nombre;
     }
-    
+
 }

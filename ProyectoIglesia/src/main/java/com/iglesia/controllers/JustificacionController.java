@@ -12,6 +12,7 @@ import com.iglesia.utils.FechasUtils;
 import com.iglesia.utils.ProjectUtils;
 import java.io.Serializable;
 import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,29 +21,29 @@ import javax.swing.table.DefaultTableModel;
  * @author Alexis
  */
 public class JustificacionController implements Serializable {
-
+    
     private Justificacion selected;
     private List<Justificacion> items;
-
+    
     private JustificacionService justificacionService;
-
+    
     public JustificacionController() {
         this.justificacionService = new JustificacionService();
         this.selected = new Justificacion();
         this.selected.setEstado(true);
         this.selected.setIdUsuario(new Usuario(1));
     }
-
+    
     public void consultarTodos() {
-        this.items = this.justificacionService.consultarTodos("select t from Relacion t");
+        this.items = this.justificacionService.consultarTodos("select t from Justificacion t");
     }
-
-    public Justificacion consultarPorId(Integer idRelacion) {
-        this.selected = this.justificacionService.consultarPor("select t from Relacion t where t.idRelacion=:idRelacion",
-                "idRelacion", idRelacion);
+    
+    public Justificacion consultarPorId(Integer idJustificacion) {
+        this.selected = this.justificacionService.consultarPor("select t from Justificacion t where t.id=:id",
+                "id", idJustificacion);
         return this.selected;
     }
-
+    
     public Justificacion crear() {
         if (this.selected == null) {
             System.out.println("RelacionController[crear()]-> Objeto Justificacion no existe");
@@ -56,10 +57,10 @@ public class JustificacionController implements Serializable {
         } catch (Exception e) {
             System.out.println("RelacionController[crear()]-> " + e.getMessage());
         }
-
+        
         return null;
     }
-
+    
     public Justificacion actualizar() {
         if (this.selected == null) {
             System.out.println("RelacionController[actualizar()]-> Objeto Justificacion no existe");
@@ -75,7 +76,7 @@ public class JustificacionController implements Serializable {
         }
         return null;
     }
-
+    
     public void llenarTabla(JTable tabla, String filtro) {
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         model = ProjectUtils.removeRows(model);
@@ -89,28 +90,37 @@ public class JustificacionController implements Serializable {
         }
         tabla.setModel(model);
     }
-    //<editor-fold defaultstate="collapsed" desc="getters & setters">   
+    
+    public void getComboBox(JComboBox<Justificacion> combo) {
+        this.consultarTodos();
+        Justificacion seleccionar = new Justificacion(null, "*** Seleccione ***", true, null);
+        combo.addItem(seleccionar);        
+        for (Justificacion item : this.items) {
+            combo.addItem(item);
+        }
+    }
 
+    //<editor-fold defaultstate="collapsed" desc="getters & setters">   
     public Justificacion getSelected() {
         return selected;
     }
-
+    
     public void setSelected(Justificacion selected) {
         this.selected = selected;
     }
-
+    
     public List<Justificacion> getItems() {
         return items;
     }
-
+    
     public void setItems(List<Justificacion> items) {
         this.items = items;
     }
-
+    
     public JustificacionService getJustificacionService() {
         return justificacionService;
     }
-
+    
     public void setJustificacionService(JustificacionService justificacionService) {
         this.justificacionService = justificacionService;
     }
