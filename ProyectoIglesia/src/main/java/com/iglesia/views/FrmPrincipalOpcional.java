@@ -38,6 +38,7 @@ public class FrmPrincipalOpcional extends javax.swing.JFrame {
         btnJustificacion = new javax.swing.JButton();
         btnTipoSacramento = new javax.swing.JButton();
         btnMovEfectivo = new javax.swing.JButton();
+        btnBautizo = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
@@ -50,13 +51,14 @@ public class FrmPrincipalOpcional extends javax.swing.JFrame {
         btnSector.setBackground(new java.awt.Color(0, 153, 204));
         btnSector.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSector.setForeground(new java.awt.Color(255, 255, 255));
-        btnSector.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
+        btnSector.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
         btnSector.setText("Sector");
         btnSector.setBorder(null);
         btnSector.setBorderPainted(false);
         btnSector.setContentAreaFilled(false);
         btnSector.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSector.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnSector.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnSector.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btnSector.setOpaque(true);
         btnSector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,14 +69,15 @@ public class FrmPrincipalOpcional extends javax.swing.JFrame {
         btnSacerdotes.setBackground(new java.awt.Color(0, 153, 204));
         btnSacerdotes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSacerdotes.setForeground(new java.awt.Color(255, 255, 255));
-        btnSacerdotes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
+        btnSacerdotes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
         btnSacerdotes.setText("Sacerdotes");
         btnSacerdotes.setToolTipText("");
         btnSacerdotes.setBorder(null);
         btnSacerdotes.setBorderPainted(false);
         btnSacerdotes.setContentAreaFilled(false);
         btnSacerdotes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSacerdotes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSacerdotes.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnSacerdotes.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         btnSacerdotes.setOpaque(true);
         btnSacerdotes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,13 +88,14 @@ public class FrmPrincipalOpcional extends javax.swing.JFrame {
         btnComunidad.setBackground(new java.awt.Color(0, 153, 204));
         btnComunidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnComunidad.setForeground(new java.awt.Color(255, 255, 255));
-        btnComunidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
+        btnComunidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
         btnComunidad.setText("Comunidad");
         btnComunidad.setBorder(null);
         btnComunidad.setBorderPainted(false);
         btnComunidad.setContentAreaFilled(false);
         btnComunidad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnComunidad.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnComunidad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnComunidad.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         btnComunidad.setOpaque(true);
         btnComunidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,14 +106,15 @@ public class FrmPrincipalOpcional extends javax.swing.JFrame {
         btnJustificacion.setBackground(new java.awt.Color(0, 153, 204));
         btnJustificacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnJustificacion.setForeground(new java.awt.Color(255, 255, 255));
-        btnJustificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
+        btnJustificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
         btnJustificacion.setText("Justificación");
         btnJustificacion.setToolTipText("");
         btnJustificacion.setBorder(null);
         btnJustificacion.setBorderPainted(false);
         btnJustificacion.setContentAreaFilled(false);
         btnJustificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnJustificacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnJustificacion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnJustificacion.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         btnJustificacion.setOpaque(true);
         btnJustificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,14 +125,15 @@ public class FrmPrincipalOpcional extends javax.swing.JFrame {
         btnTipoSacramento.setBackground(new java.awt.Color(0, 153, 204));
         btnTipoSacramento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnTipoSacramento.setForeground(new java.awt.Color(255, 255, 255));
-        btnTipoSacramento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
+        btnTipoSacramento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
         btnTipoSacramento.setText("Tipo de Sacramento");
         btnTipoSacramento.setToolTipText("");
         btnTipoSacramento.setBorder(null);
         btnTipoSacramento.setBorderPainted(false);
         btnTipoSacramento.setContentAreaFilled(false);
         btnTipoSacramento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnTipoSacramento.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnTipoSacramento.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnTipoSacramento.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         btnTipoSacramento.setOpaque(true);
         btnTipoSacramento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,18 +144,51 @@ public class FrmPrincipalOpcional extends javax.swing.JFrame {
         btnMovEfectivo.setBackground(new java.awt.Color(0, 153, 204));
         btnMovEfectivo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnMovEfectivo.setForeground(new java.awt.Color(255, 255, 255));
-        btnMovEfectivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
+        btnMovEfectivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
         btnMovEfectivo.setText("Mov. de Efectivo");
         btnMovEfectivo.setToolTipText("");
         btnMovEfectivo.setBorder(null);
         btnMovEfectivo.setBorderPainted(false);
         btnMovEfectivo.setContentAreaFilled(false);
         btnMovEfectivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMovEfectivo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnMovEfectivo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnMovEfectivo.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         btnMovEfectivo.setOpaque(true);
         btnMovEfectivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMovEfectivoActionPerformed(evt);
+            }
+        });
+
+        btnBautizo.setBackground(new java.awt.Color(0, 153, 204));
+        btnBautizo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnBautizo.setForeground(new java.awt.Color(255, 255, 255));
+        btnBautizo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/confirmacion-36px.png"))); // NOI18N
+        btnBautizo.setText("Bautizo");
+        btnBautizo.setToolTipText("");
+        btnBautizo.setBorder(null);
+        btnBautizo.setBorderPainted(false);
+        btnBautizo.setContentAreaFilled(false);
+        btnBautizo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBautizo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnBautizo.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnBautizo.setOpaque(true);
+        btnBautizo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBautizoActionPerformed(evt);
+            }
+        });
+
+        btnMenu.setBackground(new java.awt.Color(0, 129, 255));
+        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/menu-36px.png"))); // NOI18N
+        btnMenu.setBorder(null);
+        btnMenu.setBorderPainted(false);
+        btnMenu.setContentAreaFilled(false);
+        btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenu.setOpaque(true);
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
             }
         });
 
@@ -165,19 +204,22 @@ public class FrmPrincipalOpcional extends javax.swing.JFrame {
                     .addGroup(panelMenuLayout.createSequentialGroup()
                         .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSacerdotes, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTipoSacramento, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnTipoSacramento, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBautizo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnJustificacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMovEfectivo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnMovEfectivo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMenu, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         panelMenuLayout.setVerticalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMenuLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addComponent(btnSector, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnComunidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,24 +231,12 @@ public class FrmPrincipalOpcional extends javax.swing.JFrame {
                 .addComponent(btnTipoSacramento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMovEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBautizo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 1080));
-
-        btnMenu.setBackground(new java.awt.Color(0, 0, 0));
-        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/menu-36px.png"))); // NOI18N
-        btnMenu.setBorder(null);
-        btnMenu.setBorderPainted(false);
-        btnMenu.setContentAreaFilled(false);
-        btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMenu.setOpaque(true);
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenuActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 40, 40));
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -230,11 +260,11 @@ public class FrmPrincipalOpcional extends javax.swing.JFrame {
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         //-220
         if (this.panelMenu.getX() == 0) {
-            Animacion.Animacion.mover_izquierda(0, -220, 10, 5, this.panelMenu);
-            Animacion.Animacion.mover_izquierda(220, 0, 10, 5, this.btnMenu);
+            Animacion.Animacion.mover_izquierda(0, -188, 10, 5, this.panelMenu);
+//            Animacion.Animacion.mover_izquierda(190, 0, 10, 5, this.btnMenu);
         } else {
-            Animacion.Animacion.mover_derecha(-220, 0, 10, 5, this.panelMenu);
-            Animacion.Animacion.mover_derecha(0, 220, 10, 5, this.btnMenu);
+            Animacion.Animacion.mover_derecha(-188, 0, 10, 5, this.panelMenu);
+//            Animacion.Animacion.mover_derecha(0, 190, 10, 5, this.btnMenu);
         }
 
     }//GEN-LAST:event_btnMenuActionPerformed
@@ -251,6 +281,11 @@ public class FrmPrincipalOpcional extends javax.swing.JFrame {
         DlgMovEfectivo obj = new DlgMovEfectivo(this, false);
         obj.setVisible(true);
     }//GEN-LAST:event_btnMovEfectivoActionPerformed
+
+    private void btnBautizoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBautizoActionPerformed
+        DlgBautizo obj = new DlgBautizo(this, false);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnBautizoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,6 +326,7 @@ public class FrmPrincipalOpcional extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBautizo;
     private javax.swing.JButton btnComunidad;
     private javax.swing.JButton btnJustificacion;
     private javax.swing.JButton btnMenu;
