@@ -96,18 +96,18 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
         boolean response = true;
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
 //            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-            DlgWindow.showMessageDialog(this, true, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.INFO);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)");
             response = false;
         }
         this.cargarDatos();
         if (!this.movimientoController.actualizar()) {
 //            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            DlgWindow.showMessageDialog(this, true, "Error", "Ocurrio un problema.!", DlgWindow.INFO);
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!");
             response = false;
         }
         if (response) {
 //            JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-            DlgWindow.showMessageDialog(this, true, "Aviso", "Registro modificado correctamente", DlgWindow.INFO);
+            DlgWindow.showMessageDialog(this, "Aviso", "Registro modificado correctamente");
             ProjectUtils.limpiarComponentes(this.jPanel1);
             if (this.redirect) {
                 this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
@@ -396,10 +396,7 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
-//        DlgWindow obj = new DlgWindow(this, true, "Confirmación", "¿Desea salir de esta opción?", DlgWindow.CONFIRM);
-//        obj.setVisible(true);
-        DlgWindow.showMessageDialog(this, true, "Confirmación", "¿Desea salir de esta opción?", DlgWindow.CONFIRM);
-        if (DlgWindow.respuesta.equals(DlgWindow.SI)) {
+        if (DlgWindow.showConfirmDialog(this, "Confirmación", "¿Desea salir de esta opción?") == 0) {
             this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
         }
     }//GEN-LAST:event_jbsalirActionPerformed

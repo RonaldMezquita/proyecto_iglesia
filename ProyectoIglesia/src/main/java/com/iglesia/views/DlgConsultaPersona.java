@@ -26,7 +26,7 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
      */
     private PersonaController personaController;
     private List<String> excepciones = new ArrayList<>();
-
+    
     public DlgConsultaPersona(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -38,10 +38,11 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
         this.excepciones.add("dui");
         this.excepciones.add("nit");
         this.mostrarTabla("");
+        this.txtbuscar.requestFocus();
         new TextPrompt("Digite para buscar en nombres o apellidos", this.txtbuscar);
         this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
     }
-
+    
     private void mostrarTabla(String filtro) {
         this.personaController.llenarTabla(tbpersona, filtro);
     }
@@ -57,38 +58,73 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
 
         btnGroupGenero = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jsBusqueda = new javax.swing.JSeparator();
+        txtbuscar = new javax.swing.JTextField();
         btnSalir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbpersona = new javax.swing.JTable();
-        txtbuscar = new javax.swing.JTextField();
         btnNuevaPersona = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(55, 71, 79));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setForeground(new java.awt.Color(189, 189, 189));
         jPanel1.setPreferredSize(new java.awt.Dimension(560, 560));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Consulta de Personas");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 940, -1));
+        jsBusqueda.setBackground(new java.awt.Color(153, 153, 153));
+        jsBusqueda.setForeground(new java.awt.Color(0, 0, 0));
+        jsBusqueda.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jPanel1.add(jsBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 101, 340, -1));
 
-        btnSalir.setBackground(new java.awt.Color(204, 0, 0));
+        txtbuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtbuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtbuscar.setBorder(null);
+        txtbuscar.setName("buscar"); // NOI18N
+        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 340, 24));
+
+        btnSalir.setBackground(new java.awt.Color(222, 62, 68));
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
+        btnSalir.setBorder(null);
+        btnSalir.setBorderPainted(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setOpaque(true);
+        btnSalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnSalirMouseMoved(evt);
+            }
+        });
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+        });
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 0, 40, 32));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(909, 1, 30, 30));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Consulta de Personas");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 940, -1));
+
+        tbpersona.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tbpersona.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -112,6 +148,7 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tbpersona.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tbpersona.setRowHeight(25);
         tbpersona.getTableHeader().setReorderingAllowed(false);
         tbpersona.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -146,26 +183,35 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 900, 500));
 
-        txtbuscar.setName("buscar"); // NOI18N
-        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtbuscarKeyReleased(evt);
-            }
-        });
-        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 380, -1));
-
-        btnNuevaPersona.setBackground(new java.awt.Color(108, 117, 125));
-        btnNuevaPersona.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnNuevaPersona.setBackground(new java.awt.Color(27, 163, 69));
+        btnNuevaPersona.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnNuevaPersona.setForeground(new java.awt.Color(255, 255, 255));
         btnNuevaPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/agregar.png"))); // NOI18N
         btnNuevaPersona.setText("Nueva persona");
-        btnNuevaPersona.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnNuevaPersona.setBorder(null);
+        btnNuevaPersona.setBorderPainted(false);
+        btnNuevaPersona.setContentAreaFilled(false);
+        btnNuevaPersona.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNuevaPersona.setOpaque(true);
+        btnNuevaPersona.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnNuevaPersonaMouseMoved(evt);
+            }
+        });
+        btnNuevaPersona.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNuevaPersonaMouseExited(evt);
+            }
+        });
         btnNuevaPersona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevaPersonaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNuevaPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 75, -1, -1));
+        jPanel1.add(btnNuevaPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 140, 40));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-b.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 75, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 660));
 
@@ -183,8 +229,8 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
             return;
         }
 //        int row = evt.getY() / this.tbpersona.getRowHeight();
-        int row= tbpersona.getSelectedRow();
-
+        int row = tbpersona.getSelectedRow();
+        
         if (row < this.tbpersona.getRowCount() && row >= 0
                 && column < this.tbpersona.getColumnCount() && column >= 0) {
             Object value = this.tbpersona.getValueAt(row, column);
@@ -192,7 +238,7 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
                 ((JButton) value).doClick();
                 Integer id = Integer.parseInt(this.tbpersona.getValueAt(row, 0).toString());
                 Persona selected = this.personaController.consultarPorId(id);
-                DlgPersona obj = new DlgPersona(null,true);
+                DlgPersona obj = new DlgPersona(null, true);
                 obj.setPersonaToEdit(selected);
                 obj.setVisible(true);
                 this.mostrarTabla("");
@@ -210,6 +256,22 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
         obj.setVisible(true);
         this.mostrarTabla("");
     }//GEN-LAST:event_btnNuevaPersonaActionPerformed
+
+    private void btnSalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseMoved
+        this.btnSalir.setBackground(new java.awt.Color(227, 96, 101));
+    }//GEN-LAST:event_btnSalirMouseMoved
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+        this.btnSalir.setBackground(new java.awt.Color(222, 62, 68));
+    }//GEN-LAST:event_btnSalirMouseExited
+
+    private void btnNuevaPersonaMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevaPersonaMouseMoved
+        this.btnNuevaPersona.setBackground(new java.awt.Color(35, 212, 89));
+    }//GEN-LAST:event_btnNuevaPersonaMouseMoved
+
+    private void btnNuevaPersonaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevaPersonaMouseExited
+        this.btnNuevaPersona.setBackground(new java.awt.Color(27, 163, 69));
+    }//GEN-LAST:event_btnNuevaPersonaMouseExited
 
     /**
      * @param args the command line arguments
@@ -259,8 +321,10 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
     private javax.swing.JButton btnNuevaPersona;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jsBusqueda;
     private javax.swing.JTable tbpersona;
     private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables

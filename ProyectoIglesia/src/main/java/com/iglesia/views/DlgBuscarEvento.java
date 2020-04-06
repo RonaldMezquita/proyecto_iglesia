@@ -10,9 +10,7 @@ import com.iglesia.controllers.ResponsableEventoController;
 import com.iglesia.entities.Evento;
 import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.utils.FechasUtils;
-import java.awt.Color;
 import java.awt.event.WindowEvent;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -39,7 +37,6 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.eventoController = new EventoController();
         this.responsableEventoController = new ResponsableEventoController();
-        this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
         this.txtfechaFin.setDate(FechasUtils.getCurrentDate());
         Object[] fechas = {FechasUtils.operateDate(FechasUtils.getCurrentDate(), -30), FechasUtils.getCurrentDate()};
         this.mostrarTabla(fechas, TipoBusquedaEnum.RANGO_FECHA);
@@ -64,7 +61,7 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
         tbEvento = new javax.swing.JTable();
         jbCerrar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jbtnBuscar = new javax.swing.JButton();
         txtfechaInicio = new com.toedter.calendar.JDateChooser();
         txtfechaFin = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
@@ -77,10 +74,12 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
         setSize(new java.awt.Dimension(520, 410));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(55, 71, 79));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tbEvento.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tbEvento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -104,6 +103,7 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tbEvento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tbEvento.setRowHeight(25);
         tbEvento.getTableHeader().setReorderingAllowed(false);
         tbEvento.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -135,48 +135,81 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 590, 290));
 
-        jbCerrar.setBackground(new java.awt.Color(204, 0, 0));
+        jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
         jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
-        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
+        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
+        jbCerrar.setBorder(null);
+        jbCerrar.setBorderPainted(false);
+        jbCerrar.setContentAreaFilled(false);
+        jbCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbCerrar.setOpaque(true);
+        jbCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbCerrarMouseMoved(evt);
+            }
+        });
+        jbCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbCerrarMouseExited(evt);
+            }
+        });
         jbCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 40, 32));
+        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 1, 30, 30));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Busqueda de Evento");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 630, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 126, 51));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jbtnBuscar.setBackground(new java.awt.Color(107, 117, 125));
+        jbtnBuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbtnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        jbtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
+        jbtnBuscar.setText("Buscar");
+        jbtnBuscar.setBorder(null);
+        jbtnBuscar.setBorderPainted(false);
+        jbtnBuscar.setContentAreaFilled(false);
+        jbtnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnBuscar.setOpaque(true);
+        jbtnBuscar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbtnBuscarMouseMoved(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 110, -1));
+        jbtnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbtnBuscarMouseExited(evt);
+            }
+        });
+        jbtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 85, 110, 40));
 
+        txtfechaInicio.setBackground(new java.awt.Color(255, 255, 255));
         txtfechaInicio.setDateFormatString("dd/MM/yyyy");
         txtfechaInicio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jPanel1.add(txtfechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 160, -1));
 
+        txtfechaFin.setBackground(new java.awt.Color(255, 255, 255));
         txtfechaFin.setDateFormatString("dd/MM/yyyy");
         txtfechaFin.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jPanel1.add(txtfechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 160, -1));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/detalle_white.png"))); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/detalle.png"))); // NOI18N
         jLabel1.setText("Por defecto se mostraran los registros de los últimos 30 días.");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 390, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 410, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 440));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 625, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -216,14 +249,30 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
         this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jbCerrarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
         if (this.txtfechaInicio.getDate() == null || this.txtfechaFin.getDate() == null) {
             JOptionPane.showMessageDialog(this, "Es necesario seleccionar un rango de fechas.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
         Object[] obj = {this.txtfechaInicio.getDate(), this.txtfechaFin.getDate()};
         this.mostrarTabla(obj, TipoBusquedaEnum.RANGO_FECHA);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbtnBuscarActionPerformed
+
+    private void jbtnBuscarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnBuscarMouseMoved
+        this.jbtnBuscar.setBackground(new java.awt.Color(132, 142, 149));
+    }//GEN-LAST:event_jbtnBuscarMouseMoved
+
+    private void jbtnBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnBuscarMouseExited
+        this.jbtnBuscar.setBackground(new java.awt.Color(107, 117, 125));
+    }//GEN-LAST:event_jbtnBuscarMouseExited
+
+    private void jbCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseMoved
+        this.jbCerrar.setBackground(new java.awt.Color(227, 96, 101));
+    }//GEN-LAST:event_jbCerrarMouseMoved
+
+    private void jbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseExited
+this.jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
+    }//GEN-LAST:event_jbCerrarMouseExited
 
     /**
      * @param args the command line arguments
@@ -284,13 +333,13 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbCerrar;
+    private javax.swing.JButton jbtnBuscar;
     private javax.swing.JTable tbEvento;
     private com.toedter.calendar.JDateChooser txtfechaFin;
     private com.toedter.calendar.JDateChooser txtfechaInicio;

@@ -248,7 +248,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewPersona1ActionPerformed
 
     private void btnConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmacionActionPerformed
-        DlgConfirmacion obj = new DlgConfirmacion(this, true);
+        DlgConfirmacionOld obj = new DlgConfirmacionOld(this, true);
         obj.setVisible(true);
     }//GEN-LAST:event_btnConfirmacionActionPerformed
 
