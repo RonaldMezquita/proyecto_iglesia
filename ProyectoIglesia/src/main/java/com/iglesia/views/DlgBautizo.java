@@ -745,15 +745,15 @@ public class DlgBautizo extends javax.swing.JDialog {
 
     private void crear() {
         if (ProjectUtils.validarVacios(this.jPanel1, null)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
-        if (this.eventoCtrl.registrarEvento(new BautizoController())) {
-            JOptionPane.showMessageDialog(this, "Registro realizado correctamente.!", "Información", JOptionPane.INFORMATION_MESSAGE);
-            ProjectUtils.limpiarComponentes(this.jPanel1);
-        } else {
-            JOptionPane.showMessageDialog(this, "Error al realizar el registro.!", "Error", JOptionPane.ERROR_MESSAGE);
+        if (!this.eventoCtrl.registrarEvento(new BautizoController())) {
+            DlgWindow.showMessageDialog(this, "Error", "Error al realizar el registro.!", DlgWindow.ERROR);
+            return;
         }
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro guardado correctamente");
+        ProjectUtils.limpiarComponentes(this.jPanel1);
     }
 
     private void btnBuscarMadrinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMadrinaActionPerformed

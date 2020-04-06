@@ -9,9 +9,7 @@ import com.iglesia.controllers.LugarController;
 import com.iglesia.entities.Lugar;
 import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.utils.TextPrompt;
-import java.awt.Color;
 import java.awt.event.WindowEvent;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 /**
@@ -36,8 +34,7 @@ public class DlgBuscarLugar extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.lugarController = new LugarController();
         this.mostrarTabla("", TipoBusquedaEnum.NOMBRE);
-        new TextPrompt("Digite nombres para realizar la busqueda", this.txtBuscar);
-        this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+        new TextPrompt("Digite nombre para realizar la busqueda", this.txtBuscar);
         this.txtBuscar.requestFocus();
     }
 
@@ -54,24 +51,16 @@ public class DlgBuscarLugar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jbCerrar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jsBusqueda = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbLugar = new javax.swing.JTable();
         txtBuscar = new javax.swing.JTextField();
+        jbCerrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnNuevaSacerdote = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jbCerrar1 = new javax.swing.JButton();
-
-        jbCerrar.setBackground(new java.awt.Color(204, 0, 0));
-        jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
-        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
-        jbCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCerrarActionPerformed(evt);
-            }
-        });
+        jLabel4 = new javax.swing.JLabel();
+        btnNuevoLugar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -79,8 +68,14 @@ public class DlgBuscarLugar extends javax.swing.JDialog {
         setSize(new java.awt.Dimension(520, 410));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(55, 71, 79));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jsBusqueda.setBackground(new java.awt.Color(153, 153, 153));
+        jsBusqueda.setForeground(new java.awt.Color(0, 0, 0));
+        jsBusqueda.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jPanel1.add(jsBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 121, 240, -1));
 
         tbLugar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -105,6 +100,7 @@ public class DlgBuscarLugar extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tbLugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tbLugar.setRowHeight(25);
         tbLugar.getTableHeader().setReorderingAllowed(false);
         tbLugar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,45 +120,81 @@ public class DlgBuscarLugar extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 430, 250));
 
+        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtBuscar.setBorder(null);
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBuscarKeyReleased(evt);
             }
         });
-        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 260, -1));
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 240, 24));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
+        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
+        jbCerrar.setBorder(null);
+        jbCerrar.setBorderPainted(false);
+        jbCerrar.setContentAreaFilled(false);
+        jbCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbCerrar.setOpaque(true);
+        jbCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbCerrarMouseMoved(evt);
+            }
+        });
+        jbCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbCerrarMouseExited(evt);
+            }
+        });
+        jbCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCerrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 1, 30, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/detalle.png"))); // NOI18N
         jLabel1.setText("Haga click en el boton seleccionar para elegir un lugar");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 370, -1));
 
-        btnNuevaSacerdote.setBackground(new java.awt.Color(108, 117, 125));
-        btnNuevaSacerdote.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnNuevaSacerdote.setForeground(new java.awt.Color(255, 255, 255));
-        btnNuevaSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/agregar.png"))); // NOI18N
-        btnNuevaSacerdote.setText("Nuevo lugar");
-        btnNuevaSacerdote.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnNuevaSacerdote.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevaSacerdoteActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnNuevaSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 95, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Busqueda de Lugar");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 210, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 470, -1));
 
-        jbCerrar1.setBackground(new java.awt.Color(204, 0, 0));
-        jbCerrar1.setForeground(new java.awt.Color(255, 255, 255));
-        jbCerrar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
-        jbCerrar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCerrar1ActionPerformed(evt);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-b.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+
+        btnNuevoLugar.setBackground(new java.awt.Color(27, 163, 69));
+        btnNuevoLugar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnNuevoLugar.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevoLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/agregar.png"))); // NOI18N
+        btnNuevoLugar.setText("Nuevo lugar");
+        btnNuevoLugar.setBorder(null);
+        btnNuevoLugar.setBorderPainted(false);
+        btnNuevoLugar.setContentAreaFilled(false);
+        btnNuevoLugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNuevoLugar.setOpaque(true);
+        btnNuevoLugar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnNuevoLugarMouseMoved(evt);
             }
         });
-        jPanel1.add(jbCerrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 0, 40, 32));
+        btnNuevoLugar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNuevoLugarMouseExited(evt);
+            }
+        });
+        btnNuevoLugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoLugarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnNuevoLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 150, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 390));
 
@@ -190,19 +222,31 @@ public class DlgBuscarLugar extends javax.swing.JDialog {
         this.mostrarTabla(this.txtBuscar.getText(), TipoBusquedaEnum.NOMBRE);
     }//GEN-LAST:event_txtBuscarKeyReleased
 
+    private void btnNuevoLugarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoLugarMouseMoved
+        this.btnNuevoLugar.setBackground(new java.awt.Color(35, 212, 89));
+    }//GEN-LAST:event_btnNuevoLugarMouseMoved
+
+    private void btnNuevoLugarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoLugarMouseExited
+        this.btnNuevoLugar.setBackground(new java.awt.Color(27, 163, 69));
+    }//GEN-LAST:event_btnNuevoLugarMouseExited
+
+    private void btnNuevoLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoLugarActionPerformed
+        DlgLugar obj = new DlgLugar(null, true);
+        obj.setVisible(true);
+        this.mostrarTabla("", TipoBusquedaEnum.NOMBRE);
+    }//GEN-LAST:event_btnNuevoLugarActionPerformed
+
     private void jbCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarActionPerformed
         this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jbCerrarActionPerformed
 
-    private void btnNuevaSacerdoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaSacerdoteActionPerformed
-        DlgLugar obj = new DlgLugar(null, true);
-        obj.setVisible(true);
-        this.mostrarTabla("", TipoBusquedaEnum.NOMBRE);
-    }//GEN-LAST:event_btnNuevaSacerdoteActionPerformed
+    private void jbCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseMoved
+        this.jbCerrar.setBackground(new java.awt.Color(227, 96, 101));
+    }//GEN-LAST:event_jbCerrarMouseMoved
 
-    private void jbCerrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrar1ActionPerformed
-        this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
-    }//GEN-LAST:event_jbCerrar1ActionPerformed
+    private void jbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseExited
+        this.jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
+    }//GEN-LAST:event_jbCerrarMouseExited
 
     /**
      * @param args the command line arguments
@@ -255,13 +299,14 @@ public class DlgBuscarLugar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnNuevaSacerdote;
+    private javax.swing.JButton btnNuevoLugar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbCerrar;
-    private javax.swing.JButton jbCerrar1;
+    private javax.swing.JSeparator jsBusqueda;
     private javax.swing.JTable tbLugar;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables

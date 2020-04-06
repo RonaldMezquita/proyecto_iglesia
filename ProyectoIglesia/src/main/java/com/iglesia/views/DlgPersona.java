@@ -10,12 +10,10 @@ import com.iglesia.controllers.PersonaController;
 import com.iglesia.entities.Departamento;
 import com.iglesia.entities.Persona;
 import com.iglesia.utils.ProjectUtils;
-import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
 /**
@@ -68,13 +66,15 @@ public class DlgPersona extends javax.swing.JDialog {
         // comienza generacion de campos formateados
         txtdui = ProjectUtils.getCampoDui();
         txtdui.setName("dui");
-        txtdui.setFont(new java.awt.Font("Dialog", 0, 14));
-        jPanel1.add(txtdui, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 190, 90, -1));
+        txtdui.setFont(new java.awt.Font("Tahoma", 0, 14));
+        txtdui.setBorder(null);
+        jPanel1.add(txtdui, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 190, 90, 24));
         
         txtnit = ProjectUtils.getCampoNit();
         txtnit.setName("nit");
-        txtnit.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 240, 142, -1));
+        txtnit.setBorder(null);
+        txtnit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(txtnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 240, 142, 24));
         // termina generacion de campos formateados
         this.setLocationRelativeTo(null);
         this.txtnombres.requestFocus();
@@ -83,7 +83,6 @@ public class DlgPersona extends javax.swing.JDialog {
         this.excepciones.add("nit");
         this.txtid.setVisible(false);
         this.cbestado.setSelected(true);
-        this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
     }
     
     private void crear() {
@@ -148,12 +147,16 @@ public class DlgPersona extends javax.swing.JDialog {
 
         btnGroupGenero = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        btnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtnombres = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtapellidos = new javax.swing.JTextField();
-        btnSalir = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -176,70 +179,85 @@ public class DlgPersona extends javax.swing.JDialog {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(55, 71, 79));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setForeground(new java.awt.Color(189, 189, 189));
         jPanel1.setPreferredSize(new java.awt.Dimension(560, 560));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 111, 270, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 161, 270, -1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 211, 90, -1));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 261, 142, -1));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Registro de Personas");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 430, -1));
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nombres");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 70, -1, -1));
-
-        txtnombres.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 90, 270, -1));
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Apellidos");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 120, -1, -1));
-
-        txtapellidos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtapellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 140, 270, -1));
-
-        btnSalir.setBackground(new java.awt.Color(204, 0, 0));
+        btnSalir.setBackground(new java.awt.Color(222, 62, 68));
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
+        btnSalir.setBorder(null);
+        btnSalir.setBorderPainted(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setOpaque(true);
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 40, 32));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(399, 1, 30, 30));
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Registro de Personas");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 430, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Nombres");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 70, -1, -1));
+
+        txtnombres.setBackground(new java.awt.Color(255, 255, 255));
+        txtnombres.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtnombres.setBorder(null);
+        jPanel1.add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 90, 270, 24));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Apellidos");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 120, -1, -1));
+
+        txtapellidos.setBackground(new java.awt.Color(255, 255, 255));
+        txtapellidos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtapellidos.setBorder(null);
+        jPanel1.add(txtapellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 140, 270, 24));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("DUI");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 170, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 170, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("NIT");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 220, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 220, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Estado");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 550, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 550, -1, -1));
 
         txtdireccion.setColumns(20);
-        txtdireccion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtdireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtdireccion.setRows(5);
         jScrollPane1.setViewportView(txtdireccion);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 450, 270, 90));
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Fecha de nacimiento");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 280, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 280, -1, -1));
 
+        txtfechanacimiento.setBackground(new java.awt.Color(255, 255, 255));
         txtfechanacimiento.setDateFormatString("dd/MM/yyyy");
         txtfechanacimiento.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jPanel1.add(txtfechanacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 300, 160, -1));
@@ -247,66 +265,81 @@ public class DlgPersona extends javax.swing.JDialog {
         txtid.setName("idPersona"); // NOI18N
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 20, 40, -1));
 
-        btnguardar.setBackground(new java.awt.Color(13, 71, 161));
-        btnguardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnguardar.setBackground(new java.awt.Color(0, 129, 255));
+        btnguardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnguardar.setForeground(new java.awt.Color(255, 255, 255));
         btnguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save.png"))); // NOI18N
         btnguardar.setText("Guardar");
+        btnguardar.setBorder(null);
+        btnguardar.setBorderPainted(false);
+        btnguardar.setContentAreaFilled(false);
+        btnguardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnguardar.setOpaque(true);
         btnguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnguardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 600, -1, -1));
+        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 600, 130, 40));
 
-        btncancelar.setBackground(new java.awt.Color(255, 136, 0));
-        btncancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btncancelar.setBackground(new java.awt.Color(254, 192, 1));
+        btncancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btncancelar.setForeground(new java.awt.Color(255, 255, 255));
         btncancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
         btncancelar.setText("Cancelar");
+        btncancelar.setBorder(null);
+        btncancelar.setBorderPainted(false);
+        btncancelar.setContentAreaFilled(false);
+        btncancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btncancelar.setOpaque(true);
         btncancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 600, -1, -1));
+        jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 130, 40));
 
-        cbestado.setForeground(new java.awt.Color(255, 255, 255));
+        cbestado.setBackground(new java.awt.Color(255, 255, 255));
+        cbestado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cbestado.setForeground(new java.awt.Color(0, 0, 0));
         cbestado.setText("Activo");
         jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 570, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Originario");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 380, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 380, -1, -1));
 
+        rbMasculino.setBackground(new java.awt.Color(255, 255, 255));
         btnGroupGenero.add(rbMasculino);
         rbMasculino.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        rbMasculino.setForeground(new java.awt.Color(255, 255, 255));
+        rbMasculino.setForeground(new java.awt.Color(0, 0, 0));
         rbMasculino.setSelected(true);
         rbMasculino.setText("Masculino");
         rbMasculino.setActionCommand("M");
         jPanel1.add(rbMasculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 350, -1, -1));
 
+        rbFemenino.setBackground(new java.awt.Color(255, 255, 255));
         btnGroupGenero.add(rbFemenino);
         rbFemenino.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        rbFemenino.setForeground(new java.awt.Color(255, 255, 255));
+        rbFemenino.setForeground(new java.awt.Color(0, 0, 0));
         rbFemenino.setText("Femenino");
         rbFemenino.setActionCommand("F");
         jPanel1.add(rbFemenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Direccion");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 430, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 430, -1, -1));
 
-        cbDepartamento.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cbDepartamento.setBackground(new java.awt.Color(255, 255, 255));
+        cbDepartamento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanel1.add(cbDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 400, 270, -1));
 
-        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Genero");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 330, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 330, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 650));
 
@@ -401,6 +434,10 @@ public class DlgPersona extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JRadioButton rbFemenino;
     private javax.swing.JRadioButton rbMasculino;
     private javax.swing.JTextField txtapellidos;
