@@ -16,12 +16,15 @@ import javax.swing.JDialog;
  */
 public class DlgWindow extends javax.swing.JDialog {
 
-    private String titulo, mensaje, textoBoton;
-    public static String respuesta;
-    public static String SI = "SI";
-    public final static String NO = "NO";
-    public final static String CONFIRM = "CONFIRMACION";
-    public final static String INFO = "INFORMACION";
+//    private String titulo, mensaje, textoBoton;
+    public static Integer respuesta;
+    private static Integer SI = 0;
+    private final static Integer NO = 1;
+    private final static String CONFIRM = "CONFIRMACION";
+    private final static String MESSAGE = "MESSAGE";
+    public final static String INFO = "INFO";
+    public final static String WARN = "WARN";
+    public final static String ERROR = "ERROR";
 
     //<editor-fold defaultstate="collapsed" desc="getters & setters">
 //    public void setTitulo(String titulo) {
@@ -62,11 +65,11 @@ public class DlgWindow extends javax.swing.JDialog {
         this.jtxtMensaje.setText("");
     }
 
-    public DlgWindow(JDialog dialog, boolean bln, String titulo, String mensaje, String tipo) {
+    public DlgWindow(JDialog dialog, boolean bln, String titulo, String mensaje, String tipoVentana, String tipoMensaje) {
         this(dialog, bln);
         this.jlblTitulo.setText(titulo);
         this.jtxtMensaje.setText(mensaje);
-        if (tipo.equals(INFO)) {
+        if (tipoVentana.equals(MESSAGE)) {
             this.jbtnSi.setText("Aceptar");
             this.jbtnNo.setVisible(false);
             jpContenido.add(jbtnSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 80, 70, 35));
@@ -74,18 +77,33 @@ public class DlgWindow extends javax.swing.JDialog {
             ImageIcon img = new ImageIcon(this.getClass().getResource("/META-INF/images/icon/info-icon.png"));
             ImageIcon icon = new ImageIcon(img.getImage().getScaledInstance(this.jlblIcon.getWidth(), this.jlblIcon.getHeight(), Image.SCALE_DEFAULT));
             this.jlblIcon.setIcon(icon);
-        } else if (tipo.equals(CONFIRM)) {
+        } else if (tipoVentana.equals(CONFIRM)) {
             this.jbtnNo.setVisible(true);
             ImageIcon img = new ImageIcon(this.getClass().getResource("/META-INF/images/icon/interrogante-icon.png"));
             ImageIcon icon = new ImageIcon(img.getImage().getScaledInstance(this.jlblIcon.getWidth(), this.jlblIcon.getHeight(), Image.SCALE_DEFAULT));
             this.jlblIcon.setIcon(icon);
         }
 
+        if (tipoMensaje.equals(ERROR)) {
+            this.jpTitulo.setBackground(new java.awt.Color(222, 62, 68));
+        }else if(tipoMensaje.equals(WARN)){
+            this.jpTitulo.setBackground(new java.awt.Color(254, 192, 1));
+        }
+
         this.setVisible(true);
     }
 
-    public static void showMessageDialog(JDialog dialog, boolean modal, String titulo, String mensaje, String tipo) {
-        DlgWindow obj = new DlgWindow(dialog, modal, titulo, mensaje, tipo);
+    public static void showMessageDialog(JDialog dialog, String titulo, String mensaje) {
+        DlgWindow obj = new DlgWindow(dialog, true, titulo, mensaje, MESSAGE, INFO);
+    }
+
+    public static void showMessageDialog(JDialog dialog, String titulo, String mensaje, String tipo) {
+        DlgWindow obj = new DlgWindow(dialog, true, titulo, mensaje, MESSAGE, tipo);
+    }
+
+    public static Integer showConfirmDialog(JDialog dialog, String titulo, String mensaje) {
+        DlgWindow obj = new DlgWindow(dialog, true, titulo, mensaje, CONFIRM, INFO);
+        return respuesta;
     }
 
     /**

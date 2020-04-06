@@ -8,12 +8,9 @@ package com.iglesia.views;
 import com.iglesia.controllers.JustificacionController;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
-import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.BorderFactory;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,7 +23,7 @@ public class DlgJustificacion extends javax.swing.JDialog {
      */
     private JustificacionController justificacionController;
     private List<String> excepciones = new ArrayList<>();
-    
+
     public DlgJustificacion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -39,36 +36,37 @@ public class DlgJustificacion extends javax.swing.JDialog {
         this.txtnombre.requestFocus();
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
         this.cbestado.setSelected(true);
-        this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
     }
+
     private void mostrarTabla(String nombre) {
         this.justificacionController.llenarTabla(this.jtJustificacion, nombre);
     }
+
     private void crear() {
         this.excepciones.add("id");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
         if (this.justificacionController.crear() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Error al realizar el registro.!", DlgWindow.ERROR);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro guardado correctamente");
         ProjectUtils.limpiarComponentes(this.jPanel1);
         this.mostrarTabla("");
     }
 
     private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
         if (this.justificacionController.actualizar() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Error al realizar el registro.!", DlgWindow.ERROR);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro modificado correctamente");
         this.mostrarTabla("");
         ProjectUtils.limpiarComponentes(this.jPanel1);
     }
@@ -83,6 +81,8 @@ public class DlgJustificacion extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         lbNombre = new javax.swing.JLabel();
         lbEstado = new javax.swing.JLabel();
@@ -95,48 +95,59 @@ public class DlgJustificacion extends javax.swing.JDialog {
         jblimpiar = new javax.swing.JButton();
         jbsalir = new javax.swing.JButton();
         txtid = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(55, 71, 79));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 141, 320, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 281, 310, -1));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Mantenimiento de Justificación");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 400, -1));
 
-        lbNombre.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        lbNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lbNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbNombre.setForeground(new java.awt.Color(0, 0, 0));
         lbNombre.setText("Nombre");
         jPanel1.add(lbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 70, -1));
 
-        lbEstado.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        lbEstado.setForeground(new java.awt.Color(255, 255, 255));
+        lbEstado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbEstado.setForeground(new java.awt.Color(0, 0, 0));
         lbEstado.setText("Estado");
-        jPanel1.add(lbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 50, -1));
+        jPanel1.add(lbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 50, -1));
 
-        txtnombre.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 360, -1));
+        txtnombre.setBackground(new java.awt.Color(255, 255, 255));
+        txtnombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtnombre.setBorder(null);
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 320, 24));
 
-        cbestado.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        cbestado.setForeground(new java.awt.Color(255, 255, 255));
+        cbestado.setBackground(new java.awt.Color(255, 255, 255));
+        cbestado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbestado.setForeground(new java.awt.Color(0, 0, 0));
         cbestado.setText("Activo");
-        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 100, -1));
+        cbestado.setBorder(null);
+        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 100, -1));
 
+        txtbuscar.setBackground(new java.awt.Color(255, 255, 255));
         txtbuscar.setToolTipText("");
+        txtbuscar.setBorder(null);
         txtbuscar.setName("buscar"); // NOI18N
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtbuscarKeyReleased(evt);
             }
         });
-        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 350, -1));
+        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 310, 24));
 
         jtJustificacion.setBackground(new java.awt.Color(224, 224, 224));
+        jtJustificacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jtJustificacion.setForeground(new java.awt.Color(0, 0, 0));
         jtJustificacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,6 +172,7 @@ public class DlgJustificacion extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        jtJustificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jtJustificacion.setSelectionBackground(new java.awt.Color(189, 189, 189));
         jtJustificacion.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jtJustificacion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -169,46 +181,102 @@ public class DlgJustificacion extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(jtJustificacion);
+        if (jtJustificacion.getColumnModel().getColumnCount() > 0) {
+            jtJustificacion.getColumnModel().getColumn(0).setMinWidth(30);
+            jtJustificacion.getColumnModel().getColumn(0).setPreferredWidth(30);
+            jtJustificacion.getColumnModel().getColumn(0).setMaxWidth(45);
+            jtJustificacion.getColumnModel().getColumn(2).setMinWidth(60);
+            jtJustificacion.getColumnModel().getColumn(2).setPreferredWidth(60);
+            jtJustificacion.getColumnModel().getColumn(2).setMaxWidth(60);
+        }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 350, 180));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 350, 200));
 
-        jbingresar.setBackground(new java.awt.Color(13, 71, 161));
-        jbingresar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jbingresar.setBackground(new java.awt.Color(0, 129, 255));
+        jbingresar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbingresar.setForeground(new java.awt.Color(255, 255, 255));
         jbingresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save.png"))); // NOI18N
         jbingresar.setText("Guardar");
+        jbingresar.setBorder(null);
+        jbingresar.setBorderPainted(false);
+        jbingresar.setContentAreaFilled(false);
+        jbingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbingresar.setOpaque(true);
+        jbingresar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbingresarMouseMoved(evt);
+            }
+        });
+        jbingresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbingresarMouseExited(evt);
+            }
+        });
         jbingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbingresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 130, -1));
+        jPanel1.add(jbingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 130, 40));
 
-        jblimpiar.setBackground(new java.awt.Color(255, 136, 0));
-        jblimpiar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jblimpiar.setBackground(new java.awt.Color(254, 192, 1));
+        jblimpiar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jblimpiar.setForeground(new java.awt.Color(255, 255, 255));
         jblimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
         jblimpiar.setText("Cancelar");
+        jblimpiar.setBorder(null);
+        jblimpiar.setBorderPainted(false);
+        jblimpiar.setContentAreaFilled(false);
+        jblimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jblimpiar.setOpaque(true);
+        jblimpiar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jblimpiarMouseMoved(evt);
+            }
+        });
+        jblimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jblimpiarMouseExited(evt);
+            }
+        });
         jblimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jblimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(jblimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 130, -1));
+        jPanel1.add(jblimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 130, 40));
 
-        jbsalir.setBackground(new java.awt.Color(204, 0, 0));
+        jbsalir.setBackground(new java.awt.Color(222, 62, 68));
         jbsalir.setForeground(new java.awt.Color(255, 255, 255));
-        jbsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
+        jbsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
+        jbsalir.setBorder(null);
+        jbsalir.setBorderPainted(false);
+        jbsalir.setContentAreaFilled(false);
+        jbsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbsalir.setOpaque(true);
+        jbsalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbsalirMouseMoved(evt);
+            }
+        });
+        jbsalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbsalirMouseExited(evt);
+            }
+        });
         jbsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 40, 32));
+        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 1, 30, 30));
 
         txtid.setEditable(false);
         txtid.setName("id"); // NOI18N
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 50, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-b.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 500));
 
@@ -245,6 +313,30 @@ public class DlgJustificacion extends javax.swing.JDialog {
     private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
         this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jbsalirActionPerformed
+
+    private void jbingresarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbingresarMouseMoved
+        this.jbingresar.setBackground(new java.awt.Color(45, 151, 254));
+    }//GEN-LAST:event_jbingresarMouseMoved
+
+    private void jbingresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbingresarMouseExited
+        this.jbingresar.setBackground(new java.awt.Color(0, 129, 255));
+    }//GEN-LAST:event_jbingresarMouseExited
+
+    private void jblimpiarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jblimpiarMouseMoved
+        this.jblimpiar.setBackground(new java.awt.Color(254, 203, 46));
+    }//GEN-LAST:event_jblimpiarMouseMoved
+
+    private void jblimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jblimpiarMouseExited
+        this.jblimpiar.setBackground(new java.awt.Color(254, 192, 1));
+    }//GEN-LAST:event_jblimpiarMouseExited
+
+    private void jbsalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseMoved
+        this.jbsalir.setBackground(new java.awt.Color(227, 96, 101));
+    }//GEN-LAST:event_jbsalirMouseMoved
+
+    private void jbsalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseExited
+        this.jbsalir.setBackground(new java.awt.Color(222, 62, 68));
+    }//GEN-LAST:event_jbsalirMouseExited
 
     /**
      * @param args the command line arguments
@@ -292,8 +384,11 @@ public class DlgJustificacion extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox cbestado;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton jbingresar;
     private javax.swing.JButton jblimpiar;
     private javax.swing.JButton jbsalir;
