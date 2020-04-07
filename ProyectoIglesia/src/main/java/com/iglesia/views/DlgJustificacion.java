@@ -146,9 +146,7 @@ public class DlgJustificacion extends javax.swing.JDialog {
         });
         jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 310, 24));
 
-        jtJustificacion.setBackground(new java.awt.Color(224, 224, 224));
         jtJustificacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jtJustificacion.setForeground(new java.awt.Color(0, 0, 0));
         jtJustificacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -173,8 +171,6 @@ public class DlgJustificacion extends javax.swing.JDialog {
             }
         });
         jtJustificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jtJustificacion.setSelectionBackground(new java.awt.Color(189, 189, 189));
-        jtJustificacion.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jtJustificacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtJustificacionMouseClicked(evt);

@@ -39,7 +39,6 @@ public class DlgUsuario extends javax.swing.JDialog {
         this.txtnombre.requestFocus();
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
         this.cbestado.setSelected(true);
-        this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
     }
 
     DlgUsuario() {
@@ -91,7 +90,7 @@ public class DlgUsuario extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         txtid = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jbsalir = new javax.swing.JButton();
+        jbCerrar = new javax.swing.JButton();
         txtbuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbusuario = new javax.swing.JTable();
@@ -103,37 +102,54 @@ public class DlgUsuario extends javax.swing.JDialog {
         txtusuario = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         cbestado = new javax.swing.JCheckBox();
-        btnguardar = new javax.swing.JButton();
-        btncancelar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(55, 71, 79));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtid.setEditable(false);
         txtid.setName("idUsuario"); // NOI18N
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, -1));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Ingreso de Usuarios");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
-        jbsalir.setBackground(new java.awt.Color(204, 0, 0));
-        jbsalir.setForeground(new java.awt.Color(255, 255, 255));
-        jbsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
-        jbsalir.setToolTipText("");
-        jbsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbsalirActionPerformed(evt);
+        jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
+        jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
+        jbCerrar.setToolTipText("");
+        jbCerrar.setBorder(null);
+        jbCerrar.setBorderPainted(false);
+        jbCerrar.setContentAreaFilled(false);
+        jbCerrar.setOpaque(true);
+        jbCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbCerrarMouseMoved(evt);
             }
         });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 32));
+        jbCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbCerrarMouseExited(evt);
+            }
+        });
+        jbCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCerrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(769, 1, 30, 30));
 
+        txtbuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtbuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtbuscar.setName("buscar"); // NOI18N
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -144,8 +160,7 @@ public class DlgUsuario extends javax.swing.JDialog {
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 51));
 
-        tbusuario.setBackground(new java.awt.Color(224, 224, 224));
-        tbusuario.setForeground(new java.awt.Color(0, 0, 0));
+        tbusuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tbusuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -169,18 +184,24 @@ public class DlgUsuario extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        tbusuario.setSelectionBackground(new java.awt.Color(189, 189, 189));
-        tbusuario.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        tbusuario.setToolTipText("");
+        tbusuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tbusuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbusuarioMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tbusuario);
+        if (tbusuario.getColumnModel().getColumnCount() > 0) {
+            tbusuario.getColumnModel().getColumn(0).setMinWidth(30);
+            tbusuario.getColumnModel().getColumn(0).setPreferredWidth(30);
+            tbusuario.getColumnModel().getColumn(0).setMaxWidth(45);
+        }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 460, 240));
 
-        txtnombre.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtnombre.setBackground(new java.awt.Color(255, 255, 255));
+        txtnombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtnombre.setName("Nombre"); // NOI18N
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,69 +210,101 @@ public class DlgUsuario extends javax.swing.JDialog {
         });
         jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 310, -1));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Apellido");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, -1, -1));
 
-        txtapellido.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtapellido.setBackground(new java.awt.Color(255, 255, 255));
+        txtapellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtapellido.setName("Apellido"); // NOI18N
         jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 310, -1));
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Usuario");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, -1, -1));
 
-        txtusuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtusuario.setBackground(new java.awt.Color(255, 255, 255));
+        txtusuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 310, -1));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Estado");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, -1, -1));
 
-        cbestado.setForeground(new java.awt.Color(255, 255, 255));
+        cbestado.setBackground(new java.awt.Color(255, 255, 255));
+        cbestado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cbestado.setForeground(new java.awt.Color(0, 0, 0));
         cbestado.setText("Activo");
         jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, -1, -1));
 
-        btnguardar.setBackground(new java.awt.Color(13, 71, 161));
-        btnguardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnguardar.setForeground(new java.awt.Color(255, 255, 255));
-        btnguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save.png"))); // NOI18N
-        btnguardar.setText("Guardar");
-        btnguardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnguardarActionPerformed(evt);
+        btnGuardar.setBackground(new java.awt.Color(0, 129, 255));
+        btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.setBorder(null);
+        btnGuardar.setBorderPainted(false);
+        btnGuardar.setContentAreaFilled(false);
+        btnGuardar.setOpaque(true);
+        btnGuardar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseMoved(evt);
             }
         });
-        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 130, -1));
+        btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseExited(evt);
+            }
+        });
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 130, 40));
 
-        btncancelar.setBackground(new java.awt.Color(255, 136, 0));
-        btncancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btncancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btncancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
-        btncancelar.setText("Cancelar");
-        btncancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btncancelarActionPerformed(evt);
+        btnCancelar.setBackground(new java.awt.Color(254, 192, 1));
+        btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(null);
+        btnCancelar.setBorderPainted(false);
+        btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setOpaque(true);
+        btnCancelar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseMoved(evt);
             }
         });
-        jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 130, -1));
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseExited(evt);
+            }
+        });
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 130, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
+    private void jbCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarActionPerformed
         this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
-    }//GEN-LAST:event_jbsalirActionPerformed
+    }//GEN-LAST:event_jbCerrarActionPerformed
 
     private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
         this.mostrarTabla(this.txtbuscar.getText());
@@ -270,7 +323,7 @@ public class DlgUsuario extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnombreActionPerformed
 
-    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         this.usuarioController.getSelected().setIdUsuario((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.usuarioController.getSelected().setNombre(this.txtnombre.getText());
         this.usuarioController.getSelected().setApellido(this.txtapellido.getText());
@@ -281,12 +334,36 @@ public class DlgUsuario extends javax.swing.JDialog {
         } else {
             this.actualizar();
         }
-    }//GEN-LAST:event_btnguardarActionPerformed
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         ProjectUtils.limpiarComponentes(this.jPanel1);
         this.mostrarTabla("");
-    }//GEN-LAST:event_btncancelarActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnGuardarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseMoved
+        this.btnGuardar.setBackground(new java.awt.Color(45, 151, 254));
+    }//GEN-LAST:event_btnGuardarMouseMoved
+
+    private void btnGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseExited
+        this.btnGuardar.setBackground(new java.awt.Color(0, 129, 255));
+    }//GEN-LAST:event_btnGuardarMouseExited
+
+    private void btnCancelarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseMoved
+        this.btnCancelar.setBackground(new java.awt.Color(254, 203, 46));
+    }//GEN-LAST:event_btnCancelarMouseMoved
+
+    private void btnCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseExited
+        this.btnCancelar.setBackground(new java.awt.Color(254, 192, 1));
+    }//GEN-LAST:event_btnCancelarMouseExited
+
+    private void jbCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseMoved
+        this.jbCerrar.setBackground(new java.awt.Color(227, 96, 101));
+    }//GEN-LAST:event_jbCerrarMouseMoved
+
+    private void jbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseExited
+        this.jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
+    }//GEN-LAST:event_jbCerrarMouseExited
 
     /**
      * @param args the command line arguments
@@ -332,8 +409,8 @@ public class DlgUsuario extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btncancelar;
-    private javax.swing.JButton btnguardar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JCheckBox cbestado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -342,7 +419,7 @@ public class DlgUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbsalir;
+    private javax.swing.JButton jbCerrar;
     private javax.swing.JTable tbusuario;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtbuscar;

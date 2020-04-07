@@ -39,7 +39,6 @@ public class DlgLugar extends javax.swing.JDialog {
         this.txtnombre.requestFocus();
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
         this.cbestado.setSelected(true);
-        this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
     }
     private void mostrarTabla(String nombre) {
         this.lugarController.llenarTabla(this.jtLugar, nombre);
@@ -95,77 +94,90 @@ public class DlgLugar extends javax.swing.JDialog {
         jbsalir = new javax.swing.JButton();
         txtid = new javax.swing.JTextField();
         txtbuscar = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(55, 71, 79));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Mantenimiento Lugar");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 360, -1));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Estado");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         txtnombre.setBackground(new java.awt.Color(255, 255, 255));
-        txtnombre.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtnombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtnombre.setForeground(new java.awt.Color(0, 0, 0));
+        txtnombre.setBorder(null);
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 360, -1));
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 320, 24));
 
-        cbestado.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        cbestado.setForeground(new java.awt.Color(255, 255, 255));
+        cbestado.setBackground(new java.awt.Color(255, 255, 255));
+        cbestado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cbestado.setForeground(new java.awt.Color(0, 0, 0));
         cbestado.setText("Activo");
         cbestado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbestadoActionPerformed(evt);
             }
         });
-        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 90, -1));
+        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 90, -1));
 
-        jbingresar.setBackground(new java.awt.Color(13, 71, 161));
-        jbingresar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jbingresar.setBackground(new java.awt.Color(0, 129, 255));
+        jbingresar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbingresar.setForeground(new java.awt.Color(255, 255, 255));
         jbingresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save.png"))); // NOI18N
         jbingresar.setText("Guardar");
+        jbingresar.setBorder(null);
+        jbingresar.setBorderPainted(false);
+        jbingresar.setContentAreaFilled(false);
+        jbingresar.setOpaque(true);
         jbingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbingresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 130, -1));
+        jPanel1.add(jbingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 130, 40));
 
-        jblimpiar.setBackground(new java.awt.Color(255, 136, 0));
-        jblimpiar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jblimpiar.setBackground(new java.awt.Color(254, 192, 1));
+        jblimpiar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jblimpiar.setForeground(new java.awt.Color(255, 255, 255));
         jblimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
         jblimpiar.setText("Cancelar");
+        jblimpiar.setBorder(null);
+        jblimpiar.setBorderPainted(false);
+        jblimpiar.setContentAreaFilled(false);
+        jblimpiar.setOpaque(true);
         jblimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jblimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(jblimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 130, -1));
+        jPanel1.add(jblimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 200, 130, 40));
 
-        jtLugar.setBackground(new java.awt.Color(224, 224, 224));
-        jtLugar.setForeground(new java.awt.Color(0, 0, 0));
+        jtLugar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jtLugar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -189,39 +201,61 @@ public class DlgLugar extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jtLugar.setSelectionBackground(new java.awt.Color(189, 189, 189));
-        jtLugar.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        jtLugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jtLugar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtLugarMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jtLugar);
+        if (jtLugar.getColumnModel().getColumnCount() > 0) {
+            jtLugar.getColumnModel().getColumn(0).setMinWidth(30);
+            jtLugar.getColumnModel().getColumn(0).setPreferredWidth(30);
+            jtLugar.getColumnModel().getColumn(0).setMaxWidth(45);
+            jtLugar.getColumnModel().getColumn(2).setMinWidth(75);
+            jtLugar.getColumnModel().getColumn(2).setPreferredWidth(75);
+            jtLugar.getColumnModel().getColumn(2).setMaxWidth(75);
+        }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 350, 180));
 
         jbsalir.setBackground(new java.awt.Color(204, 0, 0));
         jbsalir.setForeground(new java.awt.Color(255, 255, 255));
         jbsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
+        jbsalir.setBorder(null);
+        jbsalir.setBorderPainted(false);
+        jbsalir.setContentAreaFilled(false);
+        jbsalir.setOpaque(true);
         jbsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 40, 32));
+        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 1, 30, 30));
 
         txtid.setEditable(false);
+        txtid.setBackground(new java.awt.Color(255, 255, 255));
+        txtid.setBorder(null);
         txtid.setName("id"); // NOI18N
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 60, -1));
 
+        txtbuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtbuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtbuscar.setForeground(new java.awt.Color(0, 0, 0));
         txtbuscar.setToolTipText("");
+        txtbuscar.setBorder(null);
         txtbuscar.setName("buscar"); // NOI18N
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtbuscarKeyReleased(evt);
             }
         });
-        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 350, -1));
+        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 320, 24));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 144, 320, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 275, 320, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-b.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 255, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 470));
 
@@ -314,8 +348,11 @@ public class DlgLugar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton jbingresar;
     private javax.swing.JButton jblimpiar;
     private javax.swing.JButton jbsalir;

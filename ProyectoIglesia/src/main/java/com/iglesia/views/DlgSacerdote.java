@@ -35,12 +35,14 @@ public class DlgSacerdote extends javax.swing.JDialog {
         this.sacerdoteController = new SacerdoteController();
         // comienza generacion de campos formateados
         txtdui = ProjectUtils.getCampoDui();
-        txtdui.setFont(new java.awt.Font("Dialog", 0, 14));
-        jPanel1.add(txtdui, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 90, -1));
+        txtdui.setFont(new java.awt.Font("Tahoma", 0, 14));
+        txtdui.setBorder(null);
+        jPanel1.add(txtdui, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, 90, -1));
 
         txtnit = ProjectUtils.getCampoNit();
-        txtnit.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 142, -1));
+        txtnit.setFont(new java.awt.Font("Tahoma", 0, 14));// NOI18N
+        txtnit.setBorder(null); 
+        jPanel1.add(txtnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 142, -1));
         // termina generacion de campos formateados
         this.txtid.setVisible(false);
         this.setLocationRelativeTo(null);
@@ -51,7 +53,6 @@ public class DlgSacerdote extends javax.swing.JDialog {
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
         this.cbestado.setSelected(true);
         this.cbParroco.setSelected(true);
-        this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
     }
     
     private void mostrarTabla(String filtro) {
@@ -103,99 +104,144 @@ public class DlgSacerdote extends javax.swing.JDialog {
         txtapellido = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         cbestado = new javax.swing.JCheckBox();
-        btnguardar = new javax.swing.JButton();
-        btncancelar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         txtbuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbsacerdote = new javax.swing.JTable();
-        jbsalir = new javax.swing.JButton();
+        jbCerrar = new javax.swing.JButton();
         txtid = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         cbParroco = new javax.swing.JCheckBox();
+        jLabel8 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(55, 71, 79));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Mantenimiento de Sacerdotes");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 910, -1));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, -1, -1));
 
+        txtnombre.setBackground(new java.awt.Color(255, 255, 255));
         txtnombre.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtnombre.setForeground(new java.awt.Color(0, 0, 0));
+        txtnombre.setBorder(null);
         txtnombre.setName("Nombre"); // NOI18N
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, 310, -1));
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 310, 24));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Apellido");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, -1, -1));
 
+        txtapellido.setBackground(new java.awt.Color(255, 255, 255));
         txtapellido.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtapellido.setForeground(new java.awt.Color(0, 0, 0));
+        txtapellido.setBorder(null);
         txtapellido.setName("Apellido"); // NOI18N
-        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 310, -1));
+        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, 310, -1));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Parroco");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, -1, -1));
 
-        cbestado.setForeground(new java.awt.Color(255, 255, 255));
+        cbestado.setBackground(new java.awt.Color(255, 255, 255));
+        cbestado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cbestado.setForeground(new java.awt.Color(0, 0, 0));
         cbestado.setText("Activo");
-        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, -1, -1));
+        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 370, -1, -1));
 
-        btnguardar.setBackground(new java.awt.Color(13, 71, 161));
-        btnguardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnguardar.setForeground(new java.awt.Color(255, 255, 255));
-        btnguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save.png"))); // NOI18N
-        btnguardar.setText("Guardar");
-        btnguardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnguardarActionPerformed(evt);
+        btnGuardar.setBackground(new java.awt.Color(0, 129, 255));
+        btnGuardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.setBorder(null);
+        btnGuardar.setBorderPainted(false);
+        btnGuardar.setContentAreaFilled(false);
+        btnGuardar.setOpaque(true);
+        btnGuardar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseMoved(evt);
             }
         });
-        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 130, -1));
-
-        btncancelar.setBackground(new java.awt.Color(255, 136, 0));
-        btncancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btncancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btncancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
-        btncancelar.setText("Cancelar");
-        btncancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btncancelarActionPerformed(evt);
+        btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseExited(evt);
             }
         });
-        jPanel1.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 400, 130, -1));
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 400, 130, 40));
 
+        btnCancelar.setBackground(new java.awt.Color(254, 192, 1));
+        btnCancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(null);
+        btnCancelar.setBorderPainted(false);
+        btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setOpaque(true);
+        btnCancelar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseMoved(evt);
+            }
+        });
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseExited(evt);
+            }
+        });
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(745, 400, 130, 40));
+
+        txtbuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtbuscar.setForeground(new java.awt.Color(0, 0, 0));
+        txtbuscar.setBorder(null);
         txtbuscar.setName("buscar"); // NOI18N
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtbuscarKeyReleased(evt);
             }
         });
-        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 290, -1));
+        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 290, 24));
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 51));
 
-        tbsacerdote.setBackground(new java.awt.Color(224, 224, 224));
-        tbsacerdote.setForeground(new java.awt.Color(0, 0, 0));
+        tbsacerdote.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tbsacerdote.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -219,8 +265,6 @@ public class DlgSacerdote extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        tbsacerdote.setSelectionBackground(new java.awt.Color(189, 189, 189));
-        tbsacerdote.setSelectionForeground(new java.awt.Color(51, 51, 51));
         tbsacerdote.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbsacerdoteMouseClicked(evt);
@@ -247,41 +291,79 @@ public class DlgSacerdote extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 550, 320));
 
-        jbsalir.setBackground(new java.awt.Color(204, 0, 0));
-        jbsalir.setForeground(new java.awt.Color(255, 255, 255));
-        jbsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
-        jbsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbsalirActionPerformed(evt);
+        jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
+        jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
+        jbCerrar.setBorder(null);
+        jbCerrar.setBorderPainted(false);
+        jbCerrar.setContentAreaFilled(false);
+        jbCerrar.setOpaque(true);
+        jbCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbCerrarMouseMoved(evt);
             }
         });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, 40, 32));
+        jbCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbCerrarMouseExited(evt);
+            }
+        });
+        jbCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCerrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(899, 1, 30, 30));
 
         txtid.setEditable(false);
         txtid.setName("id"); // NOI18N
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Dui");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Nit");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Estado");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, -1, -1));
 
-        cbParroco.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        cbParroco.setForeground(new java.awt.Color(255, 255, 255));
+        cbParroco.setBackground(new java.awt.Color(255, 255, 255));
+        cbParroco.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cbParroco.setForeground(new java.awt.Color(0, 0, 0));
         cbParroco.setText("Es Parroco");
-        jPanel1.add(cbParroco, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, -1, -1));
+        jPanel1.add(cbParroco, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 450));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-b.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 105, 290, -1));
+
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 121, 310, -1));
+
+        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, 310, -1));
+
+        jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 225, 90, -1));
+
+        jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 275, 142, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -290,7 +372,7 @@ public class DlgSacerdote extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnombreActionPerformed
 
-    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         this.sacerdoteController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.sacerdoteController.getSelected().setNombres(this.txtnombre.getText());
         this.sacerdoteController.getSelected().setApellidos(this.txtapellido.getText());
@@ -303,12 +385,12 @@ public class DlgSacerdote extends javax.swing.JDialog {
         } else {
             this.actualizar();
         }
-    }//GEN-LAST:event_btnguardarActionPerformed
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         ProjectUtils.limpiarComponentes(this.jPanel1);
         this.mostrarTabla("");
-    }//GEN-LAST:event_btncancelarActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
         this.mostrarTabla(this.txtbuscar.getText());
@@ -325,9 +407,33 @@ public class DlgSacerdote extends javax.swing.JDialog {
         this.cbestado.setSelected(this.tbsacerdote.getValueAt(rowSelect, 6).toString() == "Activo" ? true : false);
     }//GEN-LAST:event_tbsacerdoteMouseClicked
 
-    private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
+    private void jbCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarActionPerformed
         this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
-    }//GEN-LAST:event_jbsalirActionPerformed
+    }//GEN-LAST:event_jbCerrarActionPerformed
+
+    private void btnGuardarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseMoved
+        this.btnGuardar.setBackground(new java.awt.Color(45, 151, 254));
+    }//GEN-LAST:event_btnGuardarMouseMoved
+
+    private void btnGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseExited
+        this.btnGuardar.setBackground(new java.awt.Color(0, 129, 255));
+    }//GEN-LAST:event_btnGuardarMouseExited
+
+    private void btnCancelarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseMoved
+        this.btnCancelar.setBackground(new java.awt.Color(254, 203, 46));
+    }//GEN-LAST:event_btnCancelarMouseMoved
+
+    private void btnCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseExited
+        this.btnCancelar.setBackground(new java.awt.Color(254, 192, 1));
+    }//GEN-LAST:event_btnCancelarMouseExited
+
+    private void jbCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseMoved
+        this.jbCerrar.setBackground(new java.awt.Color(227, 96, 101));
+    }//GEN-LAST:event_jbCerrarMouseMoved
+
+    private void jbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseExited
+        this.jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
+    }//GEN-LAST:event_jbCerrarMouseExited
 
     /**
      * @param args the command line arguments
@@ -372,8 +478,8 @@ public class DlgSacerdote extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btncancelar;
-    private javax.swing.JButton btnguardar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JCheckBox cbParroco;
     private javax.swing.JCheckBox cbestado;
     private javax.swing.JLabel jLabel1;
@@ -383,9 +489,15 @@ public class DlgSacerdote extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbsalir;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JButton jbCerrar;
     private javax.swing.JTable tbsacerdote;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtbuscar;
