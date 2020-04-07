@@ -32,11 +32,11 @@ public class DlgPersona extends javax.swing.JDialog {
     private List<String> excepciones = new ArrayList<>();
     private boolean redirect;
     private Persona personaToEdit;
-    
+
     public void setRedirect(boolean redirect) {
         this.redirect = redirect;
     }
-    
+
     public void setPersonaToEdit(Persona personaToEdit) {
         this.personaToEdit = personaToEdit;
         if (this.personaToEdit != null) {
@@ -48,7 +48,7 @@ public class DlgPersona extends javax.swing.JDialog {
             this.txtfechanacimiento.setDate(this.personaToEdit.getFechaNacimiento());
             if (this.personaToEdit.getGenero().equals("M")) {
                 this.rbMasculino.setSelected(true);
-            }else{
+            } else {
                 this.rbFemenino.setSelected(true);
             }
             this.txtdireccion.setText(this.personaToEdit.getDireccion());
@@ -56,7 +56,7 @@ public class DlgPersona extends javax.swing.JDialog {
             this.cbDepartamento.setSelectedItem(this.personaToEdit.getIdDepartamento());
         }
     }
-    
+
     public DlgPersona(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -69,7 +69,7 @@ public class DlgPersona extends javax.swing.JDialog {
         txtdui.setFont(new java.awt.Font("Tahoma", 0, 14));
         txtdui.setBorder(null);
         jPanel1.add(txtdui, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 190, 90, 24));
-        
+
         txtnit = ProjectUtils.getCampoNit();
         txtnit.setName("nit");
         txtnit.setBorder(null);
@@ -84,7 +84,7 @@ public class DlgPersona extends javax.swing.JDialog {
         this.txtid.setVisible(false);
         this.cbestado.setSelected(true);
     }
-    
+
     private void crear() {
         this.excepciones.add("idPersona");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
@@ -109,9 +109,9 @@ public class DlgPersona extends javax.swing.JDialog {
                 ProjectUtils.limpiarComponentes(this.jPanel1);
             }
         }
-        
+
     }
-    
+
     private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
             JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
@@ -133,7 +133,7 @@ public class DlgPersona extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Registro actualizado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             ProjectUtils.limpiarComponentes(this.jPanel1);
         }
-        
+
     }
 
     /**
@@ -197,6 +197,16 @@ public class DlgPersona extends javax.swing.JDialog {
         btnSalir.setContentAreaFilled(false);
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalir.setOpaque(true);
+        btnSalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnSalirMouseMoved(evt);
+            }
+        });
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+        });
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -275,6 +285,16 @@ public class DlgPersona extends javax.swing.JDialog {
         btnguardar.setContentAreaFilled(false);
         btnguardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnguardar.setOpaque(true);
+        btnguardar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnguardarMouseMoved(evt);
+            }
+        });
+        btnguardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnguardarMouseExited(evt);
+            }
+        });
         btnguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnguardarActionPerformed(evt);
@@ -292,6 +312,16 @@ public class DlgPersona extends javax.swing.JDialog {
         btncancelar.setContentAreaFilled(false);
         btncancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btncancelar.setOpaque(true);
+        btncancelar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btncancelarMouseMoved(evt);
+            }
+        });
+        btncancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btncancelarMouseExited(evt);
+            }
+        });
         btncancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncancelarActionPerformed(evt);
@@ -372,6 +402,30 @@ public class DlgPersona extends javax.swing.JDialog {
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
         ProjectUtils.limpiarComponentes(this.jPanel1);
     }//GEN-LAST:event_btncancelarActionPerformed
+
+    private void btnSalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseMoved
+        this.btnSalir.setBackground(new java.awt.Color(227, 96, 101));
+    }//GEN-LAST:event_btnSalirMouseMoved
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+        this.btnSalir.setBackground(new java.awt.Color(222, 62, 68));
+    }//GEN-LAST:event_btnSalirMouseExited
+
+    private void btnguardarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnguardarMouseMoved
+        this.btnguardar.setBackground(new java.awt.Color(45, 151, 254));
+    }//GEN-LAST:event_btnguardarMouseMoved
+
+    private void btnguardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnguardarMouseExited
+        this.btnguardar.setBackground(new java.awt.Color(0, 129, 255));
+    }//GEN-LAST:event_btnguardarMouseExited
+
+    private void btncancelarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncancelarMouseMoved
+        this.btncancelar.setBackground(new java.awt.Color(254, 203, 46));
+    }//GEN-LAST:event_btncancelarMouseMoved
+
+    private void btncancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncancelarMouseExited
+        this.btncancelar.setBackground(new java.awt.Color(254, 192, 1));
+    }//GEN-LAST:event_btncancelarMouseExited
 
     /**
      * @param args the command line arguments
