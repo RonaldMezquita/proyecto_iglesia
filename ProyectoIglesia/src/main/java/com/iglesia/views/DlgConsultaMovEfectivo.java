@@ -10,11 +10,9 @@ import com.iglesia.controllers.MovimientoController;
 import com.iglesia.entities.Movimiento;
 import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.utils.FechasUtils;
-import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -38,7 +36,6 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.excepciones.add("buscar");
-        this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
         this.busquedaPorDefecto();
 
         this.movimientoController.getComboTipoMov(this.jcbTipoMovimiento);
@@ -104,6 +101,7 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -219,7 +217,8 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
         jlblFIni.setText("F. Fin");
         jPanel1.add(jlblFIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, -1));
 
-        jcbTipoMovimiento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jcbTipoMovimiento.setBackground(new java.awt.Color(255, 255, 255));
+        jcbTipoMovimiento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jcbTipoMovimiento.setForeground(new java.awt.Color(255, 255, 255));
         jcbTipoMovimiento.setBorder(null);
         jPanel1.add(jcbTipoMovimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 135, 170, 30));
@@ -256,7 +255,8 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
         });
         jPanel1.add(jbtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 90, 40));
 
-        jcbTipoBusqueda.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jcbTipoBusqueda.setBackground(new java.awt.Color(255, 255, 255));
+        jcbTipoBusqueda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jcbTipoBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por rango de fechas", "Por tipo de movimiento", "Mixto" }));
         jcbTipoBusqueda.setBorder(null);
         jcbTipoBusqueda.addItemListener(new java.awt.event.ItemListener() {

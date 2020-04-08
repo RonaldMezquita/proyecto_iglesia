@@ -83,7 +83,7 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
         jPanel1.add(jsBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 101, 340, -1));
 
         txtbuscar.setBackground(new java.awt.Color(255, 255, 255));
-        txtbuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtbuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtbuscar.setBorder(null);
         txtbuscar.setName("buscar"); // NOI18N
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -240,6 +240,7 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
                 Persona selected = this.personaController.consultarPorId(id);
                 DlgPersona obj = new DlgPersona(null, true);
                 obj.setPersonaToEdit(selected);
+                obj.setRedirect(true);
                 obj.setVisible(true);
                 this.mostrarTabla("");
             }

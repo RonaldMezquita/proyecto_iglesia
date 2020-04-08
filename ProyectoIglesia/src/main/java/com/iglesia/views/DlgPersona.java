@@ -10,11 +10,9 @@ import com.iglesia.controllers.PersonaController;
 import com.iglesia.entities.Departamento;
 import com.iglesia.entities.Persona;
 import com.iglesia.utils.ProjectUtils;
-import java.awt.Frame;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -88,36 +86,53 @@ public class DlgPersona extends javax.swing.JDialog {
     private void crear() {
         this.excepciones.add("idPersona");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
-        if (this.personaController.crear() != null) {
-            Integer respuesta = 1;
-            if (this.redirect) {
-                respuesta = JOptionPane.showConfirmDialog(this,
-                        "Registro guardado correctamente. ¿Quiere ver listado de personas?",
-                        "Confirmación",
-                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "Registro guardado correctamente.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-            }
-            if (respuesta == 0) {
-                DlgConsultaPersona obj = new DlgConsultaPersona((Frame) this.getParent(), true);
-                obj.setVisible(true);
-                this.setVisible(false);
-            } else if (respuesta == 1) {
-                ProjectUtils.limpiarComponentes(this.jPanel1);
-            }
+
+        if (this.personaController.crear() == null) {
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!", DlgWindow.ERROR);
+            return;
         }
 
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro guardado correctamente.");
+        ProjectUtils.limpiarComponentes(this.jPanel1);
+        if (this.redirect) {
+            this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        }
+
+//        if (this.personaController.crear() != null) {
+//            Integer respuesta = 1;
+//            if (this.redirect) {
+//                respuesta = JOptionPane.showConfirmDialog(this,
+//                        "Registro guardado correctamente. ¿Quiere ver listado de personas?",
+//                        "Confirmación",
+//                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Registro guardado correctamente.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+//            }
+//            if (respuesta == 0) {
+//                DlgConsultaPersona obj = new DlgConsultaPersona((Frame) this.getParent(), true);
+//                obj.setVisible(true);
+//                this.setVisible(false);
+//            } else if (respuesta == 1) {
+//                ProjectUtils.limpiarComponentes(this.jPanel1);
+//            }
+//        }
     }
 
     private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
-        if (this.personaController.actualizar() != null) {
+
+        if (this.personaController.actualizar() == null) {
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!", DlgWindow.ERROR);
+            return;
+        }
+
+//        if (this.personaController.actualizar() != null) {
 //            Integer respuesta = JOptionPane.showConfirmDialog(this,
 //                    "Registro actualizado correctamente. ¿Quiere ver listado de personas?",
 //                    "Confirmación",
@@ -129,11 +144,12 @@ public class DlgPersona extends javax.swing.JDialog {
 //            } else if (respuesta == 1) {
 //                ProjectUtils.limpiarComponentes(this.jPanel1);
 //            }
-
-            JOptionPane.showMessageDialog(this, "Registro actualizado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-            ProjectUtils.limpiarComponentes(this.jPanel1);
+//        }
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro modificado correctamente.");
+        ProjectUtils.limpiarComponentes(this.jPanel1);
+        if (this.redirect) {
+            this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
         }
-
     }
 
     /**
@@ -220,7 +236,7 @@ public class DlgPersona extends javax.swing.JDialog {
         jLabel1.setText("Registro de Personas");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 430, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombres");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 70, -1, -1));
@@ -230,7 +246,7 @@ public class DlgPersona extends javax.swing.JDialog {
         txtnombres.setBorder(null);
         jPanel1.add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 90, 270, 24));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Apellidos");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 120, -1, -1));
@@ -240,17 +256,17 @@ public class DlgPersona extends javax.swing.JDialog {
         txtapellidos.setBorder(null);
         jPanel1.add(txtapellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 140, 270, 24));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("DUI");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 170, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("NIT");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 220, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Estado");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 550, -1, -1));
@@ -262,7 +278,7 @@ public class DlgPersona extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 450, 270, 90));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Fecha de nacimiento");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 280, -1, -1));
@@ -335,7 +351,7 @@ public class DlgPersona extends javax.swing.JDialog {
         cbestado.setText("Activo");
         jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 570, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Originario");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 380, -1, -1));
@@ -357,16 +373,16 @@ public class DlgPersona extends javax.swing.JDialog {
         rbFemenino.setActionCommand("F");
         jPanel1.add(rbFemenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Direccion");
+        jLabel9.setText("Dirección");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 430, -1, -1));
 
         cbDepartamento.setBackground(new java.awt.Color(255, 255, 255));
-        cbDepartamento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbDepartamento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(cbDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 400, 270, -1));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Genero");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 330, -1, -1));

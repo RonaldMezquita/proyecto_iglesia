@@ -167,7 +167,7 @@ public class DlgWindow extends javax.swing.JDialog {
                 jbsalirActionPerformed(evt);
             }
         });
-        jpTitulo.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 5, 30, 30));
+        jpTitulo.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 5, 30, 30));
 
         jPanel1.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 40));
 

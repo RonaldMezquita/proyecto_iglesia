@@ -8,12 +8,9 @@ package com.iglesia.views;
 import com.iglesia.controllers.LugarController;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
-import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.BorderFactory;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,10 +23,11 @@ public class DlgLugar extends javax.swing.JDialog {
      */
     private LugarController lugarController;
     private List<String> excepciones = new ArrayList<>();
-    
+
     public DlgLugar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();this.lugarController = new LugarController();
+        initComponents();
+        this.lugarController = new LugarController();
         this.txtid.setVisible(false);
         //this.setTitle("Lugar");
         this.setLocationRelativeTo(null);
@@ -40,34 +38,36 @@ public class DlgLugar extends javax.swing.JDialog {
         new TextPrompt("Digite nombre para buscar", this.txtbuscar);
         this.cbestado.setSelected(true);
     }
+
     private void mostrarTabla(String nombre) {
         this.lugarController.llenarTabla(this.jtLugar, nombre);
     }
+
     private void crear() {
         this.excepciones.add("id");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)",DlgWindow.ERROR);
             return;
         }
         if (this.lugarController.crear() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!",DlgWindow.ERROR);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro guardado correctamente");
         ProjectUtils.limpiarComponentes(this.jPanel1);
         this.mostrarTabla("");
     }
 
     private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)",DlgWindow.ERROR);
             return;
         }
         if (this.lugarController.actualizar() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!",DlgWindow.ERROR);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro modificado correctamente");
         this.mostrarTabla("");
         ProjectUtils.limpiarComponentes(this.jPanel1);
     }
@@ -106,19 +106,19 @@ public class DlgLugar extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Mantenimiento Lugar");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 360, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Estado");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
@@ -153,7 +153,18 @@ public class DlgLugar extends javax.swing.JDialog {
         jbingresar.setBorder(null);
         jbingresar.setBorderPainted(false);
         jbingresar.setContentAreaFilled(false);
+        jbingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbingresar.setOpaque(true);
+        jbingresar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbingresarMouseMoved(evt);
+            }
+        });
+        jbingresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbingresarMouseExited(evt);
+            }
+        });
         jbingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbingresarActionPerformed(evt);
@@ -169,7 +180,18 @@ public class DlgLugar extends javax.swing.JDialog {
         jblimpiar.setBorder(null);
         jblimpiar.setBorderPainted(false);
         jblimpiar.setContentAreaFilled(false);
+        jblimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jblimpiar.setOpaque(true);
+        jblimpiar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jblimpiarMouseMoved(evt);
+            }
+        });
+        jblimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jblimpiarMouseExited(evt);
+            }
+        });
         jblimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jblimpiarActionPerformed(evt);
@@ -219,13 +241,24 @@ public class DlgLugar extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 350, 180));
 
-        jbsalir.setBackground(new java.awt.Color(204, 0, 0));
+        jbsalir.setBackground(new java.awt.Color(222, 62, 68));
         jbsalir.setForeground(new java.awt.Color(255, 255, 255));
-        jbsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cancel.png"))); // NOI18N
+        jbsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
         jbsalir.setBorder(null);
         jbsalir.setBorderPainted(false);
         jbsalir.setContentAreaFilled(false);
+        jbsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbsalir.setOpaque(true);
+        jbsalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbsalirMouseMoved(evt);
+            }
+        });
+        jbsalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbsalirMouseExited(evt);
+            }
+        });
         jbsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbsalirActionPerformed(evt);
@@ -300,6 +333,30 @@ public class DlgLugar extends javax.swing.JDialog {
     private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
         this.mostrarTabla(txtbuscar.getText());
     }//GEN-LAST:event_txtbuscarKeyReleased
+
+    private void jbsalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseMoved
+        this.jbsalir.setBackground(new java.awt.Color(227, 96, 101));
+    }//GEN-LAST:event_jbsalirMouseMoved
+
+    private void jbsalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseExited
+        this.jbsalir.setBackground(new java.awt.Color(222, 62, 68));
+    }//GEN-LAST:event_jbsalirMouseExited
+
+    private void jbingresarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbingresarMouseMoved
+        this.jbingresar.setBackground(new java.awt.Color(45, 151, 254));
+    }//GEN-LAST:event_jbingresarMouseMoved
+
+    private void jbingresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbingresarMouseExited
+        this.jbingresar.setBackground(new java.awt.Color(0, 129, 255));
+    }//GEN-LAST:event_jbingresarMouseExited
+
+    private void jblimpiarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jblimpiarMouseMoved
+        this.jblimpiar.setBackground(new java.awt.Color(254, 203, 46));
+    }//GEN-LAST:event_jblimpiarMouseMoved
+
+    private void jblimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jblimpiarMouseExited
+        this.jblimpiar.setBackground(new java.awt.Color(254, 192, 1));
+    }//GEN-LAST:event_jblimpiarMouseExited
 
     /**
      * @param args the command line arguments

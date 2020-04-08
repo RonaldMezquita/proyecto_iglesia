@@ -11,13 +11,12 @@ import com.iglesia.controllers.MovimientoController;
 import com.iglesia.entities.Evento;
 import com.iglesia.entities.Justificacion;
 import com.iglesia.entities.Movimiento;
+import com.iglesia.utils.FechasUtils;
 import com.iglesia.utils.ProjectUtils;
-import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
 /**
@@ -64,13 +63,13 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.excepciones.add("buscar");
-        this.jdFechaMov.requestFocus();
+        this.txtMonto.requestFocus();
         this.cbestado.setSelected(true);
-        this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
         this.justificacionController.getComboBox(this.cbJustificacion);
         this.selectedMov = new Movimiento();
 
         this.movimientoController.getComboTipoMov(this.cbTipoMovimiento);
+        this.jdFechaMov.setDate(FechasUtils.getCurrentDate());
     }
 
     private boolean crear() {
@@ -157,6 +156,7 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
         btnEliminarEvento = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         cbTipoMovimiento = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -174,6 +174,7 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jsMonto.setForeground(new java.awt.Color(0, 0, 0));
@@ -229,7 +230,7 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
         txtMonto.setBackground(new java.awt.Color(255, 255, 255));
-        txtMonto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtMonto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMonto.setForeground(new java.awt.Color(0, 0, 0));
         txtMonto.setBorder(null);
         txtMonto.setName("Apellido"); // NOI18N
@@ -247,7 +248,7 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
 
         txtEvento.setEditable(false);
         txtEvento.setBackground(new java.awt.Color(255, 255, 255));
-        txtEvento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtEvento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtEvento.setForeground(new java.awt.Color(0, 0, 0));
         txtEvento.setBorder(null);
         jPanel1.add(txtEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 270, 30));
@@ -319,10 +320,12 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
 
         jdFechaMov.setBackground(new java.awt.Color(255, 255, 255));
         jdFechaMov.setForeground(new java.awt.Color(55, 71, 79));
+        jdFechaMov.setDateFormatString("dd/MM/yyyy");
         jdFechaMov.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jPanel1.add(jdFechaMov, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 150, 30));
 
-        cbJustificacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cbJustificacion.setBackground(new java.awt.Color(255, 255, 255));
+        cbJustificacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbJustificacion.setBorder(null);
         jPanel1.add(cbJustificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 270, 30));
 
@@ -386,9 +389,15 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
         jLabel7.setText("Justificación");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
 
-        cbTipoMovimiento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cbTipoMovimiento.setBackground(new java.awt.Color(255, 255, 255));
+        cbTipoMovimiento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbTipoMovimiento.setBorder(null);
         jPanel1.add(cbTipoMovimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 270, 30));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(132, 142, 149));
+        jLabel8.setText("(Opcional)");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 323, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 500));
 
@@ -396,9 +405,9 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
-        if (DlgWindow.showConfirmDialog(this, "Confirmación", "¿Desea salir de esta opción?") == 0) {
-            this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
-        }
+        this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+//        if (DlgWindow.showConfirmDialog(this, "Confirmación", "¿Desea salir de esta opción?") == 0) {
+//        }
     }//GEN-LAST:event_jbsalirActionPerformed
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
@@ -546,6 +555,7 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbsalir;
     private com.toedter.calendar.JDateChooser jdFechaMov;

@@ -8,11 +8,9 @@ package com.iglesia.views;
 import com.iglesia.controllers.UsuarioController;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
-import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
 /**
@@ -88,6 +86,10 @@ public class DlgUsuario extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
         txtid = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jbCerrar = new javax.swing.JButton();
@@ -104,6 +106,7 @@ public class DlgUsuario extends javax.swing.JDialog {
         cbestado = new javax.swing.JCheckBox();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -113,23 +116,28 @@ public class DlgUsuario extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 141, 280, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 280, -1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 241, 280, -1));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 91, 280, -1));
 
         txtid.setEditable(false);
         txtid.setName("idUsuario"); // NOI18N
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, -1));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Ingreso de Usuarios");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 800, -1));
 
         jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
         jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
         jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
-        jbCerrar.setToolTipText("");
         jbCerrar.setBorder(null);
         jbCerrar.setBorderPainted(false);
         jbCerrar.setContentAreaFilled(false);
+        jbCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbCerrar.setOpaque(true);
         jbCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -150,13 +158,14 @@ public class DlgUsuario extends javax.swing.JDialog {
 
         txtbuscar.setBackground(new java.awt.Color(255, 255, 255));
         txtbuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtbuscar.setBorder(null);
         txtbuscar.setName("buscar"); // NOI18N
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtbuscarKeyReleased(evt);
             }
         });
-        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 290, -1));
+        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 280, 24));
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 51));
 
@@ -202,39 +211,45 @@ public class DlgUsuario extends javax.swing.JDialog {
 
         txtnombre.setBackground(new java.awt.Color(255, 255, 255));
         txtnombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtnombre.setForeground(new java.awt.Color(0, 0, 0));
+        txtnombre.setBorder(null);
         txtnombre.setName("Nombre"); // NOI18N
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 310, -1));
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 280, 24));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Apellido");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, -1, -1));
 
         txtapellido.setBackground(new java.awt.Color(255, 255, 255));
         txtapellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtapellido.setForeground(new java.awt.Color(0, 0, 0));
+        txtapellido.setBorder(null);
         txtapellido.setName("Apellido"); // NOI18N
-        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 310, -1));
+        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 280, 24));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Usuario");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, -1, -1));
 
         txtusuario.setBackground(new java.awt.Color(255, 255, 255));
         txtusuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 310, -1));
+        txtusuario.setForeground(new java.awt.Color(0, 0, 0));
+        txtusuario.setBorder(null);
+        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 280, 24));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Estado");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, -1, -1));
@@ -243,7 +258,7 @@ public class DlgUsuario extends javax.swing.JDialog {
         cbestado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbestado.setForeground(new java.awt.Color(0, 0, 0));
         cbestado.setText("Activo");
-        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, -1, -1));
+        jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
 
         btnGuardar.setBackground(new java.awt.Color(0, 129, 255));
         btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -253,6 +268,7 @@ public class DlgUsuario extends javax.swing.JDialog {
         btnGuardar.setBorder(null);
         btnGuardar.setBorderPainted(false);
         btnGuardar.setContentAreaFilled(false);
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardar.setOpaque(true);
         btnGuardar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -269,7 +285,7 @@ public class DlgUsuario extends javax.swing.JDialog {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 130, 40));
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 130, 40));
 
         btnCancelar.setBackground(new java.awt.Color(254, 192, 1));
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -279,6 +295,7 @@ public class DlgUsuario extends javax.swing.JDialog {
         btnCancelar.setBorder(null);
         btnCancelar.setBorderPainted(false);
         btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelar.setOpaque(true);
         btnCancelar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -295,7 +312,10 @@ public class DlgUsuario extends javax.swing.JDialog {
                 btnCancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 130, 40));
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 300, 130, 40));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-b.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 360));
 
@@ -417,8 +437,13 @@ public class DlgUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JButton jbCerrar;
     private javax.swing.JTable tbusuario;
     private javax.swing.JTextField txtapellido;

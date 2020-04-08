@@ -113,12 +113,12 @@ public class DlgJustificacion extends javax.swing.JDialog {
         jLabel1.setText("Mantenimiento de Justificación");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 400, -1));
 
-        lbNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbNombre.setForeground(new java.awt.Color(0, 0, 0));
         lbNombre.setText("Nombre");
         jPanel1.add(lbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 70, -1));
 
-        lbEstado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbEstado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbEstado.setForeground(new java.awt.Color(0, 0, 0));
         lbEstado.setText("Estado");
         jPanel1.add(lbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 50, -1));
@@ -136,6 +136,7 @@ public class DlgJustificacion extends javax.swing.JDialog {
         jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 100, -1));
 
         txtbuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtbuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtbuscar.setToolTipText("");
         txtbuscar.setBorder(null);
         txtbuscar.setName("buscar"); // NOI18N

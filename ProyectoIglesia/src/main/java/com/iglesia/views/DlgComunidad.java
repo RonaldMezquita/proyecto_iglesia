@@ -162,13 +162,13 @@ public class DlgComunidad extends javax.swing.JDialog {
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 380, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Sector");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         txtnombre.setBackground(new java.awt.Color(255, 255, 255));
-        txtnombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtnombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtnombre.setForeground(new java.awt.Color(0, 0, 0));
         txtnombre.setBorder(null);
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +178,7 @@ public class DlgComunidad extends javax.swing.JDialog {
         });
         jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 330, 24));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Estado");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
@@ -219,7 +219,7 @@ public class DlgComunidad extends javax.swing.JDialog {
                 jbingresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 130, 40));
+        jPanel1.add(jbingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 130, 40));
 
         jblimpiar.setBackground(new java.awt.Color(254, 192, 1));
         jblimpiar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -246,9 +246,10 @@ public class DlgComunidad extends javax.swing.JDialog {
                 jblimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(jblimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 280, 130, 40));
+        jPanel1.add(jblimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 270, 130, 40));
 
         txtbuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtbuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtbuscar.setToolTipText("");
         txtbuscar.setBorder(null);
         txtbuscar.setName("buscar"); // NOI18N
@@ -260,6 +261,7 @@ public class DlgComunidad extends javax.swing.JDialog {
         jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 330, 24));
 
         jtComunidad.setBackground(new java.awt.Color(224, 224, 224));
+        jtComunidad.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jtComunidad.setForeground(new java.awt.Color(0, 0, 0));
         jtComunidad.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -284,6 +286,7 @@ public class DlgComunidad extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        jtComunidad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jtComunidad.setSelectionBackground(new java.awt.Color(189, 189, 189));
         jtComunidad.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jtComunidad.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -303,12 +306,13 @@ public class DlgComunidad extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 360, 180));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Nombre");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        jbcSector.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbcSector.setBackground(new java.awt.Color(255, 255, 255));
+        jbcSector.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jbcSector.setBorder(null);
         jPanel1.add(jbcSector, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 330, -1));
 
