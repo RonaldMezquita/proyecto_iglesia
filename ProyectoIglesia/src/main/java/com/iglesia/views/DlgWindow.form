@@ -87,7 +87,7 @@
             <Component class="javax.swing.JButton" name="jbsalir">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="44" green="3e" red="de" type="rgb"/>
+                  <Color blue="ff" green="81" red="0" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -107,13 +107,11 @@
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="jbsalirMouseMoved"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbsalirMouseExited"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbsalirActionPerformed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="339" y="5" width="30" height="30"/>
+                  <AbsoluteConstraints x="335" y="5" width="30" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>

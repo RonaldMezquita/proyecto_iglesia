@@ -5,7 +5,6 @@
  */
 package com.iglesia.controllers;
 
-import com.iglesia.entities.Usuario;
 import com.iglesia.entities.Sector;
 import com.iglesia.services.SectorService;
 import com.iglesia.utils.FechasUtils;
@@ -20,17 +19,18 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Alexis
  */
-public class SectorController implements Serializable{
+public class SectorController implements Serializable {
+
     private Sector selected;
     private List<Sector> items;
     private SectorService sectorService;
 
-
     public SectorController() {
         this.sectorService = new SectorService();
-        this.selected = new Sector();        this.selected.setEstado(true);
-        this.selected.setIdUsuario(new Usuario(1));
+        this.selected = new Sector();
+        this.selected.setEstado(true);
     }
+
     public void consultarTodos() {
         this.items = this.sectorService.consultarTodos("select t from Sector t");
     }
@@ -86,13 +86,14 @@ public class SectorController implements Serializable{
         }
         tabla.setModel(model);
     }
-    public void getCombobox(JComboBox<Sector> cbSector){
+
+    public void getCombobox(JComboBox<Sector> cbSector) {
         this.consultarTodos();
         Sector sec = new Sector();
         sec.setNombre("*** Seleccione ***");
         cbSector.addItem(sec);
-        for (Sector item:this.items) {
-            cbSector.addItem(item);            
+        for (Sector item : this.items) {
+            cbSector.addItem(item);
         }
     }
     //<editor-fold defaultstate="collapsed" desc="getters & setters">

@@ -5,18 +5,43 @@
  */
 package com.iglesia.views;
 
+import com.iglesia.entities.Usuario;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author remsf
  */
 public class FrmPrincipal extends javax.swing.JFrame {
 
+    private boolean visible;
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+        this.jlblUsuario.setText(this.usuario.getNombre() + " " + this.usuario.getApellido());
+    }
+
     /**
      * Creates new form PrincipalFrame
      */
-    public FrmPrincipal() {
+    public FrmPrincipal() {        
         initComponents();
+        this.visible = true;
         this.setExtendedState(MAXIMIZED_BOTH);
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension tamanio = tk.getScreenSize();
+//        this.panelTop.setBounds(0, 0, (int) tamanio.getWidth(), 50);
+        getContentPane().add(panelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, (int) tamanio.getWidth(), 40));
+        int positionBtnClose = (int) tamanio.getWidth() - 31;
+        panelTop.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose, 0, 30, 40));        
+        panelTop.add(jlblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose - 220, 0, 250, 40));
+        panelTop.add(jlblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose - 250, 0, 250, 40));
     }
 
     /**
@@ -28,249 +53,535 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnBoda = new javax.swing.JButton();
-        btnBautizo = new javax.swing.JButton();
-        btnConsultarPersona = new javax.swing.JButton();
-        btnNewPersona1 = new javax.swing.JButton();
-        btnConfirmacion = new javax.swing.JButton();
-        btnLugar = new javax.swing.JButton();
-        btnComunidad = new javax.swing.JButton();
-        btnSector = new javax.swing.JButton();
-        btnJustificacion = new javax.swing.JButton();
-        btnSacerdotes = new javax.swing.JButton();
-        btnTiposSacramento = new javax.swing.JButton();
-        btnEventos = new javax.swing.JButton();
         panelMenu = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        btnSector = new javax.swing.JButton();
+        btnSacerdotes = new javax.swing.JButton();
+        btnComunidad = new javax.swing.JButton();
+        btnJustificacion = new javax.swing.JButton();
+        btnTipoSacramento = new javax.swing.JButton();
+        btnConsultaMovEfectivo = new javax.swing.JButton();
+        btnBautizo = new javax.swing.JButton();
+        btnLugar = new javax.swing.JButton();
+        btnConsultaPersonas = new javax.swing.JButton();
+        btnConfirmacion = new javax.swing.JButton();
+        btnBoda = new javax.swing.JButton();
+        btnPersona1 = new javax.swing.JButton();
+        btnEvento = new javax.swing.JButton();
+        btnNuevoMovEfectivo = new javax.swing.JButton();
+        btnUsuarios = new javax.swing.JButton();
+        panelTop = new javax.swing.JPanel();
+        btnMenu = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        jlblUsuario = new javax.swing.JLabel();
+        jlblIconUser = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 204, 204));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnBoda.setBackground(new java.awt.Color(62, 69, 81));
-        btnBoda.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnBoda.setForeground(new java.awt.Color(255, 255, 255));
-        btnBoda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/Boda.png"))); // NOI18N
-        btnBoda.setText("Boda");
-        btnBoda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBodaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnBoda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 112, -1));
+        panelMenu.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnBautizo.setBackground(new java.awt.Color(62, 69, 81));
-        btnBautizo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnBautizo.setForeground(new java.awt.Color(255, 255, 255));
-        btnBautizo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/Boda.png"))); // NOI18N
-        btnBautizo.setText("Bautizo");
-        btnBautizo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBautizoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnBautizo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 355, -1, -1));
-
-        btnConsultarPersona.setBackground(new java.awt.Color(62, 69, 81));
-        btnConsultarPersona.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnConsultarPersona.setForeground(new java.awt.Color(255, 255, 255));
-        btnConsultarPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
-        btnConsultarPersona.setText("Consulta de Personas");
-        btnConsultarPersona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarPersonaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnConsultarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, -1, -1));
-
-        btnNewPersona1.setBackground(new java.awt.Color(62, 69, 81));
-        btnNewPersona1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnNewPersona1.setForeground(new java.awt.Color(255, 255, 255));
-        btnNewPersona1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
-        btnNewPersona1.setText("Nueva Persona");
-        btnNewPersona1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewPersona1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnNewPersona1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 285, -1, -1));
-
-        btnConfirmacion.setBackground(new java.awt.Color(62, 69, 81));
-        btnConfirmacion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnConfirmacion.setForeground(new java.awt.Color(255, 255, 255));
-        btnConfirmacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Icon/Confirmacion.png"))); // NOI18N
-        btnConfirmacion.setText("Confirmacion");
-        btnConfirmacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfirmacionActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnConfirmacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, -1, -1));
-
-        btnLugar.setBackground(new java.awt.Color(62, 69, 81));
-        btnLugar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnLugar.setForeground(new java.awt.Color(255, 255, 255));
-        btnLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
-        btnLugar.setText("Lugar");
-        btnLugar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLugarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 215, -1, -1));
-
-        btnComunidad.setBackground(new java.awt.Color(62, 69, 81));
-        btnComunidad.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnComunidad.setForeground(new java.awt.Color(255, 255, 255));
-        btnComunidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
-        btnComunidad.setText("Comunidad");
-        btnComunidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnComunidadActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnComunidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 75, -1, -1));
-
-        btnSector.setBackground(new java.awt.Color(62, 69, 81));
-        btnSector.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnSector.setBackground(new java.awt.Color(0, 153, 204));
+        btnSector.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSector.setForeground(new java.awt.Color(255, 255, 255));
-        btnSector.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
+        btnSector.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
         btnSector.setText("Sector");
+        btnSector.setBorder(null);
+        btnSector.setBorderPainted(false);
+        btnSector.setContentAreaFilled(false);
+        btnSector.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSector.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnSector.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnSector.setOpaque(true);
         btnSector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSectorActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSector, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
 
-        btnJustificacion.setBackground(new java.awt.Color(62, 69, 81));
-        btnJustificacion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnJustificacion.setForeground(new java.awt.Color(255, 255, 255));
-        btnJustificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
-        btnJustificacion.setText("Justificacion");
-        btnJustificacion.setToolTipText("");
-        btnJustificacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJustificacionActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnJustificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 145, -1, -1));
-
-        btnSacerdotes.setBackground(new java.awt.Color(62, 69, 81));
-        btnSacerdotes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnSacerdotes.setBackground(new java.awt.Color(0, 153, 204));
+        btnSacerdotes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSacerdotes.setForeground(new java.awt.Color(255, 255, 255));
-        btnSacerdotes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
+        btnSacerdotes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/padre-36px.png"))); // NOI18N
         btnSacerdotes.setText("Sacerdotes");
-        btnSacerdotes.setToolTipText("");
+        btnSacerdotes.setBorder(null);
+        btnSacerdotes.setBorderPainted(false);
+        btnSacerdotes.setContentAreaFilled(false);
+        btnSacerdotes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSacerdotes.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnSacerdotes.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnSacerdotes.setOpaque(true);
         btnSacerdotes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSacerdotesActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSacerdotes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
 
-        btnTiposSacramento.setBackground(new java.awt.Color(62, 69, 81));
-        btnTiposSacramento.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnTiposSacramento.setForeground(new java.awt.Color(255, 255, 255));
-        btnTiposSacramento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
-        btnTiposSacramento.setText("Tipos de sacramentos");
-        btnTiposSacramento.setToolTipText("");
-        btnTiposSacramento.addActionListener(new java.awt.event.ActionListener() {
+        btnComunidad.setBackground(new java.awt.Color(0, 153, 204));
+        btnComunidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnComunidad.setForeground(new java.awt.Color(255, 255, 255));
+        btnComunidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
+        btnComunidad.setText("Comunidad");
+        btnComunidad.setBorder(null);
+        btnComunidad.setBorderPainted(false);
+        btnComunidad.setContentAreaFilled(false);
+        btnComunidad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnComunidad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnComunidad.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnComunidad.setOpaque(true);
+        btnComunidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTiposSacramentoActionPerformed(evt);
+                btnComunidadActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTiposSacramento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
 
-        btnEventos.setBackground(new java.awt.Color(62, 69, 81));
-        btnEventos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnEventos.setForeground(new java.awt.Color(255, 255, 255));
-        btnEventos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-w.png"))); // NOI18N
-        btnEventos.setText("Eventos");
-        btnEventos.setToolTipText("");
-        btnEventos.addActionListener(new java.awt.event.ActionListener() {
+        btnJustificacion.setBackground(new java.awt.Color(0, 153, 204));
+        btnJustificacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnJustificacion.setForeground(new java.awt.Color(255, 255, 255));
+        btnJustificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
+        btnJustificacion.setText("Justificación");
+        btnJustificacion.setBorder(null);
+        btnJustificacion.setBorderPainted(false);
+        btnJustificacion.setContentAreaFilled(false);
+        btnJustificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnJustificacion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnJustificacion.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnJustificacion.setOpaque(true);
+        btnJustificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEventosActionPerformed(evt);
+                btnJustificacionActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEventos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 425, -1, -1));
 
-        panelMenu.setBackground(new java.awt.Color(46, 46, 46));
-        panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 1080));
+        btnTipoSacramento.setBackground(new java.awt.Color(0, 153, 204));
+        btnTipoSacramento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnTipoSacramento.setForeground(new java.awt.Color(255, 255, 255));
+        btnTipoSacramento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
+        btnTipoSacramento.setText("Tipo de Sacramento");
+        btnTipoSacramento.setBorder(null);
+        btnTipoSacramento.setBorderPainted(false);
+        btnTipoSacramento.setContentAreaFilled(false);
+        btnTipoSacramento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTipoSacramento.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnTipoSacramento.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnTipoSacramento.setOpaque(true);
+        btnTipoSacramento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTipoSacramentoActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/Fondo.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        btnConsultaMovEfectivo.setBackground(new java.awt.Color(0, 153, 204));
+        btnConsultaMovEfectivo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnConsultaMovEfectivo.setForeground(new java.awt.Color(255, 255, 255));
+        btnConsultaMovEfectivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
+        btnConsultaMovEfectivo.setText("Movimientos de efectivo");
+        btnConsultaMovEfectivo.setBorder(null);
+        btnConsultaMovEfectivo.setBorderPainted(false);
+        btnConsultaMovEfectivo.setContentAreaFilled(false);
+        btnConsultaMovEfectivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnConsultaMovEfectivo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnConsultaMovEfectivo.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnConsultaMovEfectivo.setOpaque(true);
+        btnConsultaMovEfectivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaMovEfectivoActionPerformed(evt);
+            }
+        });
+
+        btnBautizo.setBackground(new java.awt.Color(0, 153, 204));
+        btnBautizo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnBautizo.setForeground(new java.awt.Color(255, 255, 255));
+        btnBautizo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/confirmacion-36px.png"))); // NOI18N
+        btnBautizo.setText("Bautizo");
+        btnBautizo.setToolTipText("");
+        btnBautizo.setBorder(null);
+        btnBautizo.setBorderPainted(false);
+        btnBautizo.setContentAreaFilled(false);
+        btnBautizo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBautizo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnBautizo.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnBautizo.setOpaque(true);
+        btnBautizo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBautizoActionPerformed(evt);
+            }
+        });
+
+        btnLugar.setBackground(new java.awt.Color(0, 153, 204));
+        btnLugar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLugar.setForeground(new java.awt.Color(255, 255, 255));
+        btnLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
+        btnLugar.setText("Lugar");
+        btnLugar.setBorder(null);
+        btnLugar.setBorderPainted(false);
+        btnLugar.setContentAreaFilled(false);
+        btnLugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLugar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnLugar.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnLugar.setOpaque(true);
+        btnLugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLugarActionPerformed(evt);
+            }
+        });
+
+        btnConsultaPersonas.setBackground(new java.awt.Color(0, 153, 204));
+        btnConsultaPersonas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnConsultaPersonas.setForeground(new java.awt.Color(255, 255, 255));
+        btnConsultaPersonas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/folder-person-w-36px.png"))); // NOI18N
+        btnConsultaPersonas.setText("Consulta de personas");
+        btnConsultaPersonas.setBorder(null);
+        btnConsultaPersonas.setBorderPainted(false);
+        btnConsultaPersonas.setContentAreaFilled(false);
+        btnConsultaPersonas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnConsultaPersonas.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnConsultaPersonas.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnConsultaPersonas.setOpaque(true);
+        btnConsultaPersonas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaPersonasActionPerformed(evt);
+            }
+        });
+
+        btnConfirmacion.setBackground(new java.awt.Color(0, 153, 204));
+        btnConfirmacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnConfirmacion.setForeground(new java.awt.Color(255, 255, 255));
+        btnConfirmacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/confirmacion-36px.png"))); // NOI18N
+        btnConfirmacion.setText("Confirmación");
+        btnConfirmacion.setBorder(null);
+        btnConfirmacion.setBorderPainted(false);
+        btnConfirmacion.setContentAreaFilled(false);
+        btnConfirmacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnConfirmacion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnConfirmacion.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnConfirmacion.setOpaque(true);
+        btnConfirmacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmacionActionPerformed(evt);
+            }
+        });
+
+        btnBoda.setBackground(new java.awt.Color(0, 153, 204));
+        btnBoda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnBoda.setForeground(new java.awt.Color(255, 255, 255));
+        btnBoda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/boda-36px.png"))); // NOI18N
+        btnBoda.setText("Boda");
+        btnBoda.setBorder(null);
+        btnBoda.setBorderPainted(false);
+        btnBoda.setContentAreaFilled(false);
+        btnBoda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBoda.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnBoda.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnBoda.setOpaque(true);
+        btnBoda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBodaActionPerformed(evt);
+            }
+        });
+
+        btnPersona1.setBackground(new java.awt.Color(0, 153, 204));
+        btnPersona1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnPersona1.setForeground(new java.awt.Color(255, 255, 255));
+        btnPersona1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/add-persona-w-36px.png"))); // NOI18N
+        btnPersona1.setText("Nueva persona");
+        btnPersona1.setBorder(null);
+        btnPersona1.setBorderPainted(false);
+        btnPersona1.setContentAreaFilled(false);
+        btnPersona1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPersona1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnPersona1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnPersona1.setOpaque(true);
+        btnPersona1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPersona1ActionPerformed(evt);
+            }
+        });
+
+        btnEvento.setBackground(new java.awt.Color(0, 153, 204));
+        btnEvento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEvento.setForeground(new java.awt.Color(255, 255, 255));
+        btnEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/boda-36px.png"))); // NOI18N
+        btnEvento.setText("Evento");
+        btnEvento.setBorder(null);
+        btnEvento.setBorderPainted(false);
+        btnEvento.setContentAreaFilled(false);
+        btnEvento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEvento.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnEvento.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnEvento.setOpaque(true);
+        btnEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEventoActionPerformed(evt);
+            }
+        });
+
+        btnNuevoMovEfectivo.setBackground(new java.awt.Color(0, 153, 204));
+        btnNuevoMovEfectivo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnNuevoMovEfectivo.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevoMovEfectivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/boda-36px.png"))); // NOI18N
+        btnNuevoMovEfectivo.setText("Crear mov. de efectivo");
+        btnNuevoMovEfectivo.setBorder(null);
+        btnNuevoMovEfectivo.setBorderPainted(false);
+        btnNuevoMovEfectivo.setContentAreaFilled(false);
+        btnNuevoMovEfectivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNuevoMovEfectivo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnNuevoMovEfectivo.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnNuevoMovEfectivo.setOpaque(true);
+        btnNuevoMovEfectivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoMovEfectivoActionPerformed(evt);
+            }
+        });
+
+        btnUsuarios.setBackground(new java.awt.Color(0, 153, 204));
+        btnUsuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/users-w-36px.png"))); // NOI18N
+        btnUsuarios.setText("Usuarios");
+        btnUsuarios.setBorder(null);
+        btnUsuarios.setBorderPainted(false);
+        btnUsuarios.setContentAreaFilled(false);
+        btnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnUsuarios.setOpaque(true);
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuariosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
+        panelMenu.setLayout(panelMenuLayout);
+        panelMenuLayout.setHorizontalGroup(
+            panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnConfirmacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSector, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnConsultaPersonas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnComunidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPersona1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelMenuLayout.createSequentialGroup()
+                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNuevoMovEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBoda, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelMenuLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnBautizo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnTipoSacramento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnJustificacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSacerdotes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnConsultaMovEfectivo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUsuarios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
+        );
+        panelMenuLayout.setVerticalGroup(
+            panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnTipoSacramento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnJustificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSector, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnComunidad, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSacerdotes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnConsultaPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPersona1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnConsultaMovEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNuevoMovEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBautizo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBoda, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 220, 1040));
+
+        panelTop.setBackground(new java.awt.Color(0, 129, 255));
+        panelTop.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnMenu.setBackground(new java.awt.Color(0, 129, 255));
+        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/menu-36px.png"))); // NOI18N
+        btnMenu.setBorder(null);
+        btnMenu.setBorderPainted(false);
+        btnMenu.setContentAreaFilled(false);
+        btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenu.setOpaque(true);
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+        panelTop.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, -1, 35));
+
+        btnSalir.setBackground(new java.awt.Color(0, 129, 255));
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar.png"))); // NOI18N
+        btnSalir.setBorder(null);
+        btnSalir.setBorderPainted(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setOpaque(true);
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        panelTop.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 30, 40));
+
+        jlblUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlblUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jlblUsuario.setText("jLabel1");
+        panelTop.add(jlblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 250, 40));
+
+        jlblIconUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlblIconUser.setForeground(new java.awt.Color(105, 105, 105));
+        jlblIconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/user-shape-w-24px.png"))); // NOI18N
+        panelTop.add(jlblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 30, 40));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("SISTEMA DE CONTROL PARROQUIAL");
+        panelTop.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 350, 40));
+
+        getContentPane().add(panelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 40));
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnConsultarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPersonaActionPerformed
-        DlgConsultaPersona obj = new DlgConsultaPersona(this, true);
-        obj.setVisible(true);
-    }//GEN-LAST:event_btnConsultarPersonaActionPerformed
-
-    private void btnBodaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBodaActionPerformed
-        DlgBoda obj = new DlgBoda(this, true);
-//        Shape rectangle = new RoundRectangle2D.Float(0, 0, 400, 200, 20, 20);
-//        obj.setShape(rectangle);
-        obj.setVisible(true);
-    }//GEN-LAST:event_btnBodaActionPerformed
-
     private void btnSacerdotesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacerdotesActionPerformed
-        DlgSacerdote obj = new DlgSacerdote(this, true);
+        DlgSacerdote obj = new DlgSacerdote(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnSacerdotesActionPerformed
 
-    private void btnTiposSacramentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiposSacramentoActionPerformed
-        DlgTipoSacrementos obj = new DlgTipoSacrementos(this, true);
-        obj.setVisible(true);
-    }//GEN-LAST:event_btnTiposSacramentoActionPerformed
-
-    private void btnEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventosActionPerformed
-//        DlgReportes obj = new DlgReportes(this, false);
-        DlgBuscarEvento obj = new DlgBuscarEvento(null, false);
-        obj.setVisible(true);
-//        FrmReporte obj = new FrmReporte();
-//        obj.setVisible(true);
-    }//GEN-LAST:event_btnEventosActionPerformed
-
-    private void btnBautizoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBautizoActionPerformed
-        DlgBautizo obj = new DlgBautizo(this, true);
-        obj.setVisible(true);
-    }//GEN-LAST:event_btnBautizoActionPerformed
-
-    private void btnNewPersona1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewPersona1ActionPerformed
-        DlgPersona obj = new DlgPersona(this, true);
-        obj.setRedirect(true);
-        obj.setVisible(true);
-    }//GEN-LAST:event_btnNewPersona1ActionPerformed
-
-    private void btnConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmacionActionPerformed
-        DlgConfirmacionOld obj = new DlgConfirmacionOld(this, true);
-        obj.setVisible(true);
-    }//GEN-LAST:event_btnConfirmacionActionPerformed
-
     private void btnSectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSectorActionPerformed
-        DlgSector obj = new DlgSector(this, true);
+        DlgSector obj = new DlgSector(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnSectorActionPerformed
 
-    private void btnLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLugarActionPerformed
-        DlgLugar obj = new DlgLugar(this, true);
-        obj.setVisible(true);
-    }//GEN-LAST:event_btnLugarActionPerformed
-
     private void btnComunidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComunidadActionPerformed
-        DlgComunidad obj = new DlgComunidad(this, true);
+        DlgComunidad obj = new DlgComunidad(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnComunidadActionPerformed
 
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        //-220
+        if (this.panelMenu.getX() == 0) {
+            Animacion.Animacion.mover_izquierda(0, -188, 10, 5, this.panelMenu);
+//            Animacion.Animacion.mover_izquierda(190, 0, 10, 5, this.btnMenu);
+        } else {
+            Animacion.Animacion.mover_derecha(this.panelMenu.getX(), 0, 10, 5, this.panelMenu);
+//            Animacion.Animacion.mover_derecha(0, 190, 10, 5, this.btnMenu);
+        }
+
+    }//GEN-LAST:event_btnMenuActionPerformed
+
     private void btnJustificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJustificacionActionPerformed
-        DlgJustificacion obj = new DlgJustificacion(this, true);
+        DlgJustificacion obj = new DlgJustificacion(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnJustificacionActionPerformed
+
+    private void btnTipoSacramentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoSacramentoActionPerformed
+        DlgTipoSacrementos obj = new DlgTipoSacrementos(this, false);
+        obj.setUsuarioLogeado(this.usuario);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnTipoSacramentoActionPerformed
+
+    private void btnConsultaMovEfectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaMovEfectivoActionPerformed
+        DlgConsultaMovEfectivo obj = new DlgConsultaMovEfectivo(this, false);
+        obj.setUsuarioLogeado(this.usuario);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnConsultaMovEfectivoActionPerformed
+
+    private void btnBautizoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBautizoActionPerformed
+        DlgBautizo obj = new DlgBautizo(this, false);
+        obj.setUsuarioLogeado(this.usuario);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnBautizoActionPerformed
+
+    private void btnLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLugarActionPerformed
+        DlgLugar obj = new DlgLugar(this, false);
+        obj.setUsuarioLogeado(this.usuario);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnLugarActionPerformed
+
+    private void btnConsultaPersonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaPersonasActionPerformed
+        DlgConsultaPersona obj = new DlgConsultaPersona(this, false);
+        obj.setUsuarioLogeado(this.usuario);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnConsultaPersonasActionPerformed
+
+    private void btnConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmacionActionPerformed
+        DlgConfirmacion obj = new DlgConfirmacion(this, false);
+        obj.setUsuarioLogeado(this.usuario);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnConfirmacionActionPerformed
+
+    private void btnBodaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBodaActionPerformed
+        DlgBoda obj = new DlgBoda(this, false);
+        obj.setUsuarioLogeado(this.usuario);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnBodaActionPerformed
+
+    private void btnPersona1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersona1ActionPerformed
+        DlgPersona obj = new DlgPersona(this, false);
+        obj.setUsuarioLogeado(this.usuario);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnPersona1ActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        if (DlgWindow.showConfirmDialog(null, "Confirmación", "¿Esta seguro que desea salir del sistema?") == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventoActionPerformed
+        DlgBuscarEvento obj = new DlgBuscarEvento(null, false);
+        obj.setUsuarioLogeado(this.usuario);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnEventoActionPerformed
+
+    private void btnNuevoMovEfectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoMovEfectivoActionPerformed
+        DlgMovEfectivo obj = new DlgMovEfectivo(this, false);
+        obj.setUsuarioLogeado(this.usuario);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnNuevoMovEfectivoActionPerformed
+
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
+        DlgUsuario obj = new DlgUsuario(null, true);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,6 +610,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -313,16 +630,24 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnBoda;
     private javax.swing.JButton btnComunidad;
     private javax.swing.JButton btnConfirmacion;
-    private javax.swing.JButton btnConsultarPersona;
-    private javax.swing.JButton btnEventos;
+    private javax.swing.JButton btnConsultaMovEfectivo;
+    private javax.swing.JButton btnConsultaPersonas;
+    private javax.swing.JButton btnEvento;
     private javax.swing.JButton btnJustificacion;
     private javax.swing.JButton btnLugar;
-    private javax.swing.JButton btnNewPersona1;
+    private javax.swing.JButton btnMenu;
+    private javax.swing.JButton btnNuevoMovEfectivo;
+    private javax.swing.JButton btnPersona1;
     private javax.swing.JButton btnSacerdotes;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnSector;
-    private javax.swing.JButton btnTiposSacramento;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnTipoSacramento;
+    private javax.swing.JButton btnUsuarios;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel jlblIconUser;
+    private javax.swing.JLabel jlblUsuario;
     private javax.swing.JPanel panelMenu;
+    private javax.swing.JPanel panelTop;
     // End of variables declaration//GEN-END:variables
 }

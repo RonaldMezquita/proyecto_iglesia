@@ -6,7 +6,6 @@
 package com.iglesia.controllers;
 
 import com.iglesia.entities.Sacerdote;
-import com.iglesia.entities.Usuario;
 import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.services.SacerdoteService;
 import com.iglesia.utils.FechasUtils;
@@ -32,7 +31,6 @@ public class SacerdoteController implements Serializable {
         this.sacerdoteService = new SacerdoteService();
         this.selected = new Sacerdote();
         this.selected.setEstado(true);
-        this.selected.setIdUsuario(new Usuario(1));
     }
 
     public void consultarTodos() {

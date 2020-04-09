@@ -6,6 +6,7 @@
 package com.iglesia.views;
 
 import com.iglesia.controllers.TipoSacramentosController;
+import com.iglesia.entities.Usuario;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
 import java.awt.Color;
@@ -13,7 +14,6 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +21,11 @@ import javax.swing.JOptionPane;
  */
 public class DlgTipoSacrementos extends javax.swing.JDialog {
 
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
     /**
      * Creates new form DlgTipoSacrementos
      */
@@ -49,28 +54,28 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
     private void crear() {
         this.excepciones.add("id");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
         if (this.tipoEventoController.crear() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!", DlgWindow.ERROR);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro guardado correctamente");
         ProjectUtils.limpiarComponentes(this.jPanel1);
         this.mostrarTabla("");
     }
 
     private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
         if (this.tipoEventoController.actualizar() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!", DlgWindow.ERROR);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro modificado correctamente");
         this.mostrarTabla("");
         ProjectUtils.limpiarComponentes(this.jPanel1);
     }
@@ -122,6 +127,7 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
         jbCerrar.setBorder(null);
         jbCerrar.setBorderPainted(false);
         jbCerrar.setContentAreaFilled(false);
+        jbCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbCerrar.setOpaque(true);
         jbCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -140,14 +146,14 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
         });
         jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 1, 30, 30));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Mantenimiento Tipo de Sacramento");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 360, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
@@ -163,7 +169,7 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
         });
         jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 320, 24));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Estado");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
@@ -187,6 +193,7 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
         btnGuardar.setBorder(null);
         btnGuardar.setBorderPainted(false);
         btnGuardar.setContentAreaFilled(false);
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardar.setOpaque(true);
         btnGuardar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -213,6 +220,7 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
         btnCancelar.setBorder(null);
         btnCancelar.setBorderPainted(false);
         btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelar.setOpaque(true);
         btnCancelar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -318,6 +326,7 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
         this.tipoEventoController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.tipoEventoController.getSelected().setNombre(this.txtnombre.getText());
         this.tipoEventoController.getSelected().setEstado(this.cbestado.isSelected());
+        this.tipoEventoController.getSelected().setIdUsuario(this.usuarioLogeado);
         if (this.tipoEventoController.getSelected().getId() == null) {
             this.crear();
         } else {
@@ -362,7 +371,7 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
     }//GEN-LAST:event_jbCerrarMouseMoved
 
     private void jbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseExited
-       this.jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
+        this.jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
     }//GEN-LAST:event_jbCerrarMouseExited
 
     /**

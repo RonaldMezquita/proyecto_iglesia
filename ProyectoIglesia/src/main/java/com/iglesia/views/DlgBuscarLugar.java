@@ -77,6 +77,7 @@ public class DlgBuscarLugar extends javax.swing.JDialog {
         jsBusqueda.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jPanel1.add(jsBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 121, 240, -1));
 
+        tbLugar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tbLugar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -121,7 +122,7 @@ public class DlgBuscarLugar extends javax.swing.JDialog {
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 430, 250));
 
         txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
-        txtBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtBuscar.setBorder(null);
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {

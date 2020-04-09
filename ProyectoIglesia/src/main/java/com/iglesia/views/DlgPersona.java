@@ -9,12 +9,11 @@ import com.iglesia.controllers.DepartamentoController;
 import com.iglesia.controllers.PersonaController;
 import com.iglesia.entities.Departamento;
 import com.iglesia.entities.Persona;
+import com.iglesia.entities.Usuario;
 import com.iglesia.utils.ProjectUtils;
-import java.awt.Frame;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,6 +21,11 @@ import javax.swing.JOptionPane;
  */
 public class DlgPersona extends javax.swing.JDialog {
 
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
     /**
      * Creates new form DlgPersona
      */
@@ -32,11 +36,11 @@ public class DlgPersona extends javax.swing.JDialog {
     private List<String> excepciones = new ArrayList<>();
     private boolean redirect;
     private Persona personaToEdit;
-    
+
     public void setRedirect(boolean redirect) {
         this.redirect = redirect;
     }
-    
+
     public void setPersonaToEdit(Persona personaToEdit) {
         this.personaToEdit = personaToEdit;
         if (this.personaToEdit != null) {
@@ -48,7 +52,7 @@ public class DlgPersona extends javax.swing.JDialog {
             this.txtfechanacimiento.setDate(this.personaToEdit.getFechaNacimiento());
             if (this.personaToEdit.getGenero().equals("M")) {
                 this.rbMasculino.setSelected(true);
-            }else{
+            } else {
                 this.rbFemenino.setSelected(true);
             }
             this.txtdireccion.setText(this.personaToEdit.getDireccion());
@@ -56,7 +60,7 @@ public class DlgPersona extends javax.swing.JDialog {
             this.cbDepartamento.setSelectedItem(this.personaToEdit.getIdDepartamento());
         }
     }
-    
+
     public DlgPersona(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -69,7 +73,7 @@ public class DlgPersona extends javax.swing.JDialog {
         txtdui.setFont(new java.awt.Font("Tahoma", 0, 14));
         txtdui.setBorder(null);
         jPanel1.add(txtdui, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 190, 90, 24));
-        
+
         txtnit = ProjectUtils.getCampoNit();
         txtnit.setName("nit");
         txtnit.setBorder(null);
@@ -84,40 +88,57 @@ public class DlgPersona extends javax.swing.JDialog {
         this.txtid.setVisible(false);
         this.cbestado.setSelected(true);
     }
-    
+
     private void crear() {
         this.excepciones.add("idPersona");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
-        if (this.personaController.crear() != null) {
-            Integer respuesta = 1;
-            if (this.redirect) {
-                respuesta = JOptionPane.showConfirmDialog(this,
-                        "Registro guardado correctamente. ¿Quiere ver listado de personas?",
-                        "Confirmación",
-                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "Registro guardado correctamente.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-            }
-            if (respuesta == 0) {
-                DlgConsultaPersona obj = new DlgConsultaPersona((Frame) this.getParent(), true);
-                obj.setVisible(true);
-                this.setVisible(false);
-            } else if (respuesta == 1) {
-                ProjectUtils.limpiarComponentes(this.jPanel1);
-            }
+
+        if (this.personaController.crear() == null) {
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!", DlgWindow.ERROR);
+            return;
         }
-        
+
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro guardado correctamente.");
+        ProjectUtils.limpiarComponentes(this.jPanel1);
+        if (this.redirect) {
+            this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        }
+
+//        if (this.personaController.crear() != null) {
+//            Integer respuesta = 1;
+//            if (this.redirect) {
+//                respuesta = JOptionPane.showConfirmDialog(this,
+//                        "Registro guardado correctamente. ¿Quiere ver listado de personas?",
+//                        "Confirmación",
+//                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Registro guardado correctamente.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+//            }
+//            if (respuesta == 0) {
+//                DlgConsultaPersona obj = new DlgConsultaPersona((Frame) this.getParent(), true);
+//                obj.setVisible(true);
+//                this.setVisible(false);
+//            } else if (respuesta == 1) {
+//                ProjectUtils.limpiarComponentes(this.jPanel1);
+//            }
+//        }
     }
-    
+
     private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
-        if (this.personaController.actualizar() != null) {
+
+        if (this.personaController.actualizar() == null) {
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!", DlgWindow.ERROR);
+            return;
+        }
+
+//        if (this.personaController.actualizar() != null) {
 //            Integer respuesta = JOptionPane.showConfirmDialog(this,
 //                    "Registro actualizado correctamente. ¿Quiere ver listado de personas?",
 //                    "Confirmación",
@@ -129,11 +150,12 @@ public class DlgPersona extends javax.swing.JDialog {
 //            } else if (respuesta == 1) {
 //                ProjectUtils.limpiarComponentes(this.jPanel1);
 //            }
-
-            JOptionPane.showMessageDialog(this, "Registro actualizado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-            ProjectUtils.limpiarComponentes(this.jPanel1);
+//        }
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro modificado correctamente.");
+        ProjectUtils.limpiarComponentes(this.jPanel1);
+        if (this.redirect) {
+            this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
         }
-        
     }
 
     /**
@@ -197,6 +219,16 @@ public class DlgPersona extends javax.swing.JDialog {
         btnSalir.setContentAreaFilled(false);
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalir.setOpaque(true);
+        btnSalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnSalirMouseMoved(evt);
+            }
+        });
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+        });
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -210,7 +242,7 @@ public class DlgPersona extends javax.swing.JDialog {
         jLabel1.setText("Registro de Personas");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 430, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombres");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 70, -1, -1));
@@ -220,7 +252,7 @@ public class DlgPersona extends javax.swing.JDialog {
         txtnombres.setBorder(null);
         jPanel1.add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 90, 270, 24));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Apellidos");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 120, -1, -1));
@@ -230,17 +262,17 @@ public class DlgPersona extends javax.swing.JDialog {
         txtapellidos.setBorder(null);
         jPanel1.add(txtapellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 140, 270, 24));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("DUI");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 170, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("NIT");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 220, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Estado");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 550, -1, -1));
@@ -252,7 +284,7 @@ public class DlgPersona extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 450, 270, 90));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Fecha de nacimiento");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 280, -1, -1));
@@ -275,6 +307,16 @@ public class DlgPersona extends javax.swing.JDialog {
         btnguardar.setContentAreaFilled(false);
         btnguardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnguardar.setOpaque(true);
+        btnguardar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnguardarMouseMoved(evt);
+            }
+        });
+        btnguardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnguardarMouseExited(evt);
+            }
+        });
         btnguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnguardarActionPerformed(evt);
@@ -292,6 +334,16 @@ public class DlgPersona extends javax.swing.JDialog {
         btncancelar.setContentAreaFilled(false);
         btncancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btncancelar.setOpaque(true);
+        btncancelar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btncancelarMouseMoved(evt);
+            }
+        });
+        btncancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btncancelarMouseExited(evt);
+            }
+        });
         btncancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncancelarActionPerformed(evt);
@@ -305,7 +357,7 @@ public class DlgPersona extends javax.swing.JDialog {
         cbestado.setText("Activo");
         jPanel1.add(cbestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 570, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Originario");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 380, -1, -1));
@@ -327,16 +379,16 @@ public class DlgPersona extends javax.swing.JDialog {
         rbFemenino.setActionCommand("F");
         jPanel1.add(rbFemenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Direccion");
+        jLabel9.setText("Dirección");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 430, -1, -1));
 
         cbDepartamento.setBackground(new java.awt.Color(255, 255, 255));
-        cbDepartamento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbDepartamento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(cbDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 400, 270, -1));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Genero");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 330, -1, -1));
@@ -362,6 +414,7 @@ public class DlgPersona extends javax.swing.JDialog {
         this.personaController.getSelected().setIdDepartamento((Departamento) this.cbDepartamento.getSelectedItem());
         this.personaController.getSelected().setDireccion(this.txtdireccion.getText());
         this.personaController.getSelected().setEstado(this.cbestado.isSelected());
+        this.personaController.getSelected().setIdUsuario(this.usuarioLogeado);
         if (this.txtid.getText().equals("")) {
             this.crear();
         } else {
@@ -372,6 +425,30 @@ public class DlgPersona extends javax.swing.JDialog {
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
         ProjectUtils.limpiarComponentes(this.jPanel1);
     }//GEN-LAST:event_btncancelarActionPerformed
+
+    private void btnSalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseMoved
+        this.btnSalir.setBackground(new java.awt.Color(227, 96, 101));
+    }//GEN-LAST:event_btnSalirMouseMoved
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+        this.btnSalir.setBackground(new java.awt.Color(222, 62, 68));
+    }//GEN-LAST:event_btnSalirMouseExited
+
+    private void btnguardarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnguardarMouseMoved
+        this.btnguardar.setBackground(new java.awt.Color(45, 151, 254));
+    }//GEN-LAST:event_btnguardarMouseMoved
+
+    private void btnguardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnguardarMouseExited
+        this.btnguardar.setBackground(new java.awt.Color(0, 129, 255));
+    }//GEN-LAST:event_btnguardarMouseExited
+
+    private void btncancelarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncancelarMouseMoved
+        this.btncancelar.setBackground(new java.awt.Color(254, 203, 46));
+    }//GEN-LAST:event_btncancelarMouseMoved
+
+    private void btncancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncancelarMouseExited
+        this.btncancelar.setBackground(new java.awt.Color(254, 192, 1));
+    }//GEN-LAST:event_btncancelarMouseExited
 
     /**
      * @param args the command line arguments

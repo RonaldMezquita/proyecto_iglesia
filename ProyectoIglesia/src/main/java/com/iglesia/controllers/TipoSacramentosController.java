@@ -26,8 +26,7 @@ public class TipoSacramentosController implements Serializable {
 
     public TipoSacramentosController() {
         this.selected = new TipoSacramentos();
-        this.tipoSacramentosService = new TipoSacramentosService();
-        
+        this.tipoSacramentosService = new TipoSacramentosService();        
     }
     
 

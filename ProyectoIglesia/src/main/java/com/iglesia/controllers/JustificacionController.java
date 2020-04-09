@@ -6,7 +6,6 @@
 package com.iglesia.controllers;
 
 import com.iglesia.entities.Justificacion;
-import com.iglesia.entities.Usuario;
 import com.iglesia.services.JustificacionService;
 import com.iglesia.utils.FechasUtils;
 import com.iglesia.utils.ProjectUtils;
@@ -31,7 +30,6 @@ public class JustificacionController implements Serializable {
         this.justificacionService = new JustificacionService();
         this.selected = new Justificacion();
         this.selected.setEstado(true);
-        this.selected.setIdUsuario(new Usuario(1));
     }
     
     public void consultarTodos() {

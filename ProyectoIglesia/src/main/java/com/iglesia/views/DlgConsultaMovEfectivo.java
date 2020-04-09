@@ -8,13 +8,12 @@ package com.iglesia.views;
 import FiveCodMover.FiveCodMoverJDialog;
 import com.iglesia.controllers.MovimientoController;
 import com.iglesia.entities.Movimiento;
+import com.iglesia.entities.Usuario;
 import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.utils.FechasUtils;
-import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -24,6 +23,11 @@ import javax.swing.JOptionPane;
  */
 public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
 
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
     /**
      * Creates new form DlgConsultaMovEfectivo
      */
@@ -38,7 +42,6 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.excepciones.add("buscar");
-        this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
         this.busquedaPorDefecto();
 
         this.movimientoController.getComboTipoMov(this.jcbTipoMovimiento);
@@ -104,6 +107,7 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -219,7 +223,8 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
         jlblFIni.setText("F. Fin");
         jPanel1.add(jlblFIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, -1));
 
-        jcbTipoMovimiento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jcbTipoMovimiento.setBackground(new java.awt.Color(255, 255, 255));
+        jcbTipoMovimiento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jcbTipoMovimiento.setForeground(new java.awt.Color(255, 255, 255));
         jcbTipoMovimiento.setBorder(null);
         jPanel1.add(jcbTipoMovimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 135, 170, 30));
@@ -256,7 +261,8 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
         });
         jPanel1.add(jbtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 90, 40));
 
-        jcbTipoBusqueda.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jcbTipoBusqueda.setBackground(new java.awt.Color(255, 255, 255));
+        jcbTipoBusqueda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jcbTipoBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por rango de fechas", "Por tipo de movimiento", "Mixto" }));
         jcbTipoBusqueda.setBorder(null);
         jcbTipoBusqueda.addItemListener(new java.awt.event.ItemListener() {
@@ -279,9 +285,9 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
     private void tbMovimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMovimientoMouseClicked
         int column = this.tbMovimiento.getColumnModel().getColumnIndexAtX(evt.getX());
         int row = this.tbMovimiento.getSelectedRow();
-        
-        if (column>=0 && column < this.tbMovimiento.getColumnCount()
-                && row>=0 && row < this.tbMovimiento.getRowCount()) {
+
+        if (column >= 0 && column < this.tbMovimiento.getColumnCount()
+                && row >= 0 && row < this.tbMovimiento.getRowCount()) {
             Object btn = this.tbMovimiento.getValueAt(row, column);
             if (column == 6) {
                 if (btn instanceof JButton) {
@@ -290,6 +296,7 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
                     this.selectedMov = this.movimientoController.consultarPorId(id);
                     DlgMovEfectivo obj = new DlgMovEfectivo(null, true);
                     obj.setSelectedMov(this.selectedMov);
+                    obj.setUsuarioLogeado(this.usuarioLogeado);
                     obj.setRedirect(true);
                     obj.setVisible(true);
                     this.busquedaPorDefecto();
@@ -344,7 +351,7 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
                 this.jdFechaFin.setVisible(true);
                 this.jlblTipoMov.setVisible(false);
                 this.jcbTipoMovimiento.setVisible(false);
-                break;                
+                break;
             case 1:
                 this.jlblFIni.setVisible(false);
                 this.jlblFFin.setVisible(false);

@@ -10,7 +10,6 @@ import com.iglesia.entities.Evento;
 import com.iglesia.entities.Relacion;
 import com.iglesia.entities.ResponsableEvento;
 import com.iglesia.entities.TipoSacramentos;
-import com.iglesia.entities.Usuario;
 import com.iglesia.enums.TipoRelacionEnum;
 import com.iglesia.enums.TipoSacramentoEnum;
 import com.iglesia.interfaces.IEvento;
@@ -45,7 +44,7 @@ public class BodaController implements IEvento {
                 evento.setIdLugar(data.getLugar());
                 evento.setIdSacerdote(data.getSacerdote());
                 evento.setIdTipoSacramento(data.getTipoSacramento());
-                evento.setIdUsuario(new Usuario(1));
+                evento.setIdUsuario(data.getUsuario());
                 evento.setNumero(data.getNumero());
                 evento.setTomo(data.getTomo());
 
@@ -57,7 +56,7 @@ public class BodaController implements IEvento {
                 resEve.setIdPadre(data.getPadreNovio());
                 resEve.setIdPersona(data.getNovio());
                 resEve.setIdRelacion(new Relacion(TipoRelacionEnum.NOVIO.getValue()));
-                resEve.setIdUsuario(new Usuario(1));
+                resEve.setIdUsuario(data.getUsuario());
                 resLst.add(resEve);
 
                 // Novia
@@ -68,7 +67,7 @@ public class BodaController implements IEvento {
                 resEve.setIdPadre(data.getPadreNovia());
                 resEve.setIdPersona(data.getNovia());
                 resEve.setIdRelacion(new Relacion(TipoRelacionEnum.NOVIA.getValue()));
-                resEve.setIdUsuario(new Usuario(1));
+                resEve.setIdUsuario(data.getUsuario());
                 resLst.add(resEve);
 
                 // Testigo 1
@@ -77,7 +76,7 @@ public class BodaController implements IEvento {
                 resEve.setFechaCreacion(evento.getFechaCreacion());
                 resEve.setIdPersona(data.getTestigo1());
                 resEve.setIdRelacion(new Relacion(TipoRelacionEnum.TESTIGO.getValue()));
-                resEve.setIdUsuario(new Usuario(1));
+                resEve.setIdUsuario(data.getUsuario());
                 resLst.add(resEve);
 
                 // Testigo 2
@@ -86,7 +85,7 @@ public class BodaController implements IEvento {
                 resEve.setFechaCreacion(evento.getFechaCreacion());
                 resEve.setIdPersona(data.getTestigo2());
                 resEve.setIdRelacion(new Relacion(TipoRelacionEnum.TESTIGO.getValue()));
-                resEve.setIdUsuario(new Usuario(1));
+                resEve.setIdUsuario(data.getUsuario());
                 resLst.add(resEve);
 
                 return this.service.registrarEvento(evento, resLst);

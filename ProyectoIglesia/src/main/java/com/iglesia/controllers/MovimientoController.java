@@ -6,7 +6,6 @@
 package com.iglesia.controllers;
 
 import com.iglesia.entities.Movimiento;
-import com.iglesia.entities.Usuario;
 import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.enums.TipoMovimientoEnum;
 import com.iglesia.services.MovimientoService;
@@ -113,7 +112,6 @@ public class MovimientoController {
             return response;
         }
         this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
-        this.selected.setIdUsuario(new Usuario(1));
         try {
             if (this.movimientoService.crear(this.selected) != null) {
                 response = true;

@@ -6,7 +6,6 @@
 package com.iglesia.controllers;
 
 import com.iglesia.entities.Comunidad;
-import com.iglesia.entities.Usuario;
 import com.iglesia.services.ComunidadService;
 import com.iglesia.utils.FechasUtils;
 import com.iglesia.utils.ProjectUtils;
@@ -29,7 +28,6 @@ public class ComunidadController implements Serializable {
         this.comunidadService = new ComunidadService();
         this.selected = new Comunidad();
         this.selected.setEstado(true);
-        this.selected.setIdUsuario(new Usuario(1));
     }
     public void consultarTodos() {
         this.items = this.comunidadService.consultarTodos("select t from Comunidad t");

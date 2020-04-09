@@ -113,7 +113,8 @@ public class DlgBuscarPersona extends javax.swing.JDialog {
         jLabel3.setText("Seleccione tipo de busqueda");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
-        jcbTipoBusqueda.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jcbTipoBusqueda.setBackground(new java.awt.Color(255, 255, 255));
+        jcbTipoBusqueda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jcbTipoBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por Nombre", "Por DUI" }));
         jcbTipoBusqueda.setBorder(null);
         jcbTipoBusqueda.addItemListener(new java.awt.event.ItemListener() {
@@ -170,7 +171,7 @@ public class DlgBuscarPersona extends javax.swing.JDialog {
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 485, 270));
 
         txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
-        txtBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtBuscar.setBorder(null);
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {

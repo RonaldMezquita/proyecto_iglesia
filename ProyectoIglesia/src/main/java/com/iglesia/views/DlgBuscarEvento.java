@@ -6,13 +6,12 @@
 package com.iglesia.views;
 
 import com.iglesia.controllers.EventoController;
-import com.iglesia.controllers.ResponsableEventoController;
 import com.iglesia.entities.Evento;
+import com.iglesia.entities.Usuario;
 import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.utils.FechasUtils;
 import java.awt.event.WindowEvent;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,8 +20,12 @@ import javax.swing.JOptionPane;
 public class DlgBuscarEvento extends javax.swing.JDialog {
 
     private final EventoController eventoController;
-    private final ResponsableEventoController responsableEventoController;
     private Evento evento;
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
 
     public Evento getEvento() {
         return evento;
@@ -36,7 +39,6 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
         this.eventoController = new EventoController();
-        this.responsableEventoController = new ResponsableEventoController();
         this.txtfechaFin.setDate(FechasUtils.getCurrentDate());
         Object[] fechas = {FechasUtils.operateDate(FechasUtils.getCurrentDate(), -30), FechasUtils.getCurrentDate()};
         this.mostrarTabla(fechas, TipoBusquedaEnum.RANGO_FECHA);
@@ -237,7 +239,7 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
                     if (this.evento != null) {
                         this.eventoController.generarRptConstancia(this.evento);
                     }
-                } else if (column == 8){
+                } else if (column == 8) {
                     this.evento = this.eventoController.consultarPorId(id);
                     this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
                 }
@@ -251,7 +253,7 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
 
     private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
         if (this.txtfechaInicio.getDate() == null || this.txtfechaFin.getDate() == null) {
-            JOptionPane.showMessageDialog(this, "Es necesario seleccionar un rango de fechas.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Aviso", "Es necesario seleccionar un rango de fechas.", DlgWindow.WARN);
             return;
         }
         Object[] obj = {this.txtfechaInicio.getDate(), this.txtfechaFin.getDate()};
@@ -271,7 +273,7 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
     }//GEN-LAST:event_jbCerrarMouseMoved
 
     private void jbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseExited
-this.jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
+        this.jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
     }//GEN-LAST:event_jbCerrarMouseExited
 
     /**

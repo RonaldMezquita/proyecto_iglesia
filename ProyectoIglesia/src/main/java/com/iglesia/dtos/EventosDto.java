@@ -9,6 +9,7 @@ import com.iglesia.entities.Lugar;
 import com.iglesia.entities.Persona;
 import com.iglesia.entities.Sacerdote;
 import com.iglesia.entities.TipoSacramentos;
+import com.iglesia.entities.Usuario;
 import java.util.Date;
 
 /**
@@ -39,11 +40,12 @@ public class EventosDto {
     private Persona madreSacramentado;
     private Persona padrino;
     private Persona madrina;
+    private Usuario usuario;
 
     public EventosDto() {
     }
 
-    public EventosDto(String tomo, String folio, String numero, TipoSacramentos tipoSacramento, Lugar lugar, Sacerdote sacerdote, Date fecha, Persona novio, Persona padreNovio, Persona madreNovio, Persona novia, Persona padreNovia, Persona madreNovia, Persona testigo1, Persona testigo2, Persona sacramentado, Persona padreSacramentado, Persona madreSacramentado, Persona padrino, Persona madrina) {
+    public EventosDto(String tomo, String folio, String numero, TipoSacramentos tipoSacramento, Lugar lugar, Sacerdote sacerdote, Date fecha, Persona novio, Persona padreNovio, Persona madreNovio, Persona novia, Persona padreNovia, Persona madreNovia, Persona testigo1, Persona testigo2, Persona sacramentado, Persona padreSacramentado, Persona madreSacramentado, Persona padrino, Persona madrina, Usuario usuario) {
         this.tomo = tomo;
         this.folio = folio;
         this.numero = numero;
@@ -64,6 +66,7 @@ public class EventosDto {
         this.madreSacramentado = madreSacramentado;
         this.padrino = padrino;
         this.madrina = madrina;
+        this.usuario = usuario;
     }
 
     public String getTomo() {
@@ -224,6 +227,14 @@ public class EventosDto {
 
     public void setMadrina(Persona madrina) {
         this.madrina = madrina;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 }

@@ -7,8 +7,8 @@ package com.iglesia.views;
 
 import com.iglesia.controllers.ConfirmacionController;
 import com.iglesia.controllers.EventoController;
+import com.iglesia.entities.Usuario;
 import com.iglesia.utils.ProjectUtils;
-import java.awt.Shape;
 import java.awt.event.WindowEvent;
 
 /**
@@ -18,7 +18,11 @@ import java.awt.event.WindowEvent;
 public class DlgConfirmacion extends javax.swing.JDialog {
 
     private final EventoController eventoCtrl;
-    Shape dialogShape;
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
 
     /**
      * Creates new form DlgConfirmacion
@@ -164,38 +168,38 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         jsSacerdote.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jPanel1.add(jsSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 200, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Tomo");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Folio");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Fecha del evento");
         jLabel3.setToolTipText("");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Número");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Lugar");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Sacramentado");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Padre");
         jLabel8.setToolTipText("");
@@ -226,24 +230,24 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         });
         jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(729, 1, 30, 30));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Registro de Confirmación");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 760, -1));
 
         txtTomo.setBackground(new java.awt.Color(255, 255, 255));
-        txtTomo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTomo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtTomo.setBorder(null);
         jPanel1.add(txtTomo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 100, 24));
 
         txtFolio.setBackground(new java.awt.Color(255, 255, 255));
-        txtFolio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtFolio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtFolio.setBorder(null);
         jPanel1.add(txtFolio, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 100, 24));
 
         txtNumero.setBackground(new java.awt.Color(255, 255, 255));
-        txtNumero.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNumero.setBorder(null);
         jPanel1.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 100, 24));
 
@@ -253,7 +257,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
 
         txtLugar.setEditable(false);
         txtLugar.setBackground(new java.awt.Color(255, 255, 255));
-        txtLugar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtLugar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtLugar.setBorder(null);
         jPanel1.add(txtLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 200, 24));
 
@@ -288,7 +292,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
 
         txtSacramentado.setEditable(false);
         txtSacramentado.setBackground(new java.awt.Color(255, 255, 255));
-        txtSacramentado.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtSacramentado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtSacramentado.setBorder(null);
         jPanel1.add(txtSacramentado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 200, 24));
 
@@ -323,7 +327,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
 
         txtPadre.setEditable(false);
         txtPadre.setBackground(new java.awt.Color(255, 255, 255));
-        txtPadre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPadre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtPadre.setBorder(null);
         jPanel1.add(txtPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 200, 24));
 
@@ -356,7 +360,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         });
         jPanel1.add(btnBuscarPadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 90, 30));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Madre");
         jLabel14.setToolTipText("");
@@ -364,7 +368,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
 
         txtMadre.setEditable(false);
         txtMadre.setBackground(new java.awt.Color(255, 255, 255));
-        txtMadre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtMadre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMadre.setBorder(null);
         jPanel1.add(txtMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 200, 24));
 
@@ -397,7 +401,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         });
         jPanel1.add(btnBuscarMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, 90, 30));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Padrino");
         jLabel12.setToolTipText("");
@@ -405,7 +409,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
 
         txtPadrino.setEditable(false);
         txtPadrino.setBackground(new java.awt.Color(255, 255, 255));
-        txtPadrino.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPadrino.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtPadrino.setBorder(null);
         jPanel1.add(txtPadrino, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 200, 24));
 
@@ -438,7 +442,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         });
         jPanel1.add(btnBuscarPadrino, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 90, 30));
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Sacerdote");
         jLabel13.setToolTipText("");
@@ -446,7 +450,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
 
         txtSacerdote.setEditable(false);
         txtSacerdote.setBackground(new java.awt.Color(255, 255, 255));
-        txtSacerdote.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtSacerdote.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtSacerdote.setBorder(null);
         jPanel1.add(txtSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 200, 24));
 
@@ -528,7 +532,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         });
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 350, 130, 40));
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Madrina");
         jLabel15.setToolTipText("");
@@ -536,7 +540,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
 
         txtMadrina.setEditable(false);
         txtMadrina.setBackground(new java.awt.Color(255, 255, 255));
-        txtMadrina.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtMadrina.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMadrina.setBorder(null);
         jPanel1.add(txtMadrina, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 200, 24));
 
@@ -738,6 +742,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
             this.eventoCtrl.getDtoSelected().setFolio(this.txtFolio.getText());
             this.eventoCtrl.getDtoSelected().setNumero(this.txtNumero.getText());
             this.eventoCtrl.getDtoSelected().setFecha(this.txtFecha.getDate());
+            this.eventoCtrl.getDtoSelected().setUsuario(this.usuarioLogeado);
             this.crear();
         }
     }//GEN-LAST:event_btnGuardarActionPerformed

@@ -107,6 +107,7 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
         jsBusquedaDui.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jPanel1.add(jsBusquedaDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 90, -1));
 
+        tbSacerdote.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tbSacerdote.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -130,6 +131,7 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tbSacerdote.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tbSacerdote.setRowHeight(25);
         tbSacerdote.getTableHeader().setReorderingAllowed(false);
         tbSacerdote.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -153,7 +155,7 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 485, 250));
 
         txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
-        txtBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtBuscar.setBorder(null);
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -166,7 +168,7 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/detalle.png"))); // NOI18N
         jLabel1.setText("Haga click en el boton seleccionar para elegir un sacerdote");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 370, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 400, -1));
 
         jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
         jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -234,7 +236,8 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
         jLabel3.setText("Seleccione tipo de busqueda");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
-        jcbTipoBusqueda.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jcbTipoBusqueda.setBackground(new java.awt.Color(255, 255, 255));
+        jcbTipoBusqueda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jcbTipoBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por Nombre", "Por DUI" }));
         jcbTipoBusqueda.setBorder(null);
         jcbTipoBusqueda.addItemListener(new java.awt.event.ItemListener() {

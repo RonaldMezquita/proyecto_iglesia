@@ -6,14 +6,12 @@
 package com.iglesia.views;
 
 import com.iglesia.controllers.SacerdoteController;
+import com.iglesia.entities.Usuario;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
-import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.BorderFactory;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +19,11 @@ import javax.swing.JOptionPane;
  */
 public class DlgSacerdote extends javax.swing.JDialog {
 
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
     /**
      * Creates new form DlgSacerdote
      */
@@ -28,7 +31,7 @@ public class DlgSacerdote extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField txtnit;
     private SacerdoteController sacerdoteController;
     private List<String> excepciones = new ArrayList<>();
-    
+
     public DlgSacerdote(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -41,7 +44,7 @@ public class DlgSacerdote extends javax.swing.JDialog {
 
         txtnit = ProjectUtils.getCampoNit();
         txtnit.setFont(new java.awt.Font("Tahoma", 0, 14));// NOI18N
-        txtnit.setBorder(null); 
+        txtnit.setBorder(null);
         jPanel1.add(txtnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 142, -1));
         // termina generacion de campos formateados
         this.txtid.setVisible(false);
@@ -54,35 +57,36 @@ public class DlgSacerdote extends javax.swing.JDialog {
         this.cbestado.setSelected(true);
         this.cbParroco.setSelected(true);
     }
-    
+
     private void mostrarTabla(String filtro) {
         this.sacerdoteController.llenarTabla(tbsacerdote, filtro);
     }
+
     private void crear() {
         this.excepciones.add("id");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
         if (this.sacerdoteController.crear() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!", DlgWindow.ERROR);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro guardado correctamente");
         ProjectUtils.limpiarComponentes(this.jPanel1);
         this.mostrarTabla("");
     }
 
     private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
         if (this.sacerdoteController.actualizar() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!", DlgWindow.ERROR);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro modificado correctamente");
         this.mostrarTabla("");
         ProjectUtils.limpiarComponentes(this.jPanel1);
     }
@@ -97,6 +101,11 @@ public class DlgSacerdote extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
@@ -116,11 +125,6 @@ public class DlgSacerdote extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         cbParroco = new javax.swing.JCheckBox();
         jLabel8 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -130,19 +134,39 @@ public class DlgSacerdote extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 105, 290, -1));
+
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 121, 310, -1));
+
+        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, 310, -1));
+
+        jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 225, 90, -1));
+
+        jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 275, 142, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Mantenimiento de Sacerdotes");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 910, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, -1, -1));
 
         txtnombre.setBackground(new java.awt.Color(255, 255, 255));
-        txtnombre.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtnombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtnombre.setForeground(new java.awt.Color(0, 0, 0));
         txtnombre.setBorder(null);
         txtnombre.setName("Nombre"); // NOI18N
@@ -153,19 +177,19 @@ public class DlgSacerdote extends javax.swing.JDialog {
         });
         jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 310, 24));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Apellido");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, -1, -1));
 
         txtapellido.setBackground(new java.awt.Color(255, 255, 255));
-        txtapellido.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtapellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtapellido.setForeground(new java.awt.Color(0, 0, 0));
         txtapellido.setBorder(null);
         txtapellido.setName("Apellido"); // NOI18N
-        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, 310, -1));
+        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, 310, 24));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Parroco");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, -1, -1));
@@ -184,6 +208,7 @@ public class DlgSacerdote extends javax.swing.JDialog {
         btnGuardar.setBorder(null);
         btnGuardar.setBorderPainted(false);
         btnGuardar.setContentAreaFilled(false);
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardar.setOpaque(true);
         btnGuardar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -210,6 +235,7 @@ public class DlgSacerdote extends javax.swing.JDialog {
         btnCancelar.setBorder(null);
         btnCancelar.setBorderPainted(false);
         btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelar.setOpaque(true);
         btnCancelar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -229,6 +255,7 @@ public class DlgSacerdote extends javax.swing.JDialog {
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(745, 400, 130, 40));
 
         txtbuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtbuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtbuscar.setForeground(new java.awt.Color(0, 0, 0));
         txtbuscar.setBorder(null);
         txtbuscar.setName("buscar"); // NOI18N
@@ -265,6 +292,7 @@ public class DlgSacerdote extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tbsacerdote.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tbsacerdote.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbsacerdoteMouseClicked(evt);
@@ -297,6 +325,7 @@ public class DlgSacerdote extends javax.swing.JDialog {
         jbCerrar.setBorder(null);
         jbCerrar.setBorderPainted(false);
         jbCerrar.setContentAreaFilled(false);
+        jbCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbCerrar.setOpaque(true);
         jbCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -319,17 +348,17 @@ public class DlgSacerdote extends javax.swing.JDialog {
         txtid.setName("id"); // NOI18N
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Dui");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Nit");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Estado");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, -1, -1));
@@ -342,26 +371,6 @@ public class DlgSacerdote extends javax.swing.JDialog {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-b.png"))); // NOI18N
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
-
-        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 105, 290, -1));
-
-        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 121, 310, -1));
-
-        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, 310, -1));
-
-        jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 225, 90, -1));
-
-        jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 275, 142, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 450));
 
@@ -380,6 +389,7 @@ public class DlgSacerdote extends javax.swing.JDialog {
         this.sacerdoteController.getSelected().setNit(this.txtnit.getText());
         this.sacerdoteController.getSelected().setParroco(this.cbParroco.isSelected());
         this.sacerdoteController.getSelected().setEstado(this.cbestado.isSelected());
+        this.sacerdoteController.getSelected().setIdUsuario(this.usuarioLogeado);
         if (this.sacerdoteController.getSelected().getId() == null) {
             this.crear();
         } else {

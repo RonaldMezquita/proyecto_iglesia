@@ -7,10 +7,9 @@ package com.iglesia.views;
 
 import com.iglesia.controllers.BodaController;
 import com.iglesia.controllers.EventoController;
+import com.iglesia.entities.Usuario;
 import com.iglesia.utils.ProjectUtils;
-import java.awt.Shape;
 import java.awt.event.WindowEvent;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +18,11 @@ import javax.swing.JOptionPane;
 public class DlgBoda extends javax.swing.JDialog {
 
     private final EventoController eventoCtrl;
-    Shape dialogShape;
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
 
     /**
      * Creates new form DlgBoda
@@ -188,38 +191,38 @@ public class DlgBoda extends javax.swing.JDialog {
         jsTestigo2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jPanel1.add(jsTestigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 421, 200, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Tomo");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Folio");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Fecha del evento");
         jLabel3.setToolTipText("");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Número");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Lugar");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Novio");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Padre del Novio");
         jLabel8.setToolTipText("");
@@ -255,15 +258,15 @@ public class DlgBoda extends javax.swing.JDialog {
         jLabel1.setText("Registro de Boda");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
 
-        txtTomo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTomo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtTomo.setBorder(null);
         jPanel1.add(txtTomo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 100, 24));
 
-        txtFolio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtFolio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtFolio.setBorder(null);
         jPanel1.add(txtFolio, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 100, 24));
 
-        txtNumero.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNumero.setBorder(null);
         jPanel1.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 100, 24));
 
@@ -271,7 +274,7 @@ public class DlgBoda extends javax.swing.JDialog {
         jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 130, -1));
 
         txtLugar.setEditable(false);
-        txtLugar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtLugar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtLugar.setBorder(null);
         jPanel1.add(txtLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 200, 24));
 
@@ -304,7 +307,7 @@ public class DlgBoda extends javax.swing.JDialog {
         jPanel1.add(btnBuscarLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 197, 85, 30));
 
         txtNovio.setEditable(false);
-        txtNovio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtNovio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNovio.setBorder(null);
         jPanel1.add(txtNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 200, 24));
 
@@ -337,7 +340,7 @@ public class DlgBoda extends javax.swing.JDialog {
         jPanel1.add(btnBuscarNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 197, 85, 30));
 
         txtPadreNovio.setEditable(false);
-        txtPadreNovio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPadreNovio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtPadreNovio.setBorder(null);
         jPanel1.add(txtPadreNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 200, 24));
 
@@ -369,14 +372,14 @@ public class DlgBoda extends javax.swing.JDialog {
         });
         jPanel1.add(btnBuscarPadreNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 247, 85, 30));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Madre del Novio");
         jLabel14.setToolTipText("");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, -1, -1));
 
         txtMadreNovio.setEditable(false);
-        txtMadreNovio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtMadreNovio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMadreNovio.setBorder(null);
         jPanel1.add(txtMadreNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 200, 24));
 
@@ -408,14 +411,14 @@ public class DlgBoda extends javax.swing.JDialog {
         });
         jPanel1.add(btnBuscarMadreNovio, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 247, 85, 30));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Novia");
         jLabel9.setToolTipText("");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
 
         txtNovia.setEditable(false);
-        txtNovia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtNovia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNovia.setForeground(new java.awt.Color(0, 0, 0));
         txtNovia.setBorder(null);
         jPanel1.add(txtNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 200, 24));
@@ -448,13 +451,13 @@ public class DlgBoda extends javax.swing.JDialog {
         });
         jPanel1.add(btnBuscarNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 297, 85, 30));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Padre Novia");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, -1, -1));
 
         txtPadreNovia.setEditable(false);
-        txtPadreNovia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPadreNovia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtPadreNovia.setBorder(null);
         jPanel1.add(txtPadreNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 200, 24));
 
@@ -486,14 +489,14 @@ public class DlgBoda extends javax.swing.JDialog {
         });
         jPanel1.add(btnBuscarPadreNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 297, 85, 30));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Madre Novia");
         jLabel11.setToolTipText("");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
         txtMadreNovia.setEditable(false);
-        txtMadreNovia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtMadreNovia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMadreNovia.setBorder(null);
         jPanel1.add(txtMadreNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 200, 24));
 
@@ -525,14 +528,14 @@ public class DlgBoda extends javax.swing.JDialog {
         });
         jPanel1.add(btnBuscarMadreNovia, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 347, 85, 30));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Testigo");
         jLabel12.setToolTipText("");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
 
         txtTestigo1.setEditable(false);
-        txtTestigo1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTestigo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtTestigo1.setBorder(null);
         jPanel1.add(txtTestigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 200, 24));
 
@@ -564,14 +567,14 @@ public class DlgBoda extends javax.swing.JDialog {
         });
         jPanel1.add(btnBuscarTestigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 397, 85, 30));
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Sacerdote");
         jLabel13.setToolTipText("");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 330, -1, -1));
 
         txtSacerdote.setEditable(false);
-        txtSacerdote.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtSacerdote.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtSacerdote.setBorder(null);
         jPanel1.add(txtSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 200, 24));
 
@@ -652,14 +655,14 @@ public class DlgBoda extends javax.swing.JDialog {
         });
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 460, 130, 40));
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Testigo");
         jLabel15.setToolTipText("");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, -1, -1));
 
         txtTestigo2.setEditable(false);
-        txtTestigo2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTestigo2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtTestigo2.setBorder(null);
         jPanel1.add(txtTestigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, 200, 24));
 
@@ -782,11 +785,12 @@ public class DlgBoda extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBuscarSacerdoteActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (JOptionPane.showConfirmDialog(this, "¿Esta seguro de realizar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION) == 0) {
+        if (DlgWindow.showConfirmDialog(this, "Confirmación", "¿Esta seguro de realizar el registro?") == 0) {
             this.eventoCtrl.getDtoSelected().setTomo(this.txtTomo.getText());
             this.eventoCtrl.getDtoSelected().setFolio(this.txtFolio.getText());
             this.eventoCtrl.getDtoSelected().setNumero(this.txtNumero.getText());
             this.eventoCtrl.getDtoSelected().setFecha(this.txtFecha.getDate());
+            this.eventoCtrl.getDtoSelected().setUsuario(this.usuarioLogeado);
             this.crear();
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
