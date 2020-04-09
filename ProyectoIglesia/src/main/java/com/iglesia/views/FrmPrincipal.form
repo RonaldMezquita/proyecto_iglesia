@@ -27,7 +27,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-96,0,0,3,98"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-30,0,0,3,98"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -49,22 +49,19 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnSector" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="btnConfirmacion" max="32767" attributes="0"/>
+                      <Component id="btnSector" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnConsultaPersonas" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnComunidad" alignment="1" max="32767" attributes="0"/>
                       <Component id="btnPersona1" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnTipoSacramento" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
-                              <Component id="btnLugar" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
-                              <Component id="btnJustificacion" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
-                              <Component id="btnSacerdotes" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
-                              <Component id="btnConsultaMovEfectivo" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
-                              <Component id="btnBautizo" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
-                              <Component id="btnEvento" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
+                              <Component id="btnLugar" min="-2" pref="216" max="-2" attributes="0"/>
+                              <Component id="btnNuevoMovEfectivo" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
+                              <Component id="btnBoda" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -72,10 +69,14 @@
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="btnConfirmacion" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
-                                  <Component id="btnBoda" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
+                                  <Component id="btnBautizo" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
+                                  <Component id="btnEvento" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="btnNuevoMovEfectivo" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
+                              <Component id="btnTipoSacramento" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
+                              <Component id="btnJustificacion" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
+                              <Component id="btnSacerdotes" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
+                              <Component id="btnConsultaMovEfectivo" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
+                              <Component id="btnUsuarios" alignment="1" min="-2" pref="216" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -86,9 +87,9 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnTipoSacramento" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnLugar" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnJustificacion" min="-2" pref="35" max="-2" attributes="0"/>
@@ -100,10 +101,12 @@
                   <Component id="btnSacerdotes" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnConsultaPersonas" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnPersona1" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnConsultaMovEfectivo" min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnNuevoMovEfectivo" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnBautizo" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -113,7 +116,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnEvento" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnNuevoMovEfectivo" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btnUsuarios" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -163,7 +166,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/META-INF/images/icon/server-rack-36px.png"/>
+              <Image iconType="3" name="/META-INF/images/icon/padre-36px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sacerdotes"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -381,7 +384,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/META-INF/images/icon/users-w-36px.png"/>
+              <Image iconType="3" name="/META-INF/images/icon/folder-person-w-36px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Consulta de personas"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -474,9 +477,9 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/META-INF/images/icon/user-shape-w-36px.png"/>
+              <Image iconType="3" name="/META-INF/images/icon/add-persona-w-36px.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Personas"/>
+            <Property name="text" type="java.lang.String" value="Nueva persona"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -555,6 +558,37 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNuevoMovEfectivoActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JButton" name="btnUsuarios">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="99" red="0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/META-INF/images/icon/users-w-36px.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Usuarios"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor de Mano"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="horizontalTextPosition" type="int" value="10"/>
+            <Property name="opaque" type="boolean" value="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUsuariosActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="panelTop">
@@ -623,7 +657,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="610" y="0" width="30" height="40"/>
+              <AbsoluteConstraints x="820" y="0" width="30" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -639,7 +673,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="350" y="0" width="250" height="40"/>
+              <AbsoluteConstraints x="560" y="0" width="250" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -657,7 +691,23 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="320" y="0" width="30" height="40"/>
+              <AbsoluteConstraints x="530" y="0" width="30" height="40"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="SISTEMA DE CONTROL PARROQUIAL"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="40" y="0" width="350" height="40"/>
             </Constraint>
           </Constraints>
         </Component>

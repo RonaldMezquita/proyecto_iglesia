@@ -131,6 +131,7 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tbSacerdote.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tbSacerdote.setRowHeight(25);
         tbSacerdote.getTableHeader().setReorderingAllowed(false);
         tbSacerdote.addMouseListener(new java.awt.event.MouseAdapter() {

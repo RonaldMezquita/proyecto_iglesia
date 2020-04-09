@@ -7,6 +7,7 @@ package com.iglesia.views;
 
 import com.iglesia.controllers.PersonaController;
 import com.iglesia.entities.Persona;
+import com.iglesia.entities.Usuario;
 import com.iglesia.utils.TextPrompt;
 import java.awt.Color;
 import java.awt.event.WindowEvent;
@@ -21,12 +22,17 @@ import javax.swing.JButton;
  */
 public class DlgConsultaPersona extends javax.swing.JDialog {
 
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
     /**
      * Creates new form DlgPersona
      */
     private PersonaController personaController;
     private List<String> excepciones = new ArrayList<>();
-    
+
     public DlgConsultaPersona(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -42,7 +48,7 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
         new TextPrompt("Digite para buscar en nombres o apellidos", this.txtbuscar);
         this.jPanel1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
     }
-    
+
     private void mostrarTabla(String filtro) {
         this.personaController.llenarTabla(tbpersona, filtro);
     }
@@ -230,7 +236,7 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
         }
 //        int row = evt.getY() / this.tbpersona.getRowHeight();
         int row = tbpersona.getSelectedRow();
-        
+
         if (row < this.tbpersona.getRowCount() && row >= 0
                 && column < this.tbpersona.getColumnCount() && column >= 0) {
             Object value = this.tbpersona.getValueAt(row, column);
@@ -240,6 +246,7 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
                 Persona selected = this.personaController.consultarPorId(id);
                 DlgPersona obj = new DlgPersona(null, true);
                 obj.setPersonaToEdit(selected);
+                obj.setUsuarioLogeado(this.usuarioLogeado);
                 obj.setRedirect(true);
                 obj.setVisible(true);
                 this.mostrarTabla("");
@@ -254,6 +261,7 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
     private void btnNuevaPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaPersonaActionPerformed
         DlgPersona obj = new DlgPersona(null, true);
         obj.setRedirect(false);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         this.mostrarTabla("");
     }//GEN-LAST:event_btnNuevaPersonaActionPerformed

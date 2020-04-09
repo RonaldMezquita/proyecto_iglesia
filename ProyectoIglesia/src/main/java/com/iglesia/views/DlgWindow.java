@@ -71,6 +71,7 @@ public class DlgWindow extends javax.swing.JDialog {
         this.jtxtMensaje.setText(mensaje);
         if (tipoVentana.equals(MESSAGE)) {
             this.jbtnSi.setText("Aceptar");
+//            this.jbtnSi.setVisible(false);
             this.jbtnNo.setVisible(false);
             jpContenido.add(jbtnSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 80, 70, 35));
 
@@ -86,8 +87,13 @@ public class DlgWindow extends javax.swing.JDialog {
 
         if (tipoMensaje.equals(ERROR)) {
             this.jpTitulo.setBackground(new java.awt.Color(222, 62, 68));
-        }else if(tipoMensaje.equals(WARN)){
+            this.jbsalir.setBackground(new java.awt.Color(222, 62, 68));
+            ImageIcon img = new ImageIcon(this.getClass().getResource("/META-INF/images/icon/error-icon.png"));
+            ImageIcon icon = new ImageIcon(img.getImage().getScaledInstance(this.jlblIcon.getWidth(), this.jlblIcon.getHeight(), Image.SCALE_DEFAULT));
+            this.jlblIcon.setIcon(icon);
+        } else if (tipoMensaje.equals(WARN)) {
             this.jpTitulo.setBackground(new java.awt.Color(254, 192, 1));
+            this.jbsalir.setBackground(new java.awt.Color(254, 192, 1));
         }
 
         this.setVisible(true);
@@ -143,7 +149,7 @@ public class DlgWindow extends javax.swing.JDialog {
         jlblTitulo.setText("Confirmación");
         jpTitulo.add(jlblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, 290, 40));
 
-        jbsalir.setBackground(new java.awt.Color(222, 62, 68));
+        jbsalir.setBackground(new java.awt.Color(0, 129, 255));
         jbsalir.setForeground(new java.awt.Color(255, 255, 255));
         jbsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
         jbsalir.setBorder(null);
@@ -152,16 +158,6 @@ public class DlgWindow extends javax.swing.JDialog {
         jbsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbsalir.setOpaque(true);
         jbsalir.setRequestFocusEnabled(false);
-        jbsalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jbsalirMouseMoved(evt);
-            }
-        });
-        jbsalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jbsalirMouseExited(evt);
-            }
-        });
         jbsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbsalirActionPerformed(evt);
@@ -255,14 +251,6 @@ public class DlgWindow extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jbsalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseMoved
-        this.jbsalir.setBackground(new java.awt.Color(227, 96, 101));
-    }//GEN-LAST:event_jbsalirMouseMoved
-
-    private void jbsalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseExited
-        this.jbsalir.setBackground(new java.awt.Color(222, 62, 68));
-    }//GEN-LAST:event_jbsalirMouseExited
 
     private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
         respuesta = NO;

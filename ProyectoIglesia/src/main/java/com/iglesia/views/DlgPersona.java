@@ -9,6 +9,7 @@ import com.iglesia.controllers.DepartamentoController;
 import com.iglesia.controllers.PersonaController;
 import com.iglesia.entities.Departamento;
 import com.iglesia.entities.Persona;
+import com.iglesia.entities.Usuario;
 import com.iglesia.utils.ProjectUtils;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -20,6 +21,11 @@ import java.util.List;
  */
 public class DlgPersona extends javax.swing.JDialog {
 
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
     /**
      * Creates new form DlgPersona
      */
@@ -408,6 +414,7 @@ public class DlgPersona extends javax.swing.JDialog {
         this.personaController.getSelected().setIdDepartamento((Departamento) this.cbDepartamento.getSelectedItem());
         this.personaController.getSelected().setDireccion(this.txtdireccion.getText());
         this.personaController.getSelected().setEstado(this.cbestado.isSelected());
+        this.personaController.getSelected().setIdUsuario(this.usuarioLogeado);
         if (this.txtid.getText().equals("")) {
             this.crear();
         } else {

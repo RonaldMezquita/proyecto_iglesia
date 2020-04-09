@@ -6,6 +6,7 @@
 package com.iglesia.views;
 
 import com.iglesia.controllers.TipoSacramentosController;
+import com.iglesia.entities.Usuario;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
 import java.awt.Color;
@@ -13,7 +14,6 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +21,11 @@ import javax.swing.JOptionPane;
  */
 public class DlgTipoSacrementos extends javax.swing.JDialog {
 
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
     /**
      * Creates new form DlgTipoSacrementos
      */
@@ -49,28 +54,28 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
     private void crear() {
         this.excepciones.add("id");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
         if (this.tipoEventoController.crear() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!", DlgWindow.ERROR);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro guardado correctamente");
         ProjectUtils.limpiarComponentes(this.jPanel1);
         this.mostrarTabla("");
     }
 
     private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
         if (this.tipoEventoController.actualizar() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!", DlgWindow.ERROR);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro modificado correctamente");
         this.mostrarTabla("");
         ProjectUtils.limpiarComponentes(this.jPanel1);
     }
@@ -321,6 +326,7 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
         this.tipoEventoController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.tipoEventoController.getSelected().setNombre(this.txtnombre.getText());
         this.tipoEventoController.getSelected().setEstado(this.cbestado.isSelected());
+        this.tipoEventoController.getSelected().setIdUsuario(this.usuarioLogeado);
         if (this.tipoEventoController.getSelected().getId() == null) {
             this.crear();
         } else {
@@ -365,7 +371,7 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
     }//GEN-LAST:event_jbCerrarMouseMoved
 
     private void jbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseExited
-       this.jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
+        this.jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
     }//GEN-LAST:event_jbCerrarMouseExited
 
     /**

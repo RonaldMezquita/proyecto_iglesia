@@ -30,6 +30,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -212,5 +213,14 @@ public class ProjectUtils {
         Map attributes = font.getAttributes();
         attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
         label.setFont(font.deriveFont(attributes));
+    }
+    
+    /**
+     * Metodo para encriptar password
+     * @param text
+     * @return 
+     */
+    public static String toEncrypt(String text){
+        return DigestUtils.sha1Hex(DigestUtils.md5Hex(text));
     }
 }

@@ -6,6 +6,7 @@
 package com.iglesia.views;
 
 import com.iglesia.controllers.JustificacionController;
+import com.iglesia.entities.Usuario;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
 import java.awt.event.WindowEvent;
@@ -18,6 +19,11 @@ import java.util.List;
  */
 public class DlgJustificacion extends javax.swing.JDialog {
 
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
     /**
      * Creates new form DlgJustificacion
      */
@@ -295,6 +301,7 @@ public class DlgJustificacion extends javax.swing.JDialog {
         this.justificacionController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.justificacionController.getSelected().setNombre(this.txtnombre.getText());
         this.justificacionController.getSelected().setEstado(this.cbestado.isSelected());
+        this.justificacionController.getSelected().setIdUsuario(this.usuarioLogeado);
         if (this.justificacionController.getSelected().getId() == null) {
             this.crear();
         } else {

@@ -7,8 +7,8 @@ package com.iglesia.views;
 
 import com.iglesia.controllers.ConfirmacionController;
 import com.iglesia.controllers.EventoController;
+import com.iglesia.entities.Usuario;
 import com.iglesia.utils.ProjectUtils;
-import java.awt.Shape;
 import java.awt.event.WindowEvent;
 
 /**
@@ -18,7 +18,11 @@ import java.awt.event.WindowEvent;
 public class DlgConfirmacion extends javax.swing.JDialog {
 
     private final EventoController eventoCtrl;
-    Shape dialogShape;
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
 
     /**
      * Creates new form DlgConfirmacion
@@ -738,6 +742,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
             this.eventoCtrl.getDtoSelected().setFolio(this.txtFolio.getText());
             this.eventoCtrl.getDtoSelected().setNumero(this.txtNumero.getText());
             this.eventoCtrl.getDtoSelected().setFecha(this.txtFecha.getDate());
+            this.eventoCtrl.getDtoSelected().setUsuario(this.usuarioLogeado);
             this.crear();
         }
     }//GEN-LAST:event_btnGuardarActionPerformed

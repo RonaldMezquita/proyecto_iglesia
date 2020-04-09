@@ -15,12 +15,12 @@ import javax.persistence.EntityManager;
  *
  * @author alexi
  */
-public class UsuarioService extends CrudUtils<Usuario>{
+public class UsuarioService extends CrudUtils<Usuario> {
 
     public UsuarioService() {
         super(Usuario.class);
     }
-    
+
     public List<Usuario> buscarUsuario(String filtro) {
         EntityManager em = PersistenceManager.getEntityManager();
         em.getTransaction().begin();
@@ -38,10 +38,23 @@ public class UsuarioService extends CrudUtils<Usuario>{
         }
         return lista;
     }
-    
+
+    public Usuario comprobarUsuario(Usuario usuario) {
+        EntityManager em = PersistenceManager.getEntityManager();
+        em.getTransaction().begin();
+        Usuario user = null;
+        try {
+            user = (Usuario) em.createQuery("select t from Usuario t where t.estado=1 and "
+                    + "t.usuario=:usuario and t.clave=:clave")
+                    .setParameter("usuario", usuario.getUsuario())
+                    .setParameter("clave", usuario.getClave())
+                    .getSingleResult();
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("[UsuarioService][comprobarUsuario]->Exection => " + e.getMessage());
+            em.getTransaction().rollback();
+        }
+        return user;
+    }
+
 }
-
-
-
-
-

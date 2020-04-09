@@ -8,6 +8,7 @@ package com.iglesia.views;
 import FiveCodMover.FiveCodMoverJDialog;
 import com.iglesia.controllers.MovimientoController;
 import com.iglesia.entities.Movimiento;
+import com.iglesia.entities.Usuario;
 import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.utils.FechasUtils;
 import java.awt.event.WindowEvent;
@@ -22,6 +23,11 @@ import javax.swing.JOptionPane;
  */
 public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
 
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
     /**
      * Creates new form DlgConsultaMovEfectivo
      */
@@ -279,9 +285,9 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
     private void tbMovimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMovimientoMouseClicked
         int column = this.tbMovimiento.getColumnModel().getColumnIndexAtX(evt.getX());
         int row = this.tbMovimiento.getSelectedRow();
-        
-        if (column>=0 && column < this.tbMovimiento.getColumnCount()
-                && row>=0 && row < this.tbMovimiento.getRowCount()) {
+
+        if (column >= 0 && column < this.tbMovimiento.getColumnCount()
+                && row >= 0 && row < this.tbMovimiento.getRowCount()) {
             Object btn = this.tbMovimiento.getValueAt(row, column);
             if (column == 6) {
                 if (btn instanceof JButton) {
@@ -290,6 +296,7 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
                     this.selectedMov = this.movimientoController.consultarPorId(id);
                     DlgMovEfectivo obj = new DlgMovEfectivo(null, true);
                     obj.setSelectedMov(this.selectedMov);
+                    obj.setUsuarioLogeado(this.usuarioLogeado);
                     obj.setRedirect(true);
                     obj.setVisible(true);
                     this.busquedaPorDefecto();
@@ -344,7 +351,7 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
                 this.jdFechaFin.setVisible(true);
                 this.jlblTipoMov.setVisible(false);
                 this.jcbTipoMovimiento.setVisible(false);
-                break;                
+                break;
             case 1:
                 this.jlblFIni.setVisible(false);
                 this.jlblFFin.setVisible(false);

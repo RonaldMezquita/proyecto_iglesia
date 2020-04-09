@@ -5,6 +5,7 @@
  */
 package com.iglesia.views;
 
+import com.iglesia.entities.Usuario;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -15,11 +16,21 @@ import java.awt.Toolkit;
 public class FrmPrincipal extends javax.swing.JFrame {
 
     private boolean visible;
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+        this.jlblUsuario.setText(this.usuario.getNombre() + " " + this.usuario.getApellido());
+    }
 
     /**
      * Creates new form PrincipalFrame
      */
-    public FrmPrincipal() {
+    public FrmPrincipal() {        
         initComponents();
         this.visible = true;
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -28,10 +39,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
 //        this.panelTop.setBounds(0, 0, (int) tamanio.getWidth(), 50);
         getContentPane().add(panelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, (int) tamanio.getWidth(), 40));
         int positionBtnClose = (int) tamanio.getWidth() - 31;
-        panelTop.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose, 0, 30, 40));
-        this.jlblUsuario.setText("Ronald Ernesto Mezquita Sosa");
-        panelTop.add(jlblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose-220, 0, 250, 40));
-        panelTop.add(jlblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose-250, 0, 250, 40));
+        panelTop.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose, 0, 30, 40));        
+        panelTop.add(jlblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose - 220, 0, 250, 40));
+        panelTop.add(jlblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose - 250, 0, 250, 40));
     }
 
     /**
@@ -58,11 +68,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnPersona1 = new javax.swing.JButton();
         btnEvento = new javax.swing.JButton();
         btnNuevoMovEfectivo = new javax.swing.JButton();
+        btnUsuarios = new javax.swing.JButton();
         panelTop = new javax.swing.JPanel();
         btnMenu = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         jlblUsuario = new javax.swing.JLabel();
         jlblIconUser = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -93,7 +105,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnSacerdotes.setBackground(new java.awt.Color(0, 153, 204));
         btnSacerdotes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSacerdotes.setForeground(new java.awt.Color(255, 255, 255));
-        btnSacerdotes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
+        btnSacerdotes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/padre-36px.png"))); // NOI18N
         btnSacerdotes.setText("Sacerdotes");
         btnSacerdotes.setBorder(null);
         btnSacerdotes.setBorderPainted(false);
@@ -220,7 +232,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnConsultaPersonas.setBackground(new java.awt.Color(0, 153, 204));
         btnConsultaPersonas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnConsultaPersonas.setForeground(new java.awt.Color(255, 255, 255));
-        btnConsultaPersonas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/users-w-36px.png"))); // NOI18N
+        btnConsultaPersonas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/folder-person-w-36px.png"))); // NOI18N
         btnConsultaPersonas.setText("Consulta de personas");
         btnConsultaPersonas.setBorder(null);
         btnConsultaPersonas.setBorderPainted(false);
@@ -274,8 +286,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnPersona1.setBackground(new java.awt.Color(0, 153, 204));
         btnPersona1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnPersona1.setForeground(new java.awt.Color(255, 255, 255));
-        btnPersona1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/user-shape-w-36px.png"))); // NOI18N
-        btnPersona1.setText("Personas");
+        btnPersona1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/add-persona-w-36px.png"))); // NOI18N
+        btnPersona1.setText("Nueva persona");
         btnPersona1.setBorder(null);
         btnPersona1.setBorderPainted(false);
         btnPersona1.setContentAreaFilled(false);
@@ -325,42 +337,61 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnUsuarios.setBackground(new java.awt.Color(0, 153, 204));
+        btnUsuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/users-w-36px.png"))); // NOI18N
+        btnUsuarios.setText("Usuarios");
+        btnUsuarios.setBorder(null);
+        btnUsuarios.setBorderPainted(false);
+        btnUsuarios.setContentAreaFilled(false);
+        btnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnUsuarios.setOpaque(true);
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuariosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
         panelMenu.setLayout(panelMenuLayout);
         panelMenuLayout.setHorizontalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMenuLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnConsultaPersonas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnComunidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPersona1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelMenuLayout.createSequentialGroup()
+                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnConfirmacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSector, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnConsultaPersonas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnComunidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPersona1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelMenuLayout.createSequentialGroup()
                         .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnTipoSacramento, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnJustificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSacerdotes, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnConsultaMovEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBautizo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnNuevoMovEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBoda, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
+                    .addGroup(panelMenuLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnBoda, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnNuevoMovEfectivo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnBautizo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnTipoSacramento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnJustificacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSacerdotes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnConsultaMovEfectivo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUsuarios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         panelMenuLayout.setVerticalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMenuLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addContainerGap()
                 .addComponent(btnTipoSacramento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnJustificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -372,10 +403,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(btnSacerdotes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnConsultaPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPersona1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnConsultaMovEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNuevoMovEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBautizo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -385,7 +418,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNuevoMovEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -420,17 +453,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        panelTop.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 30, 40));
+        panelTop.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 30, 40));
 
         jlblUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlblUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jlblUsuario.setText("jLabel1");
-        panelTop.add(jlblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 250, 40));
+        panelTop.add(jlblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 250, 40));
 
         jlblIconUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlblIconUser.setForeground(new java.awt.Color(105, 105, 105));
         jlblIconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/user-shape-w-24px.png"))); // NOI18N
-        panelTop.add(jlblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 30, 40));
+        panelTop.add(jlblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 30, 40));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("SISTEMA DE CONTROL PARROQUIAL");
+        panelTop.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 350, 40));
 
         getContentPane().add(panelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 40));
         setJMenuBar(jMenuBar1);
@@ -440,16 +478,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnSacerdotesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacerdotesActionPerformed
         DlgSacerdote obj = new DlgSacerdote(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnSacerdotesActionPerformed
 
     private void btnSectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSectorActionPerformed
         DlgSector obj = new DlgSector(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnSectorActionPerformed
 
     private void btnComunidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComunidadActionPerformed
         DlgComunidad obj = new DlgComunidad(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnComunidadActionPerformed
 
@@ -467,46 +508,55 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnJustificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJustificacionActionPerformed
         DlgJustificacion obj = new DlgJustificacion(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnJustificacionActionPerformed
 
     private void btnTipoSacramentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoSacramentoActionPerformed
         DlgTipoSacrementos obj = new DlgTipoSacrementos(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnTipoSacramentoActionPerformed
 
     private void btnConsultaMovEfectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaMovEfectivoActionPerformed
         DlgConsultaMovEfectivo obj = new DlgConsultaMovEfectivo(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnConsultaMovEfectivoActionPerformed
 
     private void btnBautizoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBautizoActionPerformed
         DlgBautizo obj = new DlgBautizo(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnBautizoActionPerformed
 
     private void btnLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLugarActionPerformed
         DlgLugar obj = new DlgLugar(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnLugarActionPerformed
 
     private void btnConsultaPersonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaPersonasActionPerformed
         DlgConsultaPersona obj = new DlgConsultaPersona(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnConsultaPersonasActionPerformed
 
     private void btnConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmacionActionPerformed
         DlgConfirmacion obj = new DlgConfirmacion(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnConfirmacionActionPerformed
 
     private void btnBodaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBodaActionPerformed
         DlgBoda obj = new DlgBoda(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnBodaActionPerformed
 
     private void btnPersona1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersona1ActionPerformed
         DlgPersona obj = new DlgPersona(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnPersona1ActionPerformed
 
@@ -518,13 +568,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventoActionPerformed
         DlgBuscarEvento obj = new DlgBuscarEvento(null, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnEventoActionPerformed
 
     private void btnNuevoMovEfectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoMovEfectivoActionPerformed
         DlgMovEfectivo obj = new DlgMovEfectivo(this, false);
+        obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnNuevoMovEfectivoActionPerformed
+
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
+        DlgUsuario obj = new DlgUsuario(null, true);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -585,6 +642,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnSector;
     private javax.swing.JButton btnTipoSacramento;
+    private javax.swing.JButton btnUsuarios;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel jlblIconUser;
     private javax.swing.JLabel jlblUsuario;

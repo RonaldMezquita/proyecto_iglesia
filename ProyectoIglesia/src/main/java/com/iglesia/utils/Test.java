@@ -5,7 +5,7 @@
  */
 package com.iglesia.utils;
 
-import java.math.BigDecimal;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -42,6 +42,7 @@ public class Test {
 //        String res = NumeroALetras.convertirLetras(1);
 //        System.out.println(res);
 //        System.out.println(FechasUtils.operateDate(FechasUtils.getCurrentDate(), -10));
-            System.out.println(ProjectUtils.formatearMoneda(new BigDecimal("1226424.159")));
+//            System.out.println(ProjectUtils.formatearMoneda(new BigDecimal("1226424.159")));
+        System.out.println(DigestUtils.sha1Hex(DigestUtils.md5Hex("123")));
     }
 }

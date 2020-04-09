@@ -9,7 +9,6 @@ import com.iglesia.dtos.EventosDto;
 import com.iglesia.entities.Evento;
 import com.iglesia.entities.Persona;
 import com.iglesia.entities.ResponsableEvento;
-import com.iglesia.entities.Usuario;
 import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.enums.TipoRelacionEnum;
 import com.iglesia.enums.TipoSacramentoEnum;
@@ -44,7 +43,6 @@ public class EventoController implements Serializable {
         this.eventoService = new EventoService();
         this.selected = new Evento();
         this.selected.setEstado(true);
-        this.selected.setIdUsuario(new Usuario(1));
         this.dtoSelected = new EventosDto();
     }
 
@@ -118,7 +116,7 @@ public class EventoController implements Serializable {
 
         String fecha_evento = new StringBuilder()
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
-                .append("del mes de ")
+                .append(" del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
         ;
@@ -126,7 +124,7 @@ public class EventoController implements Serializable {
 
         String fecha_emision = new StringBuilder("los ")
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
-                .append("dias del mes de ")
+                .append(" días del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
@@ -164,7 +162,7 @@ public class EventoController implements Serializable {
         cal.setTime(evento.getFecha());
         String fecha_evento = new StringBuilder()
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
-                .append("del mes de ")
+                .append(" días del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
@@ -172,7 +170,7 @@ public class EventoController implements Serializable {
 
         String fecha_emision = new StringBuilder("los ")
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
-                .append("dias del mes de ")
+                .append(" días del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
@@ -205,14 +203,14 @@ public class EventoController implements Serializable {
 
         String fecha_nacimiento = new StringBuilder()
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
-                .append("del mes de ")
+                .append(" de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
         cal.setTime(evento.getFecha());
         String fecha_evento = new StringBuilder()
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
-                .append("del mes de ")
+                .append(" del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
@@ -220,7 +218,7 @@ public class EventoController implements Serializable {
 
         String fecha_emision = new StringBuilder("los ")
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
-                .append("dias del mes de ")
+                .append(" días del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
@@ -252,14 +250,14 @@ public class EventoController implements Serializable {
 
         String fecha_nacimiento = new StringBuilder()
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
-                .append("del mes de ")
+                .append(" del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
         cal.setTime(evento.getFecha());
         String fecha_evento = new StringBuilder()
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
-                .append("del mes de ")
+                .append(" del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 
@@ -267,7 +265,7 @@ public class EventoController implements Serializable {
 
         String fecha_emision = new StringBuilder("los ")
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.DATE)))
-                .append(" dias del mes de ")
+                .append(" días del mes de ")
                 .append(FechasUtils.getMonthName(cal.get(Calendar.MONTH) + 1).toLowerCase()).append(" del año ")
                 .append(NumeroALetras.convertirLetras(cal.get(Calendar.YEAR)).trim()).toString();
 

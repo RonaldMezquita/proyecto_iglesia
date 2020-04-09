@@ -6,12 +6,12 @@
 package com.iglesia.views;
 
 import com.iglesia.controllers.UsuarioController;
+import com.iglesia.entities.Usuario;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +19,11 @@ import javax.swing.JOptionPane;
  */
 public class DlgUsuario extends javax.swing.JDialog {
 
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
     /**
      * Creates new form DlgUsuario
      */
@@ -50,28 +55,28 @@ public class DlgUsuario extends javax.swing.JDialog {
     private void crear() {
         this.excepciones.add("idUsuario");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error","Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
         if (this.usuarioController.crear() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error","Ocurrio un problema.!",  DlgWindow.ERROR);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        DlgWindow.showMessageDialog(this, "Aviso","Registro guardado correctamente");
         ProjectUtils.limpiarComponentes(this.jPanel1);
         this.mostrarTabla("");
     }
 
     private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error","Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
         if (this.usuarioController.actualizar() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error","Ocurrio un problema.!",  DlgWindow.ERROR);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        DlgWindow.showMessageDialog(this, "Aviso","Registro modificado correctamente");
         this.mostrarTabla("");
         ProjectUtils.limpiarComponentes(this.jPanel1);
     }

@@ -6,12 +6,12 @@
 package com.iglesia.views;
 
 import com.iglesia.controllers.SacerdoteController;
+import com.iglesia.entities.Usuario;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +19,11 @@ import javax.swing.JOptionPane;
  */
 public class DlgSacerdote extends javax.swing.JDialog {
 
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
     /**
      * Creates new form DlgSacerdote
      */
@@ -26,7 +31,7 @@ public class DlgSacerdote extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField txtnit;
     private SacerdoteController sacerdoteController;
     private List<String> excepciones = new ArrayList<>();
-    
+
     public DlgSacerdote(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -39,7 +44,7 @@ public class DlgSacerdote extends javax.swing.JDialog {
 
         txtnit = ProjectUtils.getCampoNit();
         txtnit.setFont(new java.awt.Font("Tahoma", 0, 14));// NOI18N
-        txtnit.setBorder(null); 
+        txtnit.setBorder(null);
         jPanel1.add(txtnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 142, -1));
         // termina generacion de campos formateados
         this.txtid.setVisible(false);
@@ -52,35 +57,36 @@ public class DlgSacerdote extends javax.swing.JDialog {
         this.cbestado.setSelected(true);
         this.cbParroco.setSelected(true);
     }
-    
+
     private void mostrarTabla(String filtro) {
         this.sacerdoteController.llenarTabla(tbsacerdote, filtro);
     }
+
     private void crear() {
         this.excepciones.add("id");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
         if (this.sacerdoteController.crear() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!", DlgWindow.ERROR);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro guardado correctamente");
         ProjectUtils.limpiarComponentes(this.jPanel1);
         this.mostrarTabla("");
     }
 
     private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
         if (this.sacerdoteController.actualizar() == null) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!", DlgWindow.ERROR);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro modificado correctamente");
         this.mostrarTabla("");
         ProjectUtils.limpiarComponentes(this.jPanel1);
     }
@@ -383,6 +389,7 @@ public class DlgSacerdote extends javax.swing.JDialog {
         this.sacerdoteController.getSelected().setNit(this.txtnit.getText());
         this.sacerdoteController.getSelected().setParroco(this.cbParroco.isSelected());
         this.sacerdoteController.getSelected().setEstado(this.cbestado.isSelected());
+        this.sacerdoteController.getSelected().setIdUsuario(this.usuarioLogeado);
         if (this.sacerdoteController.getSelected().getId() == null) {
             this.crear();
         } else {

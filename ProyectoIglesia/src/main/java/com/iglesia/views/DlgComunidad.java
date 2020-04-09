@@ -8,6 +8,7 @@ package com.iglesia.views;
 import com.iglesia.controllers.ComunidadController;
 import com.iglesia.controllers.SectorController;
 import com.iglesia.entities.Sector;
+import com.iglesia.entities.Usuario;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
 import java.awt.event.WindowEvent;
@@ -20,6 +21,11 @@ import java.util.List;
  */
 public class DlgComunidad extends javax.swing.JDialog {
 
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
     /**
      * Creates new form DlgComunidad
      */
@@ -340,7 +346,8 @@ public class DlgComunidad extends javax.swing.JDialog {
         this.comunidadController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.comunidadController.getSelected().setNombre(this.txtnombre.getText());
         this.comunidadController.getSelected().setEstado(this.cbestado.isSelected());
-        if (((Sector) this.jbcSector.getSelectedItem()).getId() == null) {            
+        this.comunidadController.getSelected().setIdUsuario(this.usuarioLogeado);
+        if (((Sector) this.jbcSector.getSelectedItem()).getId() == null) {
             DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }

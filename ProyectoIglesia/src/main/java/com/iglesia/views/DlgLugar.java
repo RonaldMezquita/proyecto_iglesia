@@ -6,6 +6,7 @@
 package com.iglesia.views;
 
 import com.iglesia.controllers.LugarController;
+import com.iglesia.entities.Usuario;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
 import java.awt.event.WindowEvent;
@@ -18,6 +19,11 @@ import java.util.List;
  */
 public class DlgLugar extends javax.swing.JDialog {
 
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
     /**
      * Creates new form DlgLugar
      */
@@ -46,11 +52,11 @@ public class DlgLugar extends javax.swing.JDialog {
     private void crear() {
         this.excepciones.add("id");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)",DlgWindow.ERROR);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
         if (this.lugarController.crear() == null) {
-            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!",DlgWindow.ERROR);
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!", DlgWindow.ERROR);
             return;
         }
         DlgWindow.showMessageDialog(this, "Aviso", "Registro guardado correctamente");
@@ -60,11 +66,11 @@ public class DlgLugar extends javax.swing.JDialog {
 
     private void actualizar() {
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)",DlgWindow.ERROR);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
         if (this.lugarController.actualizar() == null) {
-            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!",DlgWindow.ERROR);
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!", DlgWindow.ERROR);
             return;
         }
         DlgWindow.showMessageDialog(this, "Aviso", "Registro modificado correctamente");
@@ -307,6 +313,7 @@ public class DlgLugar extends javax.swing.JDialog {
         this.lugarController.getSelected().setId((this.txtid.getText().equals("")) ? null : Integer.parseInt(this.txtid.getText()));
         this.lugarController.getSelected().setNombre(this.txtnombre.getText());
         this.lugarController.getSelected().setEstado(this.cbestado.isSelected());
+        this.lugarController.getSelected().setIdUsuario(this.usuarioLogeado);
         if (this.lugarController.getSelected().getId() == null) {
             this.crear();
         } else {

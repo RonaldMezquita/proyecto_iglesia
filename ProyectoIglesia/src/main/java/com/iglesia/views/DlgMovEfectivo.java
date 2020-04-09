@@ -11,13 +11,13 @@ import com.iglesia.controllers.MovimientoController;
 import com.iglesia.entities.Evento;
 import com.iglesia.entities.Justificacion;
 import com.iglesia.entities.Movimiento;
+import com.iglesia.entities.Usuario;
 import com.iglesia.utils.FechasUtils;
 import com.iglesia.utils.ProjectUtils;
 import java.awt.event.WindowEvent;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,6 +25,11 @@ import javax.swing.JOptionPane;
  */
 public class DlgMovEfectivo extends javax.swing.JDialog {
 
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
     /**
      * Creates new form DlgMovEfectivo
      */
@@ -76,16 +81,16 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
         boolean response = true;
         this.excepciones.add("idUsuario");
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             response = false;
         }
         this.cargarDatos();
         if (!this.movimientoController.crear()) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!", DlgWindow.ERROR);
             response = false;
         }
         if (response) {
-            JOptionPane.showMessageDialog(this, "Registro guardado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            DlgWindow.showMessageDialog(this, "Aviso", "Registro guardado correctamente");
             ProjectUtils.limpiarComponentes(this.jPanel1);
         }
         return response;
@@ -94,19 +99,16 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
     private boolean actualizar() {
         boolean response = true;
         if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
-//            JOptionPane.showMessageDialog(this, "Campo(s) Requerido(s) vacio(s)", "Error", JOptionPane.ERROR_MESSAGE);
-            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)");
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             response = false;
         }
         this.cargarDatos();
         if (!this.movimientoController.actualizar()) {
-//            JOptionPane.showMessageDialog(this, "Ocurrio un problema.!", "Error", JOptionPane.ERROR_MESSAGE);
-            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!");
+            DlgWindow.showMessageDialog(this, "Error", "Ocurrio un problema.!", DlgWindow.ERROR);
             response = false;
         }
         if (response) {
-//            JOptionPane.showMessageDialog(this, "Registro modificado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-            DlgWindow.showMessageDialog(this, "Aviso", "Registro modificado correctamente");
+            DlgWindow.showMessageDialog(this, "Aviso", "Registro modificado correctamente",DlgWindow.ERROR);
             ProjectUtils.limpiarComponentes(this.jPanel1);
             if (this.redirect) {
                 this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
@@ -122,6 +124,7 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
         this.selectedMov.setTipo(this.cbTipoMovimiento.getSelectedItem().toString());
         this.selectedMov.setIdJustificacion((Justificacion) this.cbJustificacion.getSelectedItem());
         this.selectedMov.setEstado(this.cbestado.isSelected());
+        this.selectedMov.setIdUsuario(this.usuarioLogeado);
         this.movimientoController.setSelected(this.selectedMov);
     }
 

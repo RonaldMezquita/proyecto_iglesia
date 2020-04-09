@@ -6,7 +6,6 @@
 package com.iglesia.controllers;
 
 import com.iglesia.entities.Lugar;
-import com.iglesia.entities.Usuario;
 import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.services.LugarService;
 import com.iglesia.utils.FechasUtils;
@@ -33,7 +32,6 @@ public class LugarController implements Serializable {
         this.lugarService = new LugarService();
         this.selected = new Lugar();
         this.selected.setEstado(true);
-        this.selected.setIdUsuario(new Usuario(1));
     }
 
     public void consultarTodos() {

@@ -19,62 +19,65 @@ import javax.swing.table.DefaultTableModel;
  * @author alexi
  */
 public class UsuarioController implements Serializable {
-
+    
     private Usuario selected;
     private List<Usuario> items;
-
+    
     private UsuarioService usuarioService;
-
+    
     public UsuarioController() {
         this.usuarioService = new UsuarioService();
+        this.prepararCrear();
+    }
+    
+    public void prepararCrear() {
         this.selected = new Usuario();
         this.selected.setEstado(true);
-        this.selected.setClave("123");
     }
-
+    
     public void consultarTodos() {
         this.items = this.usuarioService.consultarTodos("select t from Usuario t");
     }
-
+    
     public Usuario consultarPorId(Integer idUSuario) {
         this.selected = this.usuarioService.consultarPor("select t from Usuario t where t.idUsuario=:idUsuario",
                 "idUsuario", idUSuario);
         return this.selected;
     }
-
+    
     public Usuario crear() {
         if (this.selected == null) {
             System.out.println("UsuarioController[crear()]-> Objeto Usuario no existe");
             return null;
         }
-            this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
-            try {
-                if (this.usuarioService.crear(this.selected) != null) {
-                    return this.selected;
-                }
-            } catch (Exception e) {
-                System.out.println("UsuarioController[crear()]-> " + e.getMessage());
+        this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
+        try {
+            if (this.usuarioService.crear(this.selected) != null) {
+                return this.selected;
             }
+        } catch (Exception e) {
+            System.out.println("UsuarioController[crear()]-> " + e.getMessage());
+        }
         return null;
     }
-
+    
     public Usuario actualizar() {
         if (this.selected == null) {
             System.out.println("UsuarioController[actualizar()]-> Objeto Usuario no existe");
             return null;
         }
-            this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
-            try {
-                if (this.usuarioService.actualizar(this.selected) != null) {
-                    return this.selected;
-                }
-            } catch (Exception e) {
-                System.out.println("UsuarioController[actualizar()]-> " + e.getMessage());
+        this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
+        try {
+            if (this.usuarioService.actualizar(this.selected) != null) {
+                return this.selected;
             }
+        } catch (Exception e) {
+            System.out.println("UsuarioController[actualizar()]-> " + e.getMessage());
+        }
         return null;
     }
-
-    public void llenarTabla(JTable tabla, String filtro) {        
+    
+    public void llenarTabla(JTable tabla, String filtro) {
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         model = ProjectUtils.removeRows(model);
         this.items = this.usuarioService.buscarUsuario(filtro);
@@ -88,25 +91,36 @@ public class UsuarioController implements Serializable {
             model.addRow(datos);
         }
         tabla.setModel(model);
-    }   
+    }
+    
+    public boolean login() {
+        boolean isOk = true;
+        if (this.selected == null) {
+            isOk = false;
+        }
+        this.selected.setClave(ProjectUtils.toEncrypt(this.selected.getClave()));
+        if ((this.selected = this.usuarioService.comprobarUsuario(this.selected)) == null) {
+            isOk = false;
+        }
+        return isOk;
+    }
 
     //<editor-fold defaultstate="collapsed" desc="getters & setters">
     public Usuario getSelected() {
         return selected;
     }
-
+    
     public void setSelected(Usuario selected) {
         this.selected = selected;
     }
-
+    
     public List<Usuario> getItems() {
         return items;
     }
-
+    
     public void setItems(List<Usuario> items) {
         this.items = items;
     }
     //</editor-fold>
 
 }
-

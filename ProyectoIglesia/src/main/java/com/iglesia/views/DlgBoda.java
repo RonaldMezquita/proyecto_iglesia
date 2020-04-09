@@ -7,10 +7,9 @@ package com.iglesia.views;
 
 import com.iglesia.controllers.BodaController;
 import com.iglesia.controllers.EventoController;
+import com.iglesia.entities.Usuario;
 import com.iglesia.utils.ProjectUtils;
-import java.awt.Shape;
 import java.awt.event.WindowEvent;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +18,11 @@ import javax.swing.JOptionPane;
 public class DlgBoda extends javax.swing.JDialog {
 
     private final EventoController eventoCtrl;
-    Shape dialogShape;
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
 
     /**
      * Creates new form DlgBoda
@@ -782,11 +785,12 @@ public class DlgBoda extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBuscarSacerdoteActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (JOptionPane.showConfirmDialog(this, "¿Esta seguro de realizar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION) == 0) {
+        if (DlgWindow.showConfirmDialog(this, "Confirmación", "¿Esta seguro de realizar el registro?") == 0) {
             this.eventoCtrl.getDtoSelected().setTomo(this.txtTomo.getText());
             this.eventoCtrl.getDtoSelected().setFolio(this.txtFolio.getText());
             this.eventoCtrl.getDtoSelected().setNumero(this.txtNumero.getText());
             this.eventoCtrl.getDtoSelected().setFecha(this.txtFecha.getDate());
+            this.eventoCtrl.getDtoSelected().setUsuario(this.usuarioLogeado);
             this.crear();
         }
     }//GEN-LAST:event_btnGuardarActionPerformed

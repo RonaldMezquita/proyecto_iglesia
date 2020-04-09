@@ -6,7 +6,6 @@
 package com.iglesia.controllers;
 
 import com.iglesia.entities.Persona;
-import com.iglesia.entities.Usuario;
 import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.services.PersonaService;
 import com.iglesia.utils.FechasUtils;
@@ -99,7 +98,6 @@ public class PersonaController {
             return null;
         }
         this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
-        this.selected.setIdUsuario(new Usuario(1));
         try {
             if (this.personaService.crear(this.selected) != null) {
                 return this.selected;
@@ -116,7 +114,6 @@ public class PersonaController {
             return null;
         }
         this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
-        this.selected.setIdUsuario(new Usuario(1));
         try {
             if (this.personaService.actualizar(this.selected) != null) {
                 return this.selected;
