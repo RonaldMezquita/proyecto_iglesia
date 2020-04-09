@@ -187,7 +187,7 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
             tbpersona.getColumnModel().getColumn(9).setMaxWidth(25);
         }
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 900, 500));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 900, 450));
 
         btnNuevaPersona.setBackground(new java.awt.Color(27, 163, 69));
         btnNuevaPersona.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -219,7 +219,7 @@ public class DlgConsultaPersona extends javax.swing.JDialog {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-b.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 75, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 660));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

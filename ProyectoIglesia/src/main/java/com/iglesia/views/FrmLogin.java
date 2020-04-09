@@ -31,7 +31,7 @@ public class FrmLogin extends javax.swing.JFrame {
         this.txtUsuario.requestFocus();
         new TextPrompt("Ingrese Usuario", this.txtUsuario);
         new TextPrompt("Ingrese Clave", this.txtClave);
-        ImageIcon img = new ImageIcon(this.getClass().getResource("/META-INF/images/User.png"));
+        ImageIcon img = new ImageIcon(this.getClass().getResource("/META-INF/images/icon/icon-user.png"));
         ImageIcon icon = new ImageIcon(img.getImage().getScaledInstance(this.jlblImage.getWidth(), this.jlblImage.getHeight(), Image.SCALE_DEFAULT));
         this.jlblImage.setIcon(icon);
         
@@ -64,11 +64,11 @@ public class FrmLogin extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(231, 231, 231));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 280, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 280, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 331, 280, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 401, 280, -1));
 
         btnCerrar.setBackground(new java.awt.Color(222, 62, 68));
         btnCerrar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -96,17 +96,17 @@ public class FrmLogin extends javax.swing.JFrame {
         });
         jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 1, 30, 30));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Usuario:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Clave:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
 
-        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setBackground(new java.awt.Color(231, 231, 231));
         txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtUsuario.setBorder(null);
         txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -114,9 +114,9 @@ public class FrmLogin extends javax.swing.JFrame {
                 txtUsuarioKeyTyped(evt);
             }
         });
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 250, 24));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 240, 24));
 
-        txtClave.setBackground(new java.awt.Color(255, 255, 255));
+        txtClave.setBackground(new java.awt.Color(231, 231, 231));
         txtClave.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtClave.setBorder(null);
         txtClave.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -124,7 +124,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 txtClaveKeyTyped(evt);
             }
         });
-        jPanel1.add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 250, 24));
+        jPanel1.add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 240, 24));
 
         btnIngresar.setBackground(new java.awt.Color(0, 129, 255));
         btnIngresar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -152,14 +152,16 @@ public class FrmLogin extends javax.swing.JFrame {
         });
         jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 280, 40));
 
-        jlblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/User.png"))); // NOI18N
-        jPanel1.add(jlblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 190, 190));
+        jlblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/icon-user.png"))); // NOI18N
+        jPanel1.add(jlblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 96, 96));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/user-outline-b-24px.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 305, 24, 24));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/icon-user-32px.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 304, 30, 30));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/lock-b-24px.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 375, 24, 24));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/key-32px.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 374, 30, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 490));
 

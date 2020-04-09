@@ -272,6 +272,7 @@ public class DlgSector extends javax.swing.JDialog {
             }
         });
         jtSector.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jtSector.setGridColor(new java.awt.Color(255, 255, 255));
         jtSector.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtSectorMouseClicked(evt);
