@@ -8,6 +8,7 @@ package com.iglesia.views;
 import com.iglesia.controllers.ConfirmacionController;
 import com.iglesia.controllers.EventoController;
 import com.iglesia.entities.Usuario;
+import com.iglesia.utils.FechasUtils;
 import com.iglesia.utils.ProjectUtils;
 import java.awt.event.WindowEvent;
 
@@ -33,6 +34,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.eventoCtrl = new EventoController();
         this.txtTomo.requestFocus();
+        this.txtFecha.setDate(FechasUtils.getCurrentDate());
     }
 
     private void setOrderTab() {

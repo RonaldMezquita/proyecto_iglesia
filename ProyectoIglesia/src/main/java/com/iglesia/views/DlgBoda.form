@@ -444,6 +444,9 @@
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="txtFecha">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
           </Properties>
           <Constraints>

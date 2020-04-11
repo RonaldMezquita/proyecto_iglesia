@@ -15,7 +15,6 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -61,7 +60,7 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
 
     private boolean validarFechas() {
         if (this.jdFechaIni.getDate() == null || this.jdFechaFin.getDate() == null) {
-            JOptionPane.showMessageDialog(null, "¿Es necesario seleccionar un rango de fechas?", "Aviso", JOptionPane.WARNING_MESSAGE);
+            DlgWindow.showMessageDialog(null, "Aviso", "Es necesario seleccionar un rango de fechas.!", DlgWindow.WARN);
             return false;
         }
         return true;
@@ -386,7 +385,7 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
     }//GEN-LAST:event_jbsalirMouseMoved
 
     private void jbsalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseExited
-        this.jbsalir.setBackground(new java.awt.Color(0,129,255));
+        this.jbsalir.setBackground(new java.awt.Color(0, 129, 255));
     }//GEN-LAST:event_jbsalirMouseExited
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed

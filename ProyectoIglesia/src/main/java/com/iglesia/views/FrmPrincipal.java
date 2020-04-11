@@ -217,7 +217,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnPersona1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnPersona1.setForeground(new java.awt.Color(255, 255, 255));
         btnPersona1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/add-persona-w-36px.png"))); // NOI18N
-        btnPersona1.setText("Nueva persona");
+        btnPersona1.setText("Registrar nueva persona");
         btnPersona1.setBorder(null);
         btnPersona1.setBorderPainted(false);
         btnPersona1.setContentAreaFilled(false);
@@ -252,7 +252,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnNuevoMovEfectivo.setBackground(new java.awt.Color(0, 153, 204));
         btnNuevoMovEfectivo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnNuevoMovEfectivo.setForeground(new java.awt.Color(255, 255, 255));
-        btnNuevoMovEfectivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/boda-36px.png"))); // NOI18N
+        btnNuevoMovEfectivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/dolar-hand-w-36px.png"))); // NOI18N
         btnNuevoMovEfectivo.setText("Crear mov. de efectivo");
         btnNuevoMovEfectivo.setBorder(null);
         btnNuevoMovEfectivo.setBorderPainted(false);
@@ -406,7 +406,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnConsultarMovEfectivoTop.setBackground(new java.awt.Color(27, 163, 69));
         btnConsultarMovEfectivoTop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnConsultarMovEfectivoTop.setForeground(new java.awt.Color(255, 255, 255));
-        btnConsultarMovEfectivoTop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/folder-person-w-36px.png"))); // NOI18N
+        btnConsultarMovEfectivoTop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/dolar-arrows-w-36px.png"))); // NOI18N
         btnConsultarMovEfectivoTop.setText("Mov. de efectivo");
         btnConsultarMovEfectivoTop.setBorder(null);
         btnConsultarMovEfectivoTop.setBorderPainted(false);

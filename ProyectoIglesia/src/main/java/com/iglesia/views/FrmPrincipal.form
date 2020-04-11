@@ -343,7 +343,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/META-INF/images/icon/add-persona-w-36px.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nueva persona"/>
+            <Property name="text" type="java.lang.String" value="Registrar nueva persona"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -403,7 +403,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/META-INF/images/icon/boda-36px.png"/>
+              <Image iconType="3" name="/META-INF/images/icon/dolar-hand-w-36px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crear mov. de efectivo"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -608,7 +608,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/META-INF/images/icon/folder-person-w-36px.png"/>
+              <Image iconType="3" name="/META-INF/images/icon/dolar-arrows-w-36px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Mov. de efectivo"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

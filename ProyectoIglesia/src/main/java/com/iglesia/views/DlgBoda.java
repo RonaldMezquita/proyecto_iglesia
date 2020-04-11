@@ -8,6 +8,7 @@ package com.iglesia.views;
 import com.iglesia.controllers.BodaController;
 import com.iglesia.controllers.EventoController;
 import com.iglesia.entities.Usuario;
+import com.iglesia.utils.FechasUtils;
 import com.iglesia.utils.ProjectUtils;
 import java.awt.event.WindowEvent;
 
@@ -33,6 +34,7 @@ public class DlgBoda extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.eventoCtrl = new EventoController();
         this.txtTomo.requestFocus();
+        this.txtFecha.setDate(FechasUtils.getCurrentDate());
     }
 
     private void setOrderTab() {
@@ -241,6 +243,7 @@ public class DlgBoda extends javax.swing.JDialog {
         txtNumero.setBorder(null);
         jPanel1.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 100, 24));
 
+        txtFecha.setBackground(new java.awt.Color(255, 255, 255));
         txtFecha.setDateFormatString("dd/MM/yyyy");
         jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 130, -1));
 
