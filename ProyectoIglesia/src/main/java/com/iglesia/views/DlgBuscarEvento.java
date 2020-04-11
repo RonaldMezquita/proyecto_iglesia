@@ -61,12 +61,13 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbEvento = new javax.swing.JTable();
-        jbCerrar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jbtnBuscar = new javax.swing.JButton();
         txtfechaInicio = new com.toedter.calendar.JDateChooser();
         txtfechaFin = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
+        jPanelTop = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jbCerrar = new javax.swing.JButton();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -137,41 +138,10 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 590, 290));
 
-        jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
-        jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
-        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
-        jbCerrar.setBorder(null);
-        jbCerrar.setBorderPainted(false);
-        jbCerrar.setContentAreaFilled(false);
-        jbCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbCerrar.setOpaque(true);
-        jbCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jbCerrarMouseMoved(evt);
-            }
-        });
-        jbCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jbCerrarMouseExited(evt);
-            }
-        });
-        jbCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCerrarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 1, 30, 30));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Busqueda de Evento");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 630, -1));
-
         jbtnBuscar.setBackground(new java.awt.Color(107, 117, 125));
         jbtnBuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbtnBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        jbtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
+        jbtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-w-24px.png"))); // NOI18N
         jbtnBuscar.setText("Buscar");
         jbtnBuscar.setBorder(null);
         jbtnBuscar.setBorderPainted(false);
@@ -209,7 +179,43 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/detalle.png"))); // NOI18N
         jLabel1.setText("Por defecto se mostraran los registros de los últimos 30 días.");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 410, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 410, -1));
+
+        jPanelTop.setBackground(new java.awt.Color(0, 129, 255));
+        jPanelTop.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setText("Busqueda de Evento");
+        jPanelTop.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 460, -1));
+
+        jbCerrar.setBackground(new java.awt.Color(0, 129, 255));
+        jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
+        jbCerrar.setBorder(null);
+        jbCerrar.setBorderPainted(false);
+        jbCerrar.setContentAreaFilled(false);
+        jbCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbCerrar.setOpaque(true);
+        jbCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbCerrarMouseMoved(evt);
+            }
+        });
+        jbCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbCerrarMouseExited(evt);
+            }
+        });
+        jbCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCerrarActionPerformed(evt);
+            }
+        });
+        jPanelTop.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(595, 0, 30, 40));
+
+        jPanel1.add(jPanelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 625, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 625, 440));
 
@@ -269,11 +275,11 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
     }//GEN-LAST:event_jbtnBuscarMouseExited
 
     private void jbCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseMoved
-        this.jbCerrar.setBackground(new java.awt.Color(227, 96, 101));
+        this.jbCerrar.setBackground(new java.awt.Color(45, 151, 254));
     }//GEN-LAST:event_jbCerrarMouseMoved
 
     private void jbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseExited
-        this.jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
+        this.jbCerrar.setBackground(new java.awt.Color(0,129,255));
     }//GEN-LAST:event_jbCerrarMouseExited
 
     /**
@@ -338,6 +344,7 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelTop;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbCerrar;

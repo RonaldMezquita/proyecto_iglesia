@@ -15,7 +15,6 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -61,7 +60,7 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
 
     private boolean validarFechas() {
         if (this.jdFechaIni.getDate() == null || this.jdFechaFin.getDate() == null) {
-            JOptionPane.showMessageDialog(null, "¿Es necesario seleccionar un rango de fechas?", "Aviso", JOptionPane.WARNING_MESSAGE);
+            DlgWindow.showMessageDialog(null, "Aviso", "Es necesario seleccionar un rango de fechas.!", DlgWindow.WARN);
             return false;
         }
         return true;
@@ -77,8 +76,6 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jbsalir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbMovimiento = new javax.swing.JTable();
         jdFechaIni = new com.toedter.calendar.JDateChooser();
@@ -90,6 +87,9 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
         jbtnBuscar = new javax.swing.JButton();
         jcbTipoBusqueda = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        jPanelTop = new javax.swing.JPanel();
+        jbsalir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -109,38 +109,6 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Movimientos de Efectivo");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 680, -1));
-
-        jbsalir.setBackground(new java.awt.Color(222, 62, 68));
-        jbsalir.setForeground(new java.awt.Color(255, 255, 255));
-        jbsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
-        jbsalir.setBorder(null);
-        jbsalir.setBorderPainted(false);
-        jbsalir.setContentAreaFilled(false);
-        jbsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbsalir.setOpaque(true);
-        jbsalir.setRequestFocusEnabled(false);
-        jbsalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jbsalirMouseMoved(evt);
-            }
-        });
-        jbsalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jbsalirMouseExited(evt);
-            }
-        });
-        jbsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbsalirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 1, 30, 30));
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 51));
 
@@ -237,7 +205,7 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
         jbtnBuscar.setBackground(new java.awt.Color(107, 117, 125));
         jbtnBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbtnBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        jbtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
+        jbtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-w-24px.png"))); // NOI18N
         jbtnBuscar.setText("Buscar");
         jbtnBuscar.setBorder(null);
         jbtnBuscar.setBorderPainted(false);
@@ -276,6 +244,43 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Seleccione tipo de busqueda");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+
+        jPanelTop.setBackground(new java.awt.Color(0, 129, 255));
+        jPanelTop.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jbsalir.setBackground(new java.awt.Color(0, 129, 255));
+        jbsalir.setForeground(new java.awt.Color(255, 255, 255));
+        jbsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
+        jbsalir.setBorder(null);
+        jbsalir.setBorderPainted(false);
+        jbsalir.setContentAreaFilled(false);
+        jbsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbsalir.setOpaque(true);
+        jbsalir.setRequestFocusEnabled(false);
+        jbsalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbsalirMouseMoved(evt);
+            }
+        });
+        jbsalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbsalirMouseExited(evt);
+            }
+        });
+        jbsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbsalirActionPerformed(evt);
+            }
+        });
+        jPanelTop.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 30, 40));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Movimientos de Efectivo");
+        jPanelTop.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 400, -1));
+
+        jPanel1.add(jPanelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 530));
 
@@ -376,11 +381,11 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
     }//GEN-LAST:event_jcbTipoBusquedaItemStateChanged
 
     private void jbsalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseMoved
-        this.jbsalir.setBackground(new java.awt.Color(227, 96, 101));
+        this.jbsalir.setBackground(new java.awt.Color(45, 151, 254));
     }//GEN-LAST:event_jbsalirMouseMoved
 
     private void jbsalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseExited
-        this.jbsalir.setBackground(new java.awt.Color(222, 62, 68));
+        this.jbsalir.setBackground(new java.awt.Color(0, 129, 255));
     }//GEN-LAST:event_jbsalirMouseExited
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
@@ -444,6 +449,7 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelTop;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbsalir;
     private javax.swing.JButton jbtnBuscar;

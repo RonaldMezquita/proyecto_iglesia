@@ -141,8 +141,6 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
         jsMonto = new javax.swing.JSeparator();
         jsEvento = new javax.swing.JSeparator();
         txtid = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jbsalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtMonto = new javax.swing.JTextField();
@@ -160,6 +158,9 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         cbTipoMovimiento = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
+        jPanelTop = new javax.swing.JPanel();
+        jbsalir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -189,38 +190,6 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
         txtid.setEditable(false);
         txtid.setName("idUsuario"); // NOI18N
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 60, -1));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Movimientos de Efectivo");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 460, -1));
-
-        jbsalir.setBackground(new java.awt.Color(222, 62, 68));
-        jbsalir.setForeground(new java.awt.Color(255, 255, 255));
-        jbsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
-        jbsalir.setBorder(null);
-        jbsalir.setBorderPainted(false);
-        jbsalir.setContentAreaFilled(false);
-        jbsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbsalir.setOpaque(true);
-        jbsalir.setRequestFocusEnabled(false);
-        jbsalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jbsalirMouseMoved(evt);
-            }
-        });
-        jbsalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jbsalirMouseExited(evt);
-            }
-        });
-        jbsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbsalirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 1, 30, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -270,7 +239,7 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
         btnguardar.setBackground(new java.awt.Color(0, 129, 255));
         btnguardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnguardar.setForeground(new java.awt.Color(255, 255, 255));
-        btnguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save.png"))); // NOI18N
+        btnguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save-w-24px.png"))); // NOI18N
         btnguardar.setText("Guardar");
         btnguardar.setBorder(null);
         btnguardar.setBorderPainted(false);
@@ -402,6 +371,43 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
         jLabel8.setText("(Opcional)");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 323, -1, -1));
 
+        jPanelTop.setBackground(new java.awt.Color(0, 129, 255));
+        jPanelTop.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jbsalir.setBackground(new java.awt.Color(0, 129, 255));
+        jbsalir.setForeground(new java.awt.Color(255, 255, 255));
+        jbsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
+        jbsalir.setBorder(null);
+        jbsalir.setBorderPainted(false);
+        jbsalir.setContentAreaFilled(false);
+        jbsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbsalir.setOpaque(true);
+        jbsalir.setRequestFocusEnabled(false);
+        jbsalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbsalirMouseMoved(evt);
+            }
+        });
+        jbsalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbsalirMouseExited(evt);
+            }
+        });
+        jbsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbsalirActionPerformed(evt);
+            }
+        });
+        jPanelTop.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 30, 40));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Nuevo Movimiento de Efectivo");
+        jPanelTop.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 350, -1));
+
+        jPanel1.add(jPanelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 40));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 500));
 
         pack();
@@ -483,11 +489,11 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBuscarEventoMouseExited
 
     private void jbsalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseMoved
-        this.jbsalir.setBackground(new java.awt.Color(227, 96, 101));
+        this.jbsalir.setBackground(new java.awt.Color(45, 151, 254));
     }//GEN-LAST:event_jbsalirMouseMoved
 
     private void jbsalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseExited
-        this.jbsalir.setBackground(new java.awt.Color(222, 62, 68));
+        this.jbsalir.setBackground(new java.awt.Color(0,129,255));
     }//GEN-LAST:event_jbsalirMouseExited
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
@@ -560,6 +566,7 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelTop;
     private javax.swing.JButton jbsalir;
     private com.toedter.calendar.JDateChooser jdFechaMov;
     private javax.swing.JSeparator jsEvento;

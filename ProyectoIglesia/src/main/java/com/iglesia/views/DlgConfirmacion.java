@@ -8,6 +8,7 @@ package com.iglesia.views;
 import com.iglesia.controllers.ConfirmacionController;
 import com.iglesia.controllers.EventoController;
 import com.iglesia.entities.Usuario;
+import com.iglesia.utils.FechasUtils;
 import com.iglesia.utils.ProjectUtils;
 import java.awt.event.WindowEvent;
 
@@ -33,6 +34,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.eventoCtrl = new EventoController();
         this.txtTomo.requestFocus();
+        this.txtFecha.setDate(FechasUtils.getCurrentDate());
     }
 
     private void setOrderTab() {
@@ -79,8 +81,6 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jbCerrar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         txtTomo = new javax.swing.JTextField();
         txtFolio = new javax.swing.JTextField();
         txtNumero = new javax.swing.JTextField();
@@ -109,6 +109,9 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         btnEliminarPadre = new javax.swing.JButton();
         btnEliminarMadre = new javax.swing.JButton();
         btnEliminarMadrina = new javax.swing.JButton();
+        jPanelTop = new javax.swing.JPanel();
+        jbCerrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -205,37 +208,6 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         jLabel8.setToolTipText("");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
-        jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
-        jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
-        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
-        jbCerrar.setBorder(null);
-        jbCerrar.setBorderPainted(false);
-        jbCerrar.setContentAreaFilled(false);
-        jbCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbCerrar.setOpaque(true);
-        jbCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jbCerrarMouseMoved(evt);
-            }
-        });
-        jbCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jbCerrarMouseExited(evt);
-            }
-        });
-        jbCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCerrarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(729, 1, 30, 30));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Registro de Confirmación");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 760, -1));
-
         txtTomo.setBackground(new java.awt.Color(255, 255, 255));
         txtTomo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtTomo.setBorder(null);
@@ -264,7 +236,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         btnBuscarLugar.setBackground(new java.awt.Color(107, 117, 125));
         btnBuscarLugar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnBuscarLugar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
+        btnBuscarLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-w-24px.png"))); // NOI18N
         btnBuscarLugar.setText("Buscar");
         btnBuscarLugar.setToolTipText("Buscar novio");
         btnBuscarLugar.setBorder(null);
@@ -299,7 +271,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         btnBuscarSacramentado.setBackground(new java.awt.Color(107, 117, 125));
         btnBuscarSacramentado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnBuscarSacramentado.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarSacramentado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
+        btnBuscarSacramentado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-w-24px.png"))); // NOI18N
         btnBuscarSacramentado.setText("Buscar");
         btnBuscarSacramentado.setToolTipText("Buscar novio");
         btnBuscarSacramentado.setBorder(null);
@@ -334,7 +306,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         btnBuscarPadre.setBackground(new java.awt.Color(107, 117, 125));
         btnBuscarPadre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnBuscarPadre.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarPadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
+        btnBuscarPadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-w-24px.png"))); // NOI18N
         btnBuscarPadre.setText("Buscar");
         btnBuscarPadre.setToolTipText("Buscar padre de novio");
         btnBuscarPadre.setBorder(null);
@@ -375,7 +347,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         btnBuscarMadre.setBackground(new java.awt.Color(107, 117, 125));
         btnBuscarMadre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnBuscarMadre.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarMadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
+        btnBuscarMadre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-w-24px.png"))); // NOI18N
         btnBuscarMadre.setText("Buscar");
         btnBuscarMadre.setToolTipText("Buscar madre de novio");
         btnBuscarMadre.setBorder(null);
@@ -416,7 +388,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         btnBuscarPadrino.setBackground(new java.awt.Color(107, 117, 125));
         btnBuscarPadrino.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnBuscarPadrino.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarPadrino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
+        btnBuscarPadrino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-w-24px.png"))); // NOI18N
         btnBuscarPadrino.setText("Buscar");
         btnBuscarPadrino.setToolTipText("Buscar madre de novia");
         btnBuscarPadrino.setBorder(null);
@@ -457,7 +429,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         btnBuscarSacerdote.setBackground(new java.awt.Color(107, 117, 125));
         btnBuscarSacerdote.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnBuscarSacerdote.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
+        btnBuscarSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-w-24px.png"))); // NOI18N
         btnBuscarSacerdote.setText("Buscar");
         btnBuscarSacerdote.setToolTipText("Buscar madre de novia");
         btnBuscarSacerdote.setBorder(null);
@@ -486,7 +458,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         btnGuardar.setBackground(new java.awt.Color(0, 129, 255));
         btnGuardar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save.png"))); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save-w-24px.png"))); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.setBorder(null);
         btnGuardar.setBorderPainted(false);
@@ -547,7 +519,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         btnBuscarMadrina.setBackground(new java.awt.Color(107, 117, 125));
         btnBuscarMadrina.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnBuscarMadrina.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarMadrina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
+        btnBuscarMadrina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-w-24px.png"))); // NOI18N
         btnBuscarMadrina.setText("Buscar");
         btnBuscarMadrina.setToolTipText("Buscar madre de novia");
         btnBuscarMadrina.setBorder(null);
@@ -672,6 +644,42 @@ public class DlgConfirmacion extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnEliminarMadrina, new org.netbeans.lib.awtextra.AbsoluteConstraints(705, 300, 30, 30));
+
+        jPanelTop.setBackground(new java.awt.Color(0, 129, 255));
+        jPanelTop.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jbCerrar.setBackground(new java.awt.Color(0, 129, 255));
+        jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
+        jbCerrar.setBorder(null);
+        jbCerrar.setBorderPainted(false);
+        jbCerrar.setContentAreaFilled(false);
+        jbCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbCerrar.setOpaque(true);
+        jbCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbCerrarMouseMoved(evt);
+            }
+        });
+        jbCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbCerrarMouseExited(evt);
+            }
+        });
+        jbCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCerrarActionPerformed(evt);
+            }
+        });
+        jPanelTop.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 0, 30, 40));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Registro de Nueva Confirmación");
+        jPanelTop.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 400, -1));
+
+        jPanel1.add(jPanelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 400));
 
@@ -846,11 +854,11 @@ public class DlgConfirmacion extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBuscarMadrinaMouseExited
 
     private void jbCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseMoved
-        this.jbCerrar.setBackground(new java.awt.Color(227, 96, 101));
+        this.jbCerrar.setBackground(new java.awt.Color(45, 151, 254));
     }//GEN-LAST:event_jbCerrarMouseMoved
 
     private void jbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseExited
-        this.jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
+        this.jbCerrar.setBackground(new java.awt.Color(0,129,255));
     }//GEN-LAST:event_jbCerrarMouseExited
 
     private void btnEliminarPadreMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarPadreMouseMoved
@@ -985,6 +993,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelTop;
     private javax.swing.JButton jbCerrar;
     private javax.swing.JSeparator jsFolio;
     private javax.swing.JSeparator jsLugar;

@@ -173,8 +173,6 @@ public class DlgPersona extends javax.swing.JDialog {
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
-        btnSalir = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtnombres = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -196,6 +194,9 @@ public class DlgPersona extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         cbDepartamento = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
+        jPanelTop = new javax.swing.JPanel();
+        btnSalir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -210,37 +211,6 @@ public class DlgPersona extends javax.swing.JDialog {
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 161, 270, -1));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 211, 90, -1));
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 261, 142, -1));
-
-        btnSalir.setBackground(new java.awt.Color(222, 62, 68));
-        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
-        btnSalir.setBorder(null);
-        btnSalir.setBorderPainted(false);
-        btnSalir.setContentAreaFilled(false);
-        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSalir.setOpaque(true);
-        btnSalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnSalirMouseMoved(evt);
-            }
-        });
-        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSalirMouseExited(evt);
-            }
-        });
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(399, 1, 30, 30));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Registro de Personas");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 430, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -300,7 +270,7 @@ public class DlgPersona extends javax.swing.JDialog {
         btnguardar.setBackground(new java.awt.Color(0, 129, 255));
         btnguardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnguardar.setForeground(new java.awt.Color(255, 255, 255));
-        btnguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save.png"))); // NOI18N
+        btnguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save-w-24px.png"))); // NOI18N
         btnguardar.setText("Guardar");
         btnguardar.setBorder(null);
         btnguardar.setBorderPainted(false);
@@ -393,6 +363,42 @@ public class DlgPersona extends javax.swing.JDialog {
         jLabel10.setText("Genero");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 330, -1, -1));
 
+        jPanelTop.setBackground(new java.awt.Color(0, 129, 255));
+        jPanelTop.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnSalir.setBackground(new java.awt.Color(0, 129, 255));
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
+        btnSalir.setBorder(null);
+        btnSalir.setBorderPainted(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setOpaque(true);
+        btnSalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnSalirMouseMoved(evt);
+            }
+        });
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+        });
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanelTop.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 30, 40));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Registro de nueva persona");
+        jPanelTop.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 320, -1));
+
+        jPanel1.add(jPanelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 40));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 650));
 
         pack();
@@ -427,11 +433,11 @@ public class DlgPersona extends javax.swing.JDialog {
     }//GEN-LAST:event_btncancelarActionPerformed
 
     private void btnSalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseMoved
-        this.btnSalir.setBackground(new java.awt.Color(227, 96, 101));
+        this.btnSalir.setBackground(new java.awt.Color(45, 151, 254));
     }//GEN-LAST:event_btnSalirMouseMoved
 
     private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
-        this.btnSalir.setBackground(new java.awt.Color(222, 62, 68));
+        this.btnSalir.setBackground(new java.awt.Color(0,129,255));
     }//GEN-LAST:event_btnSalirMouseExited
 
     private void btnguardarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnguardarMouseMoved
@@ -510,6 +516,7 @@ public class DlgPersona extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelTop;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

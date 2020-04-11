@@ -17,7 +17,7 @@ import javax.swing.JTable;
  * @author Alexis
  */
 public class DlgDetalleEvento extends javax.swing.JDialog {
-    
+
     private Integer idEvento;
     private final ResponsableEventoController responsableEventoController;
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -39,9 +39,9 @@ public class DlgDetalleEvento extends javax.swing.JDialog {
                 .append(" fecha = ")
                 .append(sdf.format(this.responsableEventoController.getItems().get(0).getIdEvento().getFecha()));
         this.lblTitulo.setText(titulo.toString().toUpperCase());
-        
+
     }
-    
+
     private void mostrarDetEvento(JTable tabla, Integer idEvento) {
         this.responsableEventoController.llenarTabla(tabla, idEvento);
     }
@@ -60,6 +60,7 @@ public class DlgDetalleEvento extends javax.swing.JDialog {
         tbDetalleEvento = new javax.swing.JTable();
         jbCerrar = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
+        jPanelTop4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -98,7 +99,7 @@ public class DlgDetalleEvento extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 840, 270));
 
-        jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
+        jbCerrar.setBackground(new java.awt.Color(0, 129, 255));
         jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
         jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
         jbCerrar.setBorder(null);
@@ -121,13 +122,17 @@ public class DlgDetalleEvento extends javax.swing.JDialog {
                 jbCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(839, 1, 30, 30));
+        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 30, 40));
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("Detalle de Evento");
         jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 870, -1));
+
+        jPanelTop4.setBackground(new java.awt.Color(0, 129, 255));
+        jPanelTop4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jPanelTop4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 380));
 
@@ -139,11 +144,11 @@ public class DlgDetalleEvento extends javax.swing.JDialog {
     }//GEN-LAST:event_jbCerrarActionPerformed
 
     private void jbCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseMoved
-        this.jbCerrar.setBackground(new java.awt.Color(227, 96, 101));
+        this.jbCerrar.setBackground(new java.awt.Color(45, 151, 254));
     }//GEN-LAST:event_jbCerrarMouseMoved
 
     private void jbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseExited
-        this.jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
+        this.jbCerrar.setBackground(new java.awt.Color(0, 129, 255));
     }//GEN-LAST:event_jbCerrarMouseExited
 
     /**
@@ -190,6 +195,7 @@ public class DlgDetalleEvento extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelTop4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbCerrar;
     private javax.swing.JLabel lblTitulo;
