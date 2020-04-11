@@ -80,12 +80,13 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
         tbSacerdote = new javax.swing.JTable();
         txtBuscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jbCerrar = new javax.swing.JButton();
         btnNuevoSacerdote = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jcbTipoBusqueda = new javax.swing.JComboBox<>();
+        jPanelTop = new javax.swing.JPanel();
+        jbCerrar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -168,37 +169,12 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/detalle.png"))); // NOI18N
         jLabel1.setText("Haga click en el boton seleccionar para elegir un sacerdote");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 400, -1));
-
-        jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
-        jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
-        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
-        jbCerrar.setBorder(null);
-        jbCerrar.setBorderPainted(false);
-        jbCerrar.setContentAreaFilled(false);
-        jbCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbCerrar.setOpaque(true);
-        jbCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jbCerrarMouseMoved(evt);
-            }
-        });
-        jbCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jbCerrarMouseExited(evt);
-            }
-        });
-        jbCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCerrarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(489, 1, 30, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 400, -1));
 
         btnNuevoSacerdote.setBackground(new java.awt.Color(27, 163, 69));
         btnNuevoSacerdote.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnNuevoSacerdote.setForeground(new java.awt.Color(255, 255, 255));
-        btnNuevoSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/agregar.png"))); // NOI18N
+        btnNuevoSacerdote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/agregar-w-24px.png"))); // NOI18N
         btnNuevoSacerdote.setText("Nuevo sacedote");
         btnNuevoSacerdote.setBorder(null);
         btnNuevoSacerdote.setBorderPainted(false);
@@ -222,13 +198,7 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
         });
         jPanel1.add(btnNuevoSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 150, 40));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Busqueda de Sacerdote");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 520, -1));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-b.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-b-24px.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -246,6 +216,42 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
             }
         });
         jPanel1.add(jcbTipoBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 180, 30));
+
+        jPanelTop.setBackground(new java.awt.Color(0, 129, 255));
+        jPanelTop.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jbCerrar.setBackground(new java.awt.Color(0, 129, 255));
+        jbCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
+        jbCerrar.setBorder(null);
+        jbCerrar.setBorderPainted(false);
+        jbCerrar.setContentAreaFilled(false);
+        jbCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbCerrar.setOpaque(true);
+        jbCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbCerrarMouseMoved(evt);
+            }
+        });
+        jbCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbCerrarMouseExited(evt);
+            }
+        });
+        jbCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCerrarActionPerformed(evt);
+            }
+        });
+        jPanelTop.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 30, 40));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setText("Busqueda de Sacerdote");
+        jPanelTop.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 400, -1));
+
+        jPanel1.add(jPanelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 460));
 
@@ -311,11 +317,11 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
     }//GEN-LAST:event_jcbTipoBusquedaItemStateChanged
 
     private void jbCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseMoved
-        this.jbCerrar.setBackground(new java.awt.Color(227, 96, 101));
+        this.jbCerrar.setBackground(new java.awt.Color(45, 151, 254));
     }//GEN-LAST:event_jbCerrarMouseMoved
 
     private void jbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseExited
-        this.jbCerrar.setBackground(new java.awt.Color(222, 62, 68));
+        this.jbCerrar.setBackground(new java.awt.Color(0,129,255));
     }//GEN-LAST:event_jbCerrarMouseExited
 
     private void btnNuevoSacerdoteMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoSacerdoteMouseMoved
@@ -379,6 +385,7 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelTop;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbCerrar;
     private javax.swing.JComboBox<String> jcbTipoBusqueda;

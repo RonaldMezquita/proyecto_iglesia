@@ -89,7 +89,6 @@ public class DlgJustificacion extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
         lbNombre = new javax.swing.JLabel();
         lbEstado = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
@@ -99,9 +98,11 @@ public class DlgJustificacion extends javax.swing.JDialog {
         jtJustificacion = new javax.swing.JTable();
         jbingresar = new javax.swing.JButton();
         jblimpiar = new javax.swing.JButton();
-        jbsalir = new javax.swing.JButton();
         txtid = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jPanelTop = new javax.swing.JPanel();
+        jbsalir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -112,12 +113,6 @@ public class DlgJustificacion extends javax.swing.JDialog {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 141, 320, -1));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 281, 310, -1));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Mantenimiento de Justificación");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 400, -1));
 
         lbNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbNombre.setForeground(new java.awt.Color(0, 0, 0));
@@ -198,7 +193,7 @@ public class DlgJustificacion extends javax.swing.JDialog {
         jbingresar.setBackground(new java.awt.Color(0, 129, 255));
         jbingresar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbingresar.setForeground(new java.awt.Color(255, 255, 255));
-        jbingresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save.png"))); // NOI18N
+        jbingresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save-w-24px.png"))); // NOI18N
         jbingresar.setText("Guardar");
         jbingresar.setBorder(null);
         jbingresar.setBorderPainted(false);
@@ -249,7 +244,17 @@ public class DlgJustificacion extends javax.swing.JDialog {
         });
         jPanel1.add(jblimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 130, 40));
 
-        jbsalir.setBackground(new java.awt.Color(222, 62, 68));
+        txtid.setEditable(false);
+        txtid.setName("id"); // NOI18N
+        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 50, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-b-24px.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+
+        jPanelTop.setBackground(new java.awt.Color(0, 129, 255));
+        jPanelTop.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jbsalir.setBackground(new java.awt.Color(0, 129, 255));
         jbsalir.setForeground(new java.awt.Color(255, 255, 255));
         jbsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
         jbsalir.setBorder(null);
@@ -272,14 +277,15 @@ public class DlgJustificacion extends javax.swing.JDialog {
                 jbsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 1, 30, 30));
+        jPanelTop.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 30, 40));
 
-        txtid.setEditable(false);
-        txtid.setName("id"); // NOI18N
-        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 50, -1));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Mantenimiento de Justificación");
+        jPanelTop.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 320, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-b.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        jPanel1.add(jPanelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 500));
 
@@ -335,11 +341,11 @@ public class DlgJustificacion extends javax.swing.JDialog {
     }//GEN-LAST:event_jblimpiarMouseExited
 
     private void jbsalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseMoved
-        this.jbsalir.setBackground(new java.awt.Color(227, 96, 101));
+        this.jbsalir.setBackground(new java.awt.Color(45, 151, 254));
     }//GEN-LAST:event_jbsalirMouseMoved
 
     private void jbsalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseExited
-        this.jbsalir.setBackground(new java.awt.Color(222, 62, 68));
+        this.jbsalir.setBackground(new java.awt.Color(0,129,255));
     }//GEN-LAST:event_jbsalirMouseExited
 
     /**
@@ -390,6 +396,7 @@ public class DlgJustificacion extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelTop;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

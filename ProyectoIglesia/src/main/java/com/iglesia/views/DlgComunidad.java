@@ -99,8 +99,6 @@ public class DlgComunidad extends javax.swing.JDialog {
         jsNombre = new javax.swing.JSeparator();
         jsBusqueda = new javax.swing.JSeparator();
         txtid = new javax.swing.JTextField();
-        jbsalir = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -113,6 +111,9 @@ public class DlgComunidad extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jbcSector = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        jPanelTop = new javax.swing.JPanel();
+        jbsalir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -135,38 +136,6 @@ public class DlgComunidad extends javax.swing.JDialog {
         txtid.setEditable(false);
         txtid.setName("id"); // NOI18N
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 60, -1));
-
-        jbsalir.setBackground(new java.awt.Color(222, 62, 68));
-        jbsalir.setForeground(new java.awt.Color(255, 255, 255));
-        jbsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
-        jbsalir.setBorder(null);
-        jbsalir.setBorderPainted(false);
-        jbsalir.setContentAreaFilled(false);
-        jbsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbsalir.setOpaque(true);
-        jbsalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jbsalirMouseMoved(evt);
-            }
-        });
-        jbsalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jbsalirMouseExited(evt);
-            }
-        });
-        jbsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbsalirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 1, 30, 30));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Mantenimiento Comunidades");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 380, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -203,7 +172,7 @@ public class DlgComunidad extends javax.swing.JDialog {
         jbingresar.setBackground(new java.awt.Color(0, 129, 255));
         jbingresar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbingresar.setForeground(new java.awt.Color(255, 255, 255));
-        jbingresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save.png"))); // NOI18N
+        jbingresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/save-w-24px.png"))); // NOI18N
         jbingresar.setText("Guardar");
         jbingresar.setBorder(null);
         jbingresar.setBorderPainted(false);
@@ -322,8 +291,45 @@ public class DlgComunidad extends javax.swing.JDialog {
         jbcSector.setBorder(null);
         jPanel1.add(jbcSector, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 330, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-b.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-b-24px.png"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+
+        jPanelTop.setBackground(new java.awt.Color(0, 129, 255));
+        jPanelTop.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jbsalir.setBackground(new java.awt.Color(0, 129, 255));
+        jbsalir.setForeground(new java.awt.Color(255, 255, 255));
+        jbsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar-w.png"))); // NOI18N
+        jbsalir.setBorder(null);
+        jbsalir.setBorderPainted(false);
+        jbsalir.setContentAreaFilled(false);
+        jbsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbsalir.setOpaque(true);
+        jbsalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbsalirMouseMoved(evt);
+            }
+        });
+        jbsalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbsalirMouseExited(evt);
+            }
+        });
+        jbsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbsalirActionPerformed(evt);
+            }
+        });
+        jPanelTop.add(jbsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 30, 40));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Mantenimiento de Comunidades");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanelTop.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 320, -1));
+
+        jPanel1.add(jPanelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 540));
 
@@ -378,11 +384,11 @@ public class DlgComunidad extends javax.swing.JDialog {
     }//GEN-LAST:event_jtComunidadMouseClicked
 
     private void jbsalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseMoved
-        this.jbsalir.setBackground(new java.awt.Color(227, 96, 101));
+        this.jbsalir.setBackground(new java.awt.Color(45, 151, 254));
     }//GEN-LAST:event_jbsalirMouseMoved
 
     private void jbsalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseExited
-        this.jbsalir.setBackground(new java.awt.Color(222, 62, 68));
+        this.jbsalir.setBackground(new java.awt.Color(0,129,255));
     }//GEN-LAST:event_jbsalirMouseExited
 
     private void jbingresarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbingresarMouseMoved
@@ -452,6 +458,7 @@ public class DlgComunidad extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelTop;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<Sector> jbcSector;
     private javax.swing.JButton jbingresar;

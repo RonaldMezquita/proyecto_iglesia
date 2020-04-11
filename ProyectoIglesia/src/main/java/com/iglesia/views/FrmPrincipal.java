@@ -14,14 +14,14 @@ import java.awt.Toolkit;
  * @author remsf
  */
 public class FrmPrincipal extends javax.swing.JFrame {
-
+    
     private boolean visible;
     private Usuario usuario;
-
+    
     public Usuario getUsuario() {
         return usuario;
     }
-
+    
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
         this.jlblUsuario.setText(this.usuario.getNombre() + " " + this.usuario.getApellido());
@@ -30,7 +30,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form PrincipalFrame
      */
-    public FrmPrincipal() {        
+    public FrmPrincipal() {
         initComponents();
         this.visible = true;
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -39,7 +39,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 //        this.panelTop.setBounds(0, 0, (int) tamanio.getWidth(), 50);
         getContentPane().add(panelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, (int) tamanio.getWidth(), 40));
         int positionBtnClose = (int) tamanio.getWidth() - 31;
-        panelTop.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose, 0, 30, 40));        
+        panelTop.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose, 0, 30, 40));
         panelTop.add(jlblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose - 220, 0, 250, 40));
         panelTop.add(jlblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose - 250, 0, 250, 40));
     }
@@ -59,12 +59,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnComunidad = new javax.swing.JButton();
         btnJustificacion = new javax.swing.JButton();
         btnTipoSacramento = new javax.swing.JButton();
-        btnConsultaMovEfectivo = new javax.swing.JButton();
-        btnBautizo = new javax.swing.JButton();
         btnLugar = new javax.swing.JButton();
         btnConsultaPersonas = new javax.swing.JButton();
-        btnConfirmacion = new javax.swing.JButton();
-        btnBoda = new javax.swing.JButton();
         btnPersona1 = new javax.swing.JButton();
         btnEvento = new javax.swing.JButton();
         btnNuevoMovEfectivo = new javax.swing.JButton();
@@ -75,11 +71,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jlblUsuario = new javax.swing.JLabel();
         jlblIconUser = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btnConsultarMovEfectivoTop = new javax.swing.JButton();
+        btnBautizoTop = new javax.swing.JButton();
+        btnConfirmacionTop = new javax.swing.JButton();
+        btnBodaTop = new javax.swing.JButton();
+        btnCatalogos = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(870, 550));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -174,43 +177,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnConsultaMovEfectivo.setBackground(new java.awt.Color(0, 153, 204));
-        btnConsultaMovEfectivo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnConsultaMovEfectivo.setForeground(new java.awt.Color(255, 255, 255));
-        btnConsultaMovEfectivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
-        btnConsultaMovEfectivo.setText("Movimientos de efectivo");
-        btnConsultaMovEfectivo.setBorder(null);
-        btnConsultaMovEfectivo.setBorderPainted(false);
-        btnConsultaMovEfectivo.setContentAreaFilled(false);
-        btnConsultaMovEfectivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnConsultaMovEfectivo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        btnConsultaMovEfectivo.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        btnConsultaMovEfectivo.setOpaque(true);
-        btnConsultaMovEfectivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultaMovEfectivoActionPerformed(evt);
-            }
-        });
-
-        btnBautizo.setBackground(new java.awt.Color(0, 153, 204));
-        btnBautizo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnBautizo.setForeground(new java.awt.Color(255, 255, 255));
-        btnBautizo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/confirmacion-36px.png"))); // NOI18N
-        btnBautizo.setText("Bautizo");
-        btnBautizo.setToolTipText("");
-        btnBautizo.setBorder(null);
-        btnBautizo.setBorderPainted(false);
-        btnBautizo.setContentAreaFilled(false);
-        btnBautizo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBautizo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        btnBautizo.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        btnBautizo.setOpaque(true);
-        btnBautizo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBautizoActionPerformed(evt);
-            }
-        });
-
         btnLugar.setBackground(new java.awt.Color(0, 153, 204));
         btnLugar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnLugar.setForeground(new java.awt.Color(255, 255, 255));
@@ -244,42 +210,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnConsultaPersonas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultaPersonasActionPerformed(evt);
-            }
-        });
-
-        btnConfirmacion.setBackground(new java.awt.Color(0, 153, 204));
-        btnConfirmacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnConfirmacion.setForeground(new java.awt.Color(255, 255, 255));
-        btnConfirmacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/confirmacion-36px.png"))); // NOI18N
-        btnConfirmacion.setText("Confirmación");
-        btnConfirmacion.setBorder(null);
-        btnConfirmacion.setBorderPainted(false);
-        btnConfirmacion.setContentAreaFilled(false);
-        btnConfirmacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnConfirmacion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        btnConfirmacion.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        btnConfirmacion.setOpaque(true);
-        btnConfirmacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfirmacionActionPerformed(evt);
-            }
-        });
-
-        btnBoda.setBackground(new java.awt.Color(0, 153, 204));
-        btnBoda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnBoda.setForeground(new java.awt.Color(255, 255, 255));
-        btnBoda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/boda-36px.png"))); // NOI18N
-        btnBoda.setText("Boda");
-        btnBoda.setBorder(null);
-        btnBoda.setBorderPainted(false);
-        btnBoda.setContentAreaFilled(false);
-        btnBoda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBoda.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        btnBoda.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        btnBoda.setOpaque(true);
-        btnBoda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBodaActionPerformed(evt);
             }
         });
 
@@ -359,31 +289,26 @@ public class FrmPrincipal extends javax.swing.JFrame {
         panelMenu.setLayout(panelMenuLayout);
         panelMenuLayout.setHorizontalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
+            .addGroup(panelMenuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnConfirmacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSector, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnConsultaPersonas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnComunidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPersona1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelMenuLayout.createSequentialGroup()
+                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnConsultaPersonas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnComunidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPersona1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEvento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTipoSacramento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnJustificacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSacerdotes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelMenuLayout.createSequentialGroup()
                         .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnNuevoMovEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBoda, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(panelMenuLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnBautizo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnTipoSacramento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnJustificacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSacerdotes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnConsultaMovEfectivo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnUsuarios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelMenuLayout.setVerticalGroup(
@@ -406,15 +331,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPersona1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnConsultaMovEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNuevoMovEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBautizo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBoda, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -448,6 +365,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnSalir.setContentAreaFilled(false);
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalir.setOpaque(true);
+        btnSalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnSalirMouseMoved(evt);
+            }
+        });
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+        });
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -471,6 +398,107 @@ public class FrmPrincipal extends javax.swing.JFrame {
         panelTop.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 350, 40));
 
         getContentPane().add(panelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 40));
+
+        jPanel1.setBackground(new java.awt.Color(231, 231, 231));
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnConsultarMovEfectivoTop.setBackground(new java.awt.Color(27, 163, 69));
+        btnConsultarMovEfectivoTop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnConsultarMovEfectivoTop.setForeground(new java.awt.Color(255, 255, 255));
+        btnConsultarMovEfectivoTop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/folder-person-w-36px.png"))); // NOI18N
+        btnConsultarMovEfectivoTop.setText("Mov. de efectivo");
+        btnConsultarMovEfectivoTop.setBorder(null);
+        btnConsultarMovEfectivoTop.setBorderPainted(false);
+        btnConsultarMovEfectivoTop.setContentAreaFilled(false);
+        btnConsultarMovEfectivoTop.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnConsultarMovEfectivoTop.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnConsultarMovEfectivoTop.setOpaque(true);
+        btnConsultarMovEfectivoTop.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnConsultarMovEfectivoTop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarMovEfectivoTopActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnConsultarMovEfectivoTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 0, 120, 60));
+
+        btnBautizoTop.setBackground(new java.awt.Color(27, 163, 69));
+        btnBautizoTop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnBautizoTop.setForeground(new java.awt.Color(255, 255, 255));
+        btnBautizoTop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/confirmacion-36px.png"))); // NOI18N
+        btnBautizoTop.setText("Bautizo");
+        btnBautizoTop.setBorder(null);
+        btnBautizoTop.setBorderPainted(false);
+        btnBautizoTop.setContentAreaFilled(false);
+        btnBautizoTop.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBautizoTop.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnBautizoTop.setOpaque(true);
+        btnBautizoTop.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnBautizoTop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBautizoTopActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBautizoTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 120, 60));
+
+        btnConfirmacionTop.setBackground(new java.awt.Color(27, 163, 69));
+        btnConfirmacionTop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnConfirmacionTop.setForeground(new java.awt.Color(255, 255, 255));
+        btnConfirmacionTop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/confirmacion-36px.png"))); // NOI18N
+        btnConfirmacionTop.setText("Confirmación");
+        btnConfirmacionTop.setBorder(null);
+        btnConfirmacionTop.setBorderPainted(false);
+        btnConfirmacionTop.setContentAreaFilled(false);
+        btnConfirmacionTop.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnConfirmacionTop.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnConfirmacionTop.setOpaque(true);
+        btnConfirmacionTop.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnConfirmacionTop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmacionTopActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnConfirmacionTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 0, 120, 60));
+
+        btnBodaTop.setBackground(new java.awt.Color(27, 163, 69));
+        btnBodaTop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnBodaTop.setForeground(new java.awt.Color(255, 255, 255));
+        btnBodaTop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/boda-36px.png"))); // NOI18N
+        btnBodaTop.setText("Boda");
+        btnBodaTop.setBorder(null);
+        btnBodaTop.setBorderPainted(false);
+        btnBodaTop.setContentAreaFilled(false);
+        btnBodaTop.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBodaTop.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnBodaTop.setOpaque(true);
+        btnBodaTop.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnBodaTop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBodaTopActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBodaTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 120, 60));
+
+        btnCatalogos.setBackground(new java.awt.Color(27, 163, 69));
+        btnCatalogos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnCatalogos.setForeground(new java.awt.Color(255, 255, 255));
+        btnCatalogos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/menu-36px.png"))); // NOI18N
+        btnCatalogos.setText("Catalogos");
+        btnCatalogos.setBorder(null);
+        btnCatalogos.setBorderPainted(false);
+        btnCatalogos.setContentAreaFilled(false);
+        btnCatalogos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCatalogos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCatalogos.setOpaque(true);
+        btnCatalogos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCatalogos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCatalogosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCatalogos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 60));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 40, 630, 60));
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -497,7 +525,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         //-220
         if (this.panelMenu.getX() == 0) {
-            Animacion.Animacion.mover_izquierda(0, -188, 10, 5, this.panelMenu);
+            Animacion.Animacion.mover_izquierda(0, -185, 10, 5, this.panelMenu);
 //            Animacion.Animacion.mover_izquierda(190, 0, 10, 5, this.btnMenu);
         } else {
             Animacion.Animacion.mover_derecha(this.panelMenu.getX(), 0, 10, 5, this.panelMenu);
@@ -518,18 +546,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         obj.setVisible(true);
     }//GEN-LAST:event_btnTipoSacramentoActionPerformed
 
-    private void btnConsultaMovEfectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaMovEfectivoActionPerformed
-        DlgConsultaMovEfectivo obj = new DlgConsultaMovEfectivo(this, false);
-        obj.setUsuarioLogeado(this.usuario);
-        obj.setVisible(true);
-    }//GEN-LAST:event_btnConsultaMovEfectivoActionPerformed
-
-    private void btnBautizoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBautizoActionPerformed
-        DlgBautizo obj = new DlgBautizo(this, false);
-        obj.setUsuarioLogeado(this.usuario);
-        obj.setVisible(true);
-    }//GEN-LAST:event_btnBautizoActionPerformed
-
     private void btnLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLugarActionPerformed
         DlgLugar obj = new DlgLugar(this, false);
         obj.setUsuarioLogeado(this.usuario);
@@ -541,18 +557,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnConsultaPersonasActionPerformed
-
-    private void btnConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmacionActionPerformed
-        DlgConfirmacion obj = new DlgConfirmacion(this, false);
-        obj.setUsuarioLogeado(this.usuario);
-        obj.setVisible(true);
-    }//GEN-LAST:event_btnConfirmacionActionPerformed
-
-    private void btnBodaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBodaActionPerformed
-        DlgBoda obj = new DlgBoda(this, false);
-        obj.setUsuarioLogeado(this.usuario);
-        obj.setVisible(true);
-    }//GEN-LAST:event_btnBodaActionPerformed
 
     private void btnPersona1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersona1ActionPerformed
         DlgPersona obj = new DlgPersona(this, false);
@@ -582,6 +586,49 @@ public class FrmPrincipal extends javax.swing.JFrame {
         DlgUsuario obj = new DlgUsuario(null, true);
         obj.setVisible(true);
     }//GEN-LAST:event_btnUsuariosActionPerformed
+
+    private void btnConsultarMovEfectivoTopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarMovEfectivoTopActionPerformed
+        DlgConsultaMovEfectivo obj = new DlgConsultaMovEfectivo(this, false);
+        obj.setUsuarioLogeado(this.usuario);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnConsultarMovEfectivoTopActionPerformed
+
+    private void btnCatalogosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogosActionPerformed
+        //-220
+        if (this.panelMenu.getX() == 0) {
+            Animacion.Animacion.mover_izquierda(0, -185, 10, 5, this.panelMenu);
+//            Animacion.Animacion.mover_izquierda(190, 0, 10, 5, this.btnMenu);
+        } else {
+            Animacion.Animacion.mover_derecha(this.panelMenu.getX(), 0, 10, 5, this.panelMenu);
+//            Animacion.Animacion.mover_derecha(0, 190, 10, 5, this.btnMenu);
+        }
+    }//GEN-LAST:event_btnCatalogosActionPerformed
+
+    private void btnBautizoTopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBautizoTopActionPerformed
+        DlgBautizo obj = new DlgBautizo(this, false);
+        obj.setUsuarioLogeado(this.usuario);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnBautizoTopActionPerformed
+
+    private void btnConfirmacionTopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmacionTopActionPerformed
+        DlgConfirmacion obj = new DlgConfirmacion(this, false);
+        obj.setUsuarioLogeado(this.usuario);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnConfirmacionTopActionPerformed
+
+    private void btnBodaTopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBodaTopActionPerformed
+        DlgBoda obj = new DlgBoda(this, false);
+        obj.setUsuarioLogeado(this.usuario);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnBodaTopActionPerformed
+
+    private void btnSalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseMoved
+        this.btnSalir.setBackground(new java.awt.Color(45, 151, 254));
+    }//GEN-LAST:event_btnSalirMouseMoved
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+        this.btnSalir.setBackground(new java.awt.Color(0, 129, 255));
+    }//GEN-LAST:event_btnSalirMouseExited
 
     /**
      * @param args the command line arguments
@@ -626,12 +673,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBautizo;
-    private javax.swing.JButton btnBoda;
+    private javax.swing.JButton btnBautizoTop;
+    private javax.swing.JButton btnBodaTop;
+    private javax.swing.JButton btnCatalogos;
     private javax.swing.JButton btnComunidad;
-    private javax.swing.JButton btnConfirmacion;
-    private javax.swing.JButton btnConsultaMovEfectivo;
+    private javax.swing.JButton btnConfirmacionTop;
     private javax.swing.JButton btnConsultaPersonas;
+    private javax.swing.JButton btnConsultarMovEfectivoTop;
     private javax.swing.JButton btnEvento;
     private javax.swing.JButton btnJustificacion;
     private javax.swing.JButton btnLugar;
@@ -645,6 +693,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlblIconUser;
     private javax.swing.JLabel jlblUsuario;
     private javax.swing.JPanel panelMenu;

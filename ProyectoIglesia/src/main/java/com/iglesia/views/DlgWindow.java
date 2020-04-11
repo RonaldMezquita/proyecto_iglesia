@@ -75,12 +75,12 @@ public class DlgWindow extends javax.swing.JDialog {
             this.jbtnNo.setVisible(false);
             jpContenido.add(jbtnSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 80, 70, 35));
 
-            ImageIcon img = new ImageIcon(this.getClass().getResource("/META-INF/images/icon/info-icon.png"));
+            ImageIcon img = new ImageIcon(this.getClass().getResource("/META-INF/images/icon/info-icon-bl.png"));
             ImageIcon icon = new ImageIcon(img.getImage().getScaledInstance(this.jlblIcon.getWidth(), this.jlblIcon.getHeight(), Image.SCALE_DEFAULT));
             this.jlblIcon.setIcon(icon);
         } else if (tipoVentana.equals(CONFIRM)) {
             this.jbtnNo.setVisible(true);
-            ImageIcon img = new ImageIcon(this.getClass().getResource("/META-INF/images/icon/interrogante-icon.png"));
+            ImageIcon img = new ImageIcon(this.getClass().getResource("/META-INF/images/icon/question-icon-g.png"));
             ImageIcon icon = new ImageIcon(img.getImage().getScaledInstance(this.jlblIcon.getWidth(), this.jlblIcon.getHeight(), Image.SCALE_DEFAULT));
             this.jlblIcon.setIcon(icon);
         }
@@ -88,10 +88,13 @@ public class DlgWindow extends javax.swing.JDialog {
         if (tipoMensaje.equals(ERROR)) {
             this.jpTitulo.setBackground(new java.awt.Color(222, 62, 68));
             this.jbsalir.setBackground(new java.awt.Color(222, 62, 68));
-            ImageIcon img = new ImageIcon(this.getClass().getResource("/META-INF/images/icon/error-icon.png"));
+            ImageIcon img = new ImageIcon(this.getClass().getResource("/META-INF/images/icon/error-icon-r.png"));
             ImageIcon icon = new ImageIcon(img.getImage().getScaledInstance(this.jlblIcon.getWidth(), this.jlblIcon.getHeight(), Image.SCALE_DEFAULT));
             this.jlblIcon.setIcon(icon);
         } else if (tipoMensaje.equals(WARN)) {
+            ImageIcon img = new ImageIcon(this.getClass().getResource("/META-INF/images/icon/warn-icon-y.png"));
+            ImageIcon icon = new ImageIcon(img.getImage().getScaledInstance(this.jlblIcon.getWidth(), this.jlblIcon.getHeight(), Image.SCALE_DEFAULT));
+            this.jlblIcon.setIcon(icon);
             this.jpTitulo.setBackground(new java.awt.Color(254, 192, 1));
             this.jbsalir.setBackground(new java.awt.Color(254, 192, 1));
         }
@@ -190,7 +193,7 @@ public class DlgWindow extends javax.swing.JDialog {
         jtxtMensaje.setBorder(null);
         jScrollPane1.setViewportView(jtxtMensaje);
 
-        jpContenido.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 290, 50));
+        jpContenido.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 20, 280, 50));
 
         jbtnSi.setBackground(new java.awt.Color(0, 129, 255));
         jbtnSi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -243,7 +246,7 @@ public class DlgWindow extends javax.swing.JDialog {
             }
         });
         jpContenido.add(jbtnNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 80, 70, 35));
-        jpContenido.add(jlblIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 20, 50, 50));
+        jpContenido.add(jlblIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 20, 64, 64));
 
         jPanel1.add(jpContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 370, 120));
 
