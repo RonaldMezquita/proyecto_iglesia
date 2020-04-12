@@ -14,14 +14,14 @@ import java.awt.Toolkit;
  * @author remsf
  */
 public class FrmPrincipal extends javax.swing.JFrame {
-    
+
     private boolean visible;
     private Usuario usuario;
-    
+
     public Usuario getUsuario() {
         return usuario;
     }
-    
+
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
         this.jlblUsuario.setText(this.usuario.getNombre() + " " + this.usuario.getApellido());
@@ -39,9 +39,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
 //        this.panelTop.setBounds(0, 0, (int) tamanio.getWidth(), 50);
         getContentPane().add(panelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, (int) tamanio.getWidth(), 40));
         int positionBtnClose = (int) tamanio.getWidth() - 31;
-        panelTop.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose, 0, 30, 40));
-        panelTop.add(jlblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose - 220, 0, 250, 40));
-        panelTop.add(jlblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose - 250, 0, 250, 40));
+        int positionPanelUsuario = (int) tamanio.getHeight() - 40;
+        panelTop.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionBtnClose, 0, 30, 40));        
+        getContentPane().add(panelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, positionPanelUsuario, (int) tamanio.getWidth(), 40));
+//        this.btnMenu.setVisible(false);
     }
 
     /**
@@ -68,8 +69,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         panelTop = new javax.swing.JPanel();
         btnMenu = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        jlblUsuario = new javax.swing.JLabel();
-        jlblIconUser = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnConsultarMovEfectivoTop = new javax.swing.JButton();
@@ -77,6 +76,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnConfirmacionTop = new javax.swing.JButton();
         btnBodaTop = new javax.swing.JButton();
         btnCatalogos = new javax.swing.JButton();
+        panelUsuario = new javax.swing.JPanel();
+        jlblUsuario = new javax.swing.JLabel();
+        jlblIconUser = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,6 +88,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelMenu.setBackground(new java.awt.Color(255, 255, 255));
+        panelMenu.setOpaque(false);
 
         btnSector.setBackground(new java.awt.Color(0, 153, 204));
         btnSector.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -339,13 +342,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 220, 1040));
+        getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 220, 660));
 
         panelTop.setBackground(new java.awt.Color(0, 129, 255));
         panelTop.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnMenu.setBackground(new java.awt.Color(0, 129, 255));
-        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/menu-36px.png"))); // NOI18N
+        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/Iglesia.png"))); // NOI18N
         btnMenu.setBorder(null);
         btnMenu.setBorderPainted(false);
         btnMenu.setContentAreaFilled(false);
@@ -356,7 +359,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        panelTop.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, -1, 35));
+        panelTop.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 40, 35));
 
         btnSalir.setBackground(new java.awt.Color(0, 129, 255));
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar.png"))); // NOI18N
@@ -381,16 +384,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
         panelTop.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 30, 40));
-
-        jlblUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlblUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        jlblUsuario.setText("jLabel1");
-        panelTop.add(jlblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 250, 40));
-
-        jlblIconUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlblIconUser.setForeground(new java.awt.Color(105, 105, 105));
-        jlblIconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/user-shape-w-24px.png"))); // NOI18N
-        panelTop.add(jlblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 30, 40));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -499,6 +492,21 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel1.add(btnCatalogos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 60));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 40, 630, 60));
+
+        panelUsuario.setBackground(new java.awt.Color(231, 231, 231));
+        panelUsuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlblUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlblUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        jlblUsuario.setText("jLabel1");
+        panelUsuario.add(jlblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 250, 40));
+
+        jlblIconUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlblIconUser.setForeground(new java.awt.Color(105, 105, 105));
+        jlblIconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/user-shape-b-24px.png"))); // NOI18N
+        panelUsuario.add(jlblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 40));
+
+        getContentPane().add(panelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 400, 40));
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -698,5 +706,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jlblUsuario;
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelTop;
+    private javax.swing.JPanel panelUsuario;
     // End of variables declaration//GEN-END:variables
 }
