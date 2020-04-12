@@ -92,6 +92,9 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
         if (response) {
             DlgWindow.showMessageDialog(this, "Aviso", "Registro guardado correctamente");
             ProjectUtils.limpiarComponentes(this.jPanel1);
+            if (this.redirect) {
+                this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            }
         }
         return response;
     }
@@ -108,7 +111,7 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
             response = false;
         }
         if (response) {
-            DlgWindow.showMessageDialog(this, "Aviso", "Registro modificado correctamente",DlgWindow.ERROR);
+            DlgWindow.showMessageDialog(this, "Aviso", "Registro modificado correctamente");
             ProjectUtils.limpiarComponentes(this.jPanel1);
             if (this.redirect) {
                 this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
