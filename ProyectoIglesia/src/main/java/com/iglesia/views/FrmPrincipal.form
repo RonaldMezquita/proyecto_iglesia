@@ -156,7 +156,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/META-INF/images/icon/padre-36px.png"/>
+              <Image iconType="3" name="/META-INF/images/icon/padre2.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sacerdotes"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -187,7 +187,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/META-INF/images/icon/server-rack-36px.png"/>
+              <Image iconType="3" name="/META-INF/images/icon/comunidad1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Comunidad"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -280,7 +280,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/META-INF/images/icon/server-rack-36px.png"/>
+              <Image iconType="3" name="/META-INF/images/icon/luga3.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Lugar"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -435,7 +435,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/META-INF/images/icon/users-w-36px.png"/>
+              <Image iconType="3" name="/META-INF/images/icon/usuarios3.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Usuarios"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -773,7 +773,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="30" y="0" width="250" height="40"/>
+              <AbsoluteConstraints x="40" y="0" width="250" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -786,12 +786,12 @@
               <Color blue="69" green="69" red="69" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/META-INF/images/icon/user-shape-b-24px.png"/>
+              <Image iconType="3" name="/META-INF/images/icon/usuario.png"/>
             </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="30" height="40"/>
+              <AbsoluteConstraints x="0" y="0" width="40" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
