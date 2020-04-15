@@ -79,7 +79,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         panelUsuario = new javax.swing.JPanel();
         jlblUsuario = new javax.swing.JLabel();
         jlblIconUser = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -89,6 +88,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         panelMenu.setBackground(new java.awt.Color(255, 255, 255));
         panelMenu.setOpaque(false);
+        panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSector.setBackground(new java.awt.Color(0, 153, 204));
         btnSector.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -107,6 +107,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnSectorActionPerformed(evt);
             }
         });
+        panelMenu.add(btnSector, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 124, 210, 35));
 
         btnSacerdotes.setBackground(new java.awt.Color(0, 153, 204));
         btnSacerdotes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -125,6 +126,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnSacerdotesActionPerformed(evt);
             }
         });
+        panelMenu.add(btnSacerdotes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 206, 210, 35));
 
         btnComunidad.setBackground(new java.awt.Color(0, 153, 204));
         btnComunidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -143,6 +145,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnComunidadActionPerformed(evt);
             }
         });
+        panelMenu.add(btnComunidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 165, 210, 35));
 
         btnJustificacion.setBackground(new java.awt.Color(0, 153, 204));
         btnJustificacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -161,12 +164,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnJustificacionActionPerformed(evt);
             }
         });
+        panelMenu.add(btnJustificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 83, 210, 35));
 
         btnTipoSacramento.setBackground(new java.awt.Color(0, 153, 204));
         btnTipoSacramento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnTipoSacramento.setForeground(new java.awt.Color(255, 255, 255));
         btnTipoSacramento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
-        btnTipoSacramento.setText("Tipo de Sacramento");
+        btnTipoSacramento.setText("Sacramento");
         btnTipoSacramento.setBorder(null);
         btnTipoSacramento.setBorderPainted(false);
         btnTipoSacramento.setContentAreaFilled(false);
@@ -179,6 +183,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnTipoSacramentoActionPerformed(evt);
             }
         });
+        panelMenu.add(btnTipoSacramento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, -1));
 
         btnLugar.setBackground(new java.awt.Color(0, 153, 204));
         btnLugar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -197,6 +202,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnLugarActionPerformed(evt);
             }
         });
+        panelMenu.add(btnLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 42, 210, 35));
 
         btnConsultaPersonas.setBackground(new java.awt.Color(0, 153, 204));
         btnConsultaPersonas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -215,12 +221,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnConsultaPersonasActionPerformed(evt);
             }
         });
+        panelMenu.add(btnConsultaPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 247, 210, 35));
 
         btnPersona1.setBackground(new java.awt.Color(0, 153, 204));
         btnPersona1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnPersona1.setForeground(new java.awt.Color(255, 255, 255));
         btnPersona1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/add-persona-w-36px.png"))); // NOI18N
-        btnPersona1.setText("Registrar nueva persona");
+        btnPersona1.setText("Registrar persona");
         btnPersona1.setBorder(null);
         btnPersona1.setBorderPainted(false);
         btnPersona1.setContentAreaFilled(false);
@@ -233,6 +240,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnPersona1ActionPerformed(evt);
             }
         });
+        panelMenu.add(btnPersona1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 288, 210, 35));
 
         btnEvento.setBackground(new java.awt.Color(0, 153, 204));
         btnEvento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -251,12 +259,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnEventoActionPerformed(evt);
             }
         });
+        panelMenu.add(btnEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 210, 35));
 
         btnNuevoMovEfectivo.setBackground(new java.awt.Color(0, 153, 204));
         btnNuevoMovEfectivo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnNuevoMovEfectivo.setForeground(new java.awt.Color(255, 255, 255));
         btnNuevoMovEfectivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/dolar-hand-w-36px.png"))); // NOI18N
-        btnNuevoMovEfectivo.setText("Crear mov. de efectivo");
+        btnNuevoMovEfectivo.setText("Mov. de efectivo");
         btnNuevoMovEfectivo.setBorder(null);
         btnNuevoMovEfectivo.setBorderPainted(false);
         btnNuevoMovEfectivo.setContentAreaFilled(false);
@@ -269,6 +278,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnNuevoMovEfectivoActionPerformed(evt);
             }
         });
+        panelMenu.add(btnNuevoMovEfectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 329, 210, 35));
 
         btnUsuarios.setBackground(new java.awt.Color(0, 153, 204));
         btnUsuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -287,64 +297,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnUsuariosActionPerformed(evt);
             }
         });
+        panelMenu.add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 411, 210, 35));
 
-        javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
-        panelMenu.setLayout(panelMenuLayout);
-        panelMenuLayout.setHorizontalGroup(
-            panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnConsultaPersonas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnComunidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPersona1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEvento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTipoSacramento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnJustificacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSacerdotes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelMenuLayout.createSequentialGroup()
-                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnNuevoMovEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        panelMenuLayout.setVerticalGroup(
-            panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnTipoSacramento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnJustificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSector, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnComunidad, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSacerdotes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnConsultaPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPersona1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNuevoMovEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 220, 660));
+        getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 210, 660));
 
         panelTop.setBackground(new java.awt.Color(0, 129, 255));
+        panelTop.setMinimumSize(new java.awt.Dimension(850, 30));
+        panelTop.setPreferredSize(new java.awt.Dimension(850, 30));
         panelTop.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnMenu.setBackground(new java.awt.Color(0, 129, 255));
@@ -359,7 +318,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        panelTop.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 40, 35));
+        panelTop.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
 
         btnSalir.setBackground(new java.awt.Color(0, 129, 255));
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/cerrar.png"))); // NOI18N
@@ -491,23 +450,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(btnCatalogos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 60));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 40, 630, 60));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 630, 60));
 
-        panelUsuario.setBackground(new java.awt.Color(231, 231, 231));
+        panelUsuario.setBackground(new java.awt.Color(102, 102, 102));
         panelUsuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jlblUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlblUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        jlblUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jlblUsuario.setText("jLabel1");
         panelUsuario.add(jlblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 250, 40));
 
         jlblIconUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlblIconUser.setForeground(new java.awt.Color(105, 105, 105));
-        jlblIconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/user-shape-b-24px.png"))); // NOI18N
+        jlblIconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/user-shape-w-24px.png"))); // NOI18N
         panelUsuario.add(jlblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 40));
 
         getContentPane().add(panelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 400, 40));
-        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -700,7 +658,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnTipoSacramento;
     private javax.swing.JButton btnUsuarios;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlblIconUser;
     private javax.swing.JLabel jlblUsuario;
