@@ -70,7 +70,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnMenu = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        panelMenuTop = new javax.swing.JPanel();
         btnConsultarMovEfectivoTop = new javax.swing.JButton();
         btnBautizoTop = new javax.swing.JButton();
         btnConfirmacionTop = new javax.swing.JButton();
@@ -107,7 +107,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnSectorActionPerformed(evt);
             }
         });
-        panelMenu.add(btnSector, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 124, 210, 35));
+        panelMenu.add(btnSector, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 124, 170, 35));
 
         btnSacerdotes.setBackground(new java.awt.Color(0, 153, 204));
         btnSacerdotes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -126,7 +126,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnSacerdotesActionPerformed(evt);
             }
         });
-        panelMenu.add(btnSacerdotes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 206, 210, 35));
+        panelMenu.add(btnSacerdotes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 206, 170, 35));
 
         btnComunidad.setBackground(new java.awt.Color(0, 153, 204));
         btnComunidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -145,7 +145,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnComunidadActionPerformed(evt);
             }
         });
-        panelMenu.add(btnComunidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 165, 210, 35));
+        panelMenu.add(btnComunidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 165, 170, 35));
 
         btnJustificacion.setBackground(new java.awt.Color(0, 153, 204));
         btnJustificacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -164,7 +164,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnJustificacionActionPerformed(evt);
             }
         });
-        panelMenu.add(btnJustificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 83, 210, 35));
+        panelMenu.add(btnJustificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 83, 170, 35));
 
         btnTipoSacramento.setBackground(new java.awt.Color(0, 153, 204));
         btnTipoSacramento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -183,7 +183,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnTipoSacramentoActionPerformed(evt);
             }
         });
-        panelMenu.add(btnTipoSacramento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, -1));
+        panelMenu.add(btnTipoSacramento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, -1));
 
         btnLugar.setBackground(new java.awt.Color(0, 153, 204));
         btnLugar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -202,13 +202,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnLugarActionPerformed(evt);
             }
         });
-        panelMenu.add(btnLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 42, 210, 35));
+        panelMenu.add(btnLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 42, 170, 35));
 
         btnConsultaPersonas.setBackground(new java.awt.Color(0, 153, 204));
         btnConsultaPersonas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnConsultaPersonas.setForeground(new java.awt.Color(255, 255, 255));
         btnConsultaPersonas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/folder-person-w-36px.png"))); // NOI18N
-        btnConsultaPersonas.setText("Consulta de personas");
+        btnConsultaPersonas.setText("Personas");
         btnConsultaPersonas.setBorder(null);
         btnConsultaPersonas.setBorderPainted(false);
         btnConsultaPersonas.setContentAreaFilled(false);
@@ -221,7 +221,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnConsultaPersonasActionPerformed(evt);
             }
         });
-        panelMenu.add(btnConsultaPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 247, 210, 35));
+        panelMenu.add(btnConsultaPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 247, 170, 35));
 
         btnPersona1.setBackground(new java.awt.Color(0, 153, 204));
         btnPersona1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -240,7 +240,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnPersona1ActionPerformed(evt);
             }
         });
-        panelMenu.add(btnPersona1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 288, 210, 35));
+        panelMenu.add(btnPersona1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 288, 170, 35));
 
         btnEvento.setBackground(new java.awt.Color(0, 153, 204));
         btnEvento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -259,7 +259,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnEventoActionPerformed(evt);
             }
         });
-        panelMenu.add(btnEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 210, 35));
+        panelMenu.add(btnEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 170, 35));
 
         btnNuevoMovEfectivo.setBackground(new java.awt.Color(0, 153, 204));
         btnNuevoMovEfectivo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -278,7 +278,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnNuevoMovEfectivoActionPerformed(evt);
             }
         });
-        panelMenu.add(btnNuevoMovEfectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 329, 210, 35));
+        panelMenu.add(btnNuevoMovEfectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 329, 170, 35));
 
         btnUsuarios.setBackground(new java.awt.Color(0, 153, 204));
         btnUsuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -297,9 +297,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnUsuariosActionPerformed(evt);
             }
         });
-        panelMenu.add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 411, 210, 35));
+        panelMenu.add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 411, 170, 35));
 
-        getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 210, 660));
+        getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 170, 660));
 
         panelTop.setBackground(new java.awt.Color(0, 129, 255));
         panelTop.setMinimumSize(new java.awt.Dimension(850, 30));
@@ -351,9 +351,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(panelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 40));
 
-        jPanel1.setBackground(new java.awt.Color(231, 231, 231));
-        jPanel1.setOpaque(false);
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelMenuTop.setBackground(new java.awt.Color(231, 231, 231));
+        panelMenuTop.setOpaque(false);
+        panelMenuTop.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnConsultarMovEfectivoTop.setBackground(new java.awt.Color(27, 163, 69));
         btnConsultarMovEfectivoTop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -372,7 +372,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnConsultarMovEfectivoTopActionPerformed(evt);
             }
         });
-        jPanel1.add(btnConsultarMovEfectivoTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 0, 120, 60));
+        panelMenuTop.add(btnConsultarMovEfectivoTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 0, 120, 60));
 
         btnBautizoTop.setBackground(new java.awt.Color(27, 163, 69));
         btnBautizoTop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -391,7 +391,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnBautizoTopActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBautizoTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 120, 60));
+        panelMenuTop.add(btnBautizoTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 120, 60));
 
         btnConfirmacionTop.setBackground(new java.awt.Color(27, 163, 69));
         btnConfirmacionTop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -410,7 +410,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnConfirmacionTopActionPerformed(evt);
             }
         });
-        jPanel1.add(btnConfirmacionTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 0, 120, 60));
+        panelMenuTop.add(btnConfirmacionTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 0, 120, 60));
 
         btnBodaTop.setBackground(new java.awt.Color(27, 163, 69));
         btnBodaTop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -429,7 +429,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnBodaTopActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBodaTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 120, 60));
+        panelMenuTop.add(btnBodaTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 120, 60));
 
         btnCatalogos.setBackground(new java.awt.Color(27, 163, 69));
         btnCatalogos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -448,9 +448,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnCatalogosActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCatalogos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 60));
+        panelMenuTop.add(btnCatalogos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 60));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 630, 60));
+        getContentPane().add(panelMenuTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 630, 60));
 
         panelUsuario.setBackground(new java.awt.Color(102, 102, 102));
         panelUsuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -491,11 +491,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         //-220
         if (this.panelMenu.getX() == 0) {
-            Animacion.Animacion.mover_izquierda(0, -185, 10, 5, this.panelMenu);
-//            Animacion.Animacion.mover_izquierda(190, 0, 10, 5, this.btnMenu);
+            Animacion.Animacion.mover_izquierda(0, -132, 10, 5, this.panelMenu);
+            Animacion.Animacion.mover_izquierda(170, 38, 10, 5, this.panelMenuTop);
         } else {
             Animacion.Animacion.mover_derecha(this.panelMenu.getX(), 0, 10, 5, this.panelMenu);
-//            Animacion.Animacion.mover_derecha(0, 190, 10, 5, this.btnMenu);
+            Animacion.Animacion.mover_derecha(this.panelMenuTop.getX(), 170, 10, 5, this.panelMenuTop);
         }
 
     }//GEN-LAST:event_btnMenuActionPerformed
@@ -562,11 +562,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnCatalogosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogosActionPerformed
         //-220
         if (this.panelMenu.getX() == 0) {
-            Animacion.Animacion.mover_izquierda(0, -185, 10, 5, this.panelMenu);
-//            Animacion.Animacion.mover_izquierda(190, 0, 10, 5, this.btnMenu);
+            Animacion.Animacion.mover_izquierda(0, -132, 10, 5, this.panelMenu);
+            Animacion.Animacion.mover_izquierda(170, 38, 10, 5, this.panelMenuTop);
         } else {
             Animacion.Animacion.mover_derecha(this.panelMenu.getX(), 0, 10, 5, this.panelMenu);
-//            Animacion.Animacion.mover_derecha(0, 190, 10, 5, this.btnMenu);
+            Animacion.Animacion.mover_derecha(this.panelMenuTop.getX(), 170, 10, 5, this.panelMenuTop);
         }
     }//GEN-LAST:event_btnCatalogosActionPerformed
 
@@ -658,10 +658,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnTipoSacramento;
     private javax.swing.JButton btnUsuarios;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlblIconUser;
     private javax.swing.JLabel jlblUsuario;
     private javax.swing.JPanel panelMenu;
+    private javax.swing.JPanel panelMenuTop;
     private javax.swing.JPanel panelTop;
     private javax.swing.JPanel panelUsuario;
     // End of variables declaration//GEN-END:variables
