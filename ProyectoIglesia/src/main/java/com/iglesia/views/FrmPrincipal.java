@@ -112,7 +112,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnSacerdotes.setBackground(new java.awt.Color(0, 153, 204));
         btnSacerdotes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSacerdotes.setForeground(new java.awt.Color(255, 255, 255));
-        btnSacerdotes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/padre-36px.png"))); // NOI18N
+        btnSacerdotes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/padre2.png"))); // NOI18N
         btnSacerdotes.setText("Sacerdotes");
         btnSacerdotes.setBorder(null);
         btnSacerdotes.setBorderPainted(false);
@@ -131,7 +131,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnComunidad.setBackground(new java.awt.Color(0, 153, 204));
         btnComunidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnComunidad.setForeground(new java.awt.Color(255, 255, 255));
-        btnComunidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
+        btnComunidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/comunidad1.png"))); // NOI18N
         btnComunidad.setText("Comunidad");
         btnComunidad.setBorder(null);
         btnComunidad.setBorderPainted(false);
@@ -188,7 +188,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnLugar.setBackground(new java.awt.Color(0, 153, 204));
         btnLugar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnLugar.setForeground(new java.awt.Color(255, 255, 255));
-        btnLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/server-rack-36px.png"))); // NOI18N
+        btnLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/luga3.png"))); // NOI18N
         btnLugar.setText("Lugar");
         btnLugar.setBorder(null);
         btnLugar.setBorderPainted(false);
@@ -283,7 +283,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnUsuarios.setBackground(new java.awt.Color(0, 153, 204));
         btnUsuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/users-w-36px.png"))); // NOI18N
+        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/usuarios3.png"))); // NOI18N
         btnUsuarios.setText("Usuarios");
         btnUsuarios.setBorder(null);
         btnUsuarios.setBorderPainted(false);
@@ -458,12 +458,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jlblUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlblUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jlblUsuario.setText("jLabel1");
-        panelUsuario.add(jlblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 250, 40));
+        panelUsuario.add(jlblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 250, 40));
 
         jlblIconUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlblIconUser.setForeground(new java.awt.Color(105, 105, 105));
+
         jlblIconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/user-shape-w-24px.png"))); // NOI18N
         panelUsuario.add(jlblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 40));
+
+        jlblIconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/usuario.png"))); // NOI18N
+        panelUsuario.add(jlblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
+
 
         getContentPane().add(panelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 400, 40));
 
