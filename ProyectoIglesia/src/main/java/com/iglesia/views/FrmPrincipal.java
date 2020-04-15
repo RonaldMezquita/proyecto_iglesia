@@ -237,8 +237,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnEvento.setBackground(new java.awt.Color(0, 153, 204));
         btnEvento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnEvento.setForeground(new java.awt.Color(255, 255, 255));
-        btnEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/boda-36px.png"))); // NOI18N
-        btnEvento.setText("Evento");
+        btnEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/icon-events-w-36px.png"))); // NOI18N
+        btnEvento.setText("Eventos");
         btnEvento.setBorder(null);
         btnEvento.setBorderPainted(false);
         btnEvento.setContentAreaFilled(false);
