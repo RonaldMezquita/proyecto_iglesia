@@ -783,11 +783,7 @@
               <Color blue="69" green="69" red="69" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-<<<<<<< HEAD
               <Image iconType="3" name="/META-INF/images/icon/user-shape-w-24px.png"/>
-=======
-              <Image iconType="3" name="/META-INF/images/icon/usuario.png"/>
->>>>>>> master
             </Property>
           </Properties>
           <Constraints>

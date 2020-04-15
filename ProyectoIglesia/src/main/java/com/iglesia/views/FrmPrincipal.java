@@ -462,13 +462,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jlblIconUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlblIconUser.setForeground(new java.awt.Color(105, 105, 105));
-
         jlblIconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/user-shape-w-24px.png"))); // NOI18N
-        panelUsuario.add(jlblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 40));
-
-        jlblIconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/usuario.png"))); // NOI18N
         panelUsuario.add(jlblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
-
 
         getContentPane().add(panelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 400, 40));
 
