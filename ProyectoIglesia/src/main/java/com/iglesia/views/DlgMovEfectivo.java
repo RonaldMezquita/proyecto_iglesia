@@ -444,7 +444,8 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
     }//GEN-LAST:event_txtMontoKeyTyped
 
     private void btnBuscarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEventoActionPerformed
-        DlgBuscarEvento obj = new DlgBuscarEvento(this, true);
+        DlgBuscarEvento obj = new DlgBuscarEvento(null, true);
+        obj.setOnlyToSelect(true);// para indicar que active solo boton seleccionar en jTable
         obj.setVisible(true);
         if (obj.getEvento() != null) {
             Evento evento = obj.getEvento();

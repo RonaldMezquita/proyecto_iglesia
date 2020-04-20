@@ -82,4 +82,9 @@ public class ConfirmacionController implements IEvento{
         return false;
     }
 
+    @Override
+    public boolean actualizar(EventosDto data) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

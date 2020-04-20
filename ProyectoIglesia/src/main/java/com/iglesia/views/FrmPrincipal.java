@@ -462,7 +462,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jlblIconUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlblIconUser.setForeground(new java.awt.Color(105, 105, 105));
-        jlblIconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/user-shape-w-24px.png"))); // NOI18N
+        jlblIconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/usuario.png"))); // NOI18N
         panelUsuario.add(jlblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
 
         getContentPane().add(panelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 400, 40));
@@ -537,7 +537,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventoActionPerformed
-        DlgBuscarEvento obj = new DlgBuscarEvento(null, false);
+        DlgBuscarEvento obj = new DlgBuscarEvento(this, false);
+        obj.setOnlyToSelect(false);// para ocultar el boton de seleccionar del jtable
         obj.setUsuarioLogeado(this.usuario);
         obj.setVisible(true);
     }//GEN-LAST:event_btnEventoActionPerformed
@@ -549,7 +550,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNuevoMovEfectivoActionPerformed
 
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
-        DlgUsuario obj = new DlgUsuario(null, true);
+        DlgUsuario obj = new DlgUsuario(this, false);
         obj.setVisible(true);
     }//GEN-LAST:event_btnUsuariosActionPerformed
 

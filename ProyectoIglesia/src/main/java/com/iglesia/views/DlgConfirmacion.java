@@ -24,6 +24,21 @@ public class DlgConfirmacion extends javax.swing.JDialog {
     public void setUsuarioLogeado(Usuario usuarioLogeado) {
         this.usuarioLogeado = usuarioLogeado;
     }
+    
+    public void loadEvento(Integer idEvento){
+        this.eventoCtrl.cargarEvento(idEvento);
+        this.txtTomo.setText(this.eventoCtrl.getDtoSelected().getTomo());
+        this.txtFolio.setText(this.eventoCtrl.getDtoSelected().getFolio());
+        this.txtNumero.setText(this.eventoCtrl.getDtoSelected().getNumero());
+        this.txtFecha.setDate(this.eventoCtrl.getDtoSelected().getFecha());
+        this.txtLugar.setText(this.eventoCtrl.getDtoSelected().getLugar().getNombre());
+        this.txtSacramentado.setText(this.eventoCtrl.getDtoSelected().getSacramentado().getNombreCompleto());
+        this.txtPadre.setText(this.eventoCtrl.getDtoSelected().getPadreSacramentado().getNombreCompleto());
+        this.txtMadre.setText(this.eventoCtrl.getDtoSelected().getMadreSacramentado().getNombreCompleto());
+        this.txtPadrino.setText(this.eventoCtrl.getDtoSelected().getPadrino().getNombreCompleto());
+        this.txtMadrina.setText(this.eventoCtrl.getDtoSelected().getMadrina().getNombreCompleto());
+        this.txtSacerdote.setText(this.eventoCtrl.getDtoSelected().getSacerdote().getNombreCompleto());
+    }
 
     /**
      * Creates new form DlgConfirmacion

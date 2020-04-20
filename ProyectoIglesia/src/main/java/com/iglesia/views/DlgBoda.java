@@ -24,6 +24,24 @@ public class DlgBoda extends javax.swing.JDialog {
     public void setUsuarioLogeado(Usuario usuarioLogeado) {
         this.usuarioLogeado = usuarioLogeado;
     }
+    
+    public void loadEvento(Integer idEvento){
+        this.eventoCtrl.cargarEvento(idEvento);
+        this.txtTomo.setText(this.eventoCtrl.getDtoSelected().getTomo());
+        this.txtFolio.setText(this.eventoCtrl.getDtoSelected().getFolio());
+        this.txtNumero.setText(this.eventoCtrl.getDtoSelected().getNumero());
+        this.txtFecha.setDate(this.eventoCtrl.getDtoSelected().getFecha());
+        this.txtLugar.setText(this.eventoCtrl.getDtoSelected().getLugar().getNombre());
+        this.txtNovio.setText(this.eventoCtrl.getDtoSelected().getNovio().getNombreCompleto());
+        this.txtPadreNovio.setText(this.eventoCtrl.getDtoSelected().getPadreNovio().getNombreCompleto());
+        this.txtMadreNovio.setText(this.eventoCtrl.getDtoSelected().getMadreNovio().getNombreCompleto());
+        this.txtNovia.setText(this.eventoCtrl.getDtoSelected().getNovia().getNombreCompleto());
+        this.txtPadreNovia.setText(this.eventoCtrl.getDtoSelected().getPadreNovia().getNombreCompleto());
+        this.txtMadreNovia.setText(this.eventoCtrl.getDtoSelected().getMadreNovia().getNombreCompleto());
+        this.txtSacerdote.setText(this.eventoCtrl.getDtoSelected().getSacerdote().getNombreCompleto());
+        this.txtTestigo1.setText(this.eventoCtrl.getDtoSelected().getTestigo1().getNombreCompleto());
+        this.txtTestigo2.setText(this.eventoCtrl.getDtoSelected().getTestigo2().getNombreCompleto());
+    }
 
     /**
      * Creates new form DlgBoda

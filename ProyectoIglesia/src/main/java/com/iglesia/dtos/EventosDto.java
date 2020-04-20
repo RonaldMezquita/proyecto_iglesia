@@ -5,12 +5,15 @@
  */
 package com.iglesia.dtos;
 
+import com.iglesia.entities.Evento;
 import com.iglesia.entities.Lugar;
 import com.iglesia.entities.Persona;
 import com.iglesia.entities.Sacerdote;
 import com.iglesia.entities.TipoSacramentos;
 import com.iglesia.entities.Usuario;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -18,6 +21,8 @@ import java.util.Date;
  */
 public class EventosDto {
 
+    private Integer idEvento;
+    private Evento evento;
     private String tomo;
     private String folio;
     private String numero;
@@ -41,6 +46,8 @@ public class EventosDto {
     private Persona padrino;
     private Persona madrina;
     private Usuario usuario;
+    // <idRelacion, idResponsableEvento>
+    private Map<Integer, Integer> relacionMap = new HashMap<>();
 
     public EventosDto() {
     }
@@ -67,6 +74,14 @@ public class EventosDto {
         this.padrino = padrino;
         this.madrina = madrina;
         this.usuario = usuario;
+    }
+
+    public Integer getIdEvento() {
+        return idEvento;
+    }
+
+    public void setIdEvento(Integer idEvento) {
+        this.idEvento = idEvento;
     }
 
     public String getTomo() {
@@ -235,6 +250,22 @@ public class EventosDto {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Map<Integer, Integer> getRelacionMap() {
+        return relacionMap;
+    }
+
+    public void setRelacionMap(Map<Integer, Integer> relacionMap) {
+        this.relacionMap = relacionMap;
+    }
+
+    public Evento getEvento() {
+        return evento;
+    }
+
+    public void setEvento(Evento evento) {
+        this.evento = evento;
     }
 
 }
