@@ -6,6 +6,7 @@ import com.iglesia.entities.Relacion;
 import com.iglesia.entities.ResponsableEvento;
 import com.iglesia.entities.TipoSacramentos;
 import com.iglesia.enums.TipoRelacionEnum;
+import com.iglesia.enums.TipoRelacionValorEnum;
 import com.iglesia.enums.TipoSacramentoEnum;
 import com.iglesia.interfaces.IEvento;
 import com.iglesia.services.ResponsableEventoService;
@@ -50,7 +51,7 @@ public class BautizoController implements IEvento {
                 resEve.setIdMadre(data.getMadreSacramentado());
                 resEve.setIdPadre(data.getPadreSacramentado());
                 resEve.setIdPersona(data.getSacramentado());
-                resEve.setIdRelacion(new Relacion(TipoRelacionEnum.SACRAMENTADO.getValue()));
+                resEve.setIdRelacion(new Relacion(TipoRelacionValorEnum.SACRAMENTADO.getValue()));
                 resEve.setIdUsuario(data.getUsuario());
                 resLst.add(resEve);
 
@@ -60,7 +61,7 @@ public class BautizoController implements IEvento {
                     resEve.setEstado(true);
                     resEve.setFechaCreacion(evento.getFechaCreacion());
                     resEve.setIdPersona(data.getPadrino());
-                    resEve.setIdRelacion(new Relacion(TipoRelacionEnum.PADRINO.getValue()));
+                    resEve.setIdRelacion(new Relacion(TipoRelacionValorEnum.PADRINO.getValue()));
                     resEve.setIdUsuario(data.getUsuario());
                     resLst.add(resEve);
                 }
@@ -71,7 +72,7 @@ public class BautizoController implements IEvento {
                     resEve.setEstado(true);
                     resEve.setFechaCreacion(evento.getFechaCreacion());
                     resEve.setIdPersona(data.getMadrina());
-                    resEve.setIdRelacion(new Relacion(TipoRelacionEnum.MADRINA.getValue()));
+                    resEve.setIdRelacion(new Relacion(TipoRelacionValorEnum.MADRINA.getValue()));
                     resEve.setIdUsuario(data.getUsuario());
                     resLst.add(resEve);
                 }
@@ -108,39 +109,39 @@ public class BautizoController implements IEvento {
 
                 // sacramentado
                 ResponsableEvento resEve = new ResponsableEvento();
-                resEve.setId(data.getRelacionMap().get(TipoRelacionEnum.SACRAMENTADO.getValue()));
+                resEve.setId(data.getRelacionMap().get(TipoRelacionEnum.SACRAMENTADO));
                 resEve.setEstado(true);
-                resEve.setIdEvento(new Evento(data.getIdEvento()));
+                resEve.setIdEvento(data.getEvento());
                 resEve.setFechaCreacion(evento.getFechaCreacion());
                 resEve.setFechaActualizacion(evento.getFechaActualizacion());
                 resEve.setIdMadre(data.getMadreSacramentado());
                 resEve.setIdPadre(data.getPadreSacramentado());
                 resEve.setIdPersona(data.getSacramentado());
-                resEve.setIdRelacion(new Relacion(TipoRelacionEnum.SACRAMENTADO.getValue()));
+                resEve.setIdRelacion(new Relacion(TipoRelacionValorEnum.SACRAMENTADO.getValue()));
                 resEve.setIdUsuario(data.getUsuario());
                 resLst.add(resEve);
 
                 // padrino
                 if (data.getPadrino() != null) {
                     resEve = new ResponsableEvento();
-                    resEve.setId(data.getRelacionMap().get(TipoRelacionEnum.PADRINO.getValue()));
-                    resEve.setIdEvento(new Evento(data.getIdEvento()));
+                    resEve.setId(data.getRelacionMap().get(TipoRelacionEnum.PADRINO));
+                    resEve.setIdEvento(data.getEvento());
                     resEve.setEstado(true);
                     resEve.setFechaCreacion(evento.getFechaCreacion());
                     resEve.setFechaActualizacion(evento.getFechaActualizacion());
                     resEve.setIdPersona(data.getPadrino());
-                    resEve.setIdRelacion(new Relacion(TipoRelacionEnum.PADRINO.getValue()));
+                    resEve.setIdRelacion(new Relacion(TipoRelacionValorEnum.PADRINO.getValue()));
                     resEve.setIdUsuario(data.getUsuario());
                     resLst.add(resEve);
-                } else if (data.getPadrino() == null && data.getRelacionMap().containsKey(TipoRelacionEnum.PADRINO.getValue())) {
+                } else if (data.getPadrino() == null && data.getRelacionMap().containsKey(TipoRelacionEnum.PADRINO)) {
                     // el registro del padrino existia pero fue eliminado, entonces solo se cambiara el estado a false
                     resEve = new ResponsableEvento();
-                    resEve.setId(data.getRelacionMap().get(TipoRelacionEnum.PADRINO.getValue()));
-                    resEve.setIdEvento(new Evento(data.getIdEvento()));
+                    resEve.setId(data.getRelacionMap().get(TipoRelacionEnum.PADRINO));
+                    resEve.setIdEvento(data.getEvento());
                     resEve.setEstado(false);
                     resEve.setFechaCreacion(evento.getFechaCreacion());
                     resEve.setFechaActualizacion(evento.getFechaActualizacion());
-                    resEve.setIdRelacion(new Relacion(TipoRelacionEnum.PADRINO.getValue()));
+                    resEve.setIdRelacion(new Relacion(TipoRelacionValorEnum.PADRINO.getValue()));
                     resEve.setIdUsuario(data.getUsuario());
                     resLst.add(resEve);
                 }
@@ -148,24 +149,24 @@ public class BautizoController implements IEvento {
                 // madrina
                 if (data.getMadrina() != null) {
                     resEve = new ResponsableEvento();
-                    resEve.setId(data.getRelacionMap().get(TipoRelacionEnum.MADRINA.getValue()));
-                    resEve.setIdEvento(new Evento(data.getIdEvento()));
+                    resEve.setId(data.getRelacionMap().get(TipoRelacionEnum.MADRINA));
+                    resEve.setIdEvento(data.getEvento());
                     resEve.setEstado(true);
                     resEve.setFechaCreacion(evento.getFechaCreacion());
                     resEve.setFechaActualizacion(evento.getFechaActualizacion());
                     resEve.setIdPersona(data.getMadrina());
-                    resEve.setIdRelacion(new Relacion(TipoRelacionEnum.MADRINA.getValue()));
+                    resEve.setIdRelacion(new Relacion(TipoRelacionValorEnum.MADRINA.getValue()));
                     resEve.setIdUsuario(data.getUsuario());
                     resLst.add(resEve);
-                } else if (data.getMadrina() == null && data.getRelacionMap().containsKey(TipoRelacionEnum.MADRINA.getValue())) {
+                } else if (data.getMadrina() == null && data.getRelacionMap().containsKey(TipoRelacionEnum.MADRINA)) {
                     // el registro de la madrina existia pero fue eliminado, entonces solo se cambiara el estado a false
                     resEve = new ResponsableEvento();
-                    resEve.setId(data.getRelacionMap().get(TipoRelacionEnum.MADRINA.getValue()));
-                    resEve.setIdEvento(new Evento(data.getIdEvento()));
+                    resEve.setId(data.getRelacionMap().get(TipoRelacionEnum.MADRINA));
+                    resEve.setIdEvento(data.getEvento());
                     resEve.setEstado(false);
                     resEve.setFechaCreacion(evento.getFechaCreacion());
                     resEve.setFechaActualizacion(evento.getFechaActualizacion());
-                    resEve.setIdRelacion(new Relacion(TipoRelacionEnum.MADRINA.getValue()));
+                    resEve.setIdRelacion(new Relacion(TipoRelacionValorEnum.MADRINA.getValue()));
                     resEve.setIdUsuario(data.getUsuario());
                     resLst.add(resEve);
                 }

@@ -36,7 +36,7 @@ public class ResponsableEventoService extends CrudUtils<ResponsableEvento> {
                     + "inner join fetch ev.idTipoSacramento tsac "
                     + "inner join fetch ev.idSacerdote sac "
                     + "inner join fetch t.idUsuario us "
-                    + "where ev.id=:idEvento and t.estado=1")
+                    + "where ev.id=:idEvento and t.estado=1 order by t.id asc")
                     .setParameter("idEvento", idEvento).getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {

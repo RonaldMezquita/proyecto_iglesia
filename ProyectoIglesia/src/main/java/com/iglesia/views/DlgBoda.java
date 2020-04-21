@@ -11,6 +11,8 @@ import com.iglesia.entities.Usuario;
 import com.iglesia.utils.FechasUtils;
 import com.iglesia.utils.ProjectUtils;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,13 +22,15 @@ public class DlgBoda extends javax.swing.JDialog {
 
     private final EventoController eventoCtrl;
     private Usuario usuarioLogeado;
+    private List<String> excepciones = new ArrayList<>();
 
     public void setUsuarioLogeado(Usuario usuarioLogeado) {
         this.usuarioLogeado = usuarioLogeado;
     }
-    
-    public void loadEvento(Integer idEvento){
+
+    public void loadEvento(Integer idEvento) {
         this.eventoCtrl.cargarEvento(idEvento);
+        this.txtId.setText(this.eventoCtrl.getDtoSelected().getIdEvento().toString());
         this.txtTomo.setText(this.eventoCtrl.getDtoSelected().getTomo());
         this.txtFolio.setText(this.eventoCtrl.getDtoSelected().getFolio());
         this.txtNumero.setText(this.eventoCtrl.getDtoSelected().getNumero());
@@ -41,6 +45,9 @@ public class DlgBoda extends javax.swing.JDialog {
         this.txtSacerdote.setText(this.eventoCtrl.getDtoSelected().getSacerdote().getNombreCompleto());
         this.txtTestigo1.setText(this.eventoCtrl.getDtoSelected().getTestigo1().getNombreCompleto());
         this.txtTestigo2.setText(this.eventoCtrl.getDtoSelected().getTestigo2().getNombreCompleto());
+//        this.txtPadre.setText((this.eventoCtrl.getDtoSelected().getPadreSacramentado() != null)
+//                ? this.eventoCtrl.getDtoSelected().getPadreSacramentado().getNombreCompleto()
+//                : "");
     }
 
     /**
@@ -59,19 +66,6 @@ public class DlgBoda extends javax.swing.JDialog {
 
     }
 
-//    private void onlyRead() {
-//        this.txtNovio.setEditable(false);
-//        this.txtPadreNovio.setEditable(false);
-//        this.txtMadreNovio.setEditable(false);
-//        this.txtNovia.setEditable(false);
-//        this.txtPadreNovia.setEditable(false);
-//        this.txtMadreNovia.setEditable(false);
-//    }
-//    @Override
-//    public void paint(Graphics g) {
-//        super.paint(g);
-//        AWTUtilities.setWindowShape(this, dialogShape);
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -138,6 +132,7 @@ public class DlgBoda extends javax.swing.JDialog {
         jPanelTop = new javax.swing.JPanel();
         jbCerrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -721,6 +716,9 @@ public class DlgBoda extends javax.swing.JDialog {
 
         jPanel1.add(jPanelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 40));
 
+        txtId.setName("id"); // NOI18N
+        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 40, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 510));
 
         pack();
@@ -813,17 +811,23 @@ public class DlgBoda extends javax.swing.JDialog {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         if (DlgWindow.showConfirmDialog(this, "Confirmación", "¿Esta seguro de realizar el registro?") == 0) {
+            this.eventoCtrl.getDtoSelected().setIdEvento((this.txtId.getText().trim().equals("")) ? null : Integer.parseInt(this.txtId.getText()));
             this.eventoCtrl.getDtoSelected().setTomo(this.txtTomo.getText());
             this.eventoCtrl.getDtoSelected().setFolio(this.txtFolio.getText());
             this.eventoCtrl.getDtoSelected().setNumero(this.txtNumero.getText());
             this.eventoCtrl.getDtoSelected().setFecha(this.txtFecha.getDate());
             this.eventoCtrl.getDtoSelected().setUsuario(this.usuarioLogeado);
-            this.crear();
+            if (this.txtId.getText().equals("")) {
+                this.crear();
+            } else {
+                this.actualizar();
+            }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void crear() {
-        if (ProjectUtils.validarVacios(this.jPanel1, null)) {
+        this.excepciones.add("id");
+        if (ProjectUtils.validarVacios(this.jPanel1, this.excepciones)) {
             DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
             return;
         }
@@ -833,6 +837,20 @@ public class DlgBoda extends javax.swing.JDialog {
         }
         DlgWindow.showMessageDialog(this, "Aviso", "Registro guardado correctamente");
         ProjectUtils.limpiarComponentes(this.jPanel1);
+    }
+
+    private void actualizar() {
+        if (ProjectUtils.validarVacios(this.jPanel1, null)) {
+            DlgWindow.showMessageDialog(this, "Error", "Campo(s) Requerido(s) vacio(s)", DlgWindow.ERROR);
+            return;
+        }
+        if (!this.eventoCtrl.actualizarEvento(new BodaController())) {
+            DlgWindow.showMessageDialog(this, "Error", "Error al realizar la actualización.!", DlgWindow.ERROR);
+            return;
+        }
+        DlgWindow.showMessageDialog(this, "Aviso", "Registro actualizado correctamente");
+        ProjectUtils.limpiarComponentes(this.jPanel1);
+        this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }
 
     private void btnBuscarTestigo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTestigo2ActionPerformed
@@ -929,7 +947,7 @@ public class DlgBoda extends javax.swing.JDialog {
     }//GEN-LAST:event_jbCerrarMouseMoved
 
     private void jbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseExited
-        this.jbCerrar.setBackground(new java.awt.Color(0,129,255));
+        this.jbCerrar.setBackground(new java.awt.Color(0, 129, 255));
     }//GEN-LAST:event_jbCerrarMouseExited
 
     private void btnGuardarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseMoved
@@ -1039,6 +1057,7 @@ public class DlgBoda extends javax.swing.JDialog {
     private javax.swing.JSeparator jsTomo;
     private com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtFolio;
+    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtLugar;
     private javax.swing.JTextField txtMadreNovia;
     private javax.swing.JTextField txtMadreNovio;

@@ -21,7 +21,6 @@ import java.util.List;
 public class DlgBautizo extends javax.swing.JDialog {
 
     private final EventoController eventoCtrl;
-//    private final ResponsableEventoController responsableEventoController;
     private Usuario usuarioLogeado;
     private List<String> excepciones = new ArrayList<>();
 
@@ -135,6 +134,10 @@ public class DlgBautizo extends javax.swing.JDialog {
         jbCerrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -528,6 +531,11 @@ public class DlgBautizo extends javax.swing.JDialog {
                 btnCancelarMouseExited(evt);
             }
         });
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 350, 130, 40));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -711,6 +719,26 @@ public class DlgBautizo extends javax.swing.JDialog {
         txtId.setName("id"); // NOI18N
         jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 40, -1));
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(132, 142, 149));
+        jLabel9.setText("(Opcional)");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(132, 142, 149));
+        jLabel10.setText("(Opcional)");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(132, 142, 149));
+        jLabel11.setText("(Opcional)");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(132, 142, 149));
+        jLabel16.setText("(Opcional)");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 400));
 
         pack();
@@ -775,7 +803,7 @@ public class DlgBautizo extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBuscarSacerdoteActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (DlgWindow.showConfirmDialog(this, "Confirmación", "¿Esta seguro de realizar el registro?") == 0) {
+        if (DlgWindow.showConfirmDialog(this, "Confirmación", "¿Esta seguro de realizar esta operación?") == 0) {
             this.eventoCtrl.getDtoSelected().setIdEvento((this.txtId.getText().trim().equals("")) ? null : Integer.parseInt(this.txtId.getText()));
             this.eventoCtrl.getDtoSelected().setTomo(this.txtTomo.getText());
             this.eventoCtrl.getDtoSelected().setFolio(this.txtFolio.getText());
@@ -959,6 +987,10 @@ public class DlgBautizo extends javax.swing.JDialog {
         this.btnCancelar.setBackground(new java.awt.Color(254, 192, 1));
     }//GEN-LAST:event_btnCancelarMouseExited
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1023,10 +1055,13 @@ public class DlgBautizo extends javax.swing.JDialog {
     private javax.swing.JButton btnEliminarPadrino;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1034,6 +1069,7 @@ public class DlgBautizo extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelTop;
     private javax.swing.JButton jbCerrar;

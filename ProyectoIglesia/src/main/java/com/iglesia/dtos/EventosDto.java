@@ -11,6 +11,7 @@ import com.iglesia.entities.Persona;
 import com.iglesia.entities.Sacerdote;
 import com.iglesia.entities.TipoSacramentos;
 import com.iglesia.entities.Usuario;
+import com.iglesia.enums.TipoRelacionEnum;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,7 +48,7 @@ public class EventosDto {
     private Persona madrina;
     private Usuario usuario;
     // <idRelacion, idResponsableEvento>
-    private Map<Integer, Integer> relacionMap = new HashMap<>();
+    private Map<TipoRelacionEnum, Integer> relacionMap = new HashMap<>();
 
     public EventosDto() {
     }
@@ -252,11 +253,11 @@ public class EventosDto {
         this.usuario = usuario;
     }
 
-    public Map<Integer, Integer> getRelacionMap() {
+    public Map<TipoRelacionEnum, Integer> getRelacionMap() {
         return relacionMap;
     }
 
-    public void setRelacionMap(Map<Integer, Integer> relacionMap) {
+    public void setRelacionMap(Map<TipoRelacionEnum, Integer> relacionMap) {
         this.relacionMap = relacionMap;
     }
 
