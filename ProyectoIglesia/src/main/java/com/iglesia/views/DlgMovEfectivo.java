@@ -310,7 +310,7 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
         btnBuscarEvento.setBackground(new java.awt.Color(107, 117, 125));
-        btnBuscarEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar.png"))); // NOI18N
+        btnBuscarEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-w-24px.png"))); // NOI18N
         btnBuscarEvento.setToolTipText("Buscar evento");
         btnBuscarEvento.setBorder(null);
         btnBuscarEvento.setBorderPainted(false);
@@ -444,7 +444,8 @@ public class DlgMovEfectivo extends javax.swing.JDialog {
     }//GEN-LAST:event_txtMontoKeyTyped
 
     private void btnBuscarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEventoActionPerformed
-        DlgBuscarEvento obj = new DlgBuscarEvento(this, true);
+        DlgBuscarEvento obj = new DlgBuscarEvento(null, true);
+        obj.setOnlyToSelect(true);// para indicar que active solo boton seleccionar en jTable
         obj.setVisible(true);
         if (obj.getEvento() != null) {
             Evento evento = obj.getEvento();

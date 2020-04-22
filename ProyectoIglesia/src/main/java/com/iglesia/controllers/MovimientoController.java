@@ -128,7 +128,7 @@ public class MovimientoController {
             System.out.println("[MovimientoController][actualizar]->No hay una instancia creada de tipo movimiento");
             return response;
         }
-        this.selected.setFechaCreacion(FechasUtils.getCurrentDate());
+        this.selected.setFechaActualizacion(FechasUtils.getCurrentDate());
         try {
             if (this.movimientoService.actualizar(this.selected) != null) {
                 response = true;

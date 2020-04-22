@@ -10,21 +10,11 @@ package com.iglesia.enums;
  * @author Alexis
  */
 public enum TipoRelacionEnum {
-    PADRINO(1),
-    MADRINA(2),
-    NOVIO(3),
-    NOVIA(4),
-    TESTIGO(5),
-    SACRAMENTADO(6);
-
-    private final Integer value;
-
-    private TipoRelacionEnum(Integer value) {
-        this.value = value;
-    }
-
-    public Integer getValue() {
-        return value;
-    }
-
+    PADRINO,
+    MADRINA,
+    NOVIO,
+    NOVIA,
+    TESTIGO1,
+    TESTIGO2,
+    SACRAMENTADO;
 }

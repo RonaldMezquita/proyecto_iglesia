@@ -9,8 +9,10 @@ import com.iglesia.controllers.EventoController;
 import com.iglesia.entities.Evento;
 import com.iglesia.entities.Usuario;
 import com.iglesia.enums.TipoBusquedaEnum;
+import com.iglesia.enums.TipoSacramentoEnum;
 import com.iglesia.utils.FechasUtils;
 import java.awt.event.WindowEvent;
+import java.util.Objects;
 import javax.swing.JButton;
 
 /**
@@ -22,6 +24,7 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
     private final EventoController eventoController;
     private Evento evento;
     private Usuario usuarioLogeado;
+    private boolean onlyToSelect;
 
     public void setUsuarioLogeado(Usuario usuarioLogeado) {
         this.usuarioLogeado = usuarioLogeado;
@@ -31,17 +34,29 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
         return evento;
     }
 
+    public void setOnlyToSelect(boolean onlySelect) {
+        this.onlyToSelect = onlySelect;        
+        if (this.onlyToSelect) {            
+            this.tbEvento.removeColumn(this.tbEvento.getColumnModel().getColumn(8));
+            this.tbEvento.removeColumn(this.tbEvento.getColumnModel().getColumn(7));
+            this.tbEvento.removeColumn(this.tbEvento.getColumnModel().getColumn(6));
+            this.tbEvento.removeColumn(this.tbEvento.getColumnModel().getColumn(5));
+        }else{
+            this.tbEvento.removeColumn(this.tbEvento.getColumnModel().getColumn(9));
+        }
+    }
+
     /**
      * Creates new form DlgBuscarEvento
      */
-    public DlgBuscarEvento(javax.swing.JDialog parent, boolean modal) {
+    public DlgBuscarEvento(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
         this.eventoController = new EventoController();
-        this.txtfechaFin.setDate(FechasUtils.getCurrentDate());
+        this.txtfechaFin.setDate(FechasUtils.getCurrentDate());     
         Object[] fechas = {FechasUtils.operateDate(FechasUtils.getCurrentDate(), -30), FechasUtils.getCurrentDate()};
-        this.mostrarTabla(fechas, TipoBusquedaEnum.RANGO_FECHA);
+        this.mostrarTabla(fechas, TipoBusquedaEnum.RANGO_FECHA);        
     }
 
     private void mostrarTabla(Object[] filtro, TipoBusquedaEnum tipo) {
@@ -88,14 +103,14 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
 
             },
             new String [] {
-                "ID", "Fecha", "Lugar", "Sacerdote", "Sacramento", "", "", "", ""
+                "ID", "Fecha", "Lugar", "Sacerdote", "Sacramento", "", "", "", "", ""
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -134,6 +149,9 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
             tbEvento.getColumnModel().getColumn(8).setMinWidth(25);
             tbEvento.getColumnModel().getColumn(8).setPreferredWidth(25);
             tbEvento.getColumnModel().getColumn(8).setMaxWidth(25);
+            tbEvento.getColumnModel().getColumn(9).setMinWidth(25);
+            tbEvento.getColumnModel().getColumn(9).setPreferredWidth(25);
+            tbEvento.getColumnModel().getColumn(9).setMaxWidth(25);
         }
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 590, 290));
@@ -232,22 +250,51 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
             if (value instanceof JButton) {
                 ((JButton) value).doClick();
                 Integer id = Integer.parseInt(this.tbEvento.getValueAt(row, 0).toString());
-                if (column == 5) {
-                    DlgDetalleEvento obj = new DlgDetalleEvento(this, true, id);
-                    obj.setVisible(true);
-                } else if (column == 6) {
-                    this.evento = this.eventoController.consultarPorId(id);
-                    if (this.evento != null) {
-                        this.eventoController.generarRpt(this.evento);
-                    }
-                } else if (column == 7) {
-                    this.evento = this.eventoController.consultarPorId(id);
-                    if (this.evento != null) {
-                        this.eventoController.generarRptConstancia(this.evento);
-                    }
-                } else if (column == 8) {
-                    this.evento = this.eventoController.consultarPorId(id);
-                    this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+                switch (column) {
+                    case 5:
+                        if (!this.onlyToSelect) {
+                            DlgDetalleEvento obj = new DlgDetalleEvento(this, true, id);
+                            obj.setVisible(true);
+                        } else {
+                            this.evento = this.eventoController.consultarPorId(id);
+                            this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+                        }
+                        break;
+                    case 6:
+                        this.evento = this.eventoController.consultarPorId(id);
+                        if (this.evento != null) {
+                            this.eventoController.generarRpt(this.evento);
+                        }
+                        break;
+                    case 7:
+                        this.evento = this.eventoController.consultarPorId(id);
+                        if (this.evento != null) {
+                            this.eventoController.generarRptConstancia(this.evento);
+                        }
+                        break;
+                    case 8:
+                        this.evento = this.eventoController.consultarPorId(id);
+                        if (Objects.equals(this.evento.getIdTipoSacramento().getId(), TipoSacramentoEnum.BAUTIZO.getValue())) {
+                            DlgBautizo a = new DlgBautizo(null, true);
+                            a.setUsuarioLogeado(this.usuarioLogeado);
+                            a.loadEvento(id);
+                            a.setVisible(true);
+                        } else if (Objects.equals(this.evento.getIdTipoSacramento().getId(), TipoSacramentoEnum.BODA.getValue())) {
+                            DlgBoda b = new DlgBoda(null, true);
+                            b.setUsuarioLogeado(this.usuarioLogeado);
+                            b.loadEvento(id);
+                            b.setVisible(true);
+                        } else if (Objects.equals(this.evento.getIdTipoSacramento().getId(), TipoSacramentoEnum.CONFIRMACION.getValue())) {
+                            DlgConfirmacion c = new DlgConfirmacion(null, true);
+                            c.setUsuarioLogeado(this.usuarioLogeado);
+                            c.loadEvento(id);
+                            c.setVisible(true);
+                        }
+                        break;
+                    case 9:
+                        this.evento = this.eventoController.consultarPorId(id);
+                        this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+                        break;
                 }
             }
         }
@@ -279,7 +326,7 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
     }//GEN-LAST:event_jbCerrarMouseMoved
 
     private void jbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseExited
-        this.jbCerrar.setBackground(new java.awt.Color(0,129,255));
+        this.jbCerrar.setBackground(new java.awt.Color(0, 129, 255));
     }//GEN-LAST:event_jbCerrarMouseExited
 
     /**
@@ -327,7 +374,7 @@ public class DlgBuscarEvento extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DlgBuscarEvento dialog = new DlgBuscarEvento(new javax.swing.JDialog(), true
+                DlgBuscarEvento dialog = new DlgBuscarEvento(new java.awt.Frame(), true
                 );
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override

@@ -11,6 +11,7 @@ import com.iglesia.entities.Persona;
 import com.iglesia.entities.ResponsableEvento;
 import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.enums.TipoRelacionEnum;
+import com.iglesia.enums.TipoRelacionValorEnum;
 import com.iglesia.enums.TipoSacramentoEnum;
 import com.iglesia.interfaces.IEvento;
 import com.iglesia.services.EventoService;
@@ -22,6 +23,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -81,18 +83,21 @@ public class EventoController implements Serializable {
                 "Click para generar constancia");
         JButton btnSeleccionar = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/seleccionar.png"),
                 "Click para seleccionar evento");
-                
-        Object[] row = new Object[9];
+        JButton btnSelectToEdit = ProjectUtils.getButton(this.getClass().getResource("/META-INF/images/icon/editar_black.png"),
+                "Click para editar");
+
+        Object[] row = new Object[10];
         for (Evento item : this.items) {
             row[0] = item.getId().toString();
             row[1] = this.sdf.format(item.getFecha());
             row[2] = item.getIdLugar().getNombre();
-            row[3] = item.getIdSacerdote().getNombres();
+            row[3] = item.getIdSacerdote().getNombreCompleto();
             row[4] = item.getIdTipoSacramento().getNombre();
             row[5] = btnDetail;
             row[6] = btnPrint;
             row[7] = item.getIdTipoSacramento().getId() != TipoSacramentoEnum.BODA.getValue() ? btnPrintConstancia : null;
-            row[8] = btnSeleccionar;
+            row[8] = btnSelectToEdit;
+            row[9] = btnSeleccionar;
             model.addRow(row);
         }
     }
@@ -139,7 +144,7 @@ public class EventoController implements Serializable {
         this.responsableEventoController.consultarReponsablesPorEvento(evento.getId());
         Persona persona = null;
         for (ResponsableEvento item : this.responsableEventoController.getItems()) {
-            if (item.getIdRelacion().getId() == TipoRelacionEnum.SACRAMENTADO.getValue()) {
+            if (item.getIdRelacion().getId() == TipoRelacionValorEnum.SACRAMENTADO.getValue()) {
                 persona = item.getIdPersona();
                 break;
             }
@@ -187,7 +192,7 @@ public class EventoController implements Serializable {
         this.responsableEventoController.consultarReponsablesPorEvento(evento.getId());
         Persona persona = null;
         for (ResponsableEvento item : this.responsableEventoController.getItems()) {
-            if (item.getIdRelacion().getId() == TipoRelacionEnum.SACRAMENTADO.getValue()) {
+            if (item.getIdRelacion().getId() == TipoRelacionValorEnum.SACRAMENTADO.getValue()) {
                 persona = item.getIdPersona();
                 break;
             }
@@ -234,7 +239,7 @@ public class EventoController implements Serializable {
         this.responsableEventoController.consultarReponsablesPorEvento(evento.getId());
         Persona persona = null;
         for (ResponsableEvento item : this.responsableEventoController.getItems()) {
-            if (item.getIdRelacion().getId() == TipoRelacionEnum.SACRAMENTADO.getValue()) {
+            if (item.getIdRelacion().getId() == TipoRelacionValorEnum.SACRAMENTADO.getValue()) {
                 persona = item.getIdPersona();
                 break;
             }
@@ -280,6 +285,61 @@ public class EventoController implements Serializable {
     }
 
     /**
+     * Metodo que carga los datos de un evento en el objeto EventosDto
+     *
+     * @param idEvento
+     */
+    public void cargarEvento(Integer idEvento) {
+        this.responsableEventoController = new ResponsableEventoController();
+        this.responsableEventoController.consultarReponsablesPorEvento(idEvento);
+        int contTestigo = 1;        
+        for (ResponsableEvento item : this.responsableEventoController.getItems()) {
+            if (this.dtoSelected.getIdEvento() == null) {
+                this.dtoSelected.setEvento(item.getIdEvento());
+                this.dtoSelected.setIdEvento(item.getIdEvento().getId());
+                this.dtoSelected.setTomo(item.getIdEvento().getTomo());
+                this.dtoSelected.setFolio(item.getIdEvento().getFolio());
+                this.dtoSelected.setNumero(item.getIdEvento().getNumero());
+                this.dtoSelected.setFecha(item.getIdEvento().getFecha());
+                this.dtoSelected.setLugar(item.getIdEvento().getIdLugar());
+                this.dtoSelected.setSacerdote(item.getIdEvento().getIdSacerdote());
+            }
+            // bautizo -confirmación
+            if (Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.SACRAMENTADO.getValue())) {                
+                this.dtoSelected.getRelacionMap().put(TipoRelacionEnum.SACRAMENTADO, item.getId());
+                this.dtoSelected.setSacramentado((Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.SACRAMENTADO.getValue())) ? item.getIdPersona() : null);
+                this.dtoSelected.setPadreSacramentado((Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.SACRAMENTADO.getValue())) ? item.getIdPadre() : null);
+                this.dtoSelected.setMadreSacramentado((Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.SACRAMENTADO.getValue())) ? item.getIdMadre() : null);
+            } else if (Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.PADRINO.getValue())) {
+                this.dtoSelected.getRelacionMap().put(TipoRelacionEnum.PADRINO, item.getId());
+                this.dtoSelected.setPadrino((Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.PADRINO.getValue())) ? item.getIdPersona() : null);
+            } else if (Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.MADRINA.getValue())) {
+                this.dtoSelected.getRelacionMap().put(TipoRelacionEnum.MADRINA, item.getId());
+                this.dtoSelected.setMadrina((Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.MADRINA.getValue())) ? item.getIdPersona() : null);
+            } else if (Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.NOVIO.getValue())) { // boda
+                this.dtoSelected.getRelacionMap().put(TipoRelacionEnum.NOVIO, item.getId());
+                this.dtoSelected.setNovio((Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.NOVIO.getValue())) ? item.getIdPersona() : null);
+                this.dtoSelected.setPadreNovio((Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.NOVIO.getValue())) ? item.getIdPadre() : null);
+                this.dtoSelected.setMadreNovio((Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.NOVIO.getValue())) ? item.getIdMadre() : null);
+            } else if (Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.NOVIA.getValue())) {
+                this.dtoSelected.getRelacionMap().put(TipoRelacionEnum.NOVIA, item.getId());
+                this.dtoSelected.setNovia((Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.NOVIA.getValue())) ? item.getIdPersona() : null);
+                this.dtoSelected.setPadreNovia((Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.NOVIA.getValue())) ? item.getIdPadre() : null);
+                this.dtoSelected.setMadreNovia((Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.NOVIA.getValue())) ? item.getIdMadre() : null);
+            } else if (Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.TESTIGO.getValue())) {
+                if (contTestigo == 1) {
+                    this.dtoSelected.getRelacionMap().put(TipoRelacionEnum.TESTIGO1, item.getId());
+                    this.dtoSelected.setTestigo1((Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.TESTIGO.getValue())) ? item.getIdPersona() : null);
+                } else {
+                    this.dtoSelected.getRelacionMap().put(TipoRelacionEnum.TESTIGO2, item.getId());
+                    this.dtoSelected.setTestigo2((Objects.equals(item.getIdRelacion().getId(), TipoRelacionValorEnum.TESTIGO.getValue())) ? item.getIdPersona() : null);
+                }
+                contTestigo++;
+            }
+        }
+    }
+
+    /**
      * Metodo para registrar los eventos
      *
      * @param evento Clase que implementa la interfaz IEvento
@@ -287,6 +347,16 @@ public class EventoController implements Serializable {
      */
     public boolean registrarEvento(IEvento evento) {
         return evento.registrar(this.dtoSelected);
+    }
+
+    /**
+     * Metodo para actualizar los eventos
+     *
+     * @param evento Clase que implementa la interfaz IEvento
+     * @return
+     */
+    public boolean actualizarEvento(IEvento evento) {
+        return evento.actualizar(this.dtoSelected);
     }
 
     //<editor-fold defaultstate="collapsed" desc="getters & setters">

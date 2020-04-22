@@ -9,4 +9,5 @@ import com.iglesia.dtos.EventosDto;
 public interface IEvento {
 
     boolean registrar(EventosDto data);
+    boolean actualizar(EventosDto data);
 }

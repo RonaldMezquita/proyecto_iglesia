@@ -105,7 +105,7 @@ public class DlgReportes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarNovioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNovioActionPerformed
-        DlgBuscarEvento obj = new DlgBuscarEvento(this, true);
+        DlgBuscarEvento obj = new DlgBuscarEvento(null, true);
         obj.setVisible(true);
         if (obj.getEvento() != null) {
             this.evento = obj.getEvento();
