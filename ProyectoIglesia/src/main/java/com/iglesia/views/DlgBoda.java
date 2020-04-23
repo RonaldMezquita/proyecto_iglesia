@@ -730,6 +730,7 @@ public class DlgBoda extends javax.swing.JDialog {
 
     private void btnBuscarLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLugarActionPerformed
         DlgBuscarLugar obj = new DlgBuscarLugar(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         if (obj.getLugar() != null) {
             this.eventoCtrl.getDtoSelected().setLugar(obj.getLugar());
@@ -739,6 +740,7 @@ public class DlgBoda extends javax.swing.JDialog {
 
     private void btnBuscarNovioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNovioActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
             this.eventoCtrl.getDtoSelected().setNovio(obj.getPersona());
@@ -748,6 +750,7 @@ public class DlgBoda extends javax.swing.JDialog {
 
     private void btnBuscarPadreNovioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPadreNovioActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
             this.eventoCtrl.getDtoSelected().setPadreNovio(obj.getPersona());
@@ -757,6 +760,7 @@ public class DlgBoda extends javax.swing.JDialog {
 
     private void btnBuscarMadreNovioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMadreNovioActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
             this.eventoCtrl.getDtoSelected().setMadreNovio(obj.getPersona());
@@ -766,6 +770,7 @@ public class DlgBoda extends javax.swing.JDialog {
 
     private void btnBuscarNoviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNoviaActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
             this.eventoCtrl.getDtoSelected().setNovia(obj.getPersona());
@@ -775,6 +780,7 @@ public class DlgBoda extends javax.swing.JDialog {
 
     private void btnBuscarPadreNoviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPadreNoviaActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
             this.eventoCtrl.getDtoSelected().setPadreNovia(obj.getPersona());
@@ -784,6 +790,7 @@ public class DlgBoda extends javax.swing.JDialog {
 
     private void btnBuscarMadreNoviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMadreNoviaActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
             this.eventoCtrl.getDtoSelected().setMadreNovia(obj.getPersona());
@@ -793,6 +800,7 @@ public class DlgBoda extends javax.swing.JDialog {
 
     private void btnBuscarTestigo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTestigo1ActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
             this.eventoCtrl.getDtoSelected().setTestigo1(obj.getPersona());
@@ -802,6 +810,7 @@ public class DlgBoda extends javax.swing.JDialog {
 
     private void btnBuscarSacerdoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSacerdoteActionPerformed
         DlgBuscarSacerdote obj = new DlgBuscarSacerdote(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         if (obj.getSacerdote() != null) {
             this.eventoCtrl.getDtoSelected().setSacerdote(obj.getSacerdote());

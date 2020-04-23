@@ -7,6 +7,7 @@ package com.iglesia.views;
 
 import com.iglesia.controllers.PersonaController;
 import com.iglesia.entities.Persona;
+import com.iglesia.entities.Usuario;
 import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.utils.ProjectUtils;
 import java.awt.event.WindowEvent;
@@ -21,6 +22,11 @@ public class DlgBuscarPersona extends javax.swing.JDialog {
     private PersonaController personaController;
     private Persona persona;
     private javax.swing.JFormattedTextField txtBuscarDui;
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
 
     public Persona getPersona() {
         return persona;
@@ -289,6 +295,7 @@ public class DlgBuscarPersona extends javax.swing.JDialog {
 
     private void btnNuevaPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaPersonaActionPerformed
         DlgPersona obj = new DlgPersona(null, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         this.mostrarTabla("", TipoBusquedaEnum.NOMBRE);
     }//GEN-LAST:event_btnNuevaPersonaActionPerformed

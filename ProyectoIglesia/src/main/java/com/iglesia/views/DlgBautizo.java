@@ -750,6 +750,7 @@ public class DlgBautizo extends javax.swing.JDialog {
 
     private void btnBuscarLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLugarActionPerformed
         DlgBuscarLugar obj = new DlgBuscarLugar(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         if (obj.getLugar() != null) {
             this.eventoCtrl.getDtoSelected().setLugar(obj.getLugar());
@@ -759,6 +760,7 @@ public class DlgBautizo extends javax.swing.JDialog {
 
     private void btnBuscarSacramentadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSacramentadoActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
             this.eventoCtrl.getDtoSelected().setSacramentado(obj.getPersona());
@@ -768,6 +770,7 @@ public class DlgBautizo extends javax.swing.JDialog {
 
     private void btnBuscarPadreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPadreActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
             this.eventoCtrl.getDtoSelected().setPadreSacramentado(obj.getPersona());
@@ -777,6 +780,7 @@ public class DlgBautizo extends javax.swing.JDialog {
 
     private void btnBuscarMadreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMadreActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
             this.eventoCtrl.getDtoSelected().setMadreSacramentado(obj.getPersona());
@@ -786,6 +790,7 @@ public class DlgBautizo extends javax.swing.JDialog {
 
     private void btnBuscarPadrinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPadrinoActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
             this.eventoCtrl.getDtoSelected().setPadrino(obj.getPersona());
@@ -795,6 +800,7 @@ public class DlgBautizo extends javax.swing.JDialog {
 
     private void btnBuscarSacerdoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSacerdoteActionPerformed
         DlgBuscarSacerdote obj = new DlgBuscarSacerdote(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         if (obj.getSacerdote() != null) {
             this.eventoCtrl.getDtoSelected().setSacerdote(obj.getSacerdote());
@@ -848,6 +854,7 @@ public class DlgBautizo extends javax.swing.JDialog {
 
     private void btnBuscarMadrinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMadrinaActionPerformed
         DlgBuscarPersona obj = new DlgBuscarPersona(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         if (obj.getPersona() != null) {
             this.eventoCtrl.getDtoSelected().setMadrina(obj.getPersona());
