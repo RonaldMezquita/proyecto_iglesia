@@ -7,6 +7,7 @@ package com.iglesia.views;
 
 import com.iglesia.controllers.SacerdoteController;
 import com.iglesia.entities.Sacerdote;
+import com.iglesia.entities.Usuario;
 import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.utils.ProjectUtils;
 import com.iglesia.utils.TextPrompt;
@@ -22,6 +23,11 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
     private SacerdoteController sacerdoteController;
     private Sacerdote sacerdote;
     private javax.swing.JFormattedTextField txtBuscarDui;
+    private Usuario usuarioLogeado;
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
+
 
     public Sacerdote getSacerdote() {
         return sacerdote;
@@ -289,6 +295,7 @@ public class DlgBuscarSacerdote extends javax.swing.JDialog {
 
     private void btnNuevoSacerdoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoSacerdoteActionPerformed
         DlgSacerdote obj = new DlgSacerdote(null, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         this.mostrarTabla("", TipoBusquedaEnum.NOMBRE);
     }//GEN-LAST:event_btnNuevoSacerdoteActionPerformed

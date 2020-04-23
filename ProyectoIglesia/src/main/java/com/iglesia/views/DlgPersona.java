@@ -197,6 +197,8 @@ public class DlgPersona extends javax.swing.JDialog {
         jPanelTop = new javax.swing.JPanel();
         btnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -399,6 +401,16 @@ public class DlgPersona extends javax.swing.JDialog {
 
         jPanel1.add(jPanelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 40));
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(132, 142, 149));
+        jLabel11.setText("(Opcional)");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(132, 142, 149));
+        jLabel12.setText("(Opcional)");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 650));
 
         pack();
@@ -507,6 +519,8 @@ public class DlgPersona extends javax.swing.JDialog {
     private javax.swing.JCheckBox cbestado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

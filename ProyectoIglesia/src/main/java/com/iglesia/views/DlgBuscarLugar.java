@@ -7,6 +7,7 @@ package com.iglesia.views;
 
 import com.iglesia.controllers.LugarController;
 import com.iglesia.entities.Lugar;
+import com.iglesia.entities.Usuario;
 import com.iglesia.enums.TipoBusquedaEnum;
 import com.iglesia.utils.TextPrompt;
 import java.awt.event.WindowEvent;
@@ -20,6 +21,11 @@ public class DlgBuscarLugar extends javax.swing.JDialog {
 
     private final LugarController lugarController;
     private Lugar lugar;
+    private Usuario usuarioLogeado;
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
 
     public Lugar getLugar() {
         return lugar;
@@ -239,6 +245,7 @@ public class DlgBuscarLugar extends javax.swing.JDialog {
 
     private void btnNuevoLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoLugarActionPerformed
         DlgLugar obj = new DlgLugar(null, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
         obj.setVisible(true);
         this.mostrarTabla("", TipoBusquedaEnum.NOMBRE);
     }//GEN-LAST:event_btnNuevoLugarActionPerformed
@@ -252,7 +259,7 @@ public class DlgBuscarLugar extends javax.swing.JDialog {
     }//GEN-LAST:event_jbCerrarMouseMoved
 
     private void jbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseExited
-        this.jbCerrar.setBackground(new java.awt.Color(0,129,255));
+        this.jbCerrar.setBackground(new java.awt.Color(0, 129, 255));
     }//GEN-LAST:event_jbCerrarMouseExited
 
     /**
