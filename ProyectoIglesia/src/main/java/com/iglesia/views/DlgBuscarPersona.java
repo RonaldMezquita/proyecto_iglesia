@@ -296,6 +296,7 @@ public class DlgBuscarPersona extends javax.swing.JDialog {
     private void btnNuevaPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaPersonaActionPerformed
         DlgPersona obj = new DlgPersona(null, true);
         obj.setUsuarioLogeado(this.usuarioLogeado);
+        obj.setRedirect(true);
         obj.setVisible(true);
         this.mostrarTabla("", TipoBusquedaEnum.NOMBRE);
     }//GEN-LAST:event_btnNuevaPersonaActionPerformed

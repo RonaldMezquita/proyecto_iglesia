@@ -16,7 +16,7 @@ INNER JOIN responsable_evento res ON res.id_persona=p.id AND res.id_relacion=1 A
 ),
 madrina AS(
 SELECT res.id idRes,p.id, p.nit, p.dui, CONCAT_WS(' ', p.nombres, p.apellidos) AS nombre FROM persona p
-INNER JOIN responsable_evento res ON res.id_persona=p.id AND res.id_relacion=2 AND res.id_evento=1 
+INNER JOIN responsable_evento res ON res.id_persona=p.id AND res.id_relacion=2 AND res.id_evento=$P{id_evento} 
 ),
 sacramentado AS (
 SELECT res.id, p.nit as sacramentado_nit, p.dui AS sacramentado_dui, p.genero AS sacramentado_genero,

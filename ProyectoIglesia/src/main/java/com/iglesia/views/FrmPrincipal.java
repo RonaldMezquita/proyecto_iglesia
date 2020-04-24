@@ -75,7 +75,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnBautizoTop = new javax.swing.JButton();
         btnConfirmacionTop = new javax.swing.JButton();
         btnBodaTop = new javax.swing.JButton();
-        btnCatalogos = new javax.swing.JButton();
         panelUsuario = new javax.swing.JPanel();
         jlblUsuario = new javax.swing.JLabel();
         jlblIconUser = new javax.swing.JLabel();
@@ -307,7 +306,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         panelTop.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnMenu.setBackground(new java.awt.Color(0, 129, 255));
-        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/Iglesia.png"))); // NOI18N
+        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/menu-36px.png"))); // NOI18N
         btnMenu.setBorder(null);
         btnMenu.setBorderPainted(false);
         btnMenu.setContentAreaFilled(false);
@@ -347,7 +346,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("SISTEMA DE CONTROL PARROQUIAL");
-        panelTop.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 350, 40));
+        panelTop.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 0, 350, 40));
 
         getContentPane().add(panelTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 40));
 
@@ -372,7 +371,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnConsultarMovEfectivoTopActionPerformed(evt);
             }
         });
-        panelMenuTop.add(btnConsultarMovEfectivoTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 0, 120, 60));
+        panelMenuTop.add(btnConsultarMovEfectivoTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 60));
 
         btnBautizoTop.setBackground(new java.awt.Color(27, 163, 69));
         btnBautizoTop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -391,7 +390,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnBautizoTopActionPerformed(evt);
             }
         });
-        panelMenuTop.add(btnBautizoTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 120, 60));
+        panelMenuTop.add(btnBautizoTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 0, 120, 60));
 
         btnConfirmacionTop.setBackground(new java.awt.Color(27, 163, 69));
         btnConfirmacionTop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -410,7 +409,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnConfirmacionTopActionPerformed(evt);
             }
         });
-        panelMenuTop.add(btnConfirmacionTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 0, 120, 60));
+        panelMenuTop.add(btnConfirmacionTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 120, 60));
 
         btnBodaTop.setBackground(new java.awt.Color(27, 163, 69));
         btnBodaTop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -429,28 +428,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 btnBodaTopActionPerformed(evt);
             }
         });
-        panelMenuTop.add(btnBodaTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 120, 60));
+        panelMenuTop.add(btnBodaTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 0, 120, 60));
 
-        btnCatalogos.setBackground(new java.awt.Color(27, 163, 69));
-        btnCatalogos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnCatalogos.setForeground(new java.awt.Color(255, 255, 255));
-        btnCatalogos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/menu-36px.png"))); // NOI18N
-        btnCatalogos.setText("Catalogos");
-        btnCatalogos.setBorder(null);
-        btnCatalogos.setBorderPainted(false);
-        btnCatalogos.setContentAreaFilled(false);
-        btnCatalogos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCatalogos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCatalogos.setOpaque(true);
-        btnCatalogos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnCatalogos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCatalogosActionPerformed(evt);
-            }
-        });
-        panelMenuTop.add(btnCatalogos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 60));
-
-        getContentPane().add(panelMenuTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 630, 60));
+        getContentPane().add(panelMenuTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 500, 60));
 
         panelUsuario.setBackground(new java.awt.Color(102, 102, 102));
         panelUsuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -560,17 +540,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         obj.setVisible(true);
     }//GEN-LAST:event_btnConsultarMovEfectivoTopActionPerformed
 
-    private void btnCatalogosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogosActionPerformed
-        //-220
-        if (this.panelMenu.getX() == 0) {
-            Animacion.Animacion.mover_izquierda(0, -132, 10, 5, this.panelMenu);
-            Animacion.Animacion.mover_izquierda(170, 38, 10, 5, this.panelMenuTop);
-        } else {
-            Animacion.Animacion.mover_derecha(this.panelMenu.getX(), 0, 10, 5, this.panelMenu);
-            Animacion.Animacion.mover_derecha(this.panelMenuTop.getX(), 170, 10, 5, this.panelMenuTop);
-        }
-    }//GEN-LAST:event_btnCatalogosActionPerformed
-
     private void btnBautizoTopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBautizoTopActionPerformed
         DlgBautizo obj = new DlgBautizo(this, false);
         obj.setUsuarioLogeado(this.usuario);
@@ -642,7 +611,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBautizoTop;
     private javax.swing.JButton btnBodaTop;
-    private javax.swing.JButton btnCatalogos;
     private javax.swing.JButton btnComunidad;
     private javax.swing.JButton btnConfirmacionTop;
     private javax.swing.JButton btnConsultaPersonas;

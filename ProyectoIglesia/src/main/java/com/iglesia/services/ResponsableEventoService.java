@@ -17,11 +17,11 @@ import javax.persistence.EntityManager;
  * @author alexi
  */
 public class ResponsableEventoService extends CrudUtils<ResponsableEvento> {
-    
+
     public ResponsableEventoService() {
         super(ResponsableEvento.class);
     }
-    
+
     public List<ResponsableEvento> getDetalleEvento(Integer idEvento) {
         EntityManager em = PersistenceManager.getEntityManager();
         List<ResponsableEvento> lista = null;
@@ -40,7 +40,7 @@ public class ResponsableEventoService extends CrudUtils<ResponsableEvento> {
                     .setParameter("idEvento", idEvento).getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {
-            
+
             em.getTransaction().rollback();
         } finally {
             PersistenceManager.close();
@@ -61,12 +61,22 @@ public class ResponsableEventoService extends CrudUtils<ResponsableEvento> {
         boolean result = false;
         try {
             em.persist(evento);
-            
+            // Para actualziar la entidad en el contexto del EntityManager
+            // Flush asegura que se ejecuta el insert en la BD.
+            em.flush();
+            // Refresh asegura que el identificador se carga en la instancia.
+            em.refresh(evento);
+
             for (ResponsableEvento item : det) {
                 item.setIdEvento(evento);
                 em.persist(item);
+                // Para actualziar la entidad en el contexto del EntityManager
+                // Flush asegura que se ejecuta el insert en la BD.
+                em.flush();
+                // Refresh asegura que el identificador se carga en la instancia.
+                em.refresh(item);
             }
-            
+
             em.getTransaction().commit();
             result = true;
         } catch (Exception e) {
@@ -90,7 +100,7 @@ public class ResponsableEventoService extends CrudUtils<ResponsableEvento> {
         boolean result = false;
         try {
             em.merge(evento);
-            
+
             for (ResponsableEvento item : det) {
                 if (item.getIdPersona() == null && item.getFechaActualizacion() != null) {
                     em.createQuery("update ResponsableEvento t set t.estado=:estado where t.id=:id")
@@ -100,7 +110,7 @@ public class ResponsableEventoService extends CrudUtils<ResponsableEvento> {
                 }
                 em.merge(item);
             }
-            
+
             em.getTransaction().commit();
             result = true;
         } catch (Exception e) {
@@ -110,5 +120,5 @@ public class ResponsableEventoService extends CrudUtils<ResponsableEvento> {
         }
         return result;
     }
-    
+
 }

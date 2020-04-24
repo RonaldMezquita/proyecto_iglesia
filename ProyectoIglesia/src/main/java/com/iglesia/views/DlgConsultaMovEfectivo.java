@@ -173,11 +173,13 @@ public class DlgConsultaMovEfectivo extends javax.swing.JDialog {
 
         jdFechaIni.setBackground(new java.awt.Color(255, 255, 255));
         jdFechaIni.setForeground(new java.awt.Color(55, 71, 79));
+        jdFechaIni.setDateFormatString("dd/MM/yyyy");
         jdFechaIni.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jPanel1.add(jdFechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 150, 30));
 
         jdFechaFin.setBackground(new java.awt.Color(255, 255, 255));
         jdFechaFin.setForeground(new java.awt.Color(55, 71, 79));
+        jdFechaFin.setDateFormatString("dd/MM/yyyy");
         jdFechaFin.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jPanel1.add(jdFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 150, 30));
 

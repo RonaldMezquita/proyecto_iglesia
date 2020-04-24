@@ -21,11 +21,6 @@ import java.util.List;
  */
 public class DlgPersona extends javax.swing.JDialog {
 
-    private Usuario usuarioLogeado;
-
-    public void setUsuarioLogeado(Usuario usuarioLogeado) {
-        this.usuarioLogeado = usuarioLogeado;
-    }
     /**
      * Creates new form DlgPersona
      */
@@ -36,9 +31,14 @@ public class DlgPersona extends javax.swing.JDialog {
     private List<String> excepciones = new ArrayList<>();
     private boolean redirect;
     private Persona personaToEdit;
+    private Usuario usuarioLogeado;
 
     public void setRedirect(boolean redirect) {
         this.redirect = redirect;
+    }
+
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
     }
 
     public void setPersonaToEdit(Persona personaToEdit) {
@@ -449,7 +449,7 @@ public class DlgPersona extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalirMouseMoved
 
     private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
-        this.btnSalir.setBackground(new java.awt.Color(0,129,255));
+        this.btnSalir.setBackground(new java.awt.Color(0, 129, 255));
     }//GEN-LAST:event_btnSalirMouseExited
 
     private void btnguardarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnguardarMouseMoved
