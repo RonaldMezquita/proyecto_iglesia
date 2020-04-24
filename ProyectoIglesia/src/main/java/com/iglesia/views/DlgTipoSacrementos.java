@@ -90,6 +90,8 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
         txtid = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
@@ -100,8 +102,6 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
         txtbuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtTipoEvento = new javax.swing.JTable();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jPanelTop = new javax.swing.JPanel();
         jbCerrar = new javax.swing.JButton();
@@ -117,6 +117,14 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
         jPanel1.setPreferredSize(new java.awt.Dimension(380, 490));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 141, 320, -1));
+
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 271, 320, -1));
+
         txtid.setEditable(false);
         txtid.setName("id"); // NOI18N
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 60, -1));
@@ -127,7 +135,7 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         txtnombre.setBackground(new java.awt.Color(255, 255, 255));
-        txtnombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtnombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtnombre.setForeground(new java.awt.Color(0, 0, 0));
         txtnombre.setBorder(null);
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +216,7 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 208, 130, 40));
 
         txtbuscar.setBackground(new java.awt.Color(255, 255, 255));
-        txtbuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtbuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtbuscar.setForeground(new java.awt.Color(0, 0, 0));
         txtbuscar.setToolTipText("");
         txtbuscar.setBorder(null);
@@ -261,14 +269,6 @@ public class DlgTipoSacrementos extends javax.swing.JDialog {
         }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 350, 200));
-
-        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 145, 320, -1));
-
-        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 275, 320, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-b-24px.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));

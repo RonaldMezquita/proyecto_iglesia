@@ -88,6 +88,8 @@ public class DlgLugar extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
@@ -98,8 +100,6 @@ public class DlgLugar extends javax.swing.JDialog {
         jtLugar = new javax.swing.JTable();
         txtid = new javax.swing.JTextField();
         txtbuscar = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jPanelTop = new javax.swing.JPanel();
         jbsalir = new javax.swing.JButton();
@@ -112,6 +112,8 @@ public class DlgLugar extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 129, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 141, 320, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 271, 320, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -248,7 +250,7 @@ public class DlgLugar extends javax.swing.JDialog {
         jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 60, -1));
 
         txtbuscar.setBackground(new java.awt.Color(255, 255, 255));
-        txtbuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtbuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtbuscar.setForeground(new java.awt.Color(0, 0, 0));
         txtbuscar.setToolTipText("");
         txtbuscar.setBorder(null);
@@ -259,8 +261,6 @@ public class DlgLugar extends javax.swing.JDialog {
             }
         });
         jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 320, 24));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 144, 320, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 275, 320, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-b-24px.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 255, -1, -1));
