@@ -93,6 +93,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         jsPadrino = new javax.swing.JSeparator();
         jsMadrina = new javax.swing.JSeparator();
         jsSacerdote = new javax.swing.JSeparator();
+        jsLugarBautizo = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -136,6 +137,9 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        txtLugarBautizo = new javax.swing.JTextField();
+        btnBuscarLugarBautizo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -194,6 +198,11 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         jsSacerdote.setForeground(new java.awt.Color(0, 0, 0));
         jsSacerdote.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jPanel1.add(jsSacerdote, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 200, -1));
+
+        jsLugarBautizo.setBackground(new java.awt.Color(153, 153, 153));
+        jsLugarBautizo.setForeground(new java.awt.Color(0, 0, 0));
+        jsLugarBautizo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jPanel1.add(jsLugarBautizo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, 200, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -507,7 +516,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 130, 40));
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 130, 40));
 
         btnCancelar.setBackground(new java.awt.Color(254, 192, 1));
         btnCancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -534,7 +543,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
                 btnCancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 350, 130, 40));
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 130, 40));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
@@ -737,7 +746,47 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         jLabel16.setText("(Opcional)");
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 400));
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("Lugar de Bautizo");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, -1, -1));
+
+        txtLugarBautizo.setEditable(false);
+        txtLugarBautizo.setBackground(new java.awt.Color(255, 255, 255));
+        txtLugarBautizo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtLugarBautizo.setBorder(null);
+        jPanel1.add(txtLugarBautizo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 200, 24));
+
+        btnBuscarLugarBautizo.setBackground(new java.awt.Color(107, 117, 125));
+        btnBuscarLugarBautizo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnBuscarLugarBautizo.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarLugarBautizo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/images/icon/buscar-w-24px.png"))); // NOI18N
+        btnBuscarLugarBautizo.setText("Buscar");
+        btnBuscarLugarBautizo.setToolTipText("Buscar novio");
+        btnBuscarLugarBautizo.setBorder(null);
+        btnBuscarLugarBautizo.setBorderPainted(false);
+        btnBuscarLugarBautizo.setContentAreaFilled(false);
+        btnBuscarLugarBautizo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarLugarBautizo.setHideActionText(true);
+        btnBuscarLugarBautizo.setOpaque(true);
+        btnBuscarLugarBautizo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnBuscarLugarBautizoMouseMoved(evt);
+            }
+        });
+        btnBuscarLugarBautizo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBuscarLugarBautizoMouseExited(evt);
+            }
+        });
+        btnBuscarLugarBautizo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarLugarBautizoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBuscarLugarBautizo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 350, 90, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -995,6 +1044,24 @@ public class DlgConfirmacion extends javax.swing.JDialog {
         this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnBuscarLugarBautizoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarLugarBautizoMouseMoved
+        this.btnBuscarLugarBautizo.setBackground(new java.awt.Color(132, 142, 149));
+    }//GEN-LAST:event_btnBuscarLugarBautizoMouseMoved
+
+    private void btnBuscarLugarBautizoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarLugarBautizoMouseExited
+        this.btnBuscarLugarBautizo.setBackground(new java.awt.Color(107, 117, 125));
+    }//GEN-LAST:event_btnBuscarLugarBautizoMouseExited
+
+    private void btnBuscarLugarBautizoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLugarBautizoActionPerformed
+        DlgBuscarLugar obj = new DlgBuscarLugar(this, true);
+        obj.setUsuarioLogeado(this.usuarioLogeado);
+        obj.setVisible(true);
+        if (obj.getLugar() != null) {
+            this.eventoCtrl.getDtoSelected().setLugarBautizo(obj.getLugar());
+            this.txtLugarBautizo.setText(this.eventoCtrl.getDtoSelected().getLugarBautizo().getNombre());
+        }
+    }//GEN-LAST:event_btnBuscarLugarBautizoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1054,6 +1121,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarLugar;
+    private javax.swing.JButton btnBuscarLugarBautizo;
     private javax.swing.JButton btnBuscarMadre;
     private javax.swing.JButton btnBuscarMadrina;
     private javax.swing.JButton btnBuscarPadre;
@@ -1074,6 +1142,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1087,6 +1156,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
     private javax.swing.JButton jbCerrar;
     private javax.swing.JSeparator jsFolio;
     private javax.swing.JSeparator jsLugar;
+    private javax.swing.JSeparator jsLugarBautizo;
     private javax.swing.JSeparator jsMadre;
     private javax.swing.JSeparator jsMadrina;
     private javax.swing.JSeparator jsNumero;
@@ -1099,6 +1169,7 @@ public class DlgConfirmacion extends javax.swing.JDialog {
     private javax.swing.JTextField txtFolio;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtLugar;
+    private javax.swing.JTextField txtLugarBautizo;
     private javax.swing.JTextField txtMadre;
     private javax.swing.JTextField txtMadrina;
     private javax.swing.JTextField txtNumero;

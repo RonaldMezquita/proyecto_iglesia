@@ -47,13 +47,14 @@ public class EventosDto {
     private Persona padrino;
     private Persona madrina;
     private Usuario usuario;
+    private Lugar lugarBautizo;
     // <idRelacion, idResponsableEvento>
     private Map<TipoRelacionEnum, Integer> relacionMap = new HashMap<>();
 
     public EventosDto() {
     }
 
-    public EventosDto(String tomo, String folio, String numero, TipoSacramentos tipoSacramento, Lugar lugar, Sacerdote sacerdote, Date fecha, Persona novio, Persona padreNovio, Persona madreNovio, Persona novia, Persona padreNovia, Persona madreNovia, Persona testigo1, Persona testigo2, Persona sacramentado, Persona padreSacramentado, Persona madreSacramentado, Persona padrino, Persona madrina, Usuario usuario) {
+    public EventosDto(String tomo, String folio, String numero, TipoSacramentos tipoSacramento, Lugar lugar, Sacerdote sacerdote, Date fecha, Persona novio, Persona padreNovio, Persona madreNovio, Persona novia, Persona padreNovia, Persona madreNovia, Persona testigo1, Persona testigo2, Persona sacramentado, Persona padreSacramentado, Persona madreSacramentado, Persona padrino, Persona madrina, Usuario usuario, Lugar lugarBautizo) {
         this.tomo = tomo;
         this.folio = folio;
         this.numero = numero;
@@ -75,6 +76,7 @@ public class EventosDto {
         this.padrino = padrino;
         this.madrina = madrina;
         this.usuario = usuario;
+        this.lugarBautizo = lugarBautizo;
     }
 
     public Integer getIdEvento() {
@@ -267,6 +269,14 @@ public class EventosDto {
 
     public void setEvento(Evento evento) {
         this.evento = evento;
+    }
+
+    public Lugar getLugarBautizo() {
+        return lugarBautizo;
+    }
+
+    public void setLugarBautizo(Lugar lugarBautizo) {
+        this.lugarBautizo = lugarBautizo;
     }
 
 }

@@ -71,6 +71,9 @@ public class ResponsableEvento implements Serializable {
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
+    @JoinColumn(name = "id_lugar_bautizo", referencedColumnName = "id")
+    @ManyToOne(optional = true)
+    private Lugar idLugarBautizo;
 
     public ResponsableEvento() {
     }
@@ -165,6 +168,14 @@ public class ResponsableEvento implements Serializable {
         this.idUsuario = idUsuario;
     }
 
+    public Lugar getIdLugarBautizo() {
+        return idLugarBautizo;
+    }
+
+    public void setIdLugarBautizo(Lugar idLugarBautizo) {
+        this.idLugarBautizo = idLugarBautizo;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -189,5 +200,5 @@ public class ResponsableEvento implements Serializable {
     public String toString() {
         return "com.iglesia.entities.ResponsableEvento[ id=" + id + " ]";
     }
-    
+
 }

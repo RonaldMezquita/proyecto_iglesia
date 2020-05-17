@@ -51,6 +51,7 @@ public class ConfirmacionController implements IEvento{
                 resEve.setIdMadre(data.getMadreSacramentado());
                 resEve.setIdPadre(data.getPadreSacramentado());
                 resEve.setIdPersona(data.getSacramentado());
+                resEve.setIdLugarBautizo(data.getLugarBautizo());
                 resEve.setIdRelacion(new Relacion(TipoRelacionValorEnum.SACRAMENTADO.getValue()));
                 resEve.setIdUsuario(data.getUsuario());
                 resLst.add(resEve);

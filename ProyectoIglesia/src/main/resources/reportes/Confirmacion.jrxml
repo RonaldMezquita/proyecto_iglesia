@@ -19,12 +19,14 @@ INNER JOIN responsable_evento res ON res.id_persona=p.id AND res.id_relacion=2 A
 sacramentado AS (
 SELECT res.id, p.nit as sacramentado_nit, p.dui AS sacramentado_dui, p.genero AS sacramentado_genero,
 CONCAT_WS(' ', p.nombres, p.apellidos) AS sacramentado_nombre, p.fecha_nacimiento AS sacramentado_nacimiento, 
+l.nombre AS lugar_bautizo,
 madre.dui AS madre_dui, madre.nit AS madre_nit, CONCAT_WS(' ', madre.nombres, madre.apellidos) AS madre_nombre,
 madre.dui AS padre_dui, padre.nit AS padre_nit, CONCAT_WS(' ', padre.nombres, padre.apellidos) AS padre_nombre
 FROM persona p 
 INNER JOIN responsable_evento res ON res.id_persona=p.id 
 INNER JOIN persona madre ON madre.id=res.id_madre
 INNER JOIN persona padre ON padre.id=res.id_padre
+INNER JOIN lugar l ON l.id=res.id_lugar_bautizo
 where res.id_relacion=6 AND res.id_evento = $P{id_evento} 
 )
 SELECT e.tomo,e.folio,e.numero,
@@ -43,6 +45,7 @@ MAX(CASE WHEN res.id_relacion = 6 THEN sacramentado_dui ELSE '' END) sacramentad
 MAX(CASE WHEN res.id_relacion = 6 THEN sacramentado_nit ELSE '' END) sacramentado_nit,
 MAX(CASE WHEN res.id_relacion = 6 THEN sacramentado_nombre ELSE '' END) sacramentado_nombre,
 MAX(CASE WHEN res.id_relacion = 6 THEN sacramentado_genero ELSE '' END) sacramentado_genero,
+MAX(CASE WHEN res.id_relacion = 6 THEN lugar_bautizo ELSE '' END) lugar_bautizo,
 MAX(CASE WHEN res.id_relacion = 6 THEN 
 (YEAR(CURDATE())-YEAR(sacramentado.sacramentado_nacimiento) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > 
 DATE_FORMAT(sacramentado.sacramentado_nacimiento,'%m-%d'), 0 , -1 )) ELSE '' END) sacramentado_edad,
@@ -132,7 +135,10 @@ WHERE e.id= $P{id_evento}]]>
 	<field name="sacramentado_genero" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="sacramentado_genero"/>
 	</field>
-	<field name="COLUMN_20" class="java.lang.String">
+	<field name="lugar_bautizo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="lugar_bautizo"/>
+	</field>
+	<field name="COLUMN_21" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="sacramentado_edad"/>
 	</field>
 	<field name="padrino_dui" class="java.lang.String">
@@ -189,7 +195,7 @@ WHERE e.id= $P{id_evento}]]>
 				<textElement textAlignment="Justified" markup="html">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA["El infrascrito Párroco de  <b> “Nuestra Señora de Valvanera” </b> CERTIFICA: que en el Tomo " +$F{tomo}+", folio "+$F{folio}+" Nº "+$F{numero}+" de Confirmaciones de este Archivo Parroquial, se registra la partida que literalmente dice: Nos, Mons. Romeo Tovar Astorga, por la gracia de Dios y benignidad de la Sede Apostólica Obispado de la Diócesis de Santa Ana, "+ $P{fecha_evento}+", en la Iglesia parroquial de "+$F{locacion}+" administramos el  <b>SACRAMENTO DE LA CONFIRMACIÓN </b> a:  <b>"+$F{sacramentado_nombre} +"</b>, hijo de "+ $F{padre_nombre}+" y de "+$F{madre_nombre}+". Nació el "+$P{fecha_nacimiento}+". Bautizado en la parroquia El Carmen"+($F{madrina} !=null ? ", Madrina: "+$F{madrina} : null) + ($F{padrino} != null ? ", Padrino: "+$F{padrino} : null)+". Conste. Al margen se lee: Nº "+$F{numero}+" "+$F{sacramentado_nombre}+". "]]></textFieldExpression>
+				<textFieldExpression><![CDATA["El infrascrito Párroco de  <b> “Nuestra Señora de Valvanera” </b> CERTIFICA: que en el Tomo " +$F{tomo}+", folio "+$F{folio}+" Nº "+$F{numero}+" de Confirmaciones de este Archivo Parroquial, se registra la partida que literalmente dice: Nos, Mons. Romeo Tovar Astorga, por la gracia de Dios y benignidad de la Sede Apostólica Obispado de la Diócesis de Santa Ana, "+ $P{fecha_evento}+", en la Iglesia parroquial de "+$F{locacion}+" administramos el  <b>SACRAMENTO DE LA CONFIRMACIÓN </b> a:  <b>"+$F{sacramentado_nombre} +"</b>, hijo de "+ $F{padre_nombre}+" y de "+$F{madre_nombre}+". Nació el "+$P{fecha_nacimiento}+". Bautizado en "+$F{lugar_bautizo}+""+($F{madrina} !=null ? ", Madrina: "+$F{madrina} : null) + ($F{padrino} != null ? ", Padrino: "+$F{padrino} : null)+". Conste. Al margen se lee: Nº "+$F{numero}+" "+$F{sacramentado_nombre}+". "]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="49" y="160" width="472" height="30" uuid="7c671e44-66a1-4e95-8348-c3733f7b44d0"/>
