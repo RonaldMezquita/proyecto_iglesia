@@ -32,7 +32,7 @@ DELETE FROM `comunidad`;
 /*!40000 ALTER TABLE `comunidad` DISABLE KEYS */;
 INSERT INTO `comunidad` (`id`, `nombre`, `estado`, `id_sector`, `fecha_creacion`, `fecha_actualizacion`, `id_usuario`) VALUES
 	(1, 'Sagrada familia', 1, 2, '2020-03-10', NULL, 1),
-	(2, 'Nazareno', 1, 3, '2020-03-30', NULL, 1);
+	(2, 'Nazareno', 1, 3, '2020-04-04', NULL, 1);
 /*!40000 ALTER TABLE `comunidad` ENABLE KEYS */;
 
 -- Volcando estructura para tabla db_iglesia.departamento
@@ -96,13 +96,12 @@ CREATE TABLE IF NOT EXISTS `evento` (
   CONSTRAINT `FK_evento_tipo_sacramento` FOREIGN KEY (`id_tipo_sacramento`) REFERENCES `tipo_sacramentos` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COMMENT='Tabla que representa todos los eventos posibles en la parroquia';
 
--- Volcando datos para la tabla db_iglesia.evento: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla db_iglesia.evento: ~2 rows (aproximadamente)
 DELETE FROM `evento`;
 /*!40000 ALTER TABLE `evento` DISABLE KEYS */;
 INSERT INTO `evento` (`id`, `fecha`, `id_tipo_sacramento`, `id_lugar`, `id_sacerdote`, `tomo`, `folio`, `numero`, `estado`, `fecha_creacion`, `fecha_actualizacion`, `id_usuario`) VALUES
-	(1, '2020-03-22', 2, 2, 1, '12', '123', '1524', 1, '2020-03-23', NULL, 1),
-	(2, '2020-03-22', 1, 2, 1, 'V', 'VII', '5345', 1, '2020-03-23', NULL, 1),
-	(3, '2020-03-22', 3, 2, 1, 'VII', 'XV', '1524', 1, '2020-03-25', NULL, 1);
+	(1, '2020-04-19', 2, 1, 1, 'VII', 'XII', '1522', 1, '2020-04-24', NULL, 3),
+	(3, '2020-05-15', 3, 2, 1, 'XVII', 'CI', '1544', 1, '2020-05-15', NULL, 3);
 /*!40000 ALTER TABLE `evento` ENABLE KEYS */;
 
 -- Volcando estructura para tabla db_iglesia.justificacion
@@ -116,14 +115,17 @@ CREATE TABLE IF NOT EXISTS `justificacion` (
   PRIMARY KEY (`id`),
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `FK__usuarioJustificacion` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='tabla justifica que tipo de moviemiento es ';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='tabla justifica que tipo de moviemiento es ';
 
--- Volcando datos para la tabla db_iglesia.justificacion: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla db_iglesia.justificacion: ~5 rows (aproximadamente)
 DELETE FROM `justificacion`;
 /*!40000 ALTER TABLE `justificacion` DISABLE KEYS */;
 INSERT INTO `justificacion` (`id`, `nombre`, `estado`, `fecha_creacion`, `fecha_actualizacion`, `id_usuario`) VALUES
-	(1, 'Colaboracion por Boda', 1, '2020-02-23', NULL, 1),
-	(2, 'Colaboracion por Bautizo', 1, '2020-03-27', NULL, 1);
+	(1, 'Colaboración por Boda', 1, '2020-04-08', NULL, 3),
+	(2, 'Colaboración por Bautizo', 1, '2020-04-08', NULL, 3),
+	(3, 'Colaboración de Sector', 1, '2020-04-08', NULL, 3),
+	(4, 'Colaboración Personal', 1, '2020-04-08', NULL, 3),
+	(5, 'Colaboración por Confirmación', 1, '2020-04-08', NULL, 3);
 /*!40000 ALTER TABLE `justificacion` ENABLE KEYS */;
 
 -- Volcando estructura para tabla db_iglesia.lugar
@@ -137,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `lugar` (
   PRIMARY KEY (`id`),
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `FK__usuarioLugar` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='tabla llevar control de lugar de locacion';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='tabla llevar control de lugar de locacion';
 
 -- Volcando datos para la tabla db_iglesia.lugar: ~2 rows (aproximadamente)
 DELETE FROM `lugar`;
@@ -145,7 +147,8 @@ DELETE FROM `lugar`;
 INSERT INTO `lugar` (`id`, `nombre`, `estado`, `fecha_creacion`, `fecha_actualizacion`, `id_usuario`) VALUES
 	(1, 'Maria Consoladora del Carpinelo', 1, '2020-02-23', NULL, 1),
 	(2, 'Nuestra Señora de Valvanera', 1, '2020-02-23', NULL, 1),
-	(3, 'Lugar desconocido', 1, '2020-03-18', NULL, 1);
+	(3, 'Lugar desconocido', 1, '2020-04-07', NULL, 1),
+	(4, 'Lugar nuevo', 1, '2020-04-11', NULL, 3);
 /*!40000 ALTER TABLE `lugar` ENABLE KEYS */;
 
 -- Volcando estructura para tabla db_iglesia.movimiento
@@ -167,14 +170,11 @@ CREATE TABLE IF NOT EXISTS `movimiento` (
   CONSTRAINT `FK__justificacionMovimiento` FOREIGN KEY (`id_justificacion`) REFERENCES `justificacion` (`id`),
   CONSTRAINT `FK__usuarioMovimiento` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
   CONSTRAINT `FK_movimiento_evento` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='Tabla lleva los movimientos de dinero';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla lleva los movimientos de dinero';
 
--- Volcando datos para la tabla db_iglesia.movimiento: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla db_iglesia.movimiento: ~0 rows (aproximadamente)
 DELETE FROM `movimiento`;
 /*!40000 ALTER TABLE `movimiento` DISABLE KEYS */;
-INSERT INTO `movimiento` (`id`, `fecha_mov`, `monto`, `tipo`, `id_evento`, `id_justificacion`, `estado`, `fecha_creacion`, `fecha_actualizacion`, `id_usuario`) VALUES
-	(1, '2020-03-22', 175.00, 'ENTRADA', 2, 1, 1, '2020-04-02', NULL, 1),
-	(2, '2020-03-22', 200.00, 'ENTRADA', 1, 2, 1, '2020-04-02', NULL, 1);
 /*!40000 ALTER TABLE `movimiento` ENABLE KEYS */;
 
 -- Volcando estructura para tabla db_iglesia.pais
@@ -217,9 +217,9 @@ CREATE TABLE IF NOT EXISTS `persona` (
   KEY `id_depto_origen` (`id_depto_origen`),
   CONSTRAINT `FK_persona_departamento` FOREIGN KEY (`id_depto_origen`) REFERENCES `departamento` (`id`),
   CONSTRAINT `FK_persona_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Tabla lleva los datos de las personas';
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Tabla lleva los datos de las personas';
 
--- Volcando datos para la tabla db_iglesia.persona: ~13 rows (aproximadamente)
+-- Volcando datos para la tabla db_iglesia.persona: ~22 rows (aproximadamente)
 DELETE FROM `persona`;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
 INSERT INTO `persona` (`id`, `nombres`, `apellidos`, `direccion`, `id_depto_origen`, `dui`, `nit`, `genero`, `fecha_nacimiento`, `estado`, `fecha_creacion`, `fecha_actualizacion`, `id_usuario`) VALUES
@@ -237,7 +237,15 @@ INSERT INTO `persona` (`id`, `nombres`, `apellidos`, `direccion`, `id_depto_orig
 	(12, 'Geraldine Stephannie', 'Mezquita Sosa', 'Col. El Nazareno pol.4 casa #21', 12, '53535353-5', '5353-535353-535-3', 'F', '1993-05-09', 1, '2020-03-25', NULL, 1),
 	(13, 'Wilber Alexis', 'Mezquita Sosa', 'Santa Ana', 12, '95959599-5', '9595-959595-959-9', 'M', '1984-07-24', 1, '2020-03-25', NULL, 1),
 	(14, 'Juana de Jesus', 'Sosa de Mezquita', 'Santa Ana, Santa Ana', 12, '95959595-9', '9595-959595-959-5', 'F', '1955-06-24', 1, '2020-03-25', NULL, 1),
-	(15, 'Rigoberto', 'Gonzales', 'Sonsonate, Sonsonate', 13, '96969696-9', '9696-969696-969-6', 'M', '1971-10-06', 1, '2020-03-25', NULL, 1);
+	(15, 'Rigoberto', 'Gonzales', 'Sonsonate, Sonsonate', 13, '96969696-9', '9696-969696-969-6', 'M', '1971-10-06', 1, '2020-04-08', NULL, 2),
+	(16, 'Camila Paola', 'Escalante Cerritos', 'Urbanización Recidenciales de Barcelona, Santa Ana', 12, '        - ', '    -      -   - ', 'F', '2018-08-20', 1, '2020-04-23', NULL, 3),
+	(17, 'Erick Francisco', 'Escalante Sosa', 'Urbanización Jardines de Barcelona, Santa Ana', 12, '15151515-1', '4444-444444-444-1', 'M', '1990-05-03', 1, '2020-04-23', NULL, 3),
+	(18, 'Adriana', 'Cerritos', 'Urbanización Jardines de Barcelona, Santa Ana', 12, '66666565-6', '5454-545455-454-5', 'F', '1999-05-17', 1, '2020-04-23', NULL, 3),
+	(19, 'Bryan Alexander', 'Escalante Sosa', 'Urbanización Jardines de Barcelona, Santa Ana', 12, '55555555-5', '6666-666666-666-6', 'M', '1997-01-11', 1, '2020-04-24', NULL, 3),
+	(20, 'Leonardo Antonio', 'Escalante Vides', 'Urbanización Jardines de Barcelona, Santa Ana', 12, '54565121-5', '1511-545712-120-1', 'M', '1960-11-30', 1, '2020-04-24', NULL, 3),
+	(21, 'María Elizabeth Veronica', 'Sosa de Escalante', 'Urbanización Jardines de Barcelona, Santa Ana	', 12, '65212315-1', '9631-215874-512-1', 'M', '1957-01-13', 1, '2020-04-24', NULL, 3),
+	(22, 'Haide', 'Osorio', 'Coatepeque, Santa Ana', 12, '15246552-1', '1511-313223-112-1', 'F', '1960-06-30', 1, '2020-04-24', NULL, 3),
+	(23, 'Claudia Magaly', 'Escalante Sosa', 'Santa Ana', 12, '15421254-1', '6655-656121-154-1', 'F', '1986-07-27', 1, '2020-04-24', NULL, 3);
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 
 -- Volcando estructura para tabla db_iglesia.relacion
@@ -273,6 +281,7 @@ CREATE TABLE IF NOT EXISTS `responsable_evento` (
   `id_padre` int(11) DEFAULT NULL,
   `id_madre` int(11) DEFAULT NULL,
   `id_evento` int(11) NOT NULL,
+  `id_lugar_bautizo` int(11) DEFAULT NULL,
   `estado` tinyint(1) NOT NULL,
   `fecha_creacion` date NOT NULL,
   `fecha_actualizacion` date DEFAULT NULL,
@@ -284,28 +293,26 @@ CREATE TABLE IF NOT EXISTS `responsable_evento` (
   KEY `id_evento` (`id_evento`),
   KEY `FK_responsable_evento_personaPadre` (`id_padre`),
   KEY `FK_responsable_evento_personaMadre` (`id_madre`),
+  KEY `id_lugar_bautizo` (`id_lugar_bautizo`),
   CONSTRAINT `FK__personaResponsable` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id`),
   CONSTRAINT `FK__relacionResponsable` FOREIGN KEY (`id_relacion`) REFERENCES `relacion` (`id`),
   CONSTRAINT `FK__usuarioResponsable` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
   CONSTRAINT `FK_responsable_bautizo_evento` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id`),
+  CONSTRAINT `FK_responsable_evento_lugar` FOREIGN KEY (`id_lugar_bautizo`) REFERENCES `lugar` (`id`),
   CONSTRAINT `FK_responsable_evento_personaMadre` FOREIGN KEY (`id_madre`) REFERENCES `persona` (`id`),
   CONSTRAINT `FK_responsable_evento_personaPadre` FOREIGN KEY (`id_padre`) REFERENCES `persona` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COMMENT='Tabla relacion bautizo personas y relacion';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COMMENT='Tabla relacion bautizo personas y relacion';
 
--- Volcando datos para la tabla db_iglesia.responsable_evento: ~9 rows (aproximadamente)
+-- Volcando datos para la tabla db_iglesia.responsable_evento: ~5 rows (aproximadamente)
 DELETE FROM `responsable_evento`;
 /*!40000 ALTER TABLE `responsable_evento` DISABLE KEYS */;
-INSERT INTO `responsable_evento` (`id`, `id_relacion`, `id_persona`, `id_padre`, `id_madre`, `id_evento`, `estado`, `fecha_creacion`, `fecha_actualizacion`, `id_usuario`) VALUES
-	(1, 2, 4, NULL, NULL, 1, 1, '2020-03-23', NULL, 1),
-	(2, 6, 1, 2, 3, 1, 1, '2020-03-23', NULL, 1),
-	(3, 1, 5, NULL, NULL, 1, 1, '2020-03-23', NULL, 1),
-	(4, 5, 8, NULL, NULL, 2, 1, '2020-03-23', NULL, 1),
-	(5, 5, 9, NULL, NULL, 2, 1, '2020-03-23', NULL, 1),
-	(6, 4, 4, 5, 6, 2, 1, '2020-03-23', NULL, 1),
-	(7, 3, 1, 2, 3, 2, 1, '2020-03-23', NULL, 1),
-	(8, 6, 15, 1, 4, 3, 1, '2020-03-25', NULL, 1),
-	(9, 1, 7, NULL, NULL, 3, 1, '2020-03-25', NULL, 1),
-	(10, 2, 6, NULL, NULL, 3, 1, '2020-03-25', NULL, 1);
+INSERT INTO `responsable_evento` (`id`, `id_relacion`, `id_persona`, `id_padre`, `id_madre`, `id_evento`, `id_lugar_bautizo`, `estado`, `fecha_creacion`, `fecha_actualizacion`, `id_usuario`) VALUES
+	(1, 6, 19, 20, 21, 1, NULL, 1, '2020-04-24', NULL, 3),
+	(2, 1, 11, NULL, NULL, 1, NULL, 1, '2020-04-24', NULL, 3),
+	(3, 2, 14, NULL, NULL, 1, NULL, 1, '2020-04-24', NULL, 3),
+	(4, 6, 16, 17, 18, 3, 1, 1, '2020-05-15', NULL, 3),
+	(5, 1, 19, NULL, NULL, 3, NULL, 1, '2020-05-15', NULL, 3),
+	(6, 2, 23, NULL, NULL, 3, NULL, 1, '2020-05-15', NULL, 3);
 /*!40000 ALTER TABLE `responsable_evento` ENABLE KEYS */;
 
 -- Volcando estructura para tabla db_iglesia.sacerdote
@@ -351,7 +358,7 @@ DELETE FROM `sector`;
 /*!40000 ALTER TABLE `sector` DISABLE KEYS */;
 INSERT INTO `sector` (`id`, `nombre`, `estado`, `fecha_creacion`, `fecha_actualizacion`, `id_usuario`) VALUES
 	(1, 'Sector Uno', 1, '2020-03-01', NULL, 1),
-	(2, 'Sector Dos', 1, '2020-03-07', NULL, 1),
+	(2, 'Sector Dos', 1, '2020-04-07', NULL, 1),
 	(3, 'Sector Divina Providencia', 1, '2020-03-29', NULL, 1);
 /*!40000 ALTER TABLE `sector` ENABLE KEYS */;
 
@@ -373,8 +380,8 @@ DELETE FROM `tipo_sacramentos`;
 /*!40000 ALTER TABLE `tipo_sacramentos` DISABLE KEYS */;
 INSERT INTO `tipo_sacramentos` (`id`, `nombre`, `estado`, `fecha_creacion`, `fecha_actualizacion`, `id_usuario`) VALUES
 	(1, 'BODA', 1, '2020-02-23', NULL, 1),
-	(2, 'BAUTIZO', 1, '2020-02-23', NULL, 1),
-	(3, 'CONFIRMACION', 1, '2020-02-23', NULL, 1);
+	(2, 'BAUTIZO', 1, '2020-04-09', NULL, 2),
+	(3, 'CONFIRMACION', 1, '2020-04-11', NULL, 3);
 /*!40000 ALTER TABLE `tipo_sacramentos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla db_iglesia.usuario
@@ -394,9 +401,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 DELETE FROM `usuario`;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `usuario`, `clave`, `estado`, `fecha_creacion`, `fecha_actualizacion`) VALUES
-	(1, 'wilber', 'mezquita', 'will', '123', 1, '2020-02-23', '0000-00-00'),
-	(2, 'juan', 'perez', 'juan', 'juan', 1, '2020-02-09', NULL),
-	(3, 'Ronald', 'Mezquita', 'rems', '123', 0, '2020-02-23', NULL);
+	(1, 'wilber', 'mezquita', 'will', 'adcd7048512e64b48da55b027577886ee5a36350', 1, '2020-02-23', '0000-00-00'),
+	(2, 'juan', 'perez', 'juan', 'dcb17adc52785209f02a735686b3c53d5bac3709', 1, '2020-02-09', NULL),
+	(3, 'Ronald', 'Mezquita', 'rems', 'adcd7048512e64b48da55b027577886ee5a36350', 1, '2020-02-23', NULL);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
