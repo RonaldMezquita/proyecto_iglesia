@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e465bbe0-92b3-461c-ae2e-2929461bb37d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectoIglesia/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/BautizoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/BodaController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/ComunidadController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/ConfirmacionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/DepartamentoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/EventoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/JustificacionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/LugarController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/MovimientoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/PaisController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/PersonaController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/ReportesController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/ResponsableEventoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/SacerdoteController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/SectorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/TipoSacramentosController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/controllers/UsuarioController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/dtos/EventosDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/entities/Comunidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/src/comunidad/domain/Comunidad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/entities/Departamento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/entities/Evento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/entities/Justificacion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/entities/Lugar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/entities/Movimiento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/entities/Pais.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/entities/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/src/persona/domain/Persona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/entities/Relacion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/entities/ResponsableEvento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/entities/Sacerdote.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/entities/Sector.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/src/sector/domain/Sector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/entities/TipoSacramentos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/entities/Usuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/enums/TipoBusquedaEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/enums/TipoMovimientoEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/enums/TipoRelacionEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/enums/TipoRelacionValorEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/enums/TipoSacramentoEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/interfaces/IEvento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/services/ComunidadService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/services/DepartamentoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/services/EventoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/services/JustificacionService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/services/LugarService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/services/MovimientoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/services/PaisService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/services/PersonaService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/services/RelacionService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/services/ResponsableEventoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/services/SacerdoteService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/services/SectorService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/services/TipoSacramentosService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/services/UsuarioService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/utils/CrudUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/utils/CrudUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgBautizo.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgBautizo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgBoda.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgBoda.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgBuscarEvento.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgBuscarEvento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgBuscarLugar.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgBuscarLugar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgBuscarPersona.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgBuscarPersona.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgBuscarSacerdote.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgBuscarSacerdote.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgComunidad.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgComunidad.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgComunidadOp.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgComunidadOp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgConfirmacion.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgConfirmacion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgConfirmacionOld.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgConfirmacionOld.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgConsultaMovEfectivo.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgConsultaMovEfectivo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgConsultaPersona.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgConsultaPersona.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgDetalleEvento.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgDetalleEvento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgJustificacion.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgJustificacion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgLugar.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgLugar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgMovEfectivo.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgMovEfectivo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgPersona.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgPersona.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgPruebaAutoComplete.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgPruebaAutoComplete.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgReportes.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgReportes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgSacerdote.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgSacerdote.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgSacerdoteOp.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgSacerdoteOp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgSector.form" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgSector.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgSector.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgSector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgSectorOp.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgSectorOp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgTipoSacrementos.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgTipoSacrementos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgUsuario.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgUsuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgWindow.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/DlgWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/FrmLogin.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/FrmLogin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/FrmPrincipal.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/FrmPrincipal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/FrmPrincipalAO.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/FrmPrincipalAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/FrmPrincipalOld.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/FrmPrincipalOld.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/PnlMovEfectivo.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/PnlMovEfectivo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/ejemplo.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/java/com/iglesia/views/ejemplo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoIglesia/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectoIglesia/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1cvKf1m1SgnVipmXsNF3gcSBvHx" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="350" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e465bbe0-92b3-461c-ae2e-2929461bb37d" name="Default Changelist" comment="" />
+      <created>1591403726140</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591403726140</updated>
+      <workItem from="1591403728765" duration="165000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591403886281">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768/1366.0.1920.1080@0.0.1366.768" timestamp="1591403886281" />
+    <state x="184" y="29" key="SettingsEditor" timestamp="1591403871744">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="184" y="29" key="SettingsEditor/0.0.1366.768/1366.0.1920.1080@0.0.1366.768" timestamp="1591403871744" />
+  </component>
+</project>

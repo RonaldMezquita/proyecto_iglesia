@@ -60,6 +60,7 @@ public class DlgBoda extends javax.swing.JDialog {
         this.eventoCtrl = new EventoController();
         this.txtTomo.requestFocus();
         this.txtFecha.setDate(FechasUtils.getCurrentDate());
+        this.txtId.setVisible(false);
     }
 
     private void setOrderTab() {
